@@ -2,9 +2,16 @@
 
 > Complete JavaScript library for Arabic name analysis using traditional Abjad calculation, Islamic wisdom, and authentic Arabic astrology.
 
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/username/hisaab)
+[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Islamic](https://img.shields.io/badge/Islamic-☪️-gold.svg)](#islamic-features)
+
+## 🌐 **Live Demo & Documentation**
+
+| 🚀 **Try It Now** | 📚 **Learn More** | 🎯 **Developers** |
+|:------------------:|:------------------:|:------------------:|
+| **[Web Calculator](https://ahmadbaba46.github.io/hisaab/public/)** | **[Documentation](https://ahmadbaba46.github.io/hisaab/docs/)** | **[Choose Version](https://ahmadbaba46.github.io/hisaab/version-selector.html)** |
+| Try Arabic numerology instantly | Complete API guide | Select your preferred version |
 
 ## ✨ Features
 
@@ -17,7 +24,10 @@
 
 ## 🚀 Quick Start
 
-### Installation
+### 🌐 Try Online (No Installation)
+**Live Demo**: [https://ahmadbaba46.github.io/hisaab/public/](https://ahmadbaba46.github.io/hisaab/public/)
+
+### 📦 Installation
 ```bash
 npm install hisaab
 ```
