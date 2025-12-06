@@ -1,7 +1,7 @@
 // Hisaab Web Interface Application
-// Note: This is a browser-compatible version that simulates the Node.js library
+// Browser-compatible version with all v1.2.0 features
 
-// Simplified Hisaab class for browser use
+// Complete Hisaab class for browser use
 class HisaabWeb {
     constructor(arabicName) {
         if (!arabicName || typeof arabicName !== 'string') {
