@@ -1181,6 +1181,327 @@ class Hisaab {
         });
         return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
     }
+
+    // =================== v1.1.0 NEW FEATURES ===================
+
+    /**
+     * Generate names matching specific criteria
+     * @param {Object} criteria - Generation criteria
+     * @returns {Array} Array of generated name suggestions
+     */
+    static generateNames(criteria = {}) {
+        const {
+            targetValue = null,
+            partnerHouse = null,
+            element = null,
+            gender = null,
+            length = [3, 8],
+            startsWith = null,
+            maxResults = 10
+        } = criteria;
+
+        // Arabic name database (sample - can be expanded)
+        const arabicNames = {
+            male: [
+                'محمد', 'أحمد', 'علي', 'حسن', 'حسين', 'عمر', 'عبدالله', 'عبدالرحمن',
+                'يوسف', 'إبراهيم', 'موسى', 'عيسى', 'داود', 'سليمان', 'يحيى', 'زكريا',
+                'خالد', 'سعد', 'سالم', 'صالح', 'طارق', 'فيصل', 'ماجد', 'نادر',
+                'أمين', 'باسم', 'جمال', 'رامي', 'زياد', 'فارس', 'كريم', 'لؤي',
+                'مازن', 'ناصر', 'هاني', 'وليد', 'ياسر', 'عادل', 'فؤاد', 'منير'
+            ],
+            female: [
+                'فاطمة', 'عائشة', 'خديجة', 'زينب', 'مريم', 'آمنة', 'صفية', 'رقية',
+                'أم كلثوم', 'حفصة', 'جويرية', 'ميمونة', 'سودة', 'زينب', 'أسماء', 'هاجر',
+                'نورا', 'سارة', 'لينا', 'دانا', 'ريم', 'منى', 'هند', 'ليلى',
+                'أميرة', 'جميلة', 'حنان', 'رانيا', 'سلمى', 'فرح', 'قمر', 'لمياء',
+                'ناديا', 'هدى', 'ياسمين', 'عبير', 'فداء', 'منال', 'نهى', 'وفاء'
+            ]
+        };
+
+        let namePool = [];
+        
+        // Build name pool based on gender
+        if (gender === 'male') {
+            namePool = [...arabicNames.male];
+        } else if (gender === 'female') {
+            namePool = [...arabicNames.female];
+        } else {
+            namePool = [...arabicNames.male, ...arabicNames.female];
+        }
+
+        const suggestions = [];
+
+        namePool.forEach(name => {
+            try {
+                const hisaab = new Hisaab(name);
+                let score = 0;
+                let reasons = [];
+
+                // Check criteria and calculate match score
+                
+                // Target value match
+                if (targetValue !== null) {
+                    const diff = Math.abs(hisaab.getValue() - targetValue);
+                    if (diff === 0) {
+                        score += 50;
+                        reasons.push(`Exact value match: ${targetValue}`);
+                    } else if (diff <= 10) {
+                        score += 30;
+                        reasons.push(`Close to target value (±${diff})`);
+                    } else if (diff <= 25) {
+                        score += 15;
+                        reasons.push(`Reasonably close to target (±${diff})`);
+                    }
+                }
+
+                // Partner house match
+                if (partnerHouse !== null) {
+                    // For this, we need a reference name to compare with
+                    // For now, we'll check if this name with itself produces the desired house
+                    const digitRoot = hisaab.getDigitRoot();
+                    const selfHouse = hisaab.calculateDigitRoot(digitRoot + digitRoot + 7);
+                    if (selfHouse === partnerHouse) {
+                        score += 40;
+                        reasons.push(`Self-compatibility house: ${partnerHouse}`);
+                    }
+                }
+
+                // Element match
+                if (element !== null) {
+                    const astrology = hisaab.getArabicAstrology();
+                    if (astrology.element.name === element) {
+                        score += 25;
+                        reasons.push(`Element match: ${element} (${astrology.element.arabic})`);
+                    }
+                }
+
+                // Length constraint
+                if (name.length >= length[0] && name.length <= length[1]) {
+                    score += 10;
+                } else if (name.length < length[0] || name.length > length[1]) {
+                    return; // Skip this name
+                }
+
+                // Starts with constraint
+                if (startsWith !== null && !name.startsWith(startsWith)) {
+                    return; // Skip this name
+                }
+
+                // Add name to suggestions if it has any score
+                if (score > 0 || (targetValue === null && partnerHouse === null && element === null)) {
+                    suggestions.push({
+                        name: name,
+                        value: hisaab.getValue(),
+                        digitRoot: hisaab.getDigitRoot(),
+                        element: hisaab.getArabicAstrology().element,
+                        score: score,
+                        reasons: reasons,
+                        breakdown: hisaab.getBreakdown()
+                    });
+                }
+            } catch (error) {
+                // Skip invalid names
+            }
+        });
+
+        // Sort by score and return top results
+        return suggestions
+            .sort((a, b) => b.score - a.score)
+            .slice(0, maxResults);
+    }
+
+    /**
+     * Analyze family harmony and compatibility
+     * @param {Object} family - Family member names
+     * @returns {Object} Family harmony analysis
+     */
+    static analyzeFamilyHarmony(family) {
+        const { parents = [], children = [] } = family;
+        const allMembers = [...parents, ...children];
+        
+        if (allMembers.length === 0) {
+            throw new Error('Family must have at least one member');
+        }
+
+        const memberAnalyses = allMembers.map(name => {
+            const hisaab = new Hisaab(name);
+            return {
+                name: name,
+                value: hisaab.getValue(),
+                digitRoot: hisaab.getDigitRoot(),
+                element: hisaab.getArabicAstrology().element,
+                planet: hisaab.getArabicAstrology().planet,
+                islamicQualities: hisaab.getIslamicQualities()
+            };
+        });
+
+        // Calculate element distribution
+        const elementCounts = {};
+        memberAnalyses.forEach(member => {
+            const element = member.element.name;
+            elementCounts[element] = (elementCounts[element] || 0) + 1;
+        });
+
+        // Find dominant element
+        const dominantElement = Object.keys(elementCounts).reduce((a, b) => 
+            elementCounts[a] > elementCounts[b] ? a : b
+        );
+
+        // Calculate average value
+        const averageValue = Math.round(
+            memberAnalyses.reduce((sum, member) => sum + member.value, 0) / memberAnalyses.length
+        );
+
+        // Check parent compatibility (if both parents provided)
+        let parentCompatibility = null;
+        if (parents.length === 2) {
+            parentCompatibility = this.compareArabic(parents[0], parents[1]);
+        }
+
+        // Energy balance
+        const evenCount = memberAnalyses.filter(member => member.value % 2 === 0).length;
+        const oddCount = memberAnalyses.length - evenCount;
+        const energyBalance = evenCount === oddCount ? 'Perfectly balanced' : 
+                           evenCount > oddCount ? 'More Yin (receptive) energy' : 
+                           'More Yang (active) energy';
+
+        // Generate recommendations
+        const recommendations = this.generateFamilyRecommendations({
+            dominantElement,
+            elementDistribution: elementCounts,
+            parentCompatibility,
+            energyBalance: { even: evenCount, odd: oddCount }
+        });
+
+        return {
+            memberAnalyses: memberAnalyses,
+            familyStats: {
+                totalMembers: allMembers.length,
+                averageValue: averageValue,
+                dominantElement: {
+                    name: dominantElement,
+                    count: elementCounts[dominantElement],
+                    percentage: Math.round((elementCounts[dominantElement] / allMembers.length) * 100)
+                },
+                elementDistribution: elementCounts,
+                energyBalance: energyBalance
+            },
+            parentCompatibility: parentCompatibility,
+            harmony: {
+                score: this.calculateFamilyHarmonyScore(memberAnalyses, parentCompatibility),
+                level: this.getFamilyHarmonyLevel(memberAnalyses, parentCompatibility)
+            },
+            recommendations: recommendations
+        };
+    }
+
+    /**
+     * Generate family recommendations
+     * @param {Object} familyData - Family analysis data
+     * @returns {Array} Array of recommendations
+     */
+    static generateFamilyRecommendations(familyData) {
+        const recommendations = [];
+        
+        // Element balance recommendations
+        if (familyData.dominantElement === 'Fire') {
+            recommendations.push({
+                category: 'Element Balance',
+                suggestion: 'Family has strong Fire energy. Encourage patience and calm activities.',
+                arabic: 'العائلة لديها طاقة نار قوية. شجع على الصبر والأنشطة الهادئة.'
+            });
+        } else if (familyData.dominantElement === 'Water') {
+            recommendations.push({
+                category: 'Element Balance', 
+                suggestion: 'Family has Water dominance. Great for emotional bonding and intuition.',
+                arabic: 'العائلة لديها هيمنة الماء. ممتاز للترابط العاطفي والحدس.'
+            });
+        }
+
+        // Parent compatibility recommendations
+        if (familyData.parentCompatibility) {
+            const house = familyData.parentCompatibility.partnerHouse;
+            if (house === 7) {
+                recommendations.push({
+                    category: 'Parent Relationship',
+                    suggestion: 'Excellent parent compatibility! This creates a harmonious home environment.',
+                    arabic: 'توافق ممتاز بين الوالدين! هذا يخلق بيئة منزلية متناغمة.'
+                });
+            } else if (house === 6 || house === 9) {
+                recommendations.push({
+                    category: 'Parent Relationship',
+                    suggestion: 'Parents may face challenges. Focus on communication and understanding.',
+                    arabic: 'قد يواجه الوالدان تحديات. ركز على التواصل والتفاهم.'
+                });
+            }
+        }
+
+        // Energy balance recommendations
+        if (familyData.energyBalance.even > familyData.energyBalance.odd * 2) {
+            recommendations.push({
+                category: 'Energy Balance',
+                suggestion: 'Family leans toward calm energy. Encourage some dynamic activities.',
+                arabic: 'العائلة تميل نحو الطاقة الهادئة. شجع على بعض الأنشطة الديناميكية.'
+            });
+        } else if (familyData.energyBalance.odd > familyData.energyBalance.even * 2) {
+            recommendations.push({
+                category: 'Energy Balance',
+                suggestion: 'Family has high active energy. Balance with quiet time and reflection.',
+                arabic: 'العائلة لديها طاقة نشطة عالية. توازن مع الوقت الهادئ والتأمل.'
+            });
+        }
+
+        return recommendations;
+    }
+
+    /**
+     * Calculate family harmony score
+     * @param {Array} memberAnalyses - Individual member analyses
+     * @param {Object} parentCompatibility - Parent compatibility if available
+     * @returns {number} Harmony score out of 100
+     */
+    static calculateFamilyHarmonyScore(memberAnalyses, parentCompatibility) {
+        let score = 50; // Base score
+
+        // Element diversity bonus
+        const uniqueElements = new Set(memberAnalyses.map(m => m.element.name)).size;
+        if (uniqueElements === 4) score += 20; // All 4 elements
+        else if (uniqueElements === 3) score += 15;
+        else if (uniqueElements === 2) score += 10;
+
+        // Parent compatibility impact
+        if (parentCompatibility) {
+            const house = parentCompatibility.partnerHouse;
+            if (house === 7) score += 20;
+            else if (house === 4 || house === 2) score += 10;
+            else if (house === 6 || house === 9) score -= 15;
+        }
+
+        // Value harmony (similar values get bonus)
+        const values = memberAnalyses.map(m => m.value);
+        const avgValue = values.reduce((a, b) => a + b, 0) / values.length;
+        const variance = values.reduce((acc, val) => acc + Math.pow(val - avgValue, 2), 0) / values.length;
+        if (variance < 1000) score += 10;
+        else if (variance > 5000) score -= 10;
+
+        return Math.max(0, Math.min(100, score));
+    }
+
+    /**
+     * Get family harmony level description
+     * @param {Array} memberAnalyses - Individual member analyses
+     * @param {Object} parentCompatibility - Parent compatibility if available
+     * @returns {string} Harmony level description
+     */
+    static getFamilyHarmonyLevel(memberAnalyses, parentCompatibility) {
+        const score = this.calculateFamilyHarmonyScore(memberAnalyses, parentCompatibility);
+        
+        if (score >= 80) return 'Excellent Harmony';
+        if (score >= 65) return 'Very Good Harmony';
+        if (score >= 50) return 'Good Harmony';
+        if (score >= 35) return 'Fair Harmony';
+        return 'Challenging Harmony';
+    }
 }
 
 module.exports = Hisaab;
