@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisaab Documentation - Complete Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="docs-style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">🕌</div>
+                <div class="logo-text">
+                    <h2>حساب</h2>
+                    <span>Documentation</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#quick-start">Quick Start</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Core Features</h3>
+                <ul>
+                    <li><a href="#abjad-calculation">Abjad Calculation</a></li>
+                    <li><a href="#basic-methods">Basic Methods</a></li>
+                    <li><a href="#letter-breakdown">Letter Breakdown</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Islamic Features</h3>
+                <ul>
+                    <li><a href="#asma-ul-husna">99 Names of Allah</a></li>
+                    <li><a href="#quranic-connections">Quranic Connections</a></li>
+                    <li><a href="#islamic-guidance">Spiritual Guidance</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Astrology Systems</h3>
+                <ul>
+                    <li><a href="#arabic-astrology">Arabic Astrology</a></li>
+                    <li><a href="#western-astrology">Western Astrology</a></li>
+                    <li><a href="#comparison">System Comparison</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Compatibility</h3>
+                <ul>
+                    <li><a href="#arabic-compatibility">حساب الشريك</a></li>
+                    <li><a href="#western-compatibility">Western Method</a></li>
+                    <li><a href="#partnership-houses">Partnership Houses</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>API Reference</h3>
+                <ul>
+                    <li><a href="#constructor">Constructor</a></li>
+                    <li><a href="#instance-methods">Instance Methods</a></li>
+                    <li><a href="#static-methods">Static Methods</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#best-practices">Best Practices</a></li>
+                    <li><a href="#contributing">Contributing</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="docs-header">
+            <div class="header-content">
+                <h1 class="main-title">
+                    <span class="arabic">حساب</span>
+                    <span class="title-text">Hisaab Documentation</span>
+                </h1>
+                <p class="subtitle">Complete guide to Arabic name numerology and Islamic spiritual analysis</p>
+                <div class="header-badges">
+                    <span class="badge version">v1.0.0</span>
+                    <span class="badge npm">NPM</span>
+                    <span class="badge license">MIT</span>
+                    <span class="badge islamic">Islamic ☪️</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Section -->
+        <section id="overview" class="doc-section">
+            <h2>📖 Overview</h2>
+            <div class="content-grid">
+                <div class="overview-card">
+                    <h3>🔢 What is Hisaab?</h3>
+                    <p>Hisaab (حساب) is a comprehensive JavaScript library for calculating Arabic name values using the traditional <strong>Abjad</strong> system. It combines mathematical precision with Islamic spiritual wisdom and Arabic astrological traditions.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>🌟 Key Features</h3>
+                    <ul class="feature-list">
+                        <li>✅ Accurate Abjad calculation (28+ Arabic letters)</li>
+                        <li>☪️ 99 Names of Allah analysis</li>
+                        <li>📖 Quranic verse connections</li>
+                        <li>🌙 Traditional Arabic astrology</li>
+                        <li>💕 حساب الشريك compatibility</li>
+                        <li>🌍 Western numerology (optional)</li>
+                    </ul>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>🎯 Use Cases</h3>
+                    <ul class="feature-list">
+                        <li>👶 Baby name selection</li>
+                        <li>💑 Marriage compatibility</li>
+                        <li>🤲 Spiritual guidance</li>
+                        <li>📚 Educational tools</li>
+                        <li>🔮 Numerological analysis</li>
+                        <li>💼 Business name analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="doc-section">
+            <h2>⚡ Installation</h2>
+            
+            <div class="install-methods">
+                <div class="install-card">
+                    <h3>📦 NPM</h3>
+                    <div class="code-block">
+                        <code>npm install hisaab</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="install-card">
+                    <h3>🧶 Yarn</h3>
+                    <div class="code-block">
+                        <code>yarn add hisaab</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="install-card">
+                    <h3>🌐 CDN</h3>
+                    <div class="code-block">
+                        <code>&lt;script src="https://unpkg.com/hisaab@latest/dist/hisaab.min.js"&gt;&lt;/script&gt;</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start Section -->
+        <section id="quick-start" class="doc-section">
+            <h2>🚀 Quick Start</h2>
+            
+            <div class="quick-start-example">
+                <h3>Basic Usage</h3>
+                <div class="code-example">
+                    <pre><code class="javascript">// Import the library
+const Hisaab = require('hisaab');
+
+// Create an instance with an Arabic name
+const name = new Hisaab('محمد');
+
+// Get basic information
+console.log(name.getName());    // 'محمد'
+console.log(name.getValue());   // 92
+console.log(name.getDigitRoot()); // 2
+
+// Get letter breakdown
+console.log(name.getBreakdown());
+// [
+//   { letter: 'م', value: 40 },
+//   { letter: 'ح', value: 8 },
+//   { letter: 'م', value: 40 },
+//   { letter: 'د', value: 4 }
+// ]
+
+// Islamic analysis
+const islamicAnalysis = name.getIslamicAnalysis();
+console.log(islamicAnalysis.islamicQualities);
+
+// Arabic astrology
+const astrology = name.getArabicAstrology();
+console.log(astrology.element.arabic); // 'الماء' (Water)</code></pre>
+                </div>
+            </div>
+            
+            <div class="quick-start-example">
+                <h3>Compatibility Check</h3>
+                <div class="code-example">
+                    <pre><code class="javascript">// Arabic compatibility (حساب الشريك)
+const compatibility = Hisaab.compareArabic('محمد', 'فاطمة');
+
+console.log(compatibility.partnerHouse); // 9
+console.log(compatibility.interpretation.quality); // 'Very Bad'
+console.log(compatibility.calculation); // '2 + 9 + 7 = 18 → 9'
+
+// Complete comparison (both systems)
+const fullComparison = Hisaab.compare('علي', 'خديجة');
+console.log(fullComparison.arabic.partnerHouse); // Arabic result
+console.log(fullComparison.western.compatibilityScore); // Western result</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abjad Calculation Section -->
+        <section id="abjad-calculation" class="doc-section">
+            <h2>🔤 Abjad Calculation System</h2>
+            
+            <div class="abjad-explanation">
+                <p>The Abjad system assigns numerical values to Arabic letters according to their traditional order:</p>
+                
+                <div class="abjad-table-container">
+                    <table class="abjad-table">
+                        <thead>
+                            <tr>
+                                <th>Letter</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th>Letter</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th>Letter</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="arabic-letter">ا</td><td>Alif</td><td>1</td>
+                                <td class="arabic-letter">ك</td><td>Kaf</td><td>20</td>
+                                <td class="arabic-letter">ر</td><td>Ra</td><td>200</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ب</td><td>Ba</td><td>2</td>
+                                <td class="arabic-letter">ل</td><td>Lam</td><td>30</td>
+                                <td class="arabic-letter">ش</td><td>Shin</td><td>300</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ج</td><td>Jim</td><td>3</td>
+                                <td class="arabic-letter">م</td><td>Mim</td><td>40</td>
+                                <td class="arabic-letter">ت</td><td>Ta</td><td>400</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">د</td><td>Dal</td><td>4</td>
+                                <td class="arabic-letter">ن</td><td>Nun</td><td>50</td>
+                                <td class="arabic-letter">ث</td><td>Tha</td><td>500</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ه</td><td>Ha</td><td>5</td>
+                                <td class="arabic-letter">س</td><td>Sin</td><td>60</td>
+                                <td class="arabic-letter">خ</td><td>Kha</td><td>600</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">و</td><td>Waw</td><td>6</td>
+                                <td class="arabic-letter">ع</td><td>Ain</td><td>70</td>
+                                <td class="arabic-letter">ذ</td><td>Dhal</td><td>700</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ز</td><td>Zay</td><td>7</td>
+                                <td class="arabic-letter">ف</td><td>Fa</td><td>80</td>
+                                <td class="arabic-letter">ض</td><td>Dad</td><td>800</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ح</td><td>Ha</td><td>8</td>
+                                <td class="arabic-letter">ص</td><td>Sad</td><td>90</td>
+                                <td class="arabic-letter">ظ</td><td>Zha</td><td>900</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ط</td><td>Ta</td><td>9</td>
+                                <td class="arabic-letter">ق</td><td>Qaf</td><td>100</td>
+                                <td class="arabic-letter">غ</td><td>Ghayn</td><td>1000</td>
+                            </tr>
+                            <tr>
+                                <td class="arabic-letter">ي</td><td>Ya</td><td>10</td>
+                                <td colspan="3" class="special-note">
+                                    <strong>Special:</strong> ة (Ta Marbuta) = 5
+                                </td>
+                                <td colspan="3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="calculation-example">
+                    <h3>🧮 Calculation Example: فاطمة</h3>
+                    <div class="calculation-steps">
+                        <div class="step">ف = 80</div>
+                        <div class="step">ا = 1</div>
+                        <div class="step">ط = 9</div>
+                        <div class="step">م = 40</div>
+                        <div class="step">ة = 5</div>
+                        <div class="total">Total: 80 + 1 + 9 + 40 + 5 = <strong>135</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Islamic Features Section -->
+        <section id="asma-ul-husna" class="doc-section">
+            <h2>📿 99 Names of Allah (أسماء الله الحسنى)</h2>
+            
+            <div class="islamic-feature-explanation">
+                <p>The library includes complete analysis of Allah's 99 Beautiful Names with their meanings, attributes, and numerical significance.</p>
+                
+                <div class="code-example">
+                    <h3>Check for Divine Name Match</h3>
+                    <pre><code class="javascript">const allah = new Hisaab('الله');
+const asmaMatch = allah.getAsmaUlHusnaMatch();
+
+if (asmaMatch) {
+    console.log(asmaMatch.transliteration); // 'Allah'
+    console.log(asmaMatch.meaning);         // 'The God'
+    console.log(asmaMatch.attribute);       // 'The One and Only'
+    console.log(asmaMatch.numericalValue);  // 66
+}</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <h3>Find Similar Divine Names</h3>
+                    <pre><code class="javascript">const name = new Hisaab('محمد');
+const similarDivine = name.findSimilarAsmaUlHusna(20);
+
+similarDivine.forEach(divName => {
+    console.log(`${divName.arabic} (${divName.meaning})`);
+    console.log(`Connection: ${divName.connection}`);
+});</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arabic Compatibility Section -->
+        <section id="arabic-compatibility" class="doc-section">
+            <h2>💕 حساب الشريك (Arabic Partner Calculation)</h2>
+            
+            <div class="compatibility-explanation">
+                <p>Traditional Arabic method for calculating relationship compatibility using the formula:</p>
+                
+                <div class="formula-display">
+                    <div class="formula">
+                        <strong>Partner House = (DigitRoot1 + DigitRoot2 + 7) → Final Digit Root</strong>
+                    </div>
+                    <div class="formula-note">
+                        The number 7 represents the house of relation between two people
+                    </div>
+                </div>
+                
+                <div class="houses-table-container">
+                    <table class="houses-table">
+                        <thead>
+                            <tr>
+                                <th>House</th>
+                                <th>Arabic</th>
+                                <th>Quality</th>
+                                <th>Rating</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="neutral">
+                                <td><strong>1</strong></td>
+                                <td>سيء</td>
+                                <td>Bad</td>
+                                <td>6/10</td>
+                                <td>Starts well but faces challenges later</td>
+                            </tr>
+                            <tr class="good">
+                                <td><strong>2</strong></td>
+                                <td>جيد</td>
+                                <td>Good</td>
+                                <td>6/10</td>
+                                <td>Wealth with complications, woman faces family issues</td>
+                            </tr>
+                            <tr class="bad">
+                                <td><strong>3</strong></td>
+                                <td>سيء جداً</td>
+                                <td>Very Bad</td>
+                                <td>7/10</td>
+                                <td>Family conflicts, wealth after loss</td>
+                            </tr>
+                            <tr class="very-good">
+                                <td><strong>4</strong></td>
+                                <td>جيد جداً</td>
+                                <td>Very Good</td>
+                                <td>7/10</td>
+                                <td>Clean wealth, possible divorce in 5 years</td>
+                            </tr>
+                            <tr class="neutral">
+                                <td><strong>5</strong></td>
+                                <td>محايد</td>
+                                <td>Neutral</td>
+                                <td>5/10</td>
+                                <td>Good for politicians/famous, many children</td>
+                            </tr>
+                            <tr class="very-bad">
+                                <td><strong>6</strong></td>
+                                <td>سيء جداً</td>
+                                <td>Very Bad</td>
+                                <td>9/10</td>
+                                <td>Misfortune but peaceful coexistence</td>
+                            </tr>
+                            <tr class="perfect">
+                                <td><strong>7</strong></td>
+                                <td>ممتاز</td>
+                                <td>Perfect</td>
+                                <td>10/10</td>
+                                <td>🌟 Most wanted house - perfect harmony!</td>
+                            </tr>
+                            <tr class="neutral">
+                                <td><strong>8</strong></td>
+                                <td>محايد</td>
+                                <td>Neutral</td>
+                                <td>5/10</td>
+                                <td>Excellent for scholars/royals, bad for business</td>
+                            </tr>
+                            <tr class="worst">
+                                <td><strong>9</strong></td>
+                                <td>سيء جداً</td>
+                                <td>Very Bad</td>
+                                <td>10/10</td>
+                                <td>❌ Worst case - avoid this combination!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="code-example">
+                    <h3>Example Calculation</h3>
+                    <pre><code class="javascript">// محمد (92) → Digit Root: 2
+// فاطمة (135) → Digit Root: 9
+// Calculation: 2 + 9 + 7 = 18 → 1 + 8 = 9 (Very Bad)
+
+const compatibility = Hisaab.compareArabic('محمد', 'فاطمة');
+console.log(compatibility.partnerHouse);           // 9
+console.log(compatibility.interpretation.quality); // 'Very Bad'
+console.log(compatibility.calculation);            // '2 + 9 + 7 = 18 → 9'</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Reference -->
+        <section id="constructor" class="doc-section">
+            <h2>🔧 API Reference</h2>
+            
+            <div class="api-section">
+                <h3>Constructor</h3>
+                <div class="method-signature">
+                    <code>new Hisaab(arabicName: string)</code>
+                </div>
+                <p>Creates a new Hisaab instance for the given Arabic name.</p>
+                
+                <div class="method-params">
+                    <h4>Parameters:</h4>
+                    <ul>
+                        <li><strong>arabicName</strong> (string): The Arabic name to analyze</li>
+                    </ul>
+                </div>
+                
+                <div class="method-example">
+                    <h4>Example:</h4>
+                    <pre><code class="javascript">const hisaab = new Hisaab('محمد');</code></pre>
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3>Basic Methods</h3>
+                
+                <div class="method-item">
+                    <h4><code>getValue(): number</code></h4>
+                    <p>Returns the calculated Abjad value of the name.</p>
+                    <pre><code class="javascript">hisaab.getValue(); // 92</code></pre>
+                </div>
+                
+                <div class="method-item">
+                    <h4><code>getDigitRoot(): number</code></h4>
+                    <p>Returns the digit root (repeated sum until single digit).</p>
+                    <pre><code class="javascript">hisaab.getDigitRoot(); // 2</code></pre>
+                </div>
+                
+                <div class="method-item">
+                    <h4><code>getBreakdown(): Array&lt;{letter: string, value: number}&gt;</code></h4>
+                    <p>Returns detailed breakdown of each letter and its value.</p>
+                    <pre><code class="javascript">hisaab.getBreakdown();
+// [{ letter: 'م', value: 40 }, { letter: 'ح', value: 8 }, ...]</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="doc-section">
+            <h2>💡 Examples</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>🔍 Name Analysis</h3>
+                    <pre><code class="javascript">const name = new Hisaab('عبدالله');
+const report = name.getCompleteReport();
+
+console.log(`Name: ${report.basic.name}`);
+console.log(`Value: ${report.basic.value}`);
+console.log(`Element: ${report.classification.arabic.element}`);
+console.log(`Planet: ${report.astrological.planet.arabic}`);
+
+if (report.islamicAnalysis.asmaUlHusnaMatch) {
+    console.log('✨ This is a Divine Name!');
+}</code></pre>
+                </div>
+                
+                <div class="example-card">
+                    <h3>💕 Marriage Compatibility</h3>
+                    <pre><code class="javascript">const couples = [
+    ['أحمد', 'خديجة'],
+    ['علي', 'فاطمة'],
+    ['يوسف', 'مريم']
+];
+
+couples.forEach(([name1, name2]) => {
+    const comp = Hisaab.compareArabic(name1, name2);
+    console.log(`${name1} & ${name2}:`);
+    console.log(`House ${comp.partnerHouse} - ${comp.interpretation.quality}`);
+    
+    if (comp.partnerHouse === 7) {
+        console.log('🌟 Perfect match!');
+    }
+});</code></pre>
+                </div>
+                
+                <div class="example-card">
+                    <h3>📊 Batch Analysis</h3>
+                    <pre><code class="javascript">const names = ['محمد', 'علي', 'فاطمة', 'عائشة'];
+const analysis = Hisaab.analyzeNamesIslamically(names);
+
+analysis.forEach(result => {
+    if (result.success) {
+        console.log(`${result.name}:`);
+        console.log(`  Value: ${result.basicAnalysis.value}`);
+        console.log(`  Qualities: ${result.islamicAnalysis.islamicQualities.slice(0,2).join(', ')}`);
+    }
+});</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="docs-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🕌 حساب Hisaab</h3>
+                    <p>Bridging traditional Arabic wisdom with modern technology.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../public/index.html">Web Calculator</a></li>
+                        <li><a href="https://github.com">GitHub Repository</a></li>
+                        <li><a href="https://npmjs.com">NPM Package</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Issues & Support</a></li>
+                        <li><a href="#">Discussions</a></li>
+                        <li><a href="#">Contributing Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hisaab Library. Made with ❤️ for the Arabic community.</p>
+                <p class="arabic">بسم الله الرحمن الرحيم</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="docs-script.js"></script>
+</body>
+</html>

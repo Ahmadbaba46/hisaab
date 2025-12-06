@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisaab - Version Selector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1e6b3e;
+            --primary-gold: #d4af37;
+            --primary-blue: #1e3a8a;
+            --white: #ffffff;
+            --cream: #fefdf6;
+            --light-gray: #f8fafc;
+            --gray: #64748b;
+            --dark-gray: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-gray) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .version-selector {
+            background: var(--white);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .version-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .version-card {
+            background: linear-gradient(135deg, var(--light-gray), var(--white));
+            border: 2px solid transparent;
+            border-radius: 1rem;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .version-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .version-name {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .version-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .badge-stable {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .badge-development {
+            background: var(--primary-gold);
+            color: var(--white);
+        }
+
+        .badge-future {
+            background: var(--gray);
+            color: var(--white);
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-note .arabic {
+            font-family: 'Amiri', serif;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .version-selector {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="version-selector">
+        <div class="logo">🕌</div>
+        <h1 class="title">حساب Hisaab</h1>
+        <p class="subtitle">Choose Your Version</p>
+
+        <div class="version-grid">
+            <a href="dist/latest/" class="version-card">
+                <div class="version-number">Latest</div>
+                <div class="version-name">Always Current</div>
+                <div class="version-description">
+                    Automatically uses the newest stable version. 
+                    Perfect for new projects and getting latest features.
+                </div>
+                <div class="version-badge badge-development">Recommended</div>
+            </a>
+
+            <a href="dist/v1.0.0/" class="version-card">
+                <div class="version-number">v1.0.0</div>
+                <div class="version-name">Foundation Release</div>
+                <div class="version-description">
+                    Complete core features: Abjad calculation, Islamic analysis, 
+                    Arabic astrology, حساب الشريك compatibility. Stable and proven.
+                </div>
+                <div class="version-badge badge-stable">Stable</div>
+            </a>
+
+            <div class="version-card" style="opacity: 0.6; cursor: not-allowed;">
+                <div class="version-number">v1.1.0</div>
+                <div class="version-name">Islamic Enhancement</div>
+                <div class="version-description">
+                    Lunar mansions (منازل القمر), extended Quranic connections, 
+                    prayer time integration, Prophet names recognition.
+                </div>
+                <div class="version-badge badge-future">Coming Soon</div>
+            </div>
+
+            <div class="version-card" style="opacity: 0.6; cursor: not-allowed;">
+                <div class="version-number">v1.2.0</div>
+                <div class="version-name">Cultural Expansion</div>
+                <div class="version-description">
+                    Regional Arabic variants, historical context, 
+                    audio pronunciation, name recommendations.
+                </div>
+                <div class="version-badge badge-future">Planned</div>
+            </div>
+        </div>
+
+        <div class="version-comparison">
+            <h3 style="color: var(--primary-green); margin: 2rem 0 1rem;">Quick Comparison</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <strong>v1.0.0 Features:</strong>
+                    <ul style="margin-top: 0.5rem; color: var(--gray); font-size: 0.9rem;">
+                        <li>✅ Complete Abjad calculation</li>
+                        <li>✅ 99 Names of Allah</li>
+                        <li>✅ Arabic astrology</li>
+                        <li>✅ حساب الشريك</li>
+                        <li>✅ Web interface</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Coming in v1.1.0:</strong>
+                    <ul style="margin-top: 0.5rem; color: var(--gray); font-size: 0.9rem;">
+                        <li>🔄 28 Lunar mansions</li>
+                        <li>🔄 Extended Quranic DB</li>
+                        <li>🔄 Prayer time integration</li>
+                        <li>🔄 Prophet name recognition</li>
+                        <li>🔄 Enhanced guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>Each version is permanently preserved. You can always access any version you prefer.</p>
+            <span class="arabic">بسم الله الرحمن الرحيم</span>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth transitions for version cards
+        document.querySelectorAll('.version-card').forEach(card => {
+            if (!card.style.cursor || card.style.cursor !== 'not-allowed') {
+                card.addEventListener('click', function(e) {
+                    if (this.href) {
+                        // Add loading state
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            window.location.href = this.href;
+                        }, 150);
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+
+        // Add some interactive feedback
+        document.querySelectorAll('.version-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (this.style.cursor !== 'not-allowed') {
+                    this.style.background = 'linear-gradient(135deg, var(--cream), var(--white))';
+                }
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'linear-gradient(135deg, var(--light-gray), var(--white))';
+            });
+        });
+    </script>
+</body>
+</html>

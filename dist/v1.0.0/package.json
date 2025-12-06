@@ -1,0 +1,16 @@
+{
+  "name": "hisaab",
+  "version": "1.0.0",
+  "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system - v1.0.0 Foundation Release",
+  "main": "hisaab.js",
+  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "islamic", "asma-ul-husna", "99-names-allah", "quranic"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "hisaab.js",
+    "README.md"
+  ]
+}
