@@ -1,0 +1,18 @@
+{
+  "name": "hisaab",
+  "version": "1.2.0",
+  "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system - v1.2.0 Lunar Mansions Release",
+  "main": "hisaab.js",
+  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "islamic", "asma-ul-husna", "99-names-allah", "quranic", "family-analysis", "name-generator", "lunar-mansions", "arabic-astrology"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "hisaab.js",
+    "islamic_data.js",
+    "lunar_mansions_data.js",
+    "README.md"
+  ]
+}

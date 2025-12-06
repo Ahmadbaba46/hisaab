@@ -9,6 +9,7 @@
  */
 
 const { ASMA_UL_HUSNA, QURANIC_CONNECTIONS } = require('./islamic_data.js');
+const { LUNAR_MANSIONS } = require('./lunar_mansions_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -975,6 +976,229 @@ class Hisaab {
         } else {
             return `Gentle connection to ${divineName.meaning}`;
         }
+    }
+
+    // =================== v1.2.0 NEW FEATURES ===================
+
+    /**
+     * Get the lunar mansion (منزل القمر) for this name
+     * @returns {Object} Lunar mansion information
+     */
+    getLunarMansion() {
+        const mansionNumber = (this.value % 28) || 28; // 1-28, not 0-27
+        const mansion = LUNAR_MANSIONS.find(m => m.number === mansionNumber);
+        
+        if (!mansion) {
+            throw new Error(`Lunar mansion ${mansionNumber} not found`);
+        }
+
+        return {
+            ...mansion,
+            nameValue: this.value,
+            name: this.name,
+            calculation: `${this.value} % 28 = ${this.value % 28} → Mansion ${mansionNumber}`,
+            personalizedInsight: this.getLunarMansionPersonalizedInsight(mansion),
+            compatibleActivities: this.getLunarMansionActivities(mansion),
+            spiritualGuidance: this.getLunarMansionSpiritualGuidance(mansion)
+        };
+    }
+
+    /**
+     * Get personalized insight based on lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {string} Personalized insight
+     */
+    getLunarMansionPersonalizedInsight(mansion) {
+        const insights = {
+            1: `Your name ${this.name} carries the energy of new beginnings and leadership. Like الشرطان, you are meant to pioneer new paths.`,
+            2: `The name ${this.name} embodies patience and endurance. البطين teaches you the value of steady, consistent progress.`,
+            3: `${this.name} resonates with abundance and prosperity. الثريا blesses you with the energy of collective success.`,
+            4: `Your name ${this.name} reflects loyalty and devotion. الدبران guides you to be faithful in all relationships.`,
+            5: `${this.name} carries the light of clarity and wisdom. الهقعة illuminates your path to understanding.`,
+            6: `The name ${this.name} helps you establish unique identity. الهنعة marks you as distinctive and memorable.`,
+            7: `${this.name} gives you the power to extend your influence. الذراع enables you to reach your highest goals.`,
+            8: `Your name ${this.name} embodies precision and focus. النثرة sharpens your ability to hit your targets.`,
+            9: `${this.name} grants quick perception and insight. الطرف blesses you with rapid understanding.`,
+            10: `The name ${this.name} carries dignity and honor. الجبهة elevates you to positions of respect.`,
+            11: `${this.name} embodies strength and majesty. الزبرة gives you the power to lead with authority.`,
+            12: `Your name ${this.name} facilitates change and growth. الصرفة guides you through life's transitions.`,
+            13: `${this.name} enhances your communication abilities. العواء amplifies your voice and expression.`,
+            14: `The name ${this.name} brings peaceful achievement. السماك helps you succeed through skillful means.`,
+            15: `${this.name} offers protection and forgiveness. الغفر covers you with divine mercy.`,
+            16: `Your name ${this.name} embodies justice and balance. الزبانى helps you restore harmony.`,
+            17: `${this.name} carries the energy of honor and achievement. الإكليل crowns your efforts with success.`,
+            18: `The name ${this.name} centers on emotion and passion. القلب connects you to matters of the heart.`,
+            19: `${this.name} provides defense and protection. الشولة warns you of dangers and keeps you safe.`,
+            20: `Your name ${this.name} grants speed and agility. النعائم accelerates your progress.`,
+            21: `${this.name} builds community and civilization. البلدة connects you to social progress.`,
+            22: `The name ${this.name} teaches sacrifice for transformation. سعد الذابح brings growth through dedication.`,
+            23: `${this.name} helps you accept and integrate experiences. سعد بلع expands your understanding.`,
+            24: `Your name ${this.name} is blessed with ultimate fortune! سعد السعود brings the highest luck.`,
+            25: `${this.name} provides shelter and security. سعد الأخبية protects your home and family.`,
+            26: `The name ${this.name} initiates fresh beginnings. فرغ المقدم starts new chapters in your life.`,
+            27: `${this.name} brings completion and fulfillment. فرغ المؤخر helps you achieve your goals.`,
+            28: `Your name ${this.name} creates vital connections. الرشا links you to important relationships.`
+        };
+
+        return insights[mansion.number] || `Your name ${this.name} carries the special energy of mansion ${mansion.number}.`;
+    }
+
+    /**
+     * Get activities compatible with lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {Object} Compatible and incompatible activities
+     */
+    getLunarMansionActivities(mansion) {
+        return {
+            favorable: mansion.favorable || [],
+            unfavorable: mansion.unfavorable || [],
+            bestTimes: this.getLunarMansionBestTimes(mansion),
+            recommendations: this.getLunarMansionRecommendations(mansion)
+        };
+    }
+
+    /**
+     * Get best times for lunar mansion activities
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {Array} Best timing recommendations
+     */
+    getLunarMansionBestTimes(mansion) {
+        const timingMap = {
+            Fire: ['Sunrise', 'Midday', 'Tuesday', 'Sunday'],
+            Earth: ['Dawn', 'Evening', 'Saturday', 'Friday'],
+            Air: ['Morning', 'Afternoon', 'Wednesday', 'Thursday'],
+            Water: ['Sunset', 'Night', 'Monday', 'Thursday']
+        };
+
+        return timingMap[mansion.element] || ['Anytime'];
+    }
+
+    /**
+     * Get recommendations based on lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {Array} Personalized recommendations
+     */
+    getLunarMansionRecommendations(mansion) {
+        const recommendations = [];
+
+        // Element-based recommendations
+        if (mansion.element === 'Fire') {
+            recommendations.push('Take bold action and lead initiatives');
+            recommendations.push('Channel your energy into creative projects');
+        } else if (mansion.element === 'Water') {
+            recommendations.push('Trust your intuition and emotional wisdom');
+            recommendations.push('Focus on healing and nurturing activities');
+        } else if (mansion.element === 'Air') {
+            recommendations.push('Enhance communication and learning');
+            recommendations.push('Network and build social connections');
+        } else if (mansion.element === 'Earth') {
+            recommendations.push('Build solid foundations and practical skills');
+            recommendations.push('Focus on stability and long-term planning');
+        }
+
+        // Personality-based recommendations
+        if (mansion.personality) {
+            mansion.personality.forEach(trait => {
+                if (trait === 'Leader') {
+                    recommendations.push('Step into leadership roles with confidence');
+                } else if (trait === 'Patient') {
+                    recommendations.push('Practice patience and persistence');
+                } else if (trait === 'Social') {
+                    recommendations.push('Engage in community and group activities');
+                }
+            });
+        }
+
+        return recommendations.slice(0, 5); // Return top 5 recommendations
+    }
+
+    /**
+     * Get spiritual guidance based on lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {Object} Spiritual guidance and practices
+     */
+    getLunarMansionSpiritualGuidance(mansion) {
+        const guidance = {
+            spiritual: mansion.spiritual || 'Connect with the divine energy of this mansion',
+            meditation: this.getLunarMansionMeditation(mansion),
+            dhikr: this.getLunarMansionDhikr(mansion),
+            prayer: this.getLunarMansionPrayer(mansion),
+            reflection: mansion.traditional_use || 'Reflect on the traditional wisdom of this mansion'
+        };
+
+        return guidance;
+    }
+
+    /**
+     * Get meditation practice for lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {string} Meditation guidance
+     */
+    getLunarMansionMeditation(mansion) {
+        const meditations = {
+            Fire: 'Meditate on inner strength and divine light. Visualize golden flames purifying your spirit.',
+            Earth: 'Ground yourself in stillness. Feel your connection to the earth and divine stability.',
+            Air: 'Focus on breath and divine inspiration. Feel the flow of wisdom entering your mind.',
+            Water: 'Meditate on divine mercy and emotional healing. Let divine love flow through your heart.'
+        };
+
+        return meditations[mansion.element] || 'Meditate on the divine qualities of this mansion.';
+    }
+
+    /**
+     * Get dhikr (remembrance) for lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {string} Recommended dhikr
+     */
+    getLunarMansionDhikr(mansion) {
+        const dhikrMap = {
+            1: 'لا إله إلا الله (La ilaha illa Allah)', // Leadership
+            2: 'الصبور (As-Saboor)', // Patience
+            3: 'الغني (Al-Ghani)', // Abundance
+            4: 'الودود (Al-Wadood)', // Loyalty/Love
+            5: 'النور (An-Noor)', // Light/Clarity
+            6: 'المنان (Al-Mannan)', // Recognition
+            7: 'الواسع (Al-Wasi\')', // Extension
+            8: 'الهادي (Al-Haadi)', // Precision/Guidance
+            9: 'البصير (Al-Baseer)', // Perception
+            10: 'الكريم (Al-Kareem)', // Honor
+            11: 'العزيز (Al-Aziz)', // Strength
+            12: 'المقلب (Al-Muqallib)', // Change
+            13: 'السميع (As-Samee\')', // Communication
+            14: 'السلام (As-Salaam)', // Peace
+            15: 'الغفور (Al-Ghafoor)', // Forgiveness
+            16: 'العدل (Al-\'Adl)', // Justice
+            17: 'المجيد (Al-Majeed)', // Honor
+            18: 'الرحيم (Ar-Raheem)', // Heart/Mercy
+            19: 'الحفيظ (Al-Hafeez)', // Protection
+            20: 'المسرع (Al-Musri\')', // Speed
+            21: 'الجامع (Al-Jaami\')', // Community
+            22: 'الشكور (Ash-Shakoor)', // Sacrifice/Gratitude
+            23: 'الواسع (Al-Wasi\')', // Acceptance
+            24: 'المبارك (Al-Mubaarak)', // Ultimate blessing
+            25: 'المؤمن (Al-Mu\'min)', // Security
+            26: 'البديع (Al-Badee\')', // New beginnings
+            27: 'التواب (At-Tawwaab)', // Completion
+            28: 'الواصل (Al-Waasil)' // Connection
+        };
+
+        return dhikrMap[mansion.number] || 'سبحان الله (Subhan Allah)';
+    }
+
+    /**
+     * Get prayer guidance for lunar mansion
+     * @param {Object} mansion - The lunar mansion data
+     * @returns {string} Prayer guidance
+     */
+    getLunarMansionPrayer(mansion) {
+        const prayers = {
+            Fire: 'Pray for strength and courage to lead with wisdom',
+            Earth: 'Pray for patience and stability in all endeavors',  
+            Air: 'Pray for clear communication and understanding',
+            Water: 'Pray for emotional healing and spiritual purification'
+        };
+
+        return prayers[mansion.element] || 'Pray for guidance in embodying this mansion\'s qualities';
     }
 
     /**
