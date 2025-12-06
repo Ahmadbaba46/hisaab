@@ -227,6 +227,100 @@ class HisaabWeb {
         };
     }
 
+    // v1.1.0 Feature: Smart Name Generator
+    static generateNames(criteria = {}) {
+        const {
+            targetValue = null,
+            element = null,
+            partnerHouse = null,
+            gender = null,
+            maxResults = 5
+        } = criteria;
+
+        // Sample Arabic names database for browser
+        const arabicNames = {
+            male: ['محمد', 'أحمد', 'علي', 'حسن', 'حسين', 'عمر', 'عبدالله', 'يوسف', 'إبراهيم', 'خالد', 'سعد', 'صالح', 'طارق', 'فيصل', 'ماجد', 'أمين', 'كريم', 'نادر', 'وليد', 'ياسر'],
+            female: ['فاطمة', 'عائشة', 'خديجة', 'زينب', 'مريم', 'آمنة', 'صفية', 'رقية', 'نورا', 'سارة', 'لينا', 'ريم', 'منى', 'هند', 'ليلى', 'أميرة', 'حنان', 'سلمى', 'فرح', 'ياسمين']
+        };
+
+        let namePool = [];
+        if (gender === 'male') {
+            namePool = [...arabicNames.male];
+        } else if (gender === 'female') {
+            namePool = [...arabicNames.female];
+        } else {
+            namePool = [...arabicNames.male, ...arabicNames.female];
+        }
+
+        const suggestions = [];
+
+        namePool.forEach(name => {
+            try {
+                const hisaab = new HisaabWeb(name);
+                let score = 0;
+                let reasons = [];
+
+                // Target value match
+                if (targetValue !== null) {
+                    const diff = Math.abs(hisaab.getValue() - targetValue);
+                    if (diff === 0) {
+                        score += 50;
+                        reasons.push(`Exact value match: ${targetValue}`);
+                    } else if (diff <= 10) {
+                        score += 30;
+                        reasons.push(`Close to target (±${diff})`);
+                    } else if (diff <= 25) {
+                        score += 15;
+                        reasons.push(`Reasonably close (±${diff})`);
+                    }
+                }
+
+                // Element match
+                if (element !== null) {
+                    const astrology = hisaab.getArabicAstrology();
+                    if (astrology.element.name === element) {
+                        score += 25;
+                        reasons.push(`Element match: ${element}`);
+                    }
+                }
+
+                // Partner house match (self-compatibility)
+                if (partnerHouse !== null) {
+                    const digitRoot = hisaab.getDigitRoot();
+                    const selfHouse = this.calculateDigitRoot(digitRoot + digitRoot + 7);
+                    if (selfHouse === partnerHouse) {
+                        score += 40;
+                        reasons.push(`Self-compatibility house: ${partnerHouse}`);
+                    }
+                }
+
+                if (score > 0 || (targetValue === null && element === null && partnerHouse === null)) {
+                    suggestions.push({
+                        name: name,
+                        value: hisaab.getValue(),
+                        score: score,
+                        reasons: reasons,
+                        element: hisaab.getArabicAstrology().element.name
+                    });
+                }
+            } catch (error) {
+                // Skip invalid names
+            }
+        });
+
+        return suggestions
+            .sort((a, b) => b.score - a.score)
+            .slice(0, maxResults);
+    }
+
+    // Helper method for digit root calculation
+    static calculateDigitRoot(num) {
+        while (num >= 10) {
+            num = num.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+        }
+        return num;
+    }
+
     // Check if name matches any of the 99 Names of Allah
     getAsmaUlHusnaMatch() {
         const asmaUlHusna = [
@@ -715,47 +809,43 @@ function showNameGeneratorDemo() {
     const criteria = document.getElementById('generatorCriteria').value;
     const result = document.getElementById('generatorResult');
     
-    // Simple name generator based on criteria
-    const nameDatabase = {
-        value100: [
-            { name: 'منى', value: 100, reason: 'Exact match' },
-            { name: 'سعيد', value: 104, reason: 'Close to target' },
-            { name: 'نور', value: 98, reason: 'Close to target' }
-        ],
-        water: [
-            { name: 'محمد', element: 'Water', value: 92 },
-            { name: 'يوسف', element: 'Water', value: 156 },
-            { name: 'مريم', element: 'Water', value: 290 }
-        ],
-        house7: [
-            { name: 'أحمد', house: 7, value: 53 },
-            { name: 'سارة', house: 7, value: 265 },
-            { name: 'نادر', house: 7, value: 254 }
-        ]
-    };
-    
-    const suggestions = nameDatabase[criteria] || [];
-    
-    if (suggestions.length === 0) {
-        result.innerHTML = 'No suggestions available for this criteria.';
+    try {
+        let suggestions = [];
+        
+        // Use the actual smart name generator
+        if (criteria === 'value100') {
+            suggestions = HisaabWeb.generateNames({ targetValue: 100, maxResults: 5 });
+        } else if (criteria === 'water') {
+            suggestions = HisaabWeb.generateNames({ element: 'Water', maxResults: 5 });
+        } else if (criteria === 'house7') {
+            suggestions = HisaabWeb.generateNames({ partnerHouse: 7, maxResults: 5 });
+        }
+        
+        if (suggestions.length === 0) {
+            result.innerHTML = 'No suggestions found for this criteria.';
+            result.classList.add('show');
+            return;
+        }
+        
+        let html = '<h4 style="margin-bottom: 1rem;">Smart Name Suggestions:</h4>';
+        suggestions.forEach(item => {
+            html += `
+                <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 0.25rem; border-left: 3px solid #1e6b3e;">
+                    <strong>${item.name}</strong> (Value: ${item.value}, Score: ${item.score})
+                    <br><small style="color: #64748b;">Element: ${item.element}</small>
+                    ${item.reasons.length > 0 ? `<br><small style="color: #1e6b3e;">${item.reasons.join(', ')}</small>` : ''}
+                </div>
+            `;
+        });
+        
+        result.innerHTML = html;
         result.classList.add('show');
-        return;
+        
+    } catch (error) {
+        result.innerHTML = 'Error generating names. Please try again.';
+        result.classList.add('show');
+        console.error('Name generator error:', error);
     }
-    
-    let html = '<h4 style="margin-bottom: 1rem;">Name Suggestions:</h4>';
-    suggestions.forEach(item => {
-        html += `
-            <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 0.25rem; border-left: 3px solid #1e6b3e;">
-                <strong>${item.name}</strong> (Value: ${item.value})
-                ${item.reason ? `<br><small style="color: #64748b;">${item.reason}</small>` : ''}
-                ${item.element ? `<br><small style="color: #64748b;">Element: ${item.element}</small>` : ''}
-                ${item.house ? `<br><small style="color: #64748b;">Self-compatibility House: ${item.house}</small>` : ''}
-            </div>
-        `;
-    });
-    
-    result.innerHTML = html;
-    result.classList.add('show');
 }
 
 function showFamilyHarmonyDemo() {
