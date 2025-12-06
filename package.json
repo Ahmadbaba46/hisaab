@@ -1,6 +1,6 @@
 {
   "name": "hisaab",
-  "version": "1.1.0-dev",
+  "version": "1.1.0",
   "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system",
   "main": "index.js",
   "scripts": {
