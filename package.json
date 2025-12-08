@@ -1,6 +1,6 @@
 {
   "name": "hisaab",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "astrology-comparison": "node astrology_comparison_test.js",
     "arabic-compatibility": "node arabic_compatibility_test.js",
     "test-v1.1.0": "node test_v1.1.0.js",
+    "test-v1.3.0": "node test_v1.3.0.js",
     "test-lunar-mansions": "node test_lunar_mansions.js",
     "serve": "python -m http.server 8080",
     "serve-docs": "cd docs && python -m http.server 8081",

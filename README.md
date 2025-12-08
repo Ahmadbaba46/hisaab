@@ -2,7 +2,7 @@
 
 > Complete JavaScript library for Arabic name analysis using traditional Abjad calculation, Islamic wisdom, and authentic Arabic astrology.
 
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
+[![Version](https://img.shields.io/badge/version-1.3.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Islamic](https://img.shields.io/badge/Islamic-☪️-gold.svg)](#islamic-features)
 
@@ -19,6 +19,10 @@
 - ☪️ **Islamic Analysis** - 99 Names of Allah, Quranic connections, spiritual guidance
 - 🌙 **Arabic Astrology** - Traditional elements, planets, zodiac (% 4, % 7, % 12)
 - 💕 **حساب الشريك** - Authentic Arabic partner compatibility
+- 💼 **Business Analysis** (v1.3.0) - Company name success indicators & industry recommendations
+- 📅 **Date Integration** (v1.3.0) - Birth date compatibility & life path analysis
+- 🔮 **Advanced Numerology** (v1.3.0) - Master numbers, karmic debt, hidden potential
+- 🕌 **Enhanced Prayer Times** (v1.3.0) - Prayer correlations & personalized dhikr plans
 - 🌐 **Beautiful Web Interface** - Islamic-themed calculator
 - 📚 **Comprehensive Documentation** - Complete API guide
 
@@ -88,6 +92,28 @@ new Hisaab(arabicName)
 - `getIslamicAnalysis()`: Complete Islamic spiritual analysis
 - `getIslamicQualities()`: Get Islamic character qualities
 - `getIslamicGuidance()`: Get spiritual guidance and dhikr recommendations
+- `getPrayerTimeCorrelations()`: **NEW v1.3.0** - Prayer time guidance & dhikr plans
+- `getExtendedQuranicConnections()`: **NEW v1.3.0** - Broader Quranic verse database
+- `getDailyDhikrPlan()`: **NEW v1.3.0** - Personalized morning/evening/after-prayer dhikr
+
+#### Business Analysis (v1.3.0)
+
+- `getBusinessAnalysis()`: Complete business name analysis with success indicators
+- `getRecommendedIndustries()`: Industry recommendations based on name energy
+- `getBusinessOverallAssessment()`: Overall business potential rating (1-10)
+
+#### Date Integration (v1.3.0)
+
+- `getLifePathCompatibility(day, month, year)`: Birth date compatibility with name
+- `calculatePersonalYear(year, month, day)`: Current year cycle analysis (1-9)
+- `calculateNameDateCompatibility()`: Name-life path compatibility scoring (0-100)
+
+#### Advanced Numerology (v1.3.0)
+
+- `getAdvancedNumerology()`: Master numbers, karmic debt, hidden potential
+- `checkMasterNumbers()`: Detect master numbers (11, 22, 33, 44)
+- `checkKarmicNumbers()`: Identify karmic debt numbers (13, 14, 16, 19)
+- `getHiddenPotential()`: Discover dominant and missing numbers in name
 
 #### Compatibility Methods
 
@@ -134,6 +160,29 @@ console.log(ali.getBreakdown());
 // Example 3: Static calculation
 const value = Hisaab.calculate('فاطمة');
 console.log(value); // 135
+
+// Example 4: Business Analysis (v1.3.0)
+const business = new Hisaab('شركة');
+const bizAnalysis = business.getBusinessAnalysis();
+console.log(bizAnalysis.overallAssessment.rating); // 8/10
+console.log(bizAnalysis.recommendedIndustries);
+// ['Technology', 'Finance', 'Consulting']
+
+// Example 5: Date Compatibility (v1.3.0)
+const person = new Hisaab('أحمد');
+const lifePath = person.getLifePathCompatibility(15, 7, 1990);
+console.log(lifePath.compatibility.score); // 85/100
+console.log(lifePath.compatibility.level); // "Excellent Compatibility"
+
+// Example 6: Advanced Numerology (v1.3.0)
+const advanced = muhammad.getAdvancedNumerology();
+console.log(advanced.masterNumbers.isMasterNumber); // false
+console.log(advanced.hiddenPotential.dominantNumber); // 2
+
+// Example 7: Prayer Guidance (v1.3.0)
+const prayer = muhammad.getPrayerTimeCorrelations();
+console.log(prayer.favorablePrayer); // "Fajr"
+console.log(prayer.dhikrPlan.morning); // "لا إله إلا الله (100 times)"
 
 // Example 4: Advanced features
 const report = muhammad.getCompleteReport();

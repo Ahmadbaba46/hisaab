@@ -10,6 +10,9 @@
 
 const { ASMA_UL_HUSNA, QURANIC_CONNECTIONS } = require('./islamic_data.js');
 const { LUNAR_MANSIONS } = require('./lunar_mansions_data.js');
+const { PRAYER_TIME_CORRELATIONS, EXTENDED_QURANIC_CONNECTIONS, PROPHETIC_NAMES, CULTURAL_CONTEXTS } = require('./enhanced_islamic_data.js');
+const { BUSINESS_SUCCESS_INDICATORS, INDUSTRY_ANALYSIS, BUSINESS_TIMING, BUSINESS_PARTNERSHIP_HOUSES } = require('./business_analysis_data.js');
+const { LIFE_PATH_PATTERNS, PERSONAL_YEAR_CYCLES, KARMIC_NUMBERS, MASTER_NUMBERS } = require('./advanced_numerology_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -1404,6 +1407,595 @@ class Hisaab {
             counts[value] = (counts[value] || 0) + 1;
         });
         return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+    }
+
+    // =================== v1.3.0 NEW FEATURES ===================
+
+    /**
+     * Get prayer time correlations based on digit root
+     * @returns {Object} Prayer time guidance and correlations
+     */
+    getPrayerTimeCorrelations() {
+        const digitRoot = this.getDigitRoot();
+        const correlation = PRAYER_TIME_CORRELATIONS[digitRoot];
+        
+        if (!correlation) {
+            return {
+                digitRoot: digitRoot,
+                favorablePrayer: 'All five daily prayers',
+                guidance: 'Maintain regular prayer times for spiritual growth'
+            };
+        }
+
+        return {
+            name: this.name,
+            digitRoot: digitRoot,
+            ...correlation,
+            personalizedGuidance: this.getPersonalizedPrayerGuidance(correlation),
+            bestTimes: this.getPrayerTimingAdvice(correlation),
+            dhikrPlan: this.getDailyDhikrPlan(correlation)
+        };
+    }
+
+    /**
+     * Get personalized prayer guidance
+     * @param {Object} correlation - Prayer time correlation data
+     * @returns {string} Personalized prayer guidance
+     */
+    getPersonalizedPrayerGuidance(correlation) {
+        return `Your name ${this.name} resonates with ${correlation.favorablePrayer} (${correlation.arabicPrayer}). ${correlation.timing} Focus on ${correlation.significance.toLowerCase()} during this prayer time.`;
+    }
+
+    /**
+     * Get prayer timing advice
+     * @param {Object} correlation - Prayer time correlation data
+     * @returns {Array} Prayer timing recommendations
+     */
+    getPrayerTimingAdvice(correlation) {
+        const timings = [];
+        
+        if (correlation.favorablePrayer) {
+            timings.push(`Best time: ${correlation.favorablePrayer}`);
+        }
+        
+        if (correlation.timing) {
+            timings.push(correlation.timing);
+        }
+        
+        return timings.length > 0 ? timings : ['Maintain all five daily prayers'];
+    }
+
+    /**
+     * Get daily dhikr plan
+     * @param {Object} correlation - Prayer time correlation data
+     * @returns {Object} Daily dhikr recommendations
+     */
+    getDailyDhikrPlan(correlation) {
+        const digitRoot = this.getDigitRoot();
+        
+        const dhikrPlans = {
+            1: {
+                morning: 'لا إله إلا الله (100 times)',
+                evening: 'أستغفر الله (70 times)',
+                afterPrayer: 'سبحان الله، الحمد لله، الله أكبر (33 times each)'
+            },
+            2: {
+                morning: 'الرحمن الرحيم (50 times)',
+                evening: 'حسبي الله ونعم الوكيل (40 times)',
+                afterPrayer: 'سبحان الله وبحمده (100 times)'
+            },
+            3: {
+                morning: 'سبحان الله (100 times)',
+                evening: 'الحمد لله (100 times)',
+                afterPrayer: 'لا إله إلا أنت سبحانك (33 times)'
+            },
+            4: {
+                morning: 'الله أكبر (100 times)',
+                evening: 'لا حول ولا قوة إلا بالله (50 times)',
+                afterPrayer: 'أستغفر الله وأتوب إليه (70 times)'
+            },
+            5: {
+                morning: 'استغفر الله (100 times)',
+                evening: 'يا حي يا قيوم (40 times)',
+                afterPrayer: 'رب اغفر لي (50 times)'
+            },
+            6: {
+                morning: 'الحمد لله (100 times)',
+                evening: 'يا رب العالمين (50 times)',
+                afterPrayer: 'اللهم صل على محمد (100 times)'
+            },
+            7: {
+                morning: 'حسبنا الله ونعم الوكيل (70 times)',
+                evening: 'لا إله إلا الله (100 times)',
+                afterPrayer: 'سبحان الله العظيم (100 times)'
+            },
+            8: {
+                morning: 'ما شاء الله (50 times)',
+                evening: 'بارك الله (50 times)',
+                afterPrayer: 'الحمد لله رب العالمين (70 times)'
+            },
+            9: {
+                morning: 'لا حول ولا قوة إلا بالله (100 times)',
+                evening: 'رب اغفر وارحم (70 times)',
+                afterPrayer: 'سبحان الله، الحمد لله، لا إله إلا الله (33 times each)'
+            }
+        };
+        
+        return dhikrPlans[digitRoot] || {
+            morning: 'سبحان الله (100 times)',
+            evening: 'الحمد لله (100 times)',
+            afterPrayer: 'الله أكبر (100 times)'
+        };
+    }
+
+    /**
+     * Get extended Quranic connections
+     * @returns {Array} Extended Quranic verse connections
+     */
+    getExtendedQuranicConnections() {
+        const connections = [];
+        
+        // Check main value
+        if (EXTENDED_QURANIC_CONNECTIONS[this.value]) {
+            connections.push({
+                type: 'Direct Value Match',
+                ...EXTENDED_QURANIC_CONNECTIONS[this.value],
+                nameValue: this.value
+            });
+        }
+
+        // Check digit root
+        const digitRoot = this.getDigitRoot();
+        if (EXTENDED_QURANIC_CONNECTIONS[digitRoot]) {
+            connections.push({
+                type: 'Digit Root Match',
+                ...EXTENDED_QURANIC_CONNECTIONS[digitRoot],
+                nameValue: this.value,
+                digitRoot: digitRoot
+            });
+        }
+
+        return connections;
+    }
+
+    /**
+     * Check if name has prophetic significance
+     * @returns {Object|null} Prophetic significance if found
+     */
+    getPropheticSignificance() {
+        const propheticData = PROPHETIC_NAMES[this.name];
+        
+        if (propheticData) {
+            return {
+                name: this.name,
+                ...propheticData,
+                numericalValue: this.value,
+                digitRoot: this.getDigitRoot(),
+                modernGuidance: `Follow the example of ${propheticData.type}: ${propheticData.guidance}`
+            };
+        }
+
+        return null;
+    }
+
+    /**
+     * Get cultural and regional context
+     * @param {string} region - Region to analyze (optional)
+     * @returns {Object} Cultural context and significance
+     */
+    getCulturalContext(region = null) {
+        const context = {
+            name: this.name,
+            value: this.value,
+            letterCount: this.name.length,
+            letterBreakdown: this.getBreakdown(),
+            culturalSignificance: 'Arabic Islamic naming tradition'
+        };
+
+        if (region && CULTURAL_CONTEXTS[region]) {
+            context.regionalContext = {
+                region: region,
+                ...CULTURAL_CONTEXTS[region]
+            };
+        }
+
+        return context;
+    }
+
+    /**
+     * Analyze business name for success indicators
+     * @returns {Object} Complete business analysis
+     */
+    getBusinessAnalysis() {
+        const digitRoot = this.getDigitRoot();
+        const value = this.value;
+        
+        // Determine value range category
+        let rangeCategory;
+        if (value < 100) rangeCategory = BUSINESS_SUCCESS_INDICATORS.low;
+        else if (value < 300) rangeCategory = BUSINESS_SUCCESS_INDICATORS.medium;
+        else if (value < 500) rangeCategory = BUSINESS_SUCCESS_INDICATORS.high;
+        else rangeCategory = BUSINESS_SUCCESS_INDICATORS.veryHigh;
+        
+        // Get partnership house analysis
+        const partnershipAnalysis = BUSINESS_PARTNERSHIP_HOUSES[digitRoot] || {
+            businessType: 'General business',
+            recommendation: 'Proceed with standard business practices',
+            challenges: 'Normal business challenges apply'
+        };
+        
+        // Get timing recommendations
+        const timing = BUSINESS_TIMING[digitRoot] || {
+            bestDays: ['Any day'],
+            bestMonths: ['Any month'],
+            launchTiming: 'Flexible timing recommended'
+        };
+        
+        return {
+            name: this.name,
+            value: value,
+            digitRoot: digitRoot,
+            successIndicators: rangeCategory,
+            partnershipAnalysis: partnershipAnalysis,
+            timing: timing,
+            recommendedIndustries: this.getRecommendedIndustries(),
+            strengths: rangeCategory.strengths,
+            challenges: rangeCategory.challenges,
+            overallAssessment: this.getBusinessOverallAssessment(digitRoot, value)
+        };
+    }
+
+    /**
+     * Get recommended industries for business name
+     * @returns {Array} List of recommended industries
+     */
+    getRecommendedIndustries() {
+        const value = this.value;
+        let industries = [];
+        
+        if (value < 100) {
+            industries = BUSINESS_SUCCESS_INDICATORS.low.industries;
+        } else if (value < 300) {
+            industries = BUSINESS_SUCCESS_INDICATORS.medium.industries;
+        } else if (value < 500) {
+            industries = BUSINESS_SUCCESS_INDICATORS.high.industries;
+        } else {
+            industries = BUSINESS_SUCCESS_INDICATORS.veryHigh.industries;
+        }
+        
+        return industries;
+    }
+
+    /**
+     * Get overall business assessment
+     * @param {number} digitRoot - The digit root
+     * @param {number} value - The name value
+     * @returns {Object} Overall business assessment
+     */
+    getBusinessOverallAssessment(digitRoot, value) {
+        const assessments = {
+            1: { rating: 8, summary: 'Excellent for leadership-driven businesses and startups' },
+            2: { rating: 7, summary: 'Good for partnerships and collaborative ventures' },
+            3: { rating: 6, summary: 'Avoid partnerships, better for sole proprietorship' },
+            4: { rating: 9, summary: 'Perfect for partnerships and legitimate business' },
+            5: { rating: 7, summary: 'Excellent for public-facing and service businesses' },
+            6: { rating: 4, summary: 'Challenging - proceed with caution' },
+            7: { rating: 10, summary: 'Most blessed - ideal for any business type' },
+            8: { rating: 7, summary: 'Great for knowledge-based and educational ventures' },
+            9: { rating: 3, summary: 'High risk - consider employment over business' }
+        };
+        
+        const assessment = assessments[digitRoot] || { rating: 5, summary: 'Neutral business prospects' };
+        
+        // Adjust based on value range
+        if (value > 500) {
+            assessment.note = 'High value suggests established, authoritative presence';
+        } else if (value < 100) {
+            assessment.note = 'Low value suggests agile, innovative approach';
+        }
+        
+        return assessment;
+    }
+
+    /**
+     * Calculate life path number from birth date
+     * @param {number} day - Birth day
+     * @param {number} month - Birth month
+     * @param {number} year - Birth year
+     * @returns {Object} Life path analysis
+     */
+    getLifePathCompatibility(day, month, year) {
+        // Calculate life path number
+        const daySum = this.calculateDigitRoot(day);
+        const monthSum = this.calculateDigitRoot(month);
+        const yearSum = this.calculateDigitRoot(year);
+        const lifePathNumber = this.calculateDigitRoot(daySum + monthSum + yearSum);
+        
+        const nameDigitRoot = this.getDigitRoot();
+        
+        // Check compatibility
+        const compatibility = this.calculateNameDateCompatibility(nameDigitRoot, lifePathNumber);
+        
+        // Get life path pattern
+        const lifePathPattern = LIFE_PATH_PATTERNS[lifePathNumber] || {
+            description: 'Unique life path',
+            strengths: ['Individual journey'],
+            challenges: ['Personal growth']
+        };
+        
+        return {
+            name: this.name,
+            nameDigitRoot: nameDigitRoot,
+            birthDate: { day, month, year },
+            lifePathNumber: lifePathNumber,
+            lifePathPattern: lifePathPattern,
+            compatibility: compatibility,
+            harmonization: this.getNameDateHarmonization(nameDigitRoot, lifePathNumber),
+            personalYear: this.calculatePersonalYear(year, month, day)
+        };
+    }
+
+    /**
+     * Calculate name-date compatibility
+     * @param {number} nameRoot - Name digit root
+     * @param {number} lifePathNumber - Life path number
+     * @returns {Object} Compatibility analysis
+     */
+    calculateNameDateCompatibility(nameRoot, lifePathNumber) {
+        const diff = Math.abs(nameRoot - lifePathNumber);
+        let score, level, description;
+        
+        if (nameRoot === lifePathNumber) {
+            score = 100;
+            level = 'Perfect Harmony';
+            description = 'Your name and life path are in complete alignment';
+        } else if (diff === 1 || diff === 8) {
+            score = 85;
+            level = 'Excellent Compatibility';
+            description = 'Your name supports your life path beautifully';
+        } else if (diff <= 3) {
+            score = 70;
+            level = 'Good Compatibility';
+            description = 'Your name and life path work well together';
+        } else if (diff <= 5) {
+            score = 55;
+            level = 'Moderate Compatibility';
+            description = 'Some adjustment needed for optimal harmony';
+        } else {
+            score = 40;
+            level = 'Challenging';
+            description = 'Consider name modifications for better alignment';
+        }
+        
+        return { score, level, description, difference: diff };
+    }
+
+    /**
+     * Get name-date harmonization advice
+     * @param {number} nameRoot - Name digit root
+     * @param {number} lifePathNumber - Life path number
+     * @returns {Object} Harmonization guidance
+     */
+    getNameDateHarmonization(nameRoot, lifePathNumber) {
+        const combined = this.calculateDigitRoot(nameRoot + lifePathNumber);
+        
+        const harmonizationAdvice = {
+            1: 'Focus on leadership and independence in your endeavors',
+            2: 'Embrace partnerships and diplomatic approaches',
+            3: 'Express yourself creatively and communicate openly',
+            4: 'Build solid foundations and work systematically',
+            5: 'Seek freedom and embrace change',
+            6: 'Nurture relationships and take responsibility',
+            7: 'Develop spirituality and inner wisdom',
+            8: 'Pursue material success with ethical practices',
+            9: 'Serve humanity and seek universal understanding'
+        };
+        
+        return {
+            combinedEnergy: combined,
+            advice: harmonizationAdvice[combined] || 'Follow your unique path',
+            resonance: this.getEnergyResonance(nameRoot, lifePathNumber)
+        };
+    }
+
+    /**
+     * Get energy resonance between name and date
+     * @param {number} nameRoot - Name digit root
+     * @param {number} lifePathNumber - Life path number
+     * @returns {string} Resonance description
+     */
+    getEnergyResonance(nameRoot, lifePathNumber) {
+        if (nameRoot === lifePathNumber) {
+            return 'Strong resonance - name amplifies life path energy';
+        } else if ((nameRoot + lifePathNumber) % 2 === 0) {
+            return 'Balanced resonance - harmonious energy flow';
+        } else {
+            return 'Dynamic resonance - creates active energy exchange';
+        }
+    }
+
+    /**
+     * Calculate personal year
+     * @param {number} currentYear - Current year
+     * @param {number} birthMonth - Birth month
+     * @param {number} birthDay - Birth day
+     * @returns {Object} Personal year analysis
+     */
+    calculatePersonalYear(currentYear, birthMonth, birthDay) {
+        const yearSum = this.calculateDigitRoot(currentYear);
+        const monthSum = this.calculateDigitRoot(birthMonth);
+        const daySum = this.calculateDigitRoot(birthDay);
+        const personalYear = this.calculateDigitRoot(yearSum + monthSum + daySum);
+        
+        const yearCycle = PERSONAL_YEAR_CYCLES[personalYear] || {
+            theme: 'Personal growth year',
+            focus: 'Self-development',
+            opportunities: ['Learning', 'Growing'],
+            challenges: ['Change']
+        };
+        
+        return {
+            personalYear: personalYear,
+            ...yearCycle,
+            nameAlignment: this.getPersonalYearNameAlignment(personalYear)
+        };
+    }
+
+    /**
+     * Get personal year name alignment
+     * @param {number} personalYear - Personal year number
+     * @returns {string} Alignment description
+     */
+    getPersonalYearNameAlignment(personalYear) {
+        const nameRoot = this.getDigitRoot();
+        if (nameRoot === personalYear) {
+            return 'Your name fully supports this year\'s energy';
+        } else {
+            return `Your name (${nameRoot}) offers complementary energy to this year (${personalYear})`;
+        }
+    }
+
+    /**
+     * Get advanced numerology analysis
+     * @returns {Object} Complete advanced numerology
+     */
+    getAdvancedNumerology() {
+        const digitRoot = this.getDigitRoot();
+        const value = this.value;
+        
+        // Check for master numbers
+        const masterNumberCheck = this.checkMasterNumbers();
+        
+        // Check for karmic numbers
+        const karmicCheck = this.checkKarmicNumbers();
+        
+        return {
+            name: this.name,
+            value: value,
+            digitRoot: digitRoot,
+            masterNumbers: masterNumberCheck,
+            karmicNumbers: karmicCheck,
+            lifePath: LIFE_PATH_PATTERNS[digitRoot],
+            hiddenPotential: this.getHiddenPotential(),
+            soulUrge: this.calculateSoulUrge(),
+            personalityNumber: this.calculatePersonalityNumber()
+        };
+    }
+
+    /**
+     * Check for master numbers
+     * @returns {Object} Master number analysis
+     */
+    checkMasterNumbers() {
+        const value = this.value;
+        const isMaster = value === 11 || value === 22 || value === 33 || value === 44;
+        
+        if (isMaster && MASTER_NUMBERS[value]) {
+            return {
+                isMasterNumber: true,
+                number: value,
+                ...MASTER_NUMBERS[value]
+            };
+        }
+        
+        return {
+            isMasterNumber: false,
+            note: 'No master number present'
+        };
+    }
+
+    /**
+     * Check for karmic numbers
+     * @returns {Object} Karmic number analysis
+     */
+    checkKarmicNumbers() {
+        const value = this.value;
+        const karmicNumbers = [13, 14, 16, 19];
+        const isKarmic = karmicNumbers.includes(value);
+        
+        if (isKarmic && KARMIC_NUMBERS[value]) {
+            return {
+                isKarmicNumber: true,
+                number: value,
+                ...KARMIC_NUMBERS[value]
+            };
+        }
+        
+        return {
+            isKarmicNumber: false,
+            note: 'No karmic debt indicated'
+        };
+    }
+
+    /**
+     * Get hidden potential from name
+     * @returns {Object} Hidden potential analysis
+     */
+    getHiddenPotential() {
+        const breakdown = this.getBreakdown();
+        const uniqueValues = [...new Set(breakdown.map(b => b.value))];
+        const repeatedNumbers = breakdown
+            .map(b => b.value)
+            .filter((v, i, arr) => arr.indexOf(v) !== i);
+        
+        return {
+            uniqueNumbers: uniqueValues.length,
+            repeatedNumbers: [...new Set(repeatedNumbers)],
+            dominantNumber: this.getDominantNumber(breakdown),
+            missingNumbers: this.getMissingNumbers(uniqueValues)
+        };
+    }
+
+    /**
+     * Get dominant number in name
+     * @param {Array} breakdown - Letter breakdown
+     * @returns {number} Most frequent number
+     */
+    getDominantNumber(breakdown) {
+        const frequency = {};
+        breakdown.forEach(b => {
+            frequency[b.value] = (frequency[b.value] || 0) + 1;
+        });
+        
+        let maxCount = 0;
+        let dominant = null;
+        for (const [num, count] of Object.entries(frequency)) {
+            if (count > maxCount) {
+                maxCount = count;
+                dominant = parseInt(num);
+            }
+        }
+        
+        return dominant;
+    }
+
+    /**
+     * Get missing numbers (1-9)
+     * @param {Array} uniqueValues - Unique values in name
+     * @returns {Array} Missing single-digit numbers
+     */
+    getMissingNumbers(uniqueValues) {
+        const allDigits = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        return allDigits.filter(d => !uniqueValues.includes(d));
+    }
+
+    /**
+     * Calculate soul urge number
+     * @returns {number} Soul urge number
+     */
+    calculateSoulUrge() {
+        // Simplified: based on sum of all values
+        return this.getDigitRoot();
+    }
+
+    /**
+     * Calculate personality number
+     * @returns {number} Personality number
+     */
+    calculatePersonalityNumber() {
+        // Simplified: based on first letter
+        const firstLetter = this.getBreakdown()[0];
+        return firstLetter ? this.calculateDigitRoot(firstLetter.value) : 0;
     }
 
     // =================== v1.1.0 NEW FEATURES ===================

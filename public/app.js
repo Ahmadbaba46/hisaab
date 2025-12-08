@@ -1,5 +1,5 @@
 // Hisaab Web Interface Application
-// Browser-compatible version with all v1.2.0 features
+// Browser-compatible version with all v1.3.0 features
 
 // Complete Hisaab class for browser use
 class HisaabWeb {
@@ -390,6 +390,151 @@ class HisaabWeb {
             personalizedInsight: `Your name ${this.name} resonates with ${mansion.arabic} (${mansion.transliteration}), bringing the energy of ${mansion.influence.toLowerCase()}.`
         };
     }
+
+    // =================== v1.3.0 NEW FEATURES ===================
+
+    // Business Analysis
+    getBusinessAnalysis() {
+        const digitRoot = this.getDigitRoot();
+        const value = this.value;
+        
+        let successIndicators;
+        if (value < 100) {
+            successIndicators = { range: 'Low (< 100)', rating: 6, potential: 'Moderate' };
+        } else if (value < 300) {
+            successIndicators = { range: 'Medium (100-300)', rating: 7, potential: 'Good' };
+        } else if (value < 500) {
+            successIndicators = { range: 'High (300-500)', rating: 8, potential: 'Excellent' };
+        } else {
+            successIndicators = { range: 'Very High (> 500)', rating: 9, potential: 'Outstanding' };
+        }
+
+        const businessHouses = {
+            1: { type: 'Leadership', rating: 8, recommendation: 'Excellent for startups and innovative ventures' },
+            2: { type: 'Partnership', rating: 7, recommendation: 'Good for collaborative business' },
+            3: { type: 'Solo', rating: 6, recommendation: 'Better as sole proprietorship' },
+            4: { type: 'Stable', rating: 9, recommendation: 'Perfect for long-term business' },
+            5: { type: 'Dynamic', rating: 7, recommendation: 'Great for service-oriented business' },
+            6: { type: 'Challenging', rating: 4, recommendation: 'Proceed with caution' },
+            7: { type: 'Blessed', rating: 10, recommendation: 'Most favorable for any business' },
+            8: { type: 'Knowledge', rating: 7, recommendation: 'Ideal for education/consulting' },
+            9: { type: 'Risky', rating: 3, recommendation: 'High risk - consider alternatives' }
+        };
+
+        return {
+            name: this.name,
+            value: value,
+            digitRoot: digitRoot,
+            successIndicators: successIndicators,
+            businessHouse: businessHouses[digitRoot],
+            overallRating: businessHouses[digitRoot].rating
+        };
+    }
+
+    // Date Compatibility
+    getLifePathCompatibility(day, month, year) {
+        const digitRoot = (num) => {
+            while (num >= 10) {
+                num = num.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+            }
+            return num;
+        };
+
+        const lifePathNumber = digitRoot(digitRoot(day) + digitRoot(month) + digitRoot(year));
+        const nameDigitRoot = this.getDigitRoot();
+        const diff = Math.abs(nameDigitRoot - lifePathNumber);
+        
+        let score, level;
+        if (diff === 0) {
+            score = 100;
+            level = 'Perfect Harmony';
+        } else if (diff <= 2) {
+            score = 85;
+            level = 'Excellent Compatibility';
+        } else if (diff <= 4) {
+            score = 70;
+            level = 'Good Compatibility';
+        } else {
+            score = 50;
+            level = 'Moderate Compatibility';
+        }
+
+        return {
+            name: this.name,
+            nameDigitRoot: nameDigitRoot,
+            lifePathNumber: lifePathNumber,
+            compatibility: { score: score, level: level },
+            difference: diff
+        };
+    }
+
+    // Advanced Numerology
+    getAdvancedNumerology() {
+        const value = this.value;
+        const digitRoot = this.getDigitRoot();
+        const breakdown = this.getBreakdown();
+        
+        // Check for master numbers
+        const masterNumbers = [11, 22, 33, 44];
+        const isMasterNumber = masterNumbers.includes(value);
+        
+        // Check for karmic numbers
+        const karmicNumbers = [13, 14, 16, 19];
+        const isKarmicNumber = karmicNumbers.includes(value);
+        
+        // Get unique and repeated numbers
+        const values = breakdown.map(b => b.value);
+        const uniqueValues = [...new Set(values)];
+        const repeated = values.filter((v, i) => values.indexOf(v) !== i);
+        
+        return {
+            name: this.name,
+            value: value,
+            digitRoot: digitRoot,
+            masterNumber: isMasterNumber ? { detected: true, number: value } : { detected: false },
+            karmicNumber: isKarmicNumber ? { detected: true, number: value } : { detected: false },
+            uniqueNumbers: uniqueValues.length,
+            repeatedNumbers: [...new Set(repeated)]
+        };
+    }
+
+    // Prayer Time Correlations
+    getPrayerTimeCorrelations() {
+        const digitRoot = this.getDigitRoot();
+        
+        const prayerMap = {
+            1: { prayer: 'Fajr', arabic: 'الفجر', significance: 'New beginnings and spiritual awakening' },
+            2: { prayer: 'Dhuhr', arabic: 'الظهر', significance: 'Balance and midday reflection' },
+            3: { prayer: 'Asr', arabic: 'العصر', significance: 'Afternoon energy and productivity' },
+            4: { prayer: 'Maghrib', arabic: 'المغرب', significance: 'Transition and gratitude' },
+            5: { prayer: 'Isha', arabic: 'العشاء', significance: 'Rest and contemplation' },
+            6: { prayer: 'Fajr', arabic: 'الفجر', significance: 'Dawn spiritual connection' },
+            7: { prayer: 'All Prayers', arabic: 'جميع الصلوات', significance: 'Complete spiritual harmony' },
+            8: { prayer: 'Dhuhr', arabic: 'الظهر', significance: 'Wisdom and knowledge' },
+            9: { prayer: 'Maghrib', arabic: 'المغرب', significance: 'Completion and reflection' }
+        };
+
+        const dhikrMap = {
+            1: { morning: 'لا إله إلا الله (100x)', evening: 'أستغفر الله (70x)' },
+            2: { morning: 'الرحمن الرحيم (50x)', evening: 'حسبي الله (40x)' },
+            3: { morning: 'سبحان الله (100x)', evening: 'الحمد لله (100x)' },
+            4: { morning: 'الله أكبر (100x)', evening: 'لا حول ولا قوة إلا بالله (50x)' },
+            5: { morning: 'استغفر الله (100x)', evening: 'يا حي يا قيوم (40x)' },
+            6: { morning: 'الحمد لله (100x)', evening: 'يا رب العالمين (50x)' },
+            7: { morning: 'حسبنا الله ونعم الوكيل (70x)', evening: 'لا إله إلا الله (100x)' },
+            8: { morning: 'ما شاء الله (50x)', evening: 'بارك الله (50x)' },
+            9: { morning: 'لا حول ولا قوة إلا بالله (100x)', evening: 'رب اغفر وارحم (70x)' }
+        };
+
+        return {
+            name: this.name,
+            digitRoot: digitRoot,
+            favorablePrayer: prayerMap[digitRoot].prayer,
+            arabicPrayer: prayerMap[digitRoot].arabic,
+            significance: prayerMap[digitRoot].significance,
+            dhikrPlan: dhikrMap[digitRoot]
+        };
+    }
 }
 
 // DOM Management and Event Handlers
@@ -531,6 +676,93 @@ function displayResults(hisaab, container) {
                 <p style="color: #1e6b3e; font-weight: bold;">🌟 This is a blessed name carrying divine significance!</p>
             </div>
             ` : ''}
+        </div>
+        
+        <!-- v1.3.0 New Features -->
+        <div class="result-grid fade-in" style="margin-top: 30px;">
+            <div style="grid-column: 1 / -1; text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white;">
+                <h2 style="margin: 0; font-size: 28px;">✨ v1.3.0 New Features</h2>
+                <p style="margin: 10px 0 0 0; opacity: 0.9;">Business Analysis • Date Integration • Advanced Numerology • Prayer Guidance</p>
+            </div>
+            
+            ${(() => {
+                const business = hisaab.getBusinessAnalysis();
+                return `
+                <div class="result-card" style="border-left: 4px solid #667eea;">
+                    <h3>💼 تحليل الأعمال / Business Analysis</h3>
+                    <div class="result-value" style="color: #667eea;">${business.overallRating}/10</div>
+                    <p><strong>Success Range:</strong> ${business.successIndicators.range}</p>
+                    <p><strong>Potential:</strong> ${business.successIndicators.potential}</p>
+                    <p><strong>Business Type:</strong> ${business.businessHouse.type}</p>
+                    <p><strong>Recommendation:</strong> ${business.businessHouse.recommendation}</p>
+                    <p style="margin-top: 10px; padding: 10px; background: #f0f4ff; border-radius: 8px; font-size: 14px;">
+                        <strong>Analysis:</strong> This name scores ${business.overallRating}/10 for business success, 
+                        indicating ${business.successIndicators.potential.toLowerCase()} potential in the ${business.businessHouse.type.toLowerCase()} sector.
+                    </p>
+                </div>
+                `;
+            })()}
+            
+            ${(() => {
+                // Use example date for demo
+                const dateComp = hisaab.getLifePathCompatibility(15, 7, 1990);
+                return `
+                <div class="result-card" style="border-left: 4px solid #10b981;">
+                    <h3>📅 توافق التاريخ / Date Compatibility</h3>
+                    <div class="result-value" style="color: #10b981;">${dateComp.compatibility.score}/100</div>
+                    <p><strong>Example Date:</strong> 15/7/1990</p>
+                    <p><strong>Life Path Number:</strong> ${dateComp.lifePathNumber}</p>
+                    <p><strong>Name Digit Root:</strong> ${dateComp.nameDigitRoot}</p>
+                    <p><strong>Compatibility Level:</strong> ${dateComp.compatibility.level}</p>
+                    <p style="margin-top: 10px; padding: 10px; background: #f0fdf4; border-radius: 8px; font-size: 14px;">
+                        <strong>Note:</strong> Try your own birth date! This shows how your name energy aligns with your life path.
+                        The closer the numbers, the better the harmony.
+                    </p>
+                </div>
+                `;
+            })()}
+            
+            ${(() => {
+                const advanced = hisaab.getAdvancedNumerology();
+                return `
+                <div class="result-card" style="border-left: 4px solid #8b5cf6;">
+                    <h3>🔮 علم الأرقام المتقدم / Advanced Numerology</h3>
+                    <p><strong>Master Number:</strong> ${advanced.masterNumber.detected ? 
+                        `✅ Yes (${advanced.masterNumber.number})` : '❌ No'}</p>
+                    <p><strong>Karmic Number:</strong> ${advanced.karmicNumber.detected ? 
+                        `⚠️ Yes (${advanced.karmicNumber.number})` : '✅ No karmic debt'}</p>
+                    <p><strong>Unique Numbers:</strong> ${advanced.uniqueNumbers}</p>
+                    <p><strong>Repeated Numbers:</strong> ${advanced.repeatedNumbers.length > 0 ? 
+                        advanced.repeatedNumbers.join(', ') : 'None'}</p>
+                    <p style="margin-top: 10px; padding: 10px; background: #faf5ff; border-radius: 8px; font-size: 14px;">
+                        <strong>Hidden Potential:</strong> ${advanced.masterNumber.detected ? 
+                            'Master number detected - exceptional spiritual potential!' : 
+                            'Your name carries unique energetic patterns worth exploring.'}
+                    </p>
+                </div>
+                `;
+            })()}
+            
+            ${(() => {
+                const prayer = hisaab.getPrayerTimeCorrelations();
+                return `
+                <div class="result-card" style="border-left: 4px solid #d4af37;">
+                    <h3>🕌 إرشادات الصلاة / Prayer Guidance</h3>
+                    <div class="result-value" style="color: #d4af37;">${prayer.arabicPrayer}</div>
+                    <p><strong>Favorable Prayer:</strong> ${prayer.favorablePrayer}</p>
+                    <p><strong>Significance:</strong> ${prayer.significance}</p>
+                    <div style="margin-top: 15px; padding: 15px; background: #fffbeb; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0; color: #92400e;">📿 Daily Dhikr Plan</h4>
+                        <p style="margin: 5px 0;"><strong>Morning:</strong> ${prayer.dhikrPlan.morning}</p>
+                        <p style="margin: 5px 0;"><strong>Evening:</strong> ${prayer.dhikrPlan.evening}</p>
+                    </div>
+                    <p style="margin-top: 10px; padding: 10px; background: #f0fdf4; border-radius: 8px; font-size: 14px; color: #166534;">
+                        <strong>Spiritual Tip:</strong> Focus on ${prayer.favorablePrayer} prayer for enhanced spiritual connection.
+                        ${prayer.significance}
+                    </p>
+                </div>
+                `;
+            })()}
         </div>`;
 
         <style>
