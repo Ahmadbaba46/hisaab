@@ -41,6 +41,13 @@ class HisaabApp {
         const demo = document.getElementById('arabicName');
         if (demo && !demo.value) demo.value = 'محمد';
 
+        // Initialize UI enhancements
+        if (typeof UIEnhancements !== 'undefined') {
+            this.uiEnhancements = new UIEnhancements();
+            this.uiEnhancements.init();
+            window.uiEnhancements = this.uiEnhancements; // Make globally accessible
+        }
+
         console.log('✅ Hisaab Web App initialized successfully');
     }
 

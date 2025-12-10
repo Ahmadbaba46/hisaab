@@ -229,6 +229,7 @@
     <script src="js/calculator.js"></script>
     <script src="js/ui-controller.js"></script>
     <script src="js/results-renderer.js"></script>
+    <script src="js/ui-enhancements.js"></script>
     
     <!-- 3. Initialize app -->
     <script src="js/app-init.js"></script>
@@ -377,6 +378,138 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tabs Styling */
+        .results-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .tab-btn:hover {
+            background: #f3f4f6;
+            border-color: #667eea;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-content {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        /* Export Panel */
+        .export-panel {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9 !important;
+        }
+
+        .export-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .export-btn {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+            color: #0369a1;
+        }
+
+        .export-btn:hover {
+            background: #0ea5e9;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Scroll Reveal Animation */
+        .feature-card, .result-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .feature-card.revealed, .result-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth transitions */
+        * {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation enhancement */
+        .loader {
+            animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Button hover effects */
+        .calculate-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculate-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .calculate-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Card hover effects */
+        .result-card {
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
     </style>
 </body>
