@@ -96,25 +96,6 @@
                     <span class="arabic">احسب</span>
                     <span class="english">Calculate</span>
                 </button>
-
-                <!-- Partner Compatibility -->
-                <div class="input-group" style="margin-top: 20px;">
-                    <label for="partnerName">
-                        <span class="arabic">اسم الشريك (اختياري)</span>
-                        <span class="english">Partner Name (optional)</span>
-                    </label>
-                    <input 
-                        type="text" 
-                        id="partnerName" 
-                        placeholder="فاطمة، عائشة، علي..." 
-                        class="name-input"
-                        dir="rtl"
-                    >
-                    <button id="compatibilityBtn" class="calculate-btn" style="margin-top: 10px;">
-                        <span class="arabic">حساب الشريك</span>
-                        <span class="english">Check Compatibility</span>
-                    </button>
-                </div>
             </div>
 
             <!-- Results Container -->
@@ -166,24 +147,6 @@
                     <h3>Compatibility</h3>
                     <p>Marriage compatibility analysis (حساب الشريك)</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Arabic Astrology</h3>
-                    <p>Elements, planetary influences, and zodiac signs</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Asma ul Husna</h3>
-                    <p>Divine name matching with 99 Names of Allah</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📖</div>
-                    <h3>Quranic Connections</h3>
-                    <p>Verse connections and spiritual significance</p>
-                </div>
             </div>
         </div>
     </section>
@@ -222,8 +185,8 @@
     </footer>
 
     <!-- Load Scripts in Order -->
-    <!-- 1. Complete Hisaab Library Bundle -->
-    <script src="js/hisaab-complete.js"></script>
+    <!-- 1. Browser compatibility layer -->
+    <script src="js/hisaab-bundle.js"></script>
     
     <!-- 2. Application modules -->
     <script src="js/calculator.js"></script>

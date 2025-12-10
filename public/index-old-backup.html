@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب - Hisaab | Arabic Name Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕌</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🕌</div>
+                <div class="logo-text">
+                    <h1>حساب</h1>
+                    <span>Hisaab</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#calculator" class="nav-link">Calculator</a>
+                <a href="#v130-features" class="nav-link">v1.3.0 Features</a>
+                <a href="#compatibility" class="nav-link">Compatibility</a>
+                <a href="#islamic" class="nav-link">Islamic</a>
+                <a href="#astrology" class="nav-link">Astrology</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="arabic">حساب الأبجد الشريف</span>
+                    <span class="english">Arabic Name Numerology Calculator</span>
+                </h2>
+                <p class="hero-subtitle">
+                    Discover the spiritual significance of Arabic names using traditional Abjad calculation, 
+                    Islamic wisdom, and authentic Arabic astrology.
+                </p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <span class="feature-icon">💼</span>
+                        <span>Business Analysis</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📅</span>
+                        <span>Date Integration</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔮</span>
+                        <span>Advanced Numerology</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🕌</span>
+                        <span>Prayer Guidance</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌙</span>
+                        <span>28 Lunar Mansions</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📊</span>
+                        <span>Smart Name Generator</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">👨‍👩‍👧‍👦</span>
+                        <span>Family Harmony</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📖</span>
+                        <span>99 Names of Allah</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💕</span>
+                        <span>حساب الشريك</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🤲</span>
+                        <span>Spiritual Guidance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Calculator -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="arabic">حاسبة الأسماء</span>
+                <span class="english">Name Calculator</span>
+            </h2>
+            
+            <div class="calculator-card">
+                <div class="input-section">
+                    <label for="arabicName" class="input-label">
+                        <span class="arabic">اكتب الاسم العربي</span>
+                        <span class="english">Enter Arabic Name</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="arabicName" 
+                        class="name-input" 
+                        placeholder="محمد، فاطمة، علي..."
+                        dir="rtl"
+                        autocomplete="off"
+                    >
+                    <button id="calculateBtn" class="calculate-btn">
+                        <span class="arabic">احسب</span>
+                        <span class="english">Calculate</span>
+                    </button>
+                </div>
+
+                <div id="results" class="results-section" style="display: none;">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- v1.3.0 New Features Section -->
+    <section id="v130-features" class="v130-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 0; color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">
+                <span class="arabic">✨ الميزات الجديدة v1.3.0</span>
+                <span class="english">New Features in v1.3.0</span>
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Business Analysis -->
+                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">💼</div>
+                    <h3 style="font-size: 22px; margin-bottom: 15px;">Business Analysis</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">Analyze company names for success indicators, industry recommendations, and partnership compatibility.</p>
+                    <ul style="margin-top: 15px; opacity: 0.8; font-size: 14px;">
+                        <li>✓ Success indicators (1-10)</li>
+                        <li>✓ Industry recommendations</li>
+                        <li>✓ Partnership analysis</li>
+                        <li>✓ Best timing guidance</li>
+                    </ul>
+                </div>
+
+                <!-- Date Integration -->
+                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">📅</div>
+                    <h3 style="font-size: 22px; margin-bottom: 15px;">Date Integration</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">Calculate birth date compatibility with names and discover your life path number.</p>
+                    <ul style="margin-top: 15px; opacity: 0.8; font-size: 14px;">
+                        <li>✓ Life path calculation</li>
+                        <li>✓ Name-date compatibility (0-100)</li>
+                        <li>✓ Personal year cycles</li>
+                        <li>✓ Energy harmonization</li>
+                    </ul>
+                </div>
+
+                <!-- Advanced Numerology -->
+                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🔮</div>
+                    <h3 style="font-size: 22px; margin-bottom: 15px;">Advanced Numerology</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">Deep analysis with master numbers, karmic debt, and hidden potential discovery.</p>
+                    <ul style="margin-top: 15px; opacity: 0.8; font-size: 14px;">
+                        <li>✓ Master numbers (11, 22, 33, 44)</li>
+                        <li>✓ Karmic debt detection</li>
+                        <li>✓ Hidden potential analysis</li>
+                        <li>✓ Soul urge & personality</li>
+                    </ul>
+                </div>
+
+                <!-- Prayer Guidance -->
+                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🕌</div>
+                    <h3 style="font-size: 22px; margin-bottom: 15px;">Enhanced Prayer Times</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">Personalized prayer time correlations and daily dhikr recommendations.</p>
+                    <ul style="margin-top: 15px; opacity: 0.8; font-size: 14px;">
+                        <li>✓ Prayer time alignment</li>
+                        <li>✓ Morning/evening dhikr</li>
+                        <li>✓ After-prayer guidance</li>
+                        <li>✓ Extended Quranic connections</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Demo Button -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="document.getElementById('arabicName').focus()" style="background: white; color: #667eea; padding: 15px 40px; border: none; border-radius: 30px; font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    Try v1.3.0 Features Now ↑
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section id="compatibility" class="compatibility-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="arabic">حساب الشريك</span>
+                <span class="english">Partner Compatibility</span>
+            </h2>
+            
+            <div class="compatibility-card">
+                <div class="compatibility-inputs">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <span class="arabic">الاسم الأول</span>
+                            <span class="english">First Name</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name1" 
+                            class="name-input" 
+                            placeholder="محمد"
+                            dir="rtl"
+                        >
+                    </div>
+                    <div class="compatibility-symbol">💕</div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <span class="arabic">الاسم الثاني</span>
+                            <span class="english">Second Name</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name2" 
+                            class="name-input" 
+                            placeholder="فاطمة"
+                            dir="rtl"
+                        >
+                    </div>
+                </div>
+                <button id="compareBtn" class="calculate-btn">
+                    <span class="arabic">احسب التوافق</span>
+                    <span class="english">Calculate Compatibility</span>
+                </button>
+                
+                <div id="compatibilityResults" class="results-section" style="display: none;">
+                    <!-- Compatibility results will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Features v1.1.0 & v1.2.0 -->
+    <section id="new-features" class="new-features-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="arabic">الميزات الجديدة</span>
+                <span class="english">Latest Features</span>
+            </h2>
+            
+            <div class="features-showcase">
+                <div class="showcase-card lunar-mansion">
+                    <div class="card-icon">🌙</div>
+                    <h3>منازل القمر الـ28</h3>
+                    <h4>28 Lunar Mansions</h4>
+                    <p>Discover your lunar mansion according to traditional Arabic astronomy. Each of the 28 stations offers unique insights and spiritual guidance.</p>
+                    <div class="feature-demo">
+                        <input type="text" id="mansionDemo" placeholder="أدخل اسماً..." class="demo-input">
+                        <button onclick="showLunarMansionDemo()" class="demo-btn">Show Mansion</button>
+                        <div id="mansionResult" class="demo-result"></div>
+                    </div>
+                </div>
+
+                <div class="showcase-card name-generator">
+                    <div class="card-icon">📊</div>
+                    <h3>مولد الأسماء الذكي</h3>
+                    <h4>Smart Name Generator</h4>
+                    <p>Generate Arabic names based on specific criteria like target value, element, or compatibility house. Perfect for expecting parents!</p>
+                    <div class="feature-demo">
+                        <select id="generatorCriteria" class="demo-select">
+                            <option value="value100">Names with value ~100</option>
+                            <option value="water">Water element names</option>
+                            <option value="house7">Good for marriage (House 7)</option>
+                        </select>
+                        <button onclick="showNameGeneratorDemo()" class="demo-btn">Generate</button>
+                        <div id="generatorResult" class="demo-result"></div>
+                    </div>
+                </div>
+
+                <div class="showcase-card family-harmony">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h3>تحليل الانسجام العائلي</h3>
+                    <h4>Family Harmony Analysis</h4>
+                    <p>Analyze the compatibility and energy balance of your entire family. Understand element distribution and get personalized recommendations.</p>
+                    <div class="feature-demo">
+                        <input type="text" id="familyDemo" placeholder="أدخل أسماء العائلة (مفصولة بفواصل)" class="demo-input">
+                        <button onclick="showFamilyHarmonyDemo()" class="demo-btn">Analyze Family</button>
+                        <div id="familyResult" class="demo-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Islamic Features -->
+    <section id="islamic" class="islamic-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="arabic">الميزات الإسلامية</span>
+                <span class="english">Islamic Features</span>
+            </h2>
+            
+            <div class="islamic-grid">
+                <div class="islamic-card">
+                    <div class="card-icon">📿</div>
+                    <h3>أسماء الله الحسنى</h3>
+                    <p>99 Names of Allah</p>
+                    <button class="feature-btn" onclick="showAsmaUlHusna()">Explore</button>
+                </div>
+                
+                <div class="islamic-card">
+                    <div class="card-icon">📖</div>
+                    <h3>الاتصال القرآني</h3>
+                    <p>Quranic Connections</p>
+                    <button class="feature-btn" onclick="showQuranicConnections()">Explore</button>
+                </div>
+                
+                <div class="islamic-card">
+                    <div class="card-icon">🤲</div>
+                    <h3>الإرشاد الروحي</h3>
+                    <p>Spiritual Guidance</p>
+                    <button class="feature-btn" onclick="showSpiritualGuidance()">Explore</button>
+                </div>
+                
+                <div class="islamic-card">
+                    <div class="card-icon">🏠</div>
+                    <h3>بيوت الشراكة</h3>
+                    <p>Partnership Houses</p>
+                    <button class="feature-btn" onclick="showPartnershipHouses()">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Astrology Section -->
+    <section id="astrology" class="astrology-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="arabic">علم النجوم</span>
+                <span class="english">Astrology Systems</span>
+            </h2>
+            
+            <div class="astrology-comparison">
+                <div class="system-card arabic-system">
+                    <h3>🌙 النظام العربي</h3>
+                    <h4>Arabic Traditional System</h4>
+                    <div class="system-features">
+                        <div class="system-feature">
+                            <span class="feature-icon">🔥</span>
+                            <div>
+                                <strong>Elements</strong>
+                                <p>Value % 4 → Fire, Earth, Air, Water</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <span class="feature-icon">🪐</span>
+                            <div>
+                                <strong>Planets</strong>
+                                <p>Value % 7 → Classical 7 Planets</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <span class="feature-icon">♈</span>
+                            <div>
+                                <strong>Zodiac</strong>
+                                <p>Value % 12 → 12 Signs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="system-card western-system">
+                    <h3>🌍 النظام الغربي</h3>
+                    <h4>Western Pythagorean System</h4>
+                    <div class="system-features">
+                        <div class="system-feature">
+                            <span class="feature-icon">🔢</span>
+                            <div>
+                                <strong>Elements</strong>
+                                <p>Digit Root → Element Mapping</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <span class="feature-icon">🌟</span>
+                            <div>
+                                <strong>Planets</strong>
+                                <p>Including Modern Planets</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <span class="feature-icon">🎨</span>
+                            <div>
+                                <strong>Colors</strong>
+                                <p>Planetary Color Associations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🕌 حساب Hisaab</h3>
+                    <p>Bridging traditional Arabic wisdom with modern technology</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Abjad Calculation</li>
+                        <li>Islamic Analysis</li>
+                        <li>Arabic Astrology</li>
+                        <li>Compatibility</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                        <li><a href="https://npmjs.com">NPM Package</a></li>
+                        <li><a href="#api">API Reference</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hisaab. Made with ❤️ for the Arabic community.</p>
+                <p class="arabic">بسم الله الرحمن الرحيم</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load the Hisaab library -->
+    <script src="app.js"></script>
+</body>
+</html>

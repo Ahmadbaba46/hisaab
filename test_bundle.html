@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hisaab Bundle</title>
+</head>
+<body>
+    <h1>Testing Hisaab Bundle</h1>
+    <div id="output"></div>
+    <input type="text" id="testInput" value="محمد" dir="rtl">
+    <button onclick="testCalculation()">Test</button>
+
+    <script src="public/js/hisaab-complete.js"></script>
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(msg) {
+            output.innerHTML += '<p>' + msg + '</p>';
+            console.log(msg);
+        }
+
+        // Check if Hisaab loaded
+        if (typeof window.Hisaab !== 'undefined') {
+            log('✅ Hisaab class available');
+            
+            // Test basic calculation
+            try {
+                const test = new Hisaab('محمد');
+                log('✅ Created instance');
+                log('Name: ' + test.getName());
+                log('Value: ' + test.getValue());
+                log('Digit Root: ' + test.getDigitRoot());
+            } catch (error) {
+                log('❌ Error: ' + error.message);
+                console.error(error);
+            }
+        } else {
+            log('❌ Hisaab class NOT available');
+            log('window.Hisaab type: ' + typeof window.Hisaab);
+        }
+
+        function testCalculation() {
+            const input = document.getElementById('testInput').value;
+            try {
+                const h = new Hisaab(input);
+                log('---');
+                log('Testing: ' + input);
+                log('Value: ' + h.getValue());
+                log('Digit Root: ' + h.getDigitRoot());
+            } catch (error) {
+                log('Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

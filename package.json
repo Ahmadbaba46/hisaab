@@ -15,7 +15,7 @@
     "test-v1.1.0": "node test_v1.1.0.js",
     "test-v1.3.0": "node test_v1.3.0.js",
     "test-lunar-mansions": "node test_lunar_mansions.js",
-    "serve": "python -m http.server 8080",
+    "serve": "python -m http.server 8080 --directory public",
     "serve-docs": "cd docs && python -m http.server 8081",
     "dev": "npm run serve"
   },
