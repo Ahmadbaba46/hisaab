@@ -45,7 +45,19 @@
                 <ul>
                     <li><a href="#asma-ul-husna">99 Names of Allah</a></li>
                     <li><a href="#quranic-connections">Quranic Connections</a></li>
+                    <li><a href="#lunar-mansions">Lunar Mansions</a></li>
+                    <li><a href="#prayer-guidance">Prayer Guidance</a></li>
                     <li><a href="#islamic-guidance">Spiritual Guidance</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>v1.3.0 Features</h3>
+                <ul>
+                    <li><a href="#business-analysis">Business Analysis</a></li>
+                    <li><a href="#date-integration">Date Integration</a></li>
+                    <li><a href="#advanced-numerology">Advanced Numerology</a></li>
+                    <li><a href="#prayer-guidance">Prayer & Dhikr</a></li>
                 </ul>
             </div>
             
@@ -98,7 +110,7 @@
                 </h1>
                 <p class="subtitle">Complete guide to Arabic name numerology and Islamic spiritual analysis</p>
                 <div class="header-badges">
-                    <span class="badge version">v1.0.0</span>
+                    <span class="badge version">v1.3.0</span>
                     <span class="badge npm">NPM</span>
                     <span class="badge license">MIT</span>
                     <span class="badge islamic">Islamic ☪️</span>
@@ -121,9 +133,13 @@
                         <li>✅ Accurate Abjad calculation (28+ Arabic letters)</li>
                         <li>☪️ 99 Names of Allah analysis</li>
                         <li>📖 Quranic verse connections</li>
-                        <li>🌙 Traditional Arabic astrology</li>
+                        <li>🌙 28 Lunar Mansions (منازل القمر)</li>
+                        <li>⭐ Traditional Arabic astrology</li>
                         <li>💕 حساب الشريك compatibility</li>
-                        <li>🌍 Western numerology (optional)</li>
+                        <li>💼 Business name analysis (v1.3.0)</li>
+                        <li>📅 Date integration & life path (v1.3.0)</li>
+                        <li>🔮 Advanced numerology (v1.3.0)</li>
+                        <li>🕌 Prayer guidance & dhikr (v1.3.0)</li>
                     </ul>
                 </div>
                 
@@ -562,6 +578,138 @@ analysis.forEach(result => {
     }
 });</code></pre>
                 </div>
+            </div>
+        </section>
+
+        <!-- v1.3.0 Features Section -->
+        <section id="business-analysis" class="doc-section">
+            <h2>💼 Business Name Analysis (v1.3.0)</h2>
+            <p>Analyze company and business names for success indicators and industry recommendations.</p>
+            
+            <div class="method-card">
+                <h3>getBusinessAnalysis()</h3>
+                <p>Complete business name analysis with success indicators, industry recommendations, and timing guidance.</p>
+                <pre><code class="javascript">const business = new Hisaab('شركة النور');
+const analysis = business.getBusinessAnalysis();
+
+console.log('Company:', analysis.name);
+console.log('Rating:', analysis.overallAssessment.rating + '/10');
+console.log('Summary:', analysis.overallAssessment.summary);
+console.log('Recommended Industries:', analysis.recommendedIndustries);
+console.log('Partnership Type:', analysis.partnershipAnalysis.businessType);
+console.log('Best Timing:', analysis.timing.launchTiming);</code></pre>
+            </div>
+        </section>
+
+        <section id="date-integration" class="doc-section">
+            <h2>📅 Date Integration & Life Path (v1.3.0)</h2>
+            <p>Calculate birth date compatibility with names and discover life path numbers.</p>
+            
+            <div class="method-card">
+                <h3>getLifePathCompatibility(day, month, year)</h3>
+                <p>Birth date numerology integration with name analysis.</p>
+                <pre><code class="javascript">const person = new Hisaab('أحمد');
+const lifePath = person.getLifePathCompatibility(15, 7, 1990);
+
+console.log('Name Digit Root:', lifePath.nameDigitRoot);
+console.log('Life Path Number:', lifePath.lifePathNumber);
+console.log('Compatibility Score:', lifePath.compatibility.score + '/100');
+console.log('Level:', lifePath.compatibility.level);
+console.log('Description:', lifePath.compatibility.description);
+console.log('Life Path:', lifePath.lifePathPattern.description);
+console.log('Strengths:', lifePath.lifePathPattern.strengths);
+console.log('Purpose:', lifePath.lifePathPattern.purpose);</code></pre>
+            </div>
+
+            <div class="method-card">
+                <h3>calculatePersonalYear(year, month, day)</h3>
+                <p>Calculate personal year cycle (1-9).</p>
+                <pre><code class="javascript">const person = new Hisaab('فاطمة');
+const personalYear = person.calculatePersonalYear(2024, 3, 20);
+
+console.log('Personal Year:', personalYear.personalYear);
+console.log('Theme:', personalYear.theme);
+console.log('Focus:', personalYear.focus);
+console.log('Opportunities:', personalYear.opportunities);
+console.log('Advice:', personalYear.advice);</code></pre>
+            </div>
+        </section>
+
+        <section id="advanced-numerology" class="doc-section">
+            <h2>🔮 Advanced Numerology (v1.3.0)</h2>
+            <p>Master numbers, karmic debt, and hidden potential analysis.</p>
+            
+            <div class="method-card">
+                <h3>getAdvancedNumerology()</h3>
+                <p>Complete advanced numerological analysis including master and karmic numbers.</p>
+                <pre><code class="javascript">const name = new Hisaab('محمد');
+const advanced = name.getAdvancedNumerology();
+
+// Master Numbers (11, 22, 33, 44)
+if (advanced.masterNumbers.isMasterNumber) {
+    console.log('✨ Master Number:', advanced.masterNumbers.number);
+    console.log('Meaning:', advanced.masterNumbers.meaning);
+    console.log('Purpose:', advanced.masterNumbers.purpose);
+}
+
+// Karmic Debt Numbers (13, 14, 16, 19)
+if (advanced.karmicNumbers.isKarmicNumber) {
+    console.log('⚖️ Karmic Number:', advanced.karmicNumbers.number);
+    console.log('Lesson:', advanced.karmicNumbers.lesson);
+    console.log('Challenge:', advanced.karmicNumbers.challenge);
+}
+
+// Hidden Potential
+console.log('Unique Numbers:', advanced.hiddenPotential.uniqueNumbers);
+console.log('Dominant Number:', advanced.hiddenPotential.dominantNumber);
+console.log('Missing Numbers:', advanced.hiddenPotential.missingNumbers);</code></pre>
+            </div>
+        </section>
+
+        <section id="prayer-guidance" class="doc-section">
+            <h2>🕌 Prayer Guidance & Dhikr (v1.3.0)</h2>
+            <p>Prayer time correlations and personalized dhikr recommendations.</p>
+            
+            <div class="method-card">
+                <h3>getPrayerTimeCorrelations()</h3>
+                <p>Get prayer time guidance and daily dhikr plan based on name energy.</p>
+                <pre><code class="javascript">const name = new Hisaab('عبدالله');
+const prayer = name.getPrayerTimeCorrelations();
+
+console.log('Favorable Prayer:', prayer.favorablePrayer);
+console.log('Arabic:', prayer.arabicPrayer);
+console.log('Significance:', prayer.significance);
+console.log('Timing:', prayer.timing);
+
+// Daily Dhikr Plan
+console.log('Morning Dhikr:', prayer.dhikrPlan.morning);
+console.log('Evening Dhikr:', prayer.dhikrPlan.evening);
+console.log('After Prayer:', prayer.dhikrPlan.afterPrayer);
+
+console.log('Guidance:', prayer.personalizedGuidance);</code></pre>
+            </div>
+        </section>
+
+        <section id="lunar-mansions" class="doc-section">
+            <h2>🌙 Lunar Mansions (v1.1.0)</h2>
+            <p>28 Lunar Mansions (منازل القمر) traditional correlation.</p>
+            
+            <div class="method-card">
+                <h3>getLunarMansion()</h3>
+                <p>Get the lunar mansion (station) associated with the name value.</p>
+                <pre><code class="javascript">const name = new Hisaab('علي');
+const mansion = name.getLunarMansion();
+
+console.log('Mansion Number:', mansion.number);
+console.log('Arabic Name:', mansion.arabic);
+console.log('Transliteration:', mansion.transliteration);
+console.log('Influence:', mansion.influence);
+console.log('Influence (Arabic):', mansion.influenceArabic);
+console.log('Personalized Insight:', mansion.personalizedInsight);
+
+if (mansion.spiritualGuidance) {
+    console.log('Dhikr:', mansion.spiritualGuidance.dhikr);
+}</code></pre>
             </div>
         </section>
 
