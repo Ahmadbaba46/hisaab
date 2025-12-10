@@ -15,16 +15,38 @@
 
 ## ✨ Features
 
+### Core Features (v1.0.0)
 - 🔢 **Complete Abjad Calculation** - All 28+ Arabic letters including ة
 - ☪️ **Islamic Analysis** - 99 Names of Allah, Quranic connections, spiritual guidance
 - 🌙 **Arabic Astrology** - Traditional elements, planets, zodiac (% 4, % 7, % 12)
 - 💕 **حساب الشريك** - Authentic Arabic partner compatibility
-- 💼 **Business Analysis** (v1.3.0) - Company name success indicators & industry recommendations
-- 📅 **Date Integration** (v1.3.0) - Birth date compatibility & life path analysis
-- 🔮 **Advanced Numerology** (v1.3.0) - Master numbers, karmic debt, hidden potential
-- 🕌 **Enhanced Prayer Times** (v1.3.0) - Prayer correlations & personalized dhikr plans
-- 🌐 **Beautiful Web Interface** - Islamic-themed calculator
-- 📚 **Comprehensive Documentation** - Complete API guide
+- 📖 **Quranic Connections** - Verse matching and spiritual significance
+- ✨ **Asma ul Husna Matching** - Divine name recognition
+
+### v1.1.0 - Islamic Enhancement
+- 🌙 **28 Lunar Mansions** (منازل القمر) - Traditional lunar station correlations
+- 📚 **Extended Quranic Database** - More verse connections
+- 🤲 **Enhanced Spiritual Guidance** - Deeper Islamic insights
+
+### v1.2.0 - Cultural Expansion
+- 👤 **Prophetic Names** - Recognition of Prophet's and Companions' names
+- 🏛️ **Cultural Context** - Historical and regional significance
+- 📜 **Enhanced Analysis** - More detailed interpretations
+
+### v1.3.0 - Advanced Features (Current)
+- 💼 **Business Name Analysis** - Company success indicators & industry recommendations
+- 📅 **Date Integration** - Birth date compatibility & life path analysis
+- 🔮 **Advanced Numerology** - Master numbers (11, 22, 33, 44), karmic debt (13, 14, 16, 19)
+- 🕌 **Enhanced Prayer Guidance** - Prayer time correlations & personalized dhikr plans
+- ⭐ **Complete Astrology** - Elements, planetary influences, zodiac signs
+
+### Web Interface
+- 🌐 **Modular Web App** - Clean, maintainable architecture
+- 📑 **Organized Tabs** - Filter results by category (All, v1.3.0, Islamic, Astrology, Export)
+- 🎬 **Smooth Animations** - Scroll reveal, fade-in, hover effects
+- 💾 **Export Options** - Text, JSON, HTML, Print/PDF, Clipboard
+- 📱 **Responsive Design** - Works on all devices
+- 🎨 **Beautiful UI** - Islamic-themed with gradient accents
 
 ## 🚀 Quick Start
 
