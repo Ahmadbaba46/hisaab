@@ -115,9 +115,16 @@ class UIEnhancements {
                     return;
             }
 
-            card.style.display = show ? 'block' : 'none';
             if (show) {
+                // Remove fade-in first, then show, then re-add for animation
+                card.classList.remove('fade-in');
+                card.style.display = 'block';
+                // Force reflow
+                void card.offsetWidth;
                 card.classList.add('fade-in');
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('fade-in');
             }
         });
     }
