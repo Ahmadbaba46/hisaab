@@ -20,6 +20,7 @@ const { EXPORT_TEMPLATES, REPORT_SECTIONS, CLIPBOARD_FORMATS, generateTextReport
 const { HISTORICAL_FIGURES, NAME_HISTORICAL_EVENTS, findHistoricalFigures, getFiguresByCategory, getHistoricalEvents } = require('./historical_names_data.js');
 const { SAHABA_DATABASE, SAHABA_BY_LINEAGE, SAHABA_VIRTUES_INDEX, getSahabaByName, getSahabaByTitle, getAsharaMubashara, getProminentSahaba, getSahabiyat, isSahabaName, getSahabaCount } = require('./sahaba_names_data.js');
 const { HIJRI_MONTHS, BLESSED_DAYS, ISLAMIC_EVENTS, gregorianToHijri, hijriToGregorian, getCurrentHijriDate, getHijriMonthInfo, getMonthByName, getBlessedDaysInMonth, isBlessedDay, getHolyMonths, isHolyMonth, getRamadanInfo, getHajjMonths, getIslamicYearSignificance, getDaysInHijriMonth, getUpcomingBlessedDay } = require('./hijri_calendar_data.js');
+const { CHART_COLORS, CHART_CONFIGS, generateCompatibilityRadarData, generateElementPieData, generateDigitRootBarData, generateCompatibilityGaugeData, generateFamilyTreeBarData, generatePartnerHouseChart, generateRegionalComparisonChart, generateTimelineData, getChartConfig, getChartColors } = require('./visualization_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -3043,6 +3044,200 @@ if (score >= 80) return 'Excellent Harmony';
             averageScore: Math.round(avgScore),
             harmonyLevel: avgScore >= 70 ? 'Excellent' : (avgScore >= 50 ? 'Good' : 'Challenging')
         };
+    }
+
+    // ============================================
+    // v1.5.0 - Visualization & Charts
+    // ============================================
+
+    /**
+     * Generate compatibility radar chart data
+     * @param {string} otherName - Partner name for comparison
+     * @returns {Object} Radar chart data for Chart.js
+     */
+    generateCompatibilityChart(otherName) {
+        const other = typeof otherName === 'string' ? new Hisaab(otherName) : otherName;
+        
+        const myRoot = this.getDigitRoot();
+        const otherRoot = other.getDigitRoot();
+        
+        const myScores = {
+            partnership: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[myRoot]?.partnership || 50,
+            spirituality: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[myRoot]?.spirituality || 50,
+            business: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[myRoot]?.business || 50,
+            leadership: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[myRoot]?.leadership || 50,
+            creativity: 50 + (myRoot * 5),
+            stability: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[myRoot]?.business || 50
+        };
+        
+        const otherScores = {
+            partnership: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[otherRoot]?.partnership || 50,
+            spirituality: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[otherRoot]?.spirituality || 50,
+            business: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[otherRoot]?.business || 50,
+            leadership: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[otherRoot]?.leadership || 50,
+            creativity: 50 + (otherRoot * 5),
+            stability: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[otherRoot]?.business || 50
+        };
+        
+        return generateCompatibilityRadarData(
+            { name: this.name, digitRootScores: myScores },
+            { name: other.name, digitRootScores: otherScores }
+        );
+    }
+
+    /**
+     * Generate element distribution pie chart data
+     * @param {Array} names - Array of names to analyze
+     * @returns {Object} Pie chart data for Chart.js
+     */
+    static generateElementChart(names) {
+        const analyses = names.map(n => {
+            try {
+                const h = new Hisaab(n);
+                return { name: n, element: h.getArabicAstrology().element.name };
+            } catch (e) {
+                return null;
+            }
+        }).filter(a => a !== null);
+        
+        return generateElementPieData(analyses);
+    }
+
+    /**
+     * Generate digit root distribution bar chart data
+     * @param {Array} names - Array of names to analyze
+     * @returns {Object} Bar chart data for Chart.js
+     */
+    static generateDigitRootChart(names) {
+        const analyses = names.map(n => {
+            try {
+                const h = new Hisaab(n);
+                return { name: n, digitRoot: h.getDigitRoot() };
+            } catch (e) {
+                return null;
+            }
+        }).filter(a => a !== null);
+        
+        return generateDigitRootBarData(analyses);
+    }
+
+    /**
+     * Generate partner house comparison chart
+     * @param {string} partnerName - Partner name
+     * @returns {Object} Bar chart data showing partner house
+     */
+    generatePartnerHouseChart(partnerName) {
+        const comp = Hisaab.compareArabic(this.name, partnerName);
+        return generatePartnerHouseChart(this.name, partnerName, comp.partnerHouse);
+    }
+
+    /**
+     * Generate compatibility gauge chart data
+     * @param {string} partnerName - Partner name
+     * @returns {Object} Gauge chart data for Chart.js
+     */
+    generateCompatibilityGauge(partnerName) {
+        const comp = Hisaab.compareArabic(this.name, partnerName);
+        const score = comp.partnerHouse === 7 ? 100 : 
+                      comp.partnerHouse === 4 ? 85 :
+                      comp.partnerHouse === 2 ? 75 :
+                      comp.partnerHouse === 5 ? 60 :
+                      comp.partnerHouse === 8 ? 55 :
+                      comp.partnerHouse === 1 ? 50 :
+                      comp.partnerHouse === 3 ? 30 :
+                      comp.partnerHouse === 6 ? 20 : 10;
+        
+        return generateCompatibilityGaugeData(score);
+    }
+
+    /**
+     * Generate family tree bar chart data
+     * @param {Array} members - Family member names
+     * @returns {Object} Bar chart data for Chart.js
+     */
+    static generateFamilyTreeChart(members) {
+        const analyses = Hisaab.analyzeFamilyTree(members);
+        return generateFamilyTreeBarData(analyses.members.filter(m => !m.error));
+    }
+
+    /**
+     * Generate regional comparison chart data
+     * @returns {Object} Bar chart data for regional comparison
+     */
+    generateRegionalChart() {
+        const comparison = this.compareRegionalVariants();
+        return generateRegionalComparisonChart(comparison.comparisons);
+    }
+
+    /**
+     * Generate numerology wheel data
+     * @returns {Object} Data for numerology wheel visualization
+     */
+    generateNumerologyWheel() {
+        const root = this.getDigitRoot();
+        const element = this.getArabicAstrology().element.name;
+        const planet = this.getArabicAstrology().planet.name;
+        
+        return {
+            name: this.name,
+            value: this.value,
+            digitRoot: root,
+            element: element,
+            elementColor: CHART_COLORS.elements[element],
+            planet: planet,
+            planetColor: CHART_COLORS.planets[planet],
+            luckyNumbers: this.getLuckyNumbers(),
+            wheelData: {
+                labels: ['Value', 'Digit Root', 'Element Score', 'Planet Score'],
+                data: [
+                    Math.min(this.value / 10, 100),
+                    root * 11,
+                    CHART_CONFIGS.compatibilityRadar.labels.indexOf(element) >= 0 ? 75 : 50,
+                    60
+                ]
+            }
+        };
+    }
+
+    /**
+     * Generate personal year timeline
+     * @param {number} birthYear - Birth year
+     * @param {number} birthMonth - Birth month
+     * @param {number} birthDay - Birth day
+     * @param {number} years - Number of years to calculate
+     * @returns {Object} Timeline chart data
+     */
+    generatePersonalYearTimeline(birthYear, birthMonth, birthDay, years = 9) {
+        const currentYear = new Date().getFullYear();
+        const yearLabels = [];
+        const yearValues = [];
+        
+        for (let i = 0; i < years; i++) {
+            const year = currentYear + i;
+            yearLabels.push(year.toString());
+            
+            const personalYear = this.calculatePersonalYear(year, birthMonth, birthDay);
+            yearValues.push(personalYear);
+        }
+        
+        return generateTimelineData(yearLabels, yearValues);
+    }
+
+    /**
+     * Get chart colors
+     * @returns {Object} Chart color definitions
+     */
+    static getChartColors() {
+        return getChartColors();
+    }
+
+    /**
+     * Get chart configuration
+     * @param {string} type - Chart type
+     * @returns {Object} Chart configuration
+     */
+    static getChartConfig(type) {
+        return getChartConfig(type);
     }
 }
 

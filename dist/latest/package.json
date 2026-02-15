@@ -1,28 +1,27 @@
 {
   "name": "hisaab",
-  "version": "1.4.0",
-  "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system - with AI recommendations, regional patterns, and Hijri calendar",
-  "main": "hisaab.js",
-  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "islamic", "asma-ul-husna", "99-names-allah", "quranic", "family-analysis", "name-generator", "lunar-mansions", "arabic-astrology", "ai-recommendations", "regional-patterns", "hijri-calendar"],
-  "author": "",
-  "license": "MIT",
-  "engines": {
-    "node": ">=12.0.0"
+  "version": "1.5.0",
+  "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system - with AI recommendations, regional patterns, Hijri calendar, and visualizations",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "test-enhanced": "node enhanced_test.js",
+    "test-advanced": "node advanced_features_test.js",
+    "test-islamic": "node islamic_test.js",
+    "example": "node example.js",
+    "islamic-example": "node islamic_example.js",
+    "astrology-comparison": "node astrology_comparison_test.js",
+    "arabic-compatibility": "node arabic_compatibility_test.js",
+    "test-v1.1.0": "node test_v1.1.0.js",
+    "test-v1.3.0": "node test_v1.3.0.js",
+    "test-v1.4.0": "node test_v1.4.0.js",
+    "test-v1.5.0": "node test_v1.5.0.js",
+    "test-lunar-mansions": "node test_lunar_mansions.js",
+    "serve": "python -m http.server 8080 --directory public",
+    "serve-docs": "cd docs && python -m http.server 8081",
+    "dev": "npm run serve"
   },
-  "files": [
-    "hisaab.js",
-    "islamic_data.js",
-    "lunar_mansions_data.js",
-    "enhanced_islamic_data.js",
-    "business_analysis_data.js",
-    "advanced_numerology_data.js",
-    "regional_patterns_data.js",
-    "ai_patterns_data.js",
-    "name_database.js",
-    "export_templates_data.js",
-    "historical_names_data.js",
-    "sahaba_names_data.js",
-    "hijri_calendar_data.js",
-    "README.md"
-  ]
+  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "islamic", "asma-ul-husna", "99-names-allah", "quranic", "family-analysis", "name-generator", "lunar-mansions", "arabic-astrology", "ai-recommendations", "regional-patterns", "hijri-calendar", "visualization", "charts"],
+  "author": "",
+  "license": "MIT"
 }

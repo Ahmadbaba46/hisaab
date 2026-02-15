@@ -8,41 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### 🔮 **Planned for v2.0.0**
-- Multi-language Support: Hebrew, Urdu, Persian, Turkish
-- Machine Learning: Enhanced AI-powered insights
+- Multi-language Support: Hebrew, Urdu, Persian
+- Machine Learning: AI-powered insights
 - Mobile Apps: Native iOS/Android applications
+- Advanced Visualization: Charts and graphs
 - Database Integration: User accounts and history
-
----
-
-## [1.5.0] - 2026-02-15
-
-### 🚀 **Visualization & Charts Release**
-
-#### 📊 **Chart Data Generation**
-- `generateCompatibilityChart()` - Chart.js compatible data for partner compatibility
-- `generateElementChart()` - Pie chart data for element distribution
-- `generateDigitRootChart()` - Bar chart for digit root comparison
-- `generatePartnerHouseChart()` - House-specific visualization data
-- `generateCompatibilityGauge()` - Gauge/speedometer data for compatibility score
-- `generateFamilyTreeChart()` - Family hierarchy visualization data
-- `generateRegionalChart()` - Regional comparison bar chart
-- `generateNumerologyWheel()` - Radar/spider chart for full numerology profile
-
-#### 🎨 **Chart Configuration**
-- `getChartColors()` - Element and planet color mappings
-- `getChartConfig()` - Chart.js compatible configuration objects
-- Pre-defined color palettes for consistent visualization
-- Dark/light theme support
-
-#### 📦 **New Data File**
-- `visualization_data.js` - Chart configurations, colors, labels
-
-#### 📊 **Statistics**
-- **9 visualization methods**
-- **1 new data file**
-- **Chart.js compatible output**
-- **17 passing tests**
 
 ---
 

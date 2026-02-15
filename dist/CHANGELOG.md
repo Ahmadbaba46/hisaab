@@ -1,197 +1,305 @@
-# Hisaab Distribution Changelog
+# Changelog
 
-## v1.3.0 (2024)
+All notable changes to the Hisaab library will be documented in this file.
 
-### 🎉 Major Features Added
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-#### 💼 Business Name Analysis
-- Complete company name analysis with success indicators
-- Industry recommendations based on name energy
-- Partnership house analysis (1-9 houses)
-- Best timing guidance for business launches
-- Overall business potential rating (1-10)
+## [Unreleased]
 
-**New Files:**
-- `business_analysis_data.js` - Business success indicators and industry patterns
+### 🔮 **Planned for v2.0.0**
+- Multi-language Support: Hebrew, Urdu, Persian, Turkish
+- Machine Learning: Enhanced AI-powered insights
+- Mobile Apps: Native iOS/Android applications
+- Database Integration: User accounts and history
 
-**New Methods:**
-- `getBusinessAnalysis()` - Complete business name analysis
-- `getRecommendedIndustries()` - Industry recommendations
-- `getBusinessOverallAssessment()` - Business potential rating
+---
 
-#### 📅 Date Integration & Life Path
-- Birth date numerology integration with name analysis
-- Life path number calculation from birth date
-- Name-date compatibility scoring (0-100)
+## [1.5.0] - 2026-02-15
+
+### 🚀 **Visualization & Charts Release**
+
+#### 📊 **Chart Data Generation**
+- `generateCompatibilityChart()` - Chart.js compatible data for partner compatibility
+- `generateElementChart()` - Pie chart data for element distribution
+- `generateDigitRootChart()` - Bar chart for digit root comparison
+- `generatePartnerHouseChart()` - House-specific visualization data
+- `generateCompatibilityGauge()` - Gauge/speedometer data for compatibility score
+- `generateFamilyTreeChart()` - Family hierarchy visualization data
+- `generateRegionalChart()` - Regional comparison bar chart
+- `generateNumerologyWheel()` - Radar/spider chart for full numerology profile
+
+#### 🎨 **Chart Configuration**
+- `getChartColors()` - Element and planet color mappings
+- `getChartConfig()` - Chart.js compatible configuration objects
+- Pre-defined color palettes for consistent visualization
+- Dark/light theme support
+
+#### 📦 **New Data File**
+- `visualization_data.js` - Chart configurations, colors, labels
+
+#### 📊 **Statistics**
+- **9 visualization methods**
+- **1 new data file**
+- **Chart.js compatible output**
+- **17 passing tests**
+
+---
+
+## [1.4.0] - 2025-02-15
+
+### 🚀 **Geographic, AI, Export, Historical & Hijri Features Release**
+
+#### 🌍 **Geographic & Regional Analysis**
+- Regional Arabic patterns for 6 regions (Gulf, Levantine, North African, Iraqi, Yemeni, Sudanese)
+- `getRegionalPattern()` - Get regional compatibility analysis
+- `getGeographicInfluence()` - Geographic element correlations
+- `compareRegionalVariants()` - Compare name across all regions
+- `getCulturalSignificance()` - Country-specific cultural context
+
+#### 🤖 **AI-Powered Features**
+- Smart name recommendations based on multiple criteria
+- `getSmartRecommendations()` - AI-based name suggestions
+- `generateCompatibleNames()` - Partner-compatible name generator
+- `optimizeBusinessNames()` - Industry-optimized business names
+- `analyzeNamingTrends()` - Database trend analysis
+- 10 industry categories with element/planet matching
+
+#### 📄 **Export & Reporting**
+- Multi-format export: JSON, HTML, Text, Markdown
+- `exportAnalysis()` - Export in specified format
+- `generateShareableReport()` - Shareable report object
+- `getClipboardText()` - Quick copy for sharing
+
+#### 📚 **Historical & Educational**
+- Historical figures database (Prophets, Sahaba, Scholars, Rulers, Poets, Mystics)
+- `getHistoricalContext()` - Historical background
+- `findFamousPersonalities()` - Famous people with name
+- `getPropheticConnection()` - Prophetic significance
+- `getSahabaInfo()` - Sahaba (Companion) information
+
+#### 🌙 **Hijri Calendar Integration**
+- Full Hijri/Gregorian conversion
+- `toHijri()` / `toGregorian()` - Date conversion
+- `getCurrentHijri()` - Current Hijri date
+- `getBlessedDates()` - Blessed dates in year
+- `getMonthlyRecommendations()` - Month-specific guidance
+- `getTimingRecommendations()` - Personal timing based on name
+
+#### 👨‍👩‍👧‍👦 **Group & Family Analysis**
+- `analyzeFamilyTree()` - Family numerology analysis
+- `getGroupCompatibility()` - Group harmony scoring
+
+#### 📦 **New Data Files**
+- `regional_patterns_data.js` - 6 regional patterns
+- `ai_patterns_data.js` - AI weights and scoring
+- `name_database.js` - 200+ Arabic names
+- `export_templates_data.js` - Report templates
+- `historical_names_data.js` - Famous personalities
+- `sahaba_names_data.js` - Companions database
+- `hijri_calendar_data.js` - Islamic calendar
+
+#### 📊 **Statistics**
+- **30+ new methods**
+- **7 new data files**
+- **200+ name database entries**
+- **6 regional patterns**
+- **35 passing tests**
+
+---
+
+## [1.3.0] - 2024-12-22
+
+### 🚀 **Advanced Features Release**
+
+#### 💼 **Business Name Analysis**
+- Success indicators by value range
+- Industry recommendations
+- Partnership house analysis (1-9)
+- Best timing guidance
+- Overall business rating (1-10)
+
+#### 📅 **Date Integration & Life Path**
+- Birth date numerology integration
+- Life path number calculation
+- Name-date compatibility (0-100 score)
 - Personal year cycles (1-9)
 - Energy harmonization guidance
 
-**New Methods:**
-- `getLifePathCompatibility(day, month, year)` - Birth date compatibility
-- `calculatePersonalYear(year, month, day)` - Current year analysis
-- `calculateNameDateCompatibility()` - Compatibility scoring
-- `getNameDateHarmonization()` - Harmonization advice
-
-#### 🔮 Advanced Numerology
+#### 🔮 **Advanced Numerology**
 - Master numbers detection (11, 22, 33, 44)
 - Karmic debt identification (13, 14, 16, 19)
-- Hidden potential discovery (dominant/missing numbers)
+- Hidden potential discovery
 - Soul urge & personality numbers
-- Unique number pattern analysis
+- Dominant/missing number analysis
 
-**New Files:**
-- `advanced_numerology_data.js` (enhanced) - Life path patterns, master numbers, karmic numbers
-
-**New Methods:**
-- `getAdvancedNumerology()` - Complete advanced analysis
-- `checkMasterNumbers()` - Master number detection
-- `checkKarmicNumbers()` - Karmic debt analysis
-- `getHiddenPotential()` - Pattern discovery
-- `calculateSoulUrge()` - Soul urge number
-- `calculatePersonalityNumber()` - Personality number
-
-#### 🕌 Enhanced Islamic Features
-- Prayer time correlations with name energy
-- Personalized dhikr recommendations
-- Daily dhikr plans (morning/evening/after-prayer)
+#### 🕌 **Enhanced Islamic Features**
+- Prayer time correlations
+- Personalized dhikr recommendations (morning/evening/after-prayer)
 - Extended Quranic verse connections
 - Spiritual alignment guidance
 
-**New Methods:**
-- `getPrayerTimeCorrelations()` - Prayer guidance with dhikr
-- `getDailyDhikrPlan()` - Personalized daily dhikr
-- `getPrayerTimingAdvice()` - Best prayer times
-- `getExtendedQuranicConnections()` - More Quranic verses
+#### 🌐 **Web Interface Improvements**
+- Modular Architecture: Clean separation (calculator, UI, renderer, enhancements)
+- Tabs System: 5 tabs (All, v1.3.0, Islamic, Astrology, Export)
+- Animations: Scroll reveal, fade-in, hover effects
+- Export Functionality: Text, JSON, HTML, Print/PDF, Clipboard
+- Browser Bundle: Self-contained 168 KB bundle
 
-### 📦 Files in v1.3.0 Distribution:
-- `hisaab.js` (93.9 KB) - Main library with all v1.3.0 features
-- `islamic_data.js` (13.6 KB) - 99 Names of Allah & Quranic connections
-- `lunar_mansions_data.js` (21.8 KB) - 28 Lunar mansions
-- `enhanced_islamic_data.js` (11.6 KB) - Extended Quranic database & prayer correlations
-- `business_analysis_data.js` (11.7 KB) - Business success indicators ✨ NEW
-- `advanced_numerology_data.js` (17.8 KB) - Life path, master & karmic numbers ✨ NEW
-- `package.json` - Package configuration
-- `README.md` - Documentation
-
-### 🔧 Technical Details:
-- **Total Methods:** 50+ (15+ new in v1.3.0)
-- **Lines of Code:** ~2,400 added
-- **Backward Compatible:** ✅ Yes
-- **Breaking Changes:** ❌ None
+#### 📊 **Statistics**
+- **40+ new methods**
+- **6 data files** (2 new: business_analysis_data.js, advanced_numerology_data.js)
+- **5 JS modules** in modular web app
+- **172 KB** distribution size
+- **168 KB** browser bundle
 
 ---
 
-## v1.2.0 (Previous Release)
+## [1.2.0] - 2024-12-21
 
-### Features:
-- 28 Lunar Mansions (منازل القمر)
-- Cultural context and historical significance
-- Prophetic names recognition
-- Enhanced Quranic connections
-- Psychological patterns
+### 🌙 **Lunar Mansions Release**
 
-### Files:
-- `hisaab.js` (71.7 KB)
-- `islamic_data.js` (13.6 KB)
-- `lunar_mansions_data.js` (21.8 KB)
-- `package.json`
+#### ✨ **28 Lunar Mansions (منازل القمر)**
+- Complete database of 28 traditional Arabic astronomical stations
+- Each mansion includes: Arabic name, transliteration, meaning, constellation
+- Element associations: Fire, Earth, Air, Water
+- Nature classifications: Hot/Cold, Dry/Wet
+- Influence and fortune guidance
+- Personality traits per mansion
+- Favorable and unfavorable activities
+- Spiritual significance and traditional uses
 
----
+#### 📚 **Extended Quranic Database**
+- More verse connections based on numerical values
+- Enhanced spiritual significance mapping
 
-## v1.1.0
+#### 🤲 **Enhanced Spiritual Guidance**
+- Deeper Islamic insights per lunar mansion
+- Traditional agricultural and timing wisdom
 
-### Features:
-- Lunar mansions support
-- Extended Islamic analysis
-- Cultural preservation features
-
-### Files:
-- `hisaab.js` (59.7 KB)
-- `package.json`
-- `README.md`
+#### 📊 **Statistics**
+- **28 Lunar Mansions**: Complete traditional Arabic system
+- **4 Element mappings**: Per mansion association
+- **Enhanced cultural context**: Traditional uses and timing
 
 ---
 
-## v1.0.0 (Foundation)
+## [1.1.0] - 2024-12-20
 
-### Features:
-- Complete Abjad calculation
-- 99 Names of Allah matching
-- Quranic verse connections
-- Marriage compatibility
-- Arabic astrology (% 4, % 7, % 12)
-- Islamic spiritual analysis
+### 🎉 **Enhanced Features Release**
 
-### Files:
-- `hisaab.js` (45.5 KB)
-- `package.json`
-- `README.md`
+#### ✨ **Smart Name Generator**
+- Target Value Matching: Find names with specific Abjad values
+- Element Filtering: Water, Fire, Earth, Air element names
+- Gender-Specific: Separate male/female name pools
+- Length Constraints: Control name length precisely
+- Starting Letter: Names beginning with specific letters
+- Intelligent Scoring: Reasons provided for each suggestion
 
----
+#### 👨‍👩‍👧‍👦 **Family Harmony Analyzer**
+- Complete Family Profiling: Parents + children analysis
+- Element Distribution: Track dominant family elements
+- Parent Compatibility: Integration with حساب الشريك
+- Energy Balance: Yin/Yang family dynamics
+- Smart Recommendations: Cultural and spiritual guidance
+- Harmony Scoring: Quantitative 0-100 scoring system
 
-## Version Comparison
-
-| Feature | v1.0.0 | v1.1.0 | v1.2.0 | v1.3.0 |
-|---------|--------|--------|--------|--------|
-| Abjad Calculation | ✅ | ✅ | ✅ | ✅ |
-| Islamic Analysis | ✅ | ✅ | ✅ | ✅ |
-| Marriage Compatibility | ✅ | ✅ | ✅ | ✅ |
-| Arabic Astrology | ✅ | ✅ | ✅ | ✅ |
-| Lunar Mansions | ❌ | ✅ | ✅ | ✅ |
-| Cultural Context | ❌ | ✅ | ✅ | ✅ |
-| **Business Analysis** | ❌ | ❌ | ❌ | ✅ |
-| **Date Integration** | ❌ | ❌ | ❌ | ✅ |
-| **Advanced Numerology** | ❌ | ❌ | ❌ | ✅ |
-| **Prayer Correlations** | ❌ | ❌ | ❌ | ✅ |
-| File Size | 45 KB | 60 KB | 72 KB | 94 KB |
-| Total Methods | 20+ | 30+ | 35+ | 50+ |
+#### 📊 **Statistics**
+- **+400 lines**: Smart generation and analysis algorithms
+- **80+ Arabic names**: Curated male/female name database
+- **Advanced filtering**: Multiple simultaneous criteria
 
 ---
 
-## Download Specific Versions
+## [1.0.0] - 2024-12-19
 
-- **Latest (v1.3.0):** `/dist/latest/`
-- **v1.3.0:** `/dist/v1.3.0/`
-- **v1.2.0:** `/dist/v1.2.0/`
-- **v1.1.0:** `/dist/v1.1.0/`
-- **v1.0.0:** `/dist/v1.0.0/`
+### 🎉 **Initial Release - Complete Foundation**
 
----
+#### ✨ **Core Features**
+- **Abjad Calculation**: Complete Arabic letter-to-number mapping (28+ letters including ة)
+- **Digit Root Calculation**: Iterative reduction to single digits
+- **Letter Breakdown**: Detailed analysis of each letter's contribution
+- **Input Validation**: Robust error handling for invalid names
 
-## Usage
+#### ☪️ **Islamic Features**
+- **99 Names of Allah**: Complete database with Arabic, transliteration, meanings, attributes
+- **Divine Name Recognition**: Automatic detection when names match Asma ul-Husna
+- **Quranic Connections**: Links to specific Quranic verses based on numerical values
+- **Islamic Spiritual Analysis**: Personalized spiritual guidance and qualities
+- **Islamic Guidance**: Dhikr recommendations and spiritual actions
 
-### Install Latest Version:
-```bash
-# Copy from dist/latest/
-npm install hisaab@latest
-```
+#### 🌙 **Arabic Astrology System**
+- **Elements**: Traditional Arabic calculation (Value % 4 → Fire, Earth, Air, Water)
+- **Planets**: Classical 7 planets (Value % 7 → Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn)
+- **Zodiac Signs**: 12 signs (Value % 12 → starting with Aries)
+- **Arabic Names**: Complete bilingual support with Arabic terminology
+- **Temperaments**: Classical humoral theory integration
 
-### Install Specific Version:
-```bash
-# Copy from dist/v1.3.0/
-npm install hisaab@1.3.0
-```
+#### 🌍 **Western Astrology System (Optional)**
+- **Elements**: Pythagorean digit root mapping
+- **Planets**: Modern planets including Uranus, Neptune
+- **Colors**: Traditional planetary color associations
+- **Clear Labeling**: Distinguished from Arabic system
 
-### Use Directly:
-```javascript
-const Hisaab = require('./dist/v1.3.0/hisaab.js');
-```
+#### 💕 **Compatibility Systems**
+- **حساب الشريك (Arabic Partner Calculation)**: Traditional formula (DigitRoot1 + DigitRoot2 + 7)
+- **Partnership Houses**: Complete 1-9 house system with detailed interpretations
+- **Arabic Wisdom**: Authentic cultural guidance for relationships
+- **Western Compatibility**: Pythagorean scoring system (optional)
+- **Batch Analysis**: Multiple name compatibility checking
 
----
+#### 🔧 **Advanced Features**
+- **Complete Reports**: Comprehensive analysis combining all systems
+- **Personality Traits**: Islamic character qualities based on numerology
+- **Lucky Numbers**: Personalized number generation
+- **Name Classification**: Strength levels and energy types
+- **Similar Name Search**: Find names with similar numerical values
+- **Statistical Analysis**: Batch processing and analysis tools
 
-## Compatibility Matrix
+#### 🌐 **Web Interface**
+- **Beautiful Design**: Islamic-themed green, gold, blue color palette
+- **Arabic Typography**: Proper RTL support with Amiri font
+- **Interactive Calculator**: Real-time Abjad calculation
+- **Compatibility Checker**: Complete حساب الشريك interface
+- **Mobile Responsive**: Perfect experience on all devices
+- **Smooth Animations**: Elegant transitions and user feedback
 
-| Your Version | Compatible With | Notes |
-|-------------|-----------------|-------|
-| v1.3.0 | v1.0.0, v1.1.0, v1.2.0 | Fully backward compatible |
-| v1.2.0 | v1.0.0, v1.1.0 | Fully backward compatible |
-| v1.1.0 | v1.0.0 | Fully backward compatible |
-| v1.0.0 | - | Foundation version |
+#### 📚 **Documentation**
+- **Comprehensive Guide**: Complete API reference with examples
+- **Interactive Features**: Search, navigation, code copying
+- **Cultural Context**: Proper explanation of Arabic traditions
+- **Beautiful Tables**: Abjad letters and partnership houses
+- **Print Optimized**: Documentation ready for offline use
+- **Mobile Friendly**: Responsive design with collapsible sidebar
 
----
+#### 🛠️ **Technical Excellence**
+- **Static Methods**: Quick calculations without instantiation
+- **Error Handling**: Graceful handling of invalid inputs
+- **Performance Optimized**: Efficient calculations for large datasets
+- **Browser Compatible**: Works in both Node.js and browser environments
+- **Clean Architecture**: Well-structured, maintainable code
+- **Extensive Testing**: Multiple test suites covering all features
 
-**Current Release:** v1.3.0  
-**Status:** ✅ Production Ready  
-**Last Updated:** 2024
+#### 🎯 **Cultural Authenticity**
+- **Respectful Implementation**: Traditional methods properly honored
+- **Clear Attribution**: Arabic vs Western systems clearly distinguished
+- **Educational Value**: Explains calculation methods and significance
+- **Community Focus**: Built for Arabic and Islamic communities
 
-*Alhamdulillah - All versions preserved for your convenience* 🌙
+#### 📊 **Statistics**
+- **800+ lines** of core JavaScript code
+- **28+ Arabic letters** with variants supported
+- **99 Names of Allah** with complete metadata
+- **9 Partnership Houses** with detailed interpretations
+- **4 Element systems** (Arabic traditional)
+- **7 Classical planets** (Arabic astrology)
+- **12 Zodiac signs** with Arabic names
+- **Multiple test suites** with comprehensive coverage
+
+#### 🌟 **What Makes v1.0.0 Special**
+- **First of its kind**: Complete Arabic numerology library for JavaScript
+- **Culturally authentic**: Real traditional methods, not approximations
+- **Dual systems**: Both Arabic and Western approaches available
+- **Beautiful interface**: Professional-grade web calculator
+- **Educational**: Teaches users about Arabic traditions
+- **Community-focused**: Built for real-world Islamic/Arabic use cases
