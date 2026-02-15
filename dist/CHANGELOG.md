@@ -7,11 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### 🔮 **Planned for v2.0.0**
-- Multi-language Support: Hebrew, Urdu, Persian, Turkish
+### 🔮 **Planned for Future**
 - Machine Learning: Enhanced AI-powered insights
 - Mobile Apps: Native iOS/Android applications
 - Database Integration: User accounts and history
+
+---
+
+## [2.0.0] - 2026-02-15
+
+### 🚀 **Multi-Language Support Release**
+
+#### 🌍 **5 Language Abjad Systems**
+- **Arabic** (العربية) - Traditional 28-letter Abjad
+- **Hebrew** (עברית) - Full Gematria with final letters (ך, ם, ן, ף, ץ)
+- **Persian** (فارسی) - Extended with پ, چ, ژ, گ
+- **Urdu** (اردو) - Extended with ٹ, ڈ, ڑ, ں, ھ, ے
+- **Turkish** (Türkçe) - Latin script with special characters (Ç, Ğ, İ, Ö, Ş, Ü)
+
+#### 🔍 **Language Detection**
+- `detectLanguage()` - Auto-detect script and language
+- Hebrew script detection (עברית)
+- Arabic script detection with Persian/Urdu differentiation
+- Turkish Latin script detection
+
+#### 📚 **Multi-Language Methods**
+- `createForLanguage(name, language)` - Create instance for specific language
+- `getLanguageInfo()` - Get language metadata
+- `getElementInLanguage()` - Element in current language
+- `getPlanetInLanguage()` - Planet in current language
+- `compareCrossLanguage()` - Compare names across languages
+- `getSupportedLanguages()` - List all 5 languages
+- `getNamesByLanguage()` - Get names by language/gender
+- `analyzeInAllLanguages()` - Analyze name in all 5 systems
+- `getAbjadChart()` - Get letter-value chart for language
+- `toLanguageDisplay()` - Convert analysis display language
+
+#### 📦 **New Data File**
+- `languages_data.js` - 5 language abjad systems, elements, planets, zodiac, name databases
+
+#### 📊 **Statistics**
+- **5 supported languages**
+- **10 multi-language methods**
+- **1 new data file**
+- **25 passing tests**
 
 ---
 

@@ -1,9 +1,10 @@
 /**
  * Hisaab Browser Bundle - Self-contained version
- * Version: 1.5.0
- * Generated: 2026-02-15T06:30:47.956Z
+ * Version: 2.0.0
+ * Generated: 2026-02-15T06:35:40.755Z
  * 
  * Features:
+ * - Multi-Language Support (Arabic, Hebrew, Persian, Urdu, Turkish)
  * - Geographic & Regional Analysis
  * - AI Recommendations
  * - Export & Reporting
@@ -15,7 +16,7 @@
 (function(window) {
     'use strict';
     
-    console.log('📦 Loading Hisaab Browser Bundle v1.5.0...');
+    console.log('📦 Loading Hisaab Browser Bundle v2.0.0...');
     
     // Create module system
     const modules = {};
@@ -5177,6 +5178,257 @@ module.exports = {
 };
     };
     
+    modules['./languages_data.js'] = function(module, exports, require) {
+/**
+ * Multi-Language Abjad Data for Hisaab v2.0.0
+ * Supports: Arabic, Hebrew, Persian, Urdu, Turkish
+ */
+
+const LANGUAGE_DATA = {
+    arabic: {
+        name: 'Arabic',
+        nativeName: 'العربية',
+        rtl: true,
+        abjad: {
+            'ا': 1, 'أ': 1, 'إ': 1, 'آ': 1,
+            'ب': 2,
+            'ج': 3,
+            'د': 4,
+            'ه': 5, 'ة': 5,
+            'و': 6, 'ؤ': 6,
+            'ز': 7,
+            'ح': 8,
+            'ط': 9,
+            'ي': 10, 'ى': 10, 'ئ': 10,
+            'ك': 20, 'كـ': 20,
+            'ل': 30,
+            'م': 40,
+            'ن': 50,
+            'س': 60,
+            'ع': 70,
+            'ف': 80,
+            'ص': 90,
+            'ق': 100,
+            'ر': 200,
+            'ش': 300,
+            'ت': 400,
+            'ث': 500,
+            'خ': 600,
+            'ذ': 700,
+            'ض': 800,
+            'ظ': 900,
+            'غ': 1000
+        },
+        elements: ['نار', 'تراب', 'هواء', 'ماء'],
+        planets: ['شمس', 'قمر', 'مريخ', 'عطارد', 'مشتري', 'زحل', 'زهرة'],
+        zodiac: ['حمل', 'ثور', 'جوزاء', 'سرطان', 'أسد', 'سنبلة', 'ميزان', 'عقرب', 'قوس', 'جدي', 'دلو', 'حوت']
+    },
+    
+    hebrew: {
+        name: 'Hebrew',
+        nativeName: 'עברית',
+        rtl: true,
+        abjad: {
+            'א': 1,
+            'ב': 2,
+            'ג': 3,
+            'ד': 4,
+            'ה': 5,
+            'ו': 6,
+            'ז': 7,
+            'ח': 8,
+            'ט': 9,
+            'י': 10,
+            'כ': 20, 'ך': 20,
+            'ל': 30,
+            'מ': 40, 'ם': 40,
+            'נ': 50, 'ן': 50,
+            'ס': 60,
+            'ע': 70,
+            'פ': 80, 'ף': 80,
+            'צ': 90, 'ץ': 90,
+            'ק': 100,
+            'ר': 200,
+            'ש': 300,
+            'ת': 400
+        },
+        elements: ['אש', 'עפר', 'רוח', 'מים'],
+        planets: ['שמש', 'ירח', 'מאדים', 'כוכב', 'צדק', 'שבתאי', 'נוגה'],
+        zodiac: ['טלה', 'שור', 'תאומים', 'סרטן', 'אריה', 'בתולה', 'מאזניים', 'עקרב', 'קשת', 'גדי', 'דלי', 'דגים']
+    },
+    
+    persian: {
+        name: 'Persian',
+        nativeName: 'فارسی',
+        rtl: true,
+        abjad: {
+            'ا': 1, 'آ': 1,
+            'ب': 2,
+            'پ': 2,
+            'ج': 3,
+            'چ': 3,
+            'د': 4,
+            'ه': 5, 'ة': 5,
+            'و': 6,
+            'ز': 7,
+            'ژ': 7,
+            'ح': 8,
+            'ط': 9,
+            'ی': 10, 'ى': 10,
+            'ک': 20, 'ك': 20,
+            'گ': 20,
+            'ل': 30,
+            'م': 40,
+            'ن': 50,
+            'س': 60,
+            'ش': 300,
+            'ع': 70,
+            'ف': 80,
+            'ص': 90,
+            'ق': 100,
+            'ر': 200,
+            'ت': 400,
+            'ث': 500,
+            'خ': 600,
+            'ذ': 700,
+            'ض': 800,
+            'ظ': 900,
+            'غ': 1000
+        },
+        elements: ['آتش', 'خاک', 'هوا', 'آب'],
+        planets: ['خورشید', 'ماه', 'مریخ', 'عطارد', 'مشتری', 'زحل', 'ناهید'],
+        zodiac: ['بره', 'گاو', 'پیکر', 'خرچنگ', 'شیر', 'خوشه', 'ترازو', 'کژدم', 'کمان', 'بزغاله', 'دلو', 'ماهی']
+    },
+    
+    urdu: {
+        name: 'Urdu',
+        nativeName: 'اردو',
+        rtl: true,
+        abjad: {
+            'ا': 1, 'أ': 1, 'آ': 1,
+            'ب': 2,
+            'پ': 2,
+            'ت': 400,
+            'ٹ': 400,
+            'ث': 500,
+            'ج': 3,
+            'چ': 3,
+            'ح': 8,
+            'خ': 600,
+            'د': 4,
+            'ڈ': 4,
+            'ذ': 700,
+            'ر': 200,
+            'ڑ': 200,
+            'ز': 7,
+            'ژ': 7,
+            'س': 60,
+            'ش': 300,
+            'ص': 90,
+            'ض': 800,
+            'ط': 9,
+            'ظ': 900,
+            'ع': 70,
+            'غ': 1000,
+            'ف': 80,
+            'ق': 100,
+            'ک': 20, 'ك': 20,
+            'گ': 20,
+            'ل': 30,
+            'م': 40,
+            'ن': 50,
+            'ں': 50,
+            'و': 6, 'ؤ': 6,
+            'ہ': 5, 'ة': 5,
+            'ھ': 5,
+            'ی': 10, 'ى': 10, 'ئ': 10,
+            'ے': 10
+        },
+        elements: ['آگ', 'مٹی', 'ہوا', 'پانی'],
+        planets: ['سورج', 'چاند', 'مریخ', 'عطارد', 'مشتری', 'زحل', 'زہرہ'],
+        zodiac: ['میںڑھ', 'بیل', 'جڑواں', 'کیکڑ', 'سنگھ', 'کنیا', 'تلہ', 'بچھڑوں', 'دھنوش', 'مکر', 'کنب', 'مچھلی']
+    },
+    
+    turkish: {
+        name: 'Turkish',
+        nativeName: 'Türkçe',
+        rtl: false,
+        abjad: {
+            'A': 1, 'a': 1,
+            'B': 2, 'b': 2,
+            'C': 3, 'c': 3,
+            'Ç': 3, 'ç': 3,
+            'D': 4, 'd': 4,
+            'E': 5, 'e': 5,
+            'F': 80, 'f': 80,
+            'G': 20, 'g': 20,
+            'Ğ': 20, 'ğ': 20,
+            'H': 8, 'h': 8,
+            'I': 10, 'ı': 10,
+            'İ': 10, 'i': 10,
+            'J': 3, 'j': 3,
+            'K': 20, 'k': 20,
+            'L': 30, 'l': 30,
+            'M': 40, 'm': 40,
+            'N': 50, 'n': 50,
+            'O': 70, 'o': 70,
+            'Ö': 70, 'ö': 70,
+            'P': 80, 'p': 80,
+            'R': 200, 'r': 200,
+            'S': 60, 's': 60,
+            'Ş': 300, 'ş': 300,
+            'T': 400, 't': 400,
+            'U': 6, 'u': 6,
+            'Ü': 6, 'ü': 6,
+            'V': 6, 'v': 6,
+            'Y': 10, 'y': 10,
+            'Z': 7, 'z': 7
+        },
+        elements: ['Ateş', 'Toprak', 'Hava', 'Su'],
+        planets: ['Güneş', 'Ay', 'Mars', 'Merkür', 'Jüpiter', 'Satürn', 'Venüs'],
+        zodiac: ['Koç', 'Boğa', 'İkizler', 'Yengeç', 'Aslan', 'Başak', 'Terazi', 'Akrep', 'Yay', 'Oğlak', 'Kova', 'Balık']
+    }
+};
+
+const LANGUAGE_COMPATIBILITY = {
+    crossLanguageCompatible: ['arabic', 'persian', 'urdu'],
+    similarScripts: {
+        'arabic-persian': 0.95,
+        'arabic-urdu': 0.90,
+        'persian-urdu': 0.92,
+        'hebrew-arabic': 0.30,
+        'turkish-arabic': 0.15
+    }
+};
+
+const LANGUAGE_NAMES = {
+    arabic: {
+        male: ['محمد', 'أحمد', 'علي', 'حسن', 'حسين', 'عمر', 'خالد', 'يوسف', 'إبراهيم', 'إسماعيل', 'عبدالله', 'عبدالرحمن', 'سعيد', 'فهد', 'مازن', 'طارق', 'سامي', 'وليد', 'خالد', 'راشد'],
+        female: ['فاطمة', 'عائشة', 'خديجة', 'مريم', 'آمنة', 'حفصة', 'زينب', 'رقية', 'سكينة', 'أسماء', 'نفيسة', 'سارة', 'هند', 'لينا', 'دانا', 'رهف', 'نور', 'هدى', 'سلمى', 'ريم']
+    },
+    hebrew: {
+        male: ['דוד', 'משה', 'יעקב', 'אברהם', 'יצחק', 'יוסף', 'דניאל', 'נתן', 'אהרון', 'שלמה', 'אליהו', 'עזרא', 'בנימ', 'יהודה', 'ראובן'],
+        female: ['שרה', 'רחל', 'לאה', 'רבקה', 'מרים', 'דבורה', 'חנה', 'אסתר', 'רות', 'אביגיל', 'תמר', 'יעל', 'עדינה', 'בתיה', 'ציפורה']
+    },
+    persian: {
+        male: ['رضا', 'علی', 'محمد', 'حسین', 'حسن', 'مهدی', 'امیر', 'کامران', 'فرهاد', 'بهروز', 'کاوه', 'آرش', 'سیاوش', 'فریدون', 'جمشید'],
+        female: ['فاطمه', 'زهرا', 'مریم', 'سكینه', 'زینب', 'پریسا', 'سارا', 'نازنین', 'مهسا', 'نیلوفر', 'شیرین', 'رؤیا', 'آناهیتا', 'ترانه', 'آتوسا']
+    },
+    urdu: {
+        male: ['محمد', 'احمد', 'علی', 'حسن', 'حسین', 'عمر', 'خالد', 'یوسف', 'ابراہیم', 'اسماعیل', 'عبداللہ', 'عبدالرحمن', 'سعید', 'فہد', 'مازن', 'طارق', 'سامع', 'ولید', 'خالد', 'راشد'],
+        female: ['فاطمہ', 'عائشہ', 'خدیجہ', 'مریم', 'آمنہ', 'حفصہ', 'زینب', 'رقیہ', 'سکینہ', 'اسما', 'نفیسہ', 'سارہ', 'ہند', 'لینا', 'دانا', 'رہف', 'نور', 'ہد', 'سلمیٰ', 'ریم']
+    },
+    turkish: {
+        male: ['Mehmet', 'Ahmet', 'Ali', 'Mustafa', 'Hasan', 'Hüseyin', 'İbrahim', 'İsmail', 'Ömer', 'Fatih', 'Selim', 'Murat', 'Emre', 'Burak', 'Oğuz', 'Atilla', 'Cengiz', 'Tamer', 'Volkan', 'Serkan'],
+        female: ['Fatma', 'Ayşe', 'Hatice', 'Meryem', 'Emine', 'Zeynep', 'Elif', 'Seda', 'Selin', 'Defne', 'Ece', 'Buse', 'Ebru', 'Şebnem', 'Pelin', 'Burcu', 'Didem', 'Gamze', 'Hande', 'İrem']
+    }
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { LANGUAGE_DATA, LANGUAGE_COMPATIBILITY, LANGUAGE_NAMES };
+}
+    };
+    
     // Register main library
     modules['./index.js'] = function(module, exports, require) {
 /**
@@ -5202,6 +5454,7 @@ const { HISTORICAL_FIGURES, NAME_HISTORICAL_EVENTS, findHistoricalFigures, getFi
 const { SAHABA_DATABASE, SAHABA_BY_LINEAGE, SAHABA_VIRTUES_INDEX, getSahabaByName, getSahabaByTitle, getAsharaMubashara, getProminentSahaba, getSahabiyat, isSahabaName, getSahabaCount } = require('./sahaba_names_data.js');
 const { HIJRI_MONTHS, BLESSED_DAYS, ISLAMIC_EVENTS, gregorianToHijri, hijriToGregorian, getCurrentHijriDate, getHijriMonthInfo, getMonthByName, getBlessedDaysInMonth, isBlessedDay, getHolyMonths, isHolyMonth, getRamadanInfo, getHajjMonths, getIslamicYearSignificance, getDaysInHijriMonth, getUpcomingBlessedDay } = require('./hijri_calendar_data.js');
 const { CHART_COLORS, CHART_CONFIGS, generateCompatibilityRadarData, generateElementPieData, generateDigitRootBarData, generateCompatibilityGaugeData, generateFamilyTreeBarData, generatePartnerHouseChart, generateRegionalComparisonChart, generateTimelineData, getChartConfig, getChartColors } = require('./visualization_data.js');
+const { LANGUAGE_DATA, LANGUAGE_COMPATIBILITY, LANGUAGE_NAMES } = require('./languages_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -8412,13 +8665,305 @@ if (score >= 80) return 'Excellent Harmony';
         return getChartColors();
     }
 
-    /**
+/**
      * Get chart configuration
      * @param {string} type - Chart type
      * @returns {Object} Chart configuration
      */
     static getChartConfig(type) {
         return getChartConfig(type);
+    }
+
+    // ============================================
+    // v2.0.0 - Multi-Language Support
+    // ============================================
+
+    /**
+     * Detect language of a name
+     * @param {string} name - Name to detect
+     * @returns {string} Detected language code
+     */
+    static detectLanguage(name) {
+        const firstChar = name.trim()[0];
+        
+        if (/[\u0590-\u05FF]/.test(firstChar)) {
+            return 'hebrew';
+        }
+        
+        if (/[\u0600-\u06FF]/.test(firstChar)) {
+            const persianChars = ['پ', 'چ', 'ژ', 'گ', 'ک', 'ی'];
+            const urduChars = ['ٹ', 'ڈ', 'ڑ', 'ں', 'ہ', 'ھ', 'ے'];
+            
+            for (const char of name) {
+                if (persianChars.includes(char) && !urduChars.includes(char)) {
+                    if (['ٹ', 'ڈ', 'ڑ', 'ں', 'ھ', 'ے'].some(c => name.includes(c))) {
+                        return 'urdu';
+                    }
+                    return 'persian';
+                }
+                if (urduChars.includes(char)) {
+                    return 'urdu';
+                }
+            }
+            return 'arabic';
+        }
+        
+        if (/[A-Za-zÇçĞğİıÖöŞşÜü]/.test(firstChar)) {
+            const turkishChars = ['Ç', 'ç', 'Ğ', 'ğ', 'İ', 'ı', 'Ö', 'ö', 'Ş', 'ş', 'Ü', 'ü'];
+            for (const char of name) {
+                if (turkishChars.includes(char)) {
+                    return 'turkish';
+                }
+            }
+            return 'turkish';
+        }
+        
+        return 'arabic';
+    }
+
+    /**
+     * Create Hisaab instance for a specific language
+     * @param {string} name - Name to analyze
+     * @param {string} language - Language code (arabic, hebrew, persian, urdu, turkish)
+     * @returns {Hisaab} Hisaab instance with language-specific abjad
+     */
+    static createForLanguage(name, language = 'auto') {
+        const detectedLang = language === 'auto' ? Hisaab.detectLanguage(name) : language;
+        
+        if (!LANGUAGE_DATA[detectedLang]) {
+            throw new Error(`Unsupported language: ${detectedLang}. Supported: arabic, hebrew, persian, urdu, turkish`);
+        }
+        
+        const instance = Object.create(Hisaab.prototype);
+        instance.name = name.trim();
+        instance.language = detectedLang;
+        instance.abjadMap = LANGUAGE_DATA[detectedLang].abjad;
+        instance.value = instance.calculateValue();
+        
+        return instance;
+    }
+
+    /**
+     * Calculate value using language-specific abjad
+     * @returns {number} The calculated value
+     */
+    calculateValue() {
+        let totalValue = 0;
+        
+        for (let i = 0; i < this.name.length; i++) {
+            const letter = this.name[i];
+            const letterValue = this.abjadMap[letter];
+            
+            if (letterValue !== undefined) {
+                totalValue += letterValue;
+            }
+        }
+        
+        return totalValue;
+    }
+
+    /**
+     * Get language info
+     * @returns {Object} Language information
+     */
+    getLanguageInfo() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        return {
+            code: this.language || 'arabic',
+            name: langData.name,
+            nativeName: langData.nativeName,
+            rtl: langData.rtl,
+            elements: langData.elements,
+            planets: langData.planets,
+            zodiac: langData.zodiac
+        };
+    }
+
+    /**
+     * Get element in current language
+     * @returns {Object} Element info in current language
+     */
+    getElementInLanguage() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        const elementIndex = this.value % 4;
+        const elementName = langData.elements[elementIndex];
+        
+        return {
+            index: elementIndex,
+            name: elementName,
+            language: langData.name
+        };
+    }
+
+    /**
+     * Get planet in current language
+     * @returns {Object} Planet info in current language
+     */
+    getPlanetInLanguage() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        const planetIndex = this.value % 7;
+        const planetName = langData.planets[planetIndex];
+        
+        return {
+            index: planetIndex,
+            name: planetName,
+            language: langData.name
+        };
+    }
+
+    /**
+     * Compare names across languages
+     * @param {string} name1 - First name
+     * @param {string} lang1 - First name language
+     * @param {string} name2 - Second name
+     * @param {string} lang2 - Second name language
+     * @returns {Object} Cross-language comparison
+     */
+    static compareCrossLanguage(name1, lang1, name2, lang2) {
+        const h1 = Hisaab.createForLanguage(name1, lang1);
+        const h2 = Hisaab.createForLanguage(name2, lang2);
+        
+        const langKey = `${lang1}-${lang2}`;
+        const similarity = LANGUAGE_COMPATIBILITY.similarScripts[langKey] || 0.5;
+        
+        return {
+            name1: {
+                text: name1,
+                language: h1.getLanguageInfo(),
+                value: h1.getValue(),
+                digitRoot: h1.getDigitRoot()
+            },
+            name2: {
+                text: name2,
+                language: h2.getLanguageInfo(),
+                value: h2.getValue(),
+                digitRoot: h2.getDigitRoot()
+            },
+            scriptSimilarity: similarity,
+            crossLanguageCompatible: LANGUAGE_COMPATIBILITY.crossLanguageCompatible.includes(lang1) && 
+                                     LANGUAGE_COMPATIBILITY.crossLanguageCompatible.includes(lang2),
+            valueDifference: Math.abs(h1.getValue() - h2.getValue()),
+            digitRootMatch: h1.getDigitRoot() === h2.getDigitRoot()
+        };
+    }
+
+    /**
+     * Get supported languages
+     * @returns {Array} List of supported languages
+     */
+    static getSupportedLanguages() {
+        return Object.keys(LANGUAGE_DATA).map(code => ({
+            code: code,
+            name: LANGUAGE_DATA[code].name,
+            nativeName: LANGUAGE_DATA[code].nativeName,
+            rtl: LANGUAGE_DATA[code].rtl
+        }));
+    }
+
+    /**
+     * Get names by language
+     * @param {string} language - Language code
+     * @param {string} gender - 'male' or 'female'
+     * @param {number} count - Number of names to return
+     * @returns {Array} Array of names
+     */
+    static getNamesByLanguage(language, gender = null, count = 10) {
+        const names = LANGUAGE_NAMES[language];
+        if (!names) {
+            return [];
+        }
+        
+        if (gender && names[gender]) {
+            return names[gender].slice(0, count);
+        }
+        
+        const allNames = [...(names.male || []), ...(names.female || [])];
+        return allNames.slice(0, count);
+    }
+
+    /**
+     * Analyze name in all supported languages
+     * @param {string} name - Name to analyze
+     * @returns {Object} Analysis in all languages
+     */
+    static analyzeInAllLanguages(name) {
+        const results = {};
+        
+        for (const langCode of Object.keys(LANGUAGE_DATA)) {
+            try {
+                const h = Hisaab.createForLanguage(name, langCode);
+                results[langCode] = {
+                    value: h.getValue(),
+                    digitRoot: h.getDigitRoot(),
+                    language: h.getLanguageInfo()
+                };
+            } catch (e) {
+                results[langCode] = { error: e.message };
+            }
+        }
+        
+        return {
+            name: name,
+            detectedLanguage: Hisaab.detectLanguage(name),
+            analyses: results
+        };
+    }
+
+    /**
+     * Get abjad chart for a language
+     * @param {string} language - Language code
+     * @returns {Object} Abjad chart with letters and values
+     */
+    static getAbjadChart(language = 'arabic') {
+        const langData = LANGUAGE_DATA[language];
+        if (!langData) {
+            return null;
+        }
+        
+        const chart = Object.entries(langData.abjad)
+            .sort((a, b) => a[1] - b[1])
+            .map(([letter, value]) => ({ letter, value }));
+        
+        return {
+            language: langData.name,
+            nativeName: langData.nativeName,
+            chart: chart,
+            totalLetters: chart.length
+        };
+    }
+
+    /**
+     * Convert name analysis between language display formats
+     * @param {string} targetLanguage - Target language for display
+     * @returns {Object} Analysis with translated terminology
+     */
+    toLanguageDisplay(targetLanguage) {
+        const sourceLang = this.language || 'arabic';
+        const targetLang = LANGUAGE_DATA[targetLanguage];
+        
+        if (!targetLang) {
+            return this.getCompleteReport();
+        }
+        
+        const astrology = this.getArabicAstrology();
+        
+        return {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            element: {
+                source: astrology.element.name,
+                target: targetLang.elements[astrology.element.index]
+            },
+            planet: {
+                source: astrology.planet.name,
+                target: targetLang.planets[astrology.planet.index]
+            },
+            languages: {
+                source: LANGUAGE_DATA[sourceLang].nativeName,
+                target: targetLang.nativeName
+            }
+        };
     }
 }
 
@@ -8429,9 +8974,10 @@ module.exports = Hisaab;
     try {
         const Hisaab = require('./index.js');
         window.Hisaab = Hisaab;
-        console.log('✅ Hisaab v1.5.0 loaded successfully');
+        console.log('✅ Hisaab v2.0.0 loaded successfully');
         console.log('🎉 Ready to use: new Hisaab("اسم عربي")');
-        console.log('📋 New features: generateCompatibilityChart(), generateElementChart(), generateNumerologyWheel()');
+        console.log('📋 New features: createForLanguage(), detectLanguage(), compareCrossLanguage()');
+        console.log('🌍 Languages: Arabic, Hebrew, Persian, Urdu, Turkish');
         
         // Provide a load function for compatibility
         window.loadHisaabLibrary = function() {

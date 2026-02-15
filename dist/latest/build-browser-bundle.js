@@ -1,12 +1,12 @@
 /**
  * Build Browser Bundle Script
- * Creates a self-contained browser version of Hisaab v1.5.0
+ * Creates a self-contained browser version of Hisaab v2.0.0
  */
 
 const fs = require('fs');
 const path = require('path');
 
-console.log('📦 Building Hisaab Browser Bundle v1.5.0...\n');
+console.log('📦 Building Hisaab Browser Bundle v2.0.0...\n');
 
 // Read all source files with UTF-8 encoding
 const files = {
@@ -23,16 +23,18 @@ const files = {
     sahabaData: fs.readFileSync('sahaba_names_data.js', 'utf8'),
     hijriData: fs.readFileSync('hijri_calendar_data.js', 'utf8'),
     visualizationData: fs.readFileSync('visualization_data.js', 'utf8'),
+    languagesData: fs.readFileSync('languages_data.js', 'utf8'),
     mainLibrary: fs.readFileSync('index.js', 'utf8')
 };
 
 // Create the browser bundle
 const bundle = `/**
  * Hisaab Browser Bundle - Self-contained version
- * Version: 1.5.0
+ * Version: 2.0.0
  * Generated: ${new Date().toISOString()}
  * 
  * Features:
+ * - Multi-Language Support (Arabic, Hebrew, Persian, Urdu, Turkish)
  * - Geographic & Regional Analysis
  * - AI Recommendations
  * - Export & Reporting
@@ -44,7 +46,7 @@ const bundle = `/**
 (function(window) {
     'use strict';
     
-    console.log('📦 Loading Hisaab Browser Bundle v1.5.0...');
+    console.log('📦 Loading Hisaab Browser Bundle v2.0.0...');
     
     // Create module system
     const modules = {};
@@ -118,6 +120,10 @@ ${files.hijriData}
 ${files.visualizationData}
     };
     
+    modules['./languages_data.js'] = function(module, exports, require) {
+${files.languagesData}
+    };
+    
     // Register main library
     modules['./index.js'] = function(module, exports, require) {
 ${files.mainLibrary}
@@ -127,9 +133,10 @@ ${files.mainLibrary}
     try {
         const Hisaab = require('./index.js');
         window.Hisaab = Hisaab;
-        console.log('✅ Hisaab v1.5.0 loaded successfully');
+        console.log('✅ Hisaab v2.0.0 loaded successfully');
         console.log('🎉 Ready to use: new Hisaab("اسم عربي")');
-        console.log('📋 New features: generateCompatibilityChart(), generateElementChart(), generateNumerologyWheel()');
+        console.log('📋 New features: createForLanguage(), detectLanguage(), compareCrossLanguage()');
+        console.log('🌍 Languages: Arabic, Hebrew, Persian, Urdu, Turkish');
         
         // Provide a load function for compatibility
         window.loadHisaabLibrary = function() {
@@ -152,5 +159,6 @@ console.log('✅ Bundle created successfully!');
 console.log(`📁 Location: ${outputPath}`);
 console.log(`📦 Size: ${(stats.size / 1024).toFixed(2)} KB`);
 console.log(`📝 Lines: ${bundle.split('\n').length}`);
-console.log('\n🎉 v1.5.0 Browser Bundle Ready!');
-console.log('📋 Includes: Regional, AI, Export, Historical, Hijri, Visualization features');
+console.log('\n🎉 v2.0.0 Browser Bundle Ready!');
+console.log('🌍 Languages: Arabic, Hebrew, Persian, Urdu, Turkish');
+console.log('📋 Includes: Regional, AI, Export, Historical, Hijri, Visualization, Multi-Language');

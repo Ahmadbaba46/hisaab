@@ -21,6 +21,7 @@ const { HISTORICAL_FIGURES, NAME_HISTORICAL_EVENTS, findHistoricalFigures, getFi
 const { SAHABA_DATABASE, SAHABA_BY_LINEAGE, SAHABA_VIRTUES_INDEX, getSahabaByName, getSahabaByTitle, getAsharaMubashara, getProminentSahaba, getSahabiyat, isSahabaName, getSahabaCount } = require('./sahaba_names_data.js');
 const { HIJRI_MONTHS, BLESSED_DAYS, ISLAMIC_EVENTS, gregorianToHijri, hijriToGregorian, getCurrentHijriDate, getHijriMonthInfo, getMonthByName, getBlessedDaysInMonth, isBlessedDay, getHolyMonths, isHolyMonth, getRamadanInfo, getHajjMonths, getIslamicYearSignificance, getDaysInHijriMonth, getUpcomingBlessedDay } = require('./hijri_calendar_data.js');
 const { CHART_COLORS, CHART_CONFIGS, generateCompatibilityRadarData, generateElementPieData, generateDigitRootBarData, generateCompatibilityGaugeData, generateFamilyTreeBarData, generatePartnerHouseChart, generateRegionalComparisonChart, generateTimelineData, getChartConfig, getChartColors } = require('./visualization_data.js');
+const { LANGUAGE_DATA, LANGUAGE_COMPATIBILITY, LANGUAGE_NAMES } = require('./languages_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -3231,13 +3232,305 @@ if (score >= 80) return 'Excellent Harmony';
         return getChartColors();
     }
 
-    /**
+/**
      * Get chart configuration
      * @param {string} type - Chart type
      * @returns {Object} Chart configuration
      */
     static getChartConfig(type) {
         return getChartConfig(type);
+    }
+
+    // ============================================
+    // v2.0.0 - Multi-Language Support
+    // ============================================
+
+    /**
+     * Detect language of a name
+     * @param {string} name - Name to detect
+     * @returns {string} Detected language code
+     */
+    static detectLanguage(name) {
+        const firstChar = name.trim()[0];
+        
+        if (/[\u0590-\u05FF]/.test(firstChar)) {
+            return 'hebrew';
+        }
+        
+        if (/[\u0600-\u06FF]/.test(firstChar)) {
+            const persianChars = ['پ', 'چ', 'ژ', 'گ', 'ک', 'ی'];
+            const urduChars = ['ٹ', 'ڈ', 'ڑ', 'ں', 'ہ', 'ھ', 'ے'];
+            
+            for (const char of name) {
+                if (persianChars.includes(char) && !urduChars.includes(char)) {
+                    if (['ٹ', 'ڈ', 'ڑ', 'ں', 'ھ', 'ے'].some(c => name.includes(c))) {
+                        return 'urdu';
+                    }
+                    return 'persian';
+                }
+                if (urduChars.includes(char)) {
+                    return 'urdu';
+                }
+            }
+            return 'arabic';
+        }
+        
+        if (/[A-Za-zÇçĞğİıÖöŞşÜü]/.test(firstChar)) {
+            const turkishChars = ['Ç', 'ç', 'Ğ', 'ğ', 'İ', 'ı', 'Ö', 'ö', 'Ş', 'ş', 'Ü', 'ü'];
+            for (const char of name) {
+                if (turkishChars.includes(char)) {
+                    return 'turkish';
+                }
+            }
+            return 'turkish';
+        }
+        
+        return 'arabic';
+    }
+
+    /**
+     * Create Hisaab instance for a specific language
+     * @param {string} name - Name to analyze
+     * @param {string} language - Language code (arabic, hebrew, persian, urdu, turkish)
+     * @returns {Hisaab} Hisaab instance with language-specific abjad
+     */
+    static createForLanguage(name, language = 'auto') {
+        const detectedLang = language === 'auto' ? Hisaab.detectLanguage(name) : language;
+        
+        if (!LANGUAGE_DATA[detectedLang]) {
+            throw new Error(`Unsupported language: ${detectedLang}. Supported: arabic, hebrew, persian, urdu, turkish`);
+        }
+        
+        const instance = Object.create(Hisaab.prototype);
+        instance.name = name.trim();
+        instance.language = detectedLang;
+        instance.abjadMap = LANGUAGE_DATA[detectedLang].abjad;
+        instance.value = instance.calculateValue();
+        
+        return instance;
+    }
+
+    /**
+     * Calculate value using language-specific abjad
+     * @returns {number} The calculated value
+     */
+    calculateValue() {
+        let totalValue = 0;
+        
+        for (let i = 0; i < this.name.length; i++) {
+            const letter = this.name[i];
+            const letterValue = this.abjadMap[letter];
+            
+            if (letterValue !== undefined) {
+                totalValue += letterValue;
+            }
+        }
+        
+        return totalValue;
+    }
+
+    /**
+     * Get language info
+     * @returns {Object} Language information
+     */
+    getLanguageInfo() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        return {
+            code: this.language || 'arabic',
+            name: langData.name,
+            nativeName: langData.nativeName,
+            rtl: langData.rtl,
+            elements: langData.elements,
+            planets: langData.planets,
+            zodiac: langData.zodiac
+        };
+    }
+
+    /**
+     * Get element in current language
+     * @returns {Object} Element info in current language
+     */
+    getElementInLanguage() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        const elementIndex = this.value % 4;
+        const elementName = langData.elements[elementIndex];
+        
+        return {
+            index: elementIndex,
+            name: elementName,
+            language: langData.name
+        };
+    }
+
+    /**
+     * Get planet in current language
+     * @returns {Object} Planet info in current language
+     */
+    getPlanetInLanguage() {
+        const langData = LANGUAGE_DATA[this.language || 'arabic'];
+        const planetIndex = this.value % 7;
+        const planetName = langData.planets[planetIndex];
+        
+        return {
+            index: planetIndex,
+            name: planetName,
+            language: langData.name
+        };
+    }
+
+    /**
+     * Compare names across languages
+     * @param {string} name1 - First name
+     * @param {string} lang1 - First name language
+     * @param {string} name2 - Second name
+     * @param {string} lang2 - Second name language
+     * @returns {Object} Cross-language comparison
+     */
+    static compareCrossLanguage(name1, lang1, name2, lang2) {
+        const h1 = Hisaab.createForLanguage(name1, lang1);
+        const h2 = Hisaab.createForLanguage(name2, lang2);
+        
+        const langKey = `${lang1}-${lang2}`;
+        const similarity = LANGUAGE_COMPATIBILITY.similarScripts[langKey] || 0.5;
+        
+        return {
+            name1: {
+                text: name1,
+                language: h1.getLanguageInfo(),
+                value: h1.getValue(),
+                digitRoot: h1.getDigitRoot()
+            },
+            name2: {
+                text: name2,
+                language: h2.getLanguageInfo(),
+                value: h2.getValue(),
+                digitRoot: h2.getDigitRoot()
+            },
+            scriptSimilarity: similarity,
+            crossLanguageCompatible: LANGUAGE_COMPATIBILITY.crossLanguageCompatible.includes(lang1) && 
+                                     LANGUAGE_COMPATIBILITY.crossLanguageCompatible.includes(lang2),
+            valueDifference: Math.abs(h1.getValue() - h2.getValue()),
+            digitRootMatch: h1.getDigitRoot() === h2.getDigitRoot()
+        };
+    }
+
+    /**
+     * Get supported languages
+     * @returns {Array} List of supported languages
+     */
+    static getSupportedLanguages() {
+        return Object.keys(LANGUAGE_DATA).map(code => ({
+            code: code,
+            name: LANGUAGE_DATA[code].name,
+            nativeName: LANGUAGE_DATA[code].nativeName,
+            rtl: LANGUAGE_DATA[code].rtl
+        }));
+    }
+
+    /**
+     * Get names by language
+     * @param {string} language - Language code
+     * @param {string} gender - 'male' or 'female'
+     * @param {number} count - Number of names to return
+     * @returns {Array} Array of names
+     */
+    static getNamesByLanguage(language, gender = null, count = 10) {
+        const names = LANGUAGE_NAMES[language];
+        if (!names) {
+            return [];
+        }
+        
+        if (gender && names[gender]) {
+            return names[gender].slice(0, count);
+        }
+        
+        const allNames = [...(names.male || []), ...(names.female || [])];
+        return allNames.slice(0, count);
+    }
+
+    /**
+     * Analyze name in all supported languages
+     * @param {string} name - Name to analyze
+     * @returns {Object} Analysis in all languages
+     */
+    static analyzeInAllLanguages(name) {
+        const results = {};
+        
+        for (const langCode of Object.keys(LANGUAGE_DATA)) {
+            try {
+                const h = Hisaab.createForLanguage(name, langCode);
+                results[langCode] = {
+                    value: h.getValue(),
+                    digitRoot: h.getDigitRoot(),
+                    language: h.getLanguageInfo()
+                };
+            } catch (e) {
+                results[langCode] = { error: e.message };
+            }
+        }
+        
+        return {
+            name: name,
+            detectedLanguage: Hisaab.detectLanguage(name),
+            analyses: results
+        };
+    }
+
+    /**
+     * Get abjad chart for a language
+     * @param {string} language - Language code
+     * @returns {Object} Abjad chart with letters and values
+     */
+    static getAbjadChart(language = 'arabic') {
+        const langData = LANGUAGE_DATA[language];
+        if (!langData) {
+            return null;
+        }
+        
+        const chart = Object.entries(langData.abjad)
+            .sort((a, b) => a[1] - b[1])
+            .map(([letter, value]) => ({ letter, value }));
+        
+        return {
+            language: langData.name,
+            nativeName: langData.nativeName,
+            chart: chart,
+            totalLetters: chart.length
+        };
+    }
+
+    /**
+     * Convert name analysis between language display formats
+     * @param {string} targetLanguage - Target language for display
+     * @returns {Object} Analysis with translated terminology
+     */
+    toLanguageDisplay(targetLanguage) {
+        const sourceLang = this.language || 'arabic';
+        const targetLang = LANGUAGE_DATA[targetLanguage];
+        
+        if (!targetLang) {
+            return this.getCompleteReport();
+        }
+        
+        const astrology = this.getArabicAstrology();
+        
+        return {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            element: {
+                source: astrology.element.name,
+                target: targetLang.elements[astrology.element.index]
+            },
+            planet: {
+                source: astrology.planet.name,
+                target: targetLang.planets[astrology.planet.index]
+            },
+            languages: {
+                source: LANGUAGE_DATA[sourceLang].nativeName,
+                target: targetLang.nativeName
+            }
+        };
     }
 }
 

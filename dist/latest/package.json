@@ -1,7 +1,7 @@
 {
   "name": "hisaab",
-  "version": "1.5.0",
-  "description": "A JavaScript library for calculating Arabic name values according to Abjad numerological system - with AI recommendations, regional patterns, Hijri calendar, and visualizations",
+  "version": "2.0.0",
+  "description": "A JavaScript library for multi-language name numerology using Abjad systems - Arabic, Hebrew, Persian, Urdu, Turkish - with AI recommendations, regional patterns, Hijri calendar, and visualizations",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
@@ -16,12 +16,13 @@
     "test-v1.3.0": "node test_v1.3.0.js",
     "test-v1.4.0": "node test_v1.4.0.js",
     "test-v1.5.0": "node test_v1.5.0.js",
+    "test-v2.0.0": "node test_v2.0.0.js",
     "test-lunar-mansions": "node test_lunar_mansions.js",
     "serve": "python -m http.server 8080 --directory public",
     "serve-docs": "cd docs && python -m http.server 8081",
     "dev": "npm run serve"
   },
-  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "islamic", "asma-ul-husna", "99-names-allah", "quranic", "family-analysis", "name-generator", "lunar-mansions", "arabic-astrology", "ai-recommendations", "regional-patterns", "hijri-calendar", "visualization", "charts"],
+  "keywords": ["arabic", "abjad", "numerology", "hisaab", "gematria", "hebrew", "persian", "urdu", "turkish", "islamic", "asma-ul-husna", "99-names-allah", "quranic", "family-analysis", "name-generator", "lunar-mansions", "arabic-astrology", "ai-recommendations", "regional-patterns", "hijri-calendar", "visualization", "charts", "multi-language"],
   "author": "",
   "license": "MIT"
 }

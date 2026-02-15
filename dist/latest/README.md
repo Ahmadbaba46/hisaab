@@ -2,7 +2,7 @@
 
 > Complete JavaScript library for Arabic name analysis using traditional Abjad calculation, Islamic wisdom, and authentic Arabic astrology.
 
-[![Version](https://img.shields.io/badge/version-1.5.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
+[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Islamic](https://img.shields.io/badge/Islamic-☪️-gold.svg)](#islamic-features)
 
@@ -49,13 +49,20 @@
 - 🌙 **Hijri Calendar** - Full conversion, blessed dates, monthly recommendations
 - 👨‍👩‍👧‍👦 **Group Analysis** - Family tree and group compatibility
 
-### v1.5.0 - Visualization & Charts (Current)
+### v1.5.0 - Visualization & Charts
 - 📊 **Chart Generation** - Chart.js compatible data for all visualizations
 - 📈 **Compatibility Charts** - Gauge, bar, and line charts for partner analysis
 - 🥧 **Element Charts** - Pie charts for element distribution
 - 🎡 **Numerology Wheel** - Radar chart for full numerology profile
 - 🗺️ **Regional Charts** - Geographic comparison visualization
 - 🎨 **Color Configurations** - Pre-defined palettes for consistent theming
+
+### v2.0.0 - Multi-Language Support (Current)
+- 🌍 **5 Languages** - Arabic, Hebrew, Persian, Urdu, Turkish Abjad systems
+- 🔍 **Auto Detection** - Automatic script and language detection
+- 🌐 **Cross-Language Comparison** - Compare names across different scripts
+- 📚 **Language Databases** - Name collections for each language
+- 🏛️ **Localized Terminology** - Elements, planets, zodiac in native languages
 
 ### Web Interface
 - 🌐 **Modular Web App** - Clean, maintainable architecture
