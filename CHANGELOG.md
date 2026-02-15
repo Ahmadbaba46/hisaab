@@ -5,6 +5,182 @@ All notable changes to the Hisaab library will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### 🔮 **Planned for v2.0.0**
+- Multi-language Support: Hebrew, Urdu, Persian
+- Machine Learning: AI-powered insights
+- Mobile Apps: Native iOS/Android applications
+- Advanced Visualization: Charts and graphs
+- Database Integration: User accounts and history
+
+---
+
+## [1.4.0] - 2025-02-15
+
+### 🚀 **Geographic, AI, Export, Historical & Hijri Features Release**
+
+#### 🌍 **Geographic & Regional Analysis**
+- Regional Arabic patterns for 6 regions (Gulf, Levantine, North African, Iraqi, Yemeni, Sudanese)
+- `getRegionalPattern()` - Get regional compatibility analysis
+- `getGeographicInfluence()` - Geographic element correlations
+- `compareRegionalVariants()` - Compare name across all regions
+- `getCulturalSignificance()` - Country-specific cultural context
+
+#### 🤖 **AI-Powered Features**
+- Smart name recommendations based on multiple criteria
+- `getSmartRecommendations()` - AI-based name suggestions
+- `generateCompatibleNames()` - Partner-compatible name generator
+- `optimizeBusinessNames()` - Industry-optimized business names
+- `analyzeNamingTrends()` - Database trend analysis
+- 10 industry categories with element/planet matching
+
+#### 📄 **Export & Reporting**
+- Multi-format export: JSON, HTML, Text, Markdown
+- `exportAnalysis()` - Export in specified format
+- `generateShareableReport()` - Shareable report object
+- `getClipboardText()` - Quick copy for sharing
+
+#### 📚 **Historical & Educational**
+- Historical figures database (Prophets, Sahaba, Scholars, Rulers, Poets, Mystics)
+- `getHistoricalContext()` - Historical background
+- `findFamousPersonalities()` - Famous people with name
+- `getPropheticConnection()` - Prophetic significance
+- `getSahabaInfo()` - Sahaba (Companion) information
+
+#### 🌙 **Hijri Calendar Integration**
+- Full Hijri/Gregorian conversion
+- `toHijri()` / `toGregorian()` - Date conversion
+- `getCurrentHijri()` - Current Hijri date
+- `getBlessedDates()` - Blessed dates in year
+- `getMonthlyRecommendations()` - Month-specific guidance
+- `getTimingRecommendations()` - Personal timing based on name
+
+#### 👨‍👩‍👧‍👦 **Group & Family Analysis**
+- `analyzeFamilyTree()` - Family numerology analysis
+- `getGroupCompatibility()` - Group harmony scoring
+
+#### 📦 **New Data Files**
+- `regional_patterns_data.js` - 6 regional patterns
+- `ai_patterns_data.js` - AI weights and scoring
+- `name_database.js` - 200+ Arabic names
+- `export_templates_data.js` - Report templates
+- `historical_names_data.js` - Famous personalities
+- `sahaba_names_data.js` - Companions database
+- `hijri_calendar_data.js` - Islamic calendar
+
+#### 📊 **Statistics**
+- **30+ new methods**
+- **7 new data files**
+- **200+ name database entries**
+- **6 regional patterns**
+- **35 passing tests**
+
+---
+
+## [1.3.0] - 2024-12-22
+
+### 🚀 **Advanced Features Release**
+
+#### 💼 **Business Name Analysis**
+- Success indicators by value range
+- Industry recommendations
+- Partnership house analysis (1-9)
+- Best timing guidance
+- Overall business rating (1-10)
+
+#### 📅 **Date Integration & Life Path**
+- Birth date numerology integration
+- Life path number calculation
+- Name-date compatibility (0-100 score)
+- Personal year cycles (1-9)
+- Energy harmonization guidance
+
+#### 🔮 **Advanced Numerology**
+- Master numbers detection (11, 22, 33, 44)
+- Karmic debt identification (13, 14, 16, 19)
+- Hidden potential discovery
+- Soul urge & personality numbers
+- Dominant/missing number analysis
+
+#### 🕌 **Enhanced Islamic Features**
+- Prayer time correlations
+- Personalized dhikr recommendations (morning/evening/after-prayer)
+- Extended Quranic verse connections
+- Spiritual alignment guidance
+
+#### 🌐 **Web Interface Improvements**
+- Modular Architecture: Clean separation (calculator, UI, renderer, enhancements)
+- Tabs System: 5 tabs (All, v1.3.0, Islamic, Astrology, Export)
+- Animations: Scroll reveal, fade-in, hover effects
+- Export Functionality: Text, JSON, HTML, Print/PDF, Clipboard
+- Browser Bundle: Self-contained 168 KB bundle
+
+#### 📊 **Statistics**
+- **40+ new methods**
+- **6 data files** (2 new: business_analysis_data.js, advanced_numerology_data.js)
+- **5 JS modules** in modular web app
+- **172 KB** distribution size
+- **168 KB** browser bundle
+
+---
+
+## [1.2.0] - 2024-12-21
+
+### 🌙 **Lunar Mansions Release**
+
+#### ✨ **28 Lunar Mansions (منازل القمر)**
+- Complete database of 28 traditional Arabic astronomical stations
+- Each mansion includes: Arabic name, transliteration, meaning, constellation
+- Element associations: Fire, Earth, Air, Water
+- Nature classifications: Hot/Cold, Dry/Wet
+- Influence and fortune guidance
+- Personality traits per mansion
+- Favorable and unfavorable activities
+- Spiritual significance and traditional uses
+
+#### 📚 **Extended Quranic Database**
+- More verse connections based on numerical values
+- Enhanced spiritual significance mapping
+
+#### 🤲 **Enhanced Spiritual Guidance**
+- Deeper Islamic insights per lunar mansion
+- Traditional agricultural and timing wisdom
+
+#### 📊 **Statistics**
+- **28 Lunar Mansions**: Complete traditional Arabic system
+- **4 Element mappings**: Per mansion association
+- **Enhanced cultural context**: Traditional uses and timing
+
+---
+
+## [1.1.0] - 2024-12-20
+
+### 🎉 **Enhanced Features Release**
+
+#### ✨ **Smart Name Generator**
+- Target Value Matching: Find names with specific Abjad values
+- Element Filtering: Water, Fire, Earth, Air element names
+- Gender-Specific: Separate male/female name pools
+- Length Constraints: Control name length precisely
+- Starting Letter: Names beginning with specific letters
+- Intelligent Scoring: Reasons provided for each suggestion
+
+#### 👨‍👩‍👧‍👦 **Family Harmony Analyzer**
+- Complete Family Profiling: Parents + children analysis
+- Element Distribution: Track dominant family elements
+- Parent Compatibility: Integration with حساب الشريك
+- Energy Balance: Yin/Yang family dynamics
+- Smart Recommendations: Cultural and spiritual guidance
+- Harmony Scoring: Quantitative 0-100 scoring system
+
+#### 📊 **Statistics**
+- **+400 lines**: Smart generation and analysis algorithms
+- **80+ Arabic names**: Curated male/female name database
+- **Advanced filtering**: Multiple simultaneous criteria
+
+---
+
 ## [1.0.0] - 2024-12-19
 
 ### 🎉 **Initial Release - Complete Foundation**
@@ -80,7 +256,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Educational Value**: Explains calculation methods and significance
 - **Community Focus**: Built for Arabic and Islamic communities
 
-### 📊 **Statistics**
+#### 📊 **Statistics**
 - **800+ lines** of core JavaScript code
 - **28+ Arabic letters** with variants supported
 - **99 Names of Allah** with complete metadata
@@ -90,85 +266,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **12 Zodiac signs** with Arabic names
 - **Multiple test suites** with comprehensive coverage
 
-### 🌟 **What Makes v1.0.0 Special**
+#### 🌟 **What Makes v1.0.0 Special**
 - **First of its kind**: Complete Arabic numerology library for JavaScript
 - **Culturally authentic**: Real traditional methods, not approximations
 - **Dual systems**: Both Arabic and Western approaches available
 - **Beautiful interface**: Professional-grade web calculator
 - **Educational**: Teaches users about Arabic traditions
 - **Community-focused**: Built for real-world Islamic/Arabic use cases
-
----
-
-## [Planned] - Future Versions
-
-### 🔮 **v1.1.0 - Enhanced Islamic Features**
-- [ ] **28 Lunar Mansions**: منازل القمر calculations
-- [ ] **Extended Quranic Database**: More verse connections
-- [ ] **Prayer Time Integration**: Correlations with Islamic calendar
-- [ ] **Prophet Names Analysis**: Special recognition for prophetic names
-- [ ] **Sahaba Names**: Companion names with historical context
-
-### 🔮 **v1.2.0 - Cultural Expansion**
-- [ ] **Regional Variants**: Different Arabic dialects and pronunciations
-- [ ] **Historical Context**: Etymology and name origins
-- [ ] **Audio Pronunciation**: Proper Arabic pronunciation guides
-- [ ] **Name Recommendations**: AI-powered name suggestions
-- [ ] **Family Analysis**: Genealogical numerological patterns
-
-### ✅ **v1.3.0 - Advanced Features** (Released - December 2024)
-
-#### Core Features:
-- [x] **Business Name Analysis**: 
-  - Success indicators by value range
-  - Industry recommendations
-  - Partnership house analysis (1-9)
-  - Best timing guidance
-  - Overall business rating (1-10)
-- [x] **Date Integration & Life Path**:
-  - Birth date numerology integration
-  - Life path number calculation
-  - Name-date compatibility (0-100 score)
-  - Personal year cycles (1-9)
-  - Energy harmonization guidance
-- [x] **Advanced Numerology**:
-  - Master numbers detection (11, 22, 33, 44)
-  - Karmic debt identification (13, 14, 16, 19)
-  - Hidden potential discovery
-  - Soul urge & personality numbers
-  - Dominant/missing number analysis
-- [x] **Enhanced Islamic Features**:
-  - Prayer time correlations
-  - Personalized dhikr recommendations (morning/evening/after-prayer)
-  - Extended Quranic verse connections
-  - Spiritual alignment guidance
-
-#### Web Interface Improvements:
-- [x] **Modular Architecture**: Clean separation (calculator, UI, renderer, enhancements)
-- [x] **Tabs System**: 5 tabs (All, v1.3.0, Islamic, Astrology, Export)
-- [x] **Animations**: Scroll reveal, fade-in, hover effects
-- [x] **Export Functionality**: Text, JSON, HTML, Print/PDF, Clipboard
-- [x] **Browser Bundle**: Self-contained 168 KB bundle
-
-#### Technical:
-- [x] 40+ new methods
-- [x] 6 data files (2 new: business_analysis_data.js, enhanced advanced_numerology_data.js)
-- [x] Modular web app (5 JS modules)
-- [x] Node.js bundler for browser compatibility
-- [x] Comprehensive documentation (WEB_APP_MODULAR_GUIDE.md)
-
-#### Statistics:
-- New Methods: 40+
-- Lines Added: ~10,000+
-- Files Changed: 30+
-- Distribution Size: 172 KB
-- Browser Bundle: 168 KB
-
-**Next:** v1.4.0 - Geographic Patterns, AI Features, Community Features
-
-### 🔮 **v2.0.0 - Major Enhancement**
-- [ ] **Multi-language Support**: Hebrew, Urdu, Persian
-- [ ] **Machine Learning**: AI-powered insights
-- [ ] **Mobile Apps**: Native iOS/Android applications
-- [ ] **Advanced Visualization**: Charts and graphs
-- [ ] **Database Integration**: User accounts and history

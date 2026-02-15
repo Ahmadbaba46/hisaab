@@ -1,13 +1,20 @@
 /**
  * Hisaab Browser Bundle - Self-contained version
- * Version: 1.3.0
- * Generated: 2025-12-10T15:45:03.522Z
+ * Version: 1.4.0
+ * Generated: 2026-02-15T06:17:14.992Z
+ * 
+ * Features:
+ * - Geographic & Regional Analysis
+ * - AI Recommendations
+ * - Export & Reporting
+ * - Historical Database
+ * - Hijri Calendar
  */
 
 (function(window) {
     'use strict';
     
-    console.log('📦 Loading Hisaab Browser Bundle v1.3.0...');
+    console.log('📦 Loading Hisaab Browser Bundle v1.4.0...');
     
     // Create module system
     const modules = {};
@@ -1644,6 +1651,3222 @@ module.exports = {
 };
     };
     
+    modules['./regional_patterns_data.js'] = function(module, exports, require) {
+/**
+ * Regional Patterns Data Module - Geographic Arabic Naming Conventions
+ * أنماط إقليمية - التسميات العربية حسب المناطق
+ */
+
+const REGIONAL_PATTERNS = {
+    gulf: {
+        name: 'Gulf',
+        arabic: 'الخليج',
+        countries: ['Saudi Arabia', 'UAE', 'Kuwait', 'Qatar', 'Bahrain', 'Oman'],
+        countriesArabic: ['السعودية', 'الإمارات', 'الكويت', 'قطر', 'البحرين', 'عُمان'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم الجد', 'اسم العائلة/القبيلة'],
+            example: 'محمد بن عبدالله بن عبدالعزيز آل سعود',
+            characteristics: [
+                'Use of "بن" (son of) between names',
+                'Tribal/family name prominence (آل)',
+                'Multiple given names common',
+                'Grandfather name often included'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'عبدالله', meaning: 'Servant of Allah', popularity: 9 },
+                { name: 'عبدالرحمن', meaning: 'Servant of the Most Gracious', popularity: 9 },
+                { name: 'سلطان', meaning: 'Sultan/Ruler', popularity: 8 },
+                { name: 'خالد', meaning: 'Eternal', popularity: 8 },
+                { name: 'فهد', meaning: 'Leopard', popularity: 7 },
+                { name: 'ناصر', meaning: 'Victorious', popularity: 7 },
+                { name: 'حمد', meaning: 'Praise', popularity: 7 },
+                { name: 'سعود', meaning: 'Happiness', popularity: 6 },
+                { name: 'فيصل', meaning: 'Decisive', popularity: 6 }
+            ],
+            female: [
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'نورة', meaning: 'Light', popularity: 9 },
+                { name: 'هند', meaning: 'India/Group', popularity: 8 },
+                { name: 'سارة', meaning: 'Princess', popularity: 8 },
+                { name: 'منال', meaning: 'Achievement', popularity: 7 },
+                { name: 'عبير', meaning: 'Fragrance', popularity: 7 },
+                { name: 'موضي', meaning: 'Affectionate', popularity: 6 },
+                { name: 'جواهر', meaning: 'Jewels', popularity: 6 },
+                { name: 'لطيفة', meaning: 'Gentle', popularity: 6 },
+                { name: 'مريم', meaning: 'Mary', popularity: 5 }
+            ]
+        },
+        tribalPrefixes: ['آل', 'بن', 'الع'],
+        culturalNotes: [
+            'Tribal affiliation is very important',
+            'Royal family names carry prestige',
+            'Naming after prophets and companions is common',
+            'Modern names coexist with traditional ones'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [7, 9, 5],
+            avoidedDigitRoots: [6, 3],
+            reasoning: {
+                7: 'Seven represents completeness and blessing',
+                9: 'Nine is associated with wisdom and leadership',
+                5: 'Five relates to the five pillars of Islam'
+            }
+        }
+    },
+
+    levantine: {
+        name: 'Levantine',
+        arabic: 'الشام',
+        countries: ['Syria', 'Lebanon', 'Jordan', 'Palestine'],
+        countriesArabic: ['سوريا', 'لبنان', 'الأردن', 'فلسطين'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم العائلة'],
+            example: 'محمد أحمد الحسين',
+            characteristics: [
+                'Family name often indicates origin or profession',
+                'Christian names common alongside Muslim',
+                'Use of "أبو" (father of) as kunya',
+                'Compound names less common than Gulf'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'أحمد', meaning: 'Most praised', popularity: 9 },
+                { name: 'علي', meaning: 'High/Exalted', popularity: 9 },
+                { name: 'حسن', meaning: 'Good/Beautiful', popularity: 8 },
+                { name: 'ماهر', meaning: 'Skilled', popularity: 7 },
+                { name: 'سمير', meaning: 'Companion', popularity: 7 },
+                { name: 'طاهر', meaning: 'Pure', popularity: 6 },
+                { name: 'غازي', meaning: 'Warrior', popularity: 6 },
+                { name: 'عادل', meaning: 'Just', popularity: 6 },
+                { name: 'أنور', meaning: 'Luminous', popularity: 5 }
+            ],
+            female: [
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'زينب', meaning: 'Fragrant flower', popularity: 9 },
+                { name: 'خديجة', meaning: 'Premature child', popularity: 8 },
+                { name: 'عائشة', meaning: 'Alive/Living', popularity: 8 },
+                { name: 'دانا', meaning: 'Pearl', popularity: 7 },
+                { name: 'لينا', meaning: 'Tender', popularity: 7 },
+                { name: 'راما', meaning: 'Pleasing', popularity: 6 },
+                { name: 'لمى', meaning: 'Dark lips', popularity: 6 },
+                { name: 'سلمى', meaning: 'Peaceful', popularity: 6 },
+                { name: 'رنا', meaning: 'Gaze', popularity: 5 }
+            ]
+        },
+        familyIndicators: ['الحسين', 'الخطيب', 'النعسان', 'القدحة'],
+        culturalNotes: [
+            'Family names often indicate profession (e.g., الحداد - blacksmith)',
+            'Palestinian names often include village of origin',
+            'Christian names like جورج, ميشيل are common',
+            'Refugee communities have naming adaptations'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [2, 4, 8],
+            avoidedDigitRoots: [9],
+            reasoning: {
+                2: 'Represents balance and partnership',
+                4: 'Stability and foundation',
+                8: 'Prosperity and success'
+            }
+        }
+    },
+
+    northAfrican: {
+        name: 'North African',
+        arabic: 'المغرب العربي',
+        countries: ['Egypt', 'Morocco', 'Algeria', 'Tunisia', 'Libya', 'Mauritania'],
+        countriesArabic: ['مصر', 'المغرب', 'الجزائر', 'تونس', 'ليبيا', 'موريتانيا'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم الجد (optional)', 'اسم العائلة'],
+            example: 'محمد علي محمد السيد',
+            characteristics: [
+                'Egypt: often includes multiple generations',
+                'Morocco/Algeria: Berber influence on names',
+                'Compound names like محمد علي common',
+                'Family names often indicate tribe or region'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'أحمد', meaning: 'Most praised', popularity: 9 },
+                { name: 'محمود', meaning: 'Praised', popularity: 9 },
+                { name: 'علي', meaning: 'High/Exalted', popularity: 8 },
+                { name: 'حسين', meaning: 'Handsome', popularity: 8 },
+                { name: 'يوسف', meaning: 'God increases', popularity: 7 },
+                { name: 'عمر', meaning: 'Life/Age', popularity: 7 },
+                { name: 'كريم', meaning: 'Generous', popularity: 6 },
+                { name: 'طارق', meaning: 'Morning star', popularity: 6 },
+                { name: 'سعيد', meaning: 'Happy', popularity: 6 }
+            ],
+            female: [
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'مريم', meaning: 'Mary', popularity: 9 },
+                { name: 'عائشة', meaning: 'Alive/Living', popularity: 8 },
+                { name: 'زينب', meaning: 'Fragrant flower', popularity: 8 },
+                { name: 'سامية', meaning: 'Elevated', popularity: 7 },
+                { name: 'نادية', meaning: 'Moist/Tender', popularity: 7 },
+                { name: 'ليلى', meaning: 'Night', popularity: 6 },
+                { name: 'هدى', meaning: 'Guidance', popularity: 6 },
+                { name: 'سحر', meaning: 'Magic/Charm', popularity: 6 },
+                { name: 'منى', meaning: 'Wish', popularity: 5 }
+            ]
+        },
+        berberInfluencedNames: ['ياسين', 'أيمن', 'سيف الدين', 'طارق', 'يزيد'],
+        culturalNotes: [
+            'Egypt: names often include Abdul prefix',
+            'Morocco: Berber names like ياسين, طارق common',
+            'Algeria: French influence on some naming',
+            'Tunisia: Mix of Arab and Mediterranean influences'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [1, 3, 5],
+            avoidedDigitRoots: [4, 8],
+            reasoning: {
+                1: 'Unity and leadership',
+                3: 'Creativity and expression',
+                5: 'Freedom and change'
+            }
+        }
+    },
+
+    iraqi: {
+        name: 'Iraqi',
+        arabic: 'العراق',
+        countries: ['Iraq'],
+        countriesArabic: ['العراق'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم الجد', 'اسم العشيرة'],
+            example: 'محمد بن علي بن حسين التكريتي',
+            characteristics: [
+                'Tribal system very important',
+                'Use of "بن" between names',
+                'Family/clan name indicates region',
+                'Both Shia and Sunni naming traditions'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'علي', meaning: 'High/Exalted', popularity: 10 },
+                { name: 'حسين', meaning: 'Handsome', popularity: 9 },
+                { name: 'حسن', meaning: 'Good/Beautiful', popularity: 9 },
+                { name: 'عباس', meaning: 'Lion', popularity: 8 },
+                { name: 'قتيبة', meaning: 'Leader', popularity: 7 },
+                { name: 'طارق', meaning: 'Morning star', popularity: 7 },
+                { name: 'موفق', meaning: 'Successful', popularity: 6 },
+                { name: 'عامر', meaning: 'Prosperous', popularity: 6 },
+                { name: 'ثامر', meaning: 'Fruitful', popularity: 5 }
+            ],
+            female: [
+                { name: 'زينب', meaning: 'Fragrant flower', popularity: 10 },
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'سكينة', meaning: 'Tranquility', popularity: 9 },
+                { name: 'رقيّة', meaning: 'Rising', popularity: 8 },
+                { name: 'أم كلثوم', meaning: 'Mother of Kulthum', popularity: 7 },
+                { name: 'رشا', meaning: 'Gazelle', popularity: 7 },
+                { name: 'هناء', meaning: 'Happiness', popularity: 6 },
+                { name: 'سندس', meaning: 'Silk', popularity: 6 },
+                { name: 'ندى', meaning: 'Dew', popularity: 6 },
+                { name: 'هديل', meaning: 'Cooing', popularity: 5 }
+            ]
+        },
+        tribalIndicators: ['التكريتي', 'البغدادي', 'البصري', 'الموصلي', 'النجفي'],
+        culturalNotes: [
+            'Shia families favor names of Ahl al-Bayt',
+            'Tribal names like الدليم, الجبوري common',
+            'Mesopotamian heritage influences naming',
+            'Kurdish names in northern regions'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [7, 8, 9],
+            avoidedDigitRoots: [3, 6],
+            reasoning: {
+                7: 'Spiritual perfection',
+                8: 'Abundance and power',
+                9: 'Completion and wisdom'
+            }
+        }
+    },
+
+    yemeni: {
+        name: 'Yemeni',
+        arabic: 'اليمن',
+        countries: ['Yemen'],
+        countriesArabic: ['اليمن'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم الجد', 'اسم القبيلة'],
+            example: 'محمد بن علي بن حسين الأحمر',
+            characteristics: [
+                'Ancient tribal traditions',
+                'Unique Yemeni naming conventions',
+                'Influence of Himyarite civilization',
+                'Regional variations (North vs South)'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'علي', meaning: 'High/Exalted', popularity: 9 },
+                { name: 'عبدالله', meaning: 'Servant of Allah', popularity: 9 },
+                { name: 'صالح', meaning: 'Righteous', popularity: 8 },
+                { name: 'عبدالعزيز', meaning: 'Servant of the Mighty', popularity: 8 },
+                { name: 'يحيى', meaning: 'God is gracious', popularity: 7 },
+                { name: 'حسين', meaning: 'Handsome', popularity: 7 },
+                { name: 'سالم', meaning: 'Safe', popularity: 6 },
+                { name: 'ناصر', meaning: 'Victorious', popularity: 6 },
+                { name: 'حمود', meaning: 'Praised', popularity: 5 }
+            ],
+            female: [
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'عائشة', meaning: 'Alive/Living', popularity: 9 },
+                { name: 'مريم', meaning: 'Mary', popularity: 8 },
+                { name: 'آمنة', meaning: 'Safe', popularity: 8 },
+                { name: 'خديجة', meaning: 'Premature child', popularity: 7 },
+                { name: 'حليمة', meaning: 'Gentle', popularity: 7 },
+                { name: 'سعيدة', meaning: 'Happy', popularity: 6 },
+                { name: 'نجاة', meaning: 'Salvation', popularity: 6 },
+                { name: 'عزيزة', meaning: 'Precious', popularity: 6 },
+                { name: 'فوزية', meaning: 'Victorious', popularity: 5 }
+            ]
+        },
+        tribalIndicators: ['الأحمر', 'الحوثي', 'الهيثم', 'المشيطي', 'الشامي'],
+        culturalNotes: [
+            'Ancient Sabaean influence on naming',
+            'Tribal affiliation very prominent',
+            'Names often reflect tribal history',
+            'Distinct North/South naming patterns'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [1, 4, 7],
+            avoidedDigitRoots: [2, 5],
+            reasoning: {
+                1: 'Unity and primacy',
+                4: 'Stability and tradition',
+                7: 'Spiritual completion'
+            }
+        }
+    },
+
+    sudanese: {
+        name: 'Sudanese',
+        arabic: 'السودان',
+        countries: ['Sudan', 'South Sudan'],
+        countriesArabic: ['السودان', 'جنوب السودان'],
+        namingPatterns: {
+            structure: ['اسم شخصي', 'اسم الأب', 'اسم الجد', 'اسم العائلة/القبيلة'],
+            example: 'محمد أحمد علي المهدي',
+            characteristics: [
+                'Nubian and Arab fusion',
+                'Family lineage emphasized',
+                'Sufi influence on naming',
+                'Tribal names common'
+            ]
+        },
+        commonNames: {
+            male: [
+                { name: 'محمد', meaning: 'Praised', popularity: 10 },
+                { name: 'أحمد', meaning: 'Most praised', popularity: 9 },
+                { name: 'علي', meaning: 'High/Exalted', popularity: 8 },
+                { name: 'عثمان', meaning: 'Baby bustard', popularity: 8 },
+                { name: 'حسن', meaning: 'Good/Beautiful', popularity: 7 },
+                { name: 'عبدالله', meaning: 'Servant of Allah', popularity: 7 },
+                { name: 'يوسف', meaning: 'God increases', popularity: 6 },
+                { name: 'إبراهيم', meaning: 'Father of many', popularity: 6 },
+                { name: 'خالد', meaning: 'Eternal', popularity: 6 },
+                { name: 'الصادق', meaning: 'Truthful', popularity: 5 }
+            ],
+            female: [
+                { name: 'فاطمة', meaning: 'One who abstains', popularity: 10 },
+                { name: 'زينب', meaning: 'Fragrant flower', popularity: 9 },
+                { name: 'خديجة', meaning: 'Premature child', popularity: 8 },
+                { name: 'مريم', meaning: 'Mary', popularity: 8 },
+                { name: 'آمنة', meaning: 'Safe', popularity: 7 },
+                { name: 'سارة', meaning: 'Princess', popularity: 7 },
+                { name: 'عزة', meaning: 'Glory', popularity: 6 },
+                { name: 'سهام', meaning: 'Arrows', popularity: 6 },
+                { name: 'نجوى', meaning: 'Secret conversation', popularity: 6 },
+                { name: 'سعاد', meaning: 'Happiness', popularity: 5 }
+            ]
+        },
+        tribalIndicators: ['المهدي', 'الميرغني', 'البشير', 'الطيب', 'الكباشي'],
+        culturalNotes: [
+            'Sufi orders influence naming (المهدي, الميرغني)',
+            'Nubian names coexist with Arabic',
+            'Tribal identity very important',
+            'Names reflect religious devotion'
+        ],
+        numerologicalPreferences: {
+            favoredDigitRoots: [5, 7, 9],
+            avoidedDigitRoots: [2, 4],
+            reasoning: {
+                5: 'Associated with the five daily prayers',
+                7: 'Spiritual perfection',
+                9: 'Completion and fulfillment'
+            }
+        }
+    }
+};
+
+const GEOGRAPHIC_CORRELATIONS = {
+    elements: {
+        desert: {
+            regions: ['gulf', 'saudi', 'yemeni'],
+            favoredElements: ['Fire', 'Earth'],
+            reasoning: 'Desert regions traditionally favor elements associated with warmth and stability'
+        },
+        coastal: {
+            regions: ['levantine', 'northAfrican'],
+            favoredElements: ['Water', 'Air'],
+            reasoning: 'Coastal regions favor elements associated with fluidity and communication'
+        },
+        mountainous: {
+            regions: ['yemeni', 'levantine'],
+            favoredElements: ['Earth', 'Air'],
+            reasoning: 'Mountainous regions favor elements of height and stability'
+        },
+        riverine: {
+            regions: ['iraqi', 'northAfrican'],
+            favoredElements: ['Water', 'Earth'],
+            reasoning: 'River valleys favor elements of fertility and growth'
+        }
+    },
+    planetary: {
+        byRegion: {
+            gulf: { primary: 'Sun', secondary: 'Jupiter', reasoning: 'Leadership and expansion' },
+            levantine: { primary: 'Mercury', secondary: 'Venus', reasoning: 'Trade and beauty' },
+            northAfrican: { primary: 'Moon', secondary: 'Mercury', reasoning: 'Intuition and communication' },
+            iraqi: { primary: 'Mars', secondary: 'Jupiter', reasoning: 'Strength and wisdom' },
+            yemeni: { primary: 'Saturn', secondary: 'Moon', reasoning: 'Tradition and cycles' },
+            sudanese: { primary: 'Jupiter', secondary: 'Venus', reasoning: 'Spirituality and harmony' }
+        }
+    }
+};
+
+const CULTURAL_CONTEXTS = {
+    tribalNames: {
+        arabic: 'أسماء القبائل',
+        description: 'Names indicating tribal or clan affiliation',
+        examples: [
+            { name: 'قريش', region: 'Arabian Peninsula', significance: 'Prophet\'s tribe' },
+            { name: 'تميم', region: 'Gulf/Iraq', significance: 'Major Arab tribe' },
+            { name: 'عنزة', region: 'Gulf', significance: 'Large tribal confederation' },
+            { name: 'شمّر', region: 'Gulf/Iraq', significance: 'Prominent tribe' },
+            { name: 'الدليم', region: 'Iraq', significance: 'Large Anbar tribe' },
+            { name: 'الهذيل', region: 'Saudi Arabia', significance: 'Ancient tribe' }
+        ]
+    },
+    religiousNames: {
+        arabic: 'أسماء دينية',
+        description: 'Names with strong religious significance',
+        categories: {
+            prophetic: ['محمد', 'أحمد', 'محمود', 'إبراهيم', 'موسى', 'عيسى', 'يوسف', 'داود', 'سليمان', 'زكريا', 'يحيى', 'إسماعيل', 'إدريس', 'ذي الكفل', 'هارون', 'إلياس', 'اليسع', 'يونس', 'نوح', 'هود', 'صالح', 'شعيب', 'لوط', 'آدم', 'إدريس'],
+            sahaba: ['أبو بكر', 'عمر', 'عثمان', 'علي', 'خالد', 'سعد', 'طلحة', 'الزبير', 'عبدالرحمن', 'أبو عبيدة', 'سعيد', 'سعد بن معاذ', 'أسييد بن حضير', 'عمار', 'مصعب', 'بلال', 'سلمان', 'صهيب', 'المقداد'],
+            ahlulBayt: ['علي', 'حسن', 'حسين', 'زين العابدين', 'محمد الباقر', 'جعفر الصادق', 'موسى الكاظم', 'علي الرضا', 'محمد الجواد', 'علي الهادي', 'الحسن العسكري', 'المهدي']
+        }
+    },
+    professionBasedNames: {
+        arabic: 'أسماء المهن',
+        description: 'Family names derived from professions',
+        examples: [
+            { name: 'الحداد', profession: 'Blacksmith', arabicProfession: 'حداد' },
+            { name: 'النجار', profession: 'Carpenter', arabicProfession: 'نجار' },
+            { name: 'الطحان', profession: 'Miller', arabicProfession: 'طحان' },
+            { name: 'القصاب', profession: 'Butcher', arabicProfession: 'قصاب' },
+            { name: 'الخياط', profession: 'Tailor', arabicProfession: 'خياط' },
+            { name: 'البزاز', profession: 'Cloth merchant', arabicProfession: 'بزاز' },
+            { name: 'العطار', profession: 'Perfumer', arabicProfession: 'عطار' },
+            { name: 'الحريري', profession: 'Silk merchant', arabicProfession: 'حرير' },
+            { name: 'الذهبي', profession: 'Goldsmith', arabicProfession: 'ذهبي' },
+            { name: 'الزجاجي', profession: 'Glassmaker', arabicProfession: 'زجاج' }
+        ]
+    }
+};
+
+function getRegionByName(regionName) {
+    const regionMap = {
+        'gulf': REGIONAL_PATTERNS.gulf,
+        'خليج': REGIONAL_PATTERNS.gulf,
+        'الخليج': REGIONAL_PATTERNS.gulf,
+        'levantine': REGIONAL_PATTERNS.levantine,
+        'sham': REGIONAL_PATTERNS.levantine,
+        'شام': REGIONAL_PATTERNS.levantine,
+        'الشام': REGIONAL_PATTERNS.levantine,
+        'northafrican': REGIONAL_PATTERNS.northAfrican,
+        'maghreb': REGIONAL_PATTERNS.northAfrican,
+        'مغرب': REGIONAL_PATTERNS.northAfrican,
+        'المغرب': REGIONAL_PATTERNS.northAfrican,
+        'iraqi': REGIONAL_PATTERNS.iraqi,
+        'iraq': REGIONAL_PATTERNS.iraqi,
+        'عراق': REGIONAL_PATTERNS.iraqi,
+        'العراق': REGIONAL_PATTERNS.iraqi,
+        'yemeni': REGIONAL_PATTERNS.yemeni,
+        'yemen': REGIONAL_PATTERNS.yemeni,
+        'يمن': REGIONAL_PATTERNS.yemeni,
+        'اليمن': REGIONAL_PATTERNS.yemeni,
+        'sudanese': REGIONAL_PATTERNS.sudanese,
+        'sudan': REGIONAL_PATTERNS.sudanese,
+        'سودان': REGIONAL_PATTERNS.sudanese,
+        'السودان': REGIONAL_PATTERNS.sudanese
+    };
+    
+    const key = regionName.toLowerCase().replace(/[^a-z\u0600-\u06FF]/g, '');
+    return regionMap[key] || null;
+}
+
+function getAllRegions() {
+    return Object.keys(REGIONAL_PATTERNS).map(key => ({
+        id: key,
+        name: REGIONAL_PATTERNS[key].name,
+        arabic: REGIONAL_PATTERNS[key].arabic,
+        countries: REGIONAL_PATTERNS[key].countries
+    }));
+}
+
+module.exports = {
+    REGIONAL_PATTERNS,
+    GEOGRAPHIC_CORRELATIONS,
+    CULTURAL_CONTEXTS,
+    getRegionByName,
+    getAllRegions
+};
+    };
+    
+    modules['./ai_patterns_data.js'] = function(module, exports, require) {
+/**
+ * AI Patterns Data Module - Smart Name Recommendation System
+ * أنماط الذكاء الاصطناعي - نظام التوصية الذكية للأسماء
+ */
+
+const AI_RECOMMENDATION_WEIGHTS = {
+    digitRoot: {
+        weights: {
+            1: { leadership: 10, business: 8, partnership: 5, spirituality: 6 },
+            2: { leadership: 5, business: 6, partnership: 10, spirituality: 8 },
+            3: { leadership: 7, business: 6, partnership: 6, spirituality: 5 },
+            4: { leadership: 6, business: 9, partnership: 7, spirituality: 6 },
+            5: { leadership: 8, business: 7, partnership: 6, spirituality: 9 },
+            6: { leadership: 5, business: 5, partnership: 8, spirituality: 10 },
+            7: { leadership: 9, business: 8, partnership: 10, spirituality: 10 },
+            8: { leadership: 10, business: 10, partnership: 7, spirituality: 6 },
+            9: { leadership: 9, business: 9, partnership: 8, spirituality: 10 }
+        },
+        descriptions: {
+            1: 'Leadership and independence - excellent for ambitious goals',
+            2: 'Cooperation and harmony - ideal for partnerships and relationships',
+            3: 'Creativity and expression - great for artistic and communicative pursuits',
+            4: 'Stability and foundation - excellent for long-term business ventures',
+            5: 'Freedom and change - ideal for dynamic and evolving situations',
+            6: 'Responsibility and care - excellent for family and community focus',
+            7: 'Spirituality and wisdom - ideal for blessed and sacred purposes',
+            8: 'Power and abundance - excellent for wealth and success',
+            9: 'Completion and humanitarianism - ideal for broad impact'
+        }
+    },
+    element: {
+        weights: {
+            Fire: { energy: 10, passion: 10, leadership: 9, creativity: 8, stability: 4 },
+            Earth: { energy: 6, passion: 4, leadership: 7, creativity: 5, stability: 10 },
+            Air: { energy: 7, passion: 6, leadership: 6, creativity: 10, stability: 5 },
+            Water: { energy: 8, passion: 7, leadership: 5, creativity: 9, stability: 7 }
+        },
+        recommendations: {
+            Fire: {
+                bestFor: ['Leadership roles', 'Entrepreneurship', 'Creative ventures', 'Public speaking'],
+                avoid: ['Passive roles', 'Routine work', 'Behind-the-scenes positions'],
+                complementaryElements: ['Air'],
+                conflictingElements: ['Water']
+            },
+            Earth: {
+                bestFor: ['Finance', 'Real estate', 'Construction', 'Agriculture', 'Banking'],
+                avoid: ['High-risk ventures', 'Fast-changing environments', 'Abstract work'],
+                complementaryElements: ['Water'],
+                conflictingElements: ['Fire']
+            },
+            Air: {
+                bestFor: ['Communication', 'Teaching', 'Writing', 'Technology', 'Networking'],
+                avoid: ['Heavy physical work', 'Routine tasks', 'Isolated work'],
+                complementaryElements: ['Fire'],
+                conflictingElements: ['Earth']
+            },
+            Water: {
+                bestFor: ['Healing', 'Counseling', 'Art', 'Spirituality', 'Family businesses'],
+                avoid: ['High-pressure sales', 'Aggressive competition', 'Harsh environments'],
+                complementaryElements: ['Earth'],
+                conflictingElements: ['Fire']
+            }
+        }
+    },
+    planet: {
+        weights: {
+            Sun: { visibility: 10, leadership: 10, creativity: 8, wealth: 8 },
+            Moon: { visibility: 8, leadership: 5, creativity: 9, wealth: 6 },
+            Mars: { visibility: 7, leadership: 8, creativity: 6, wealth: 7 },
+            Mercury: { visibility: 9, leadership: 6, creativity: 8, wealth: 7 },
+            Jupiter: { visibility: 9, leadership: 9, creativity: 7, wealth: 10 },
+            Venus: { visibility: 8, leadership: 5, creativity: 10, wealth: 8 },
+            Saturn: { visibility: 6, leadership: 7, creativity: 5, wealth: 6 }
+        },
+        dayRecommendations: {
+            Sun: { bestDay: 'Sunday', activities: ['Leadership decisions', 'Public appearances', 'Creative projects'] },
+            Moon: { bestDay: 'Monday', activities: ['Family matters', 'Emotional work', 'Intuitive decisions'] },
+            Mars: { bestDay: 'Tuesday', activities: ['Physical activities', 'Competition', 'Taking action'] },
+            Mercury: { bestDay: 'Wednesday', activities: ['Communication', 'Learning', 'Trade'] },
+            Jupiter: { bestDay: 'Thursday', activities: ['Expansion', 'Teaching', 'Spiritual growth', 'Wealth matters'] },
+            Venus: { bestDay: 'Friday', activities: ['Relationships', 'Art', 'Beauty', 'Harmony'] },
+            Saturn: { bestDay: 'Saturday', activities: ['Planning', 'Discipline', 'Long-term goals'] }
+        }
+    }
+};
+
+const COMPATIBILITY_SCORING = {
+    partnerHouse: {
+        1: { score: 60, weight: 0.8, note: 'Good start but challenges ahead' },
+        2: { score: 60, weight: 0.8, note: 'Wealth potential with complications' },
+        3: { score: 30, weight: 1.0, note: 'Family conflicts possible' },
+        4: { score: 70, weight: 0.9, note: 'Good wealth, relationship challenges' },
+        5: { score: 50, weight: 0.7, note: 'Good for public figures, many children' },
+        6: { score: 10, weight: 1.0, note: 'Misfortune but peaceful coexistence' },
+        7: { score: 100, weight: 1.0, note: 'Perfect harmony - most blessed' },
+        8: { score: 50, weight: 0.7, note: 'Good for scholars, challenging for business' },
+        9: { score: 0, weight: 1.0, note: 'Most challenging - avoid if possible' }
+    },
+    digitRootCompatibility: {
+        same: { score: 70, note: 'Strong resonance, similar energies' },
+        complementary: {
+            pairs: [[1, 8], [2, 7], [3, 6], [4, 9], [5, 5]],
+            score: 90,
+            note: 'Excellent complementary energies'
+        },
+        challenging: {
+            pairs: [[1, 4], [2, 5], [3, 8], [6, 9], [7, 9]],
+            score: 40,
+            note: 'Potential friction, requires understanding'
+        }
+    },
+    elementCompatibility: {
+        complementary: {
+            pairs: [['Fire', 'Air'], ['Earth', 'Water']],
+            score: 85,
+            note: 'Elements enhance each other'
+        },
+        same: {
+            score: 70,
+            note: 'Similar energies, good understanding'
+        },
+        conflicting: {
+            pairs: [['Fire', 'Water'], ['Earth', 'Air']],
+            score: 45,
+            note: 'Elements clash, requires balance'
+        }
+    }
+};
+
+const NAME_SCORING_FACTORS = {
+    length: {
+        optimal: { min: 4, max: 7, score: 10 },
+        short: { min: 2, max: 3, score: 7 },
+        long: { min: 8, max: 12, score: 6 }
+    },
+    uniqueness: {
+        rare: { threshold: 0.1, score: 10 },
+        uncommon: { threshold: 0.3, score: 8 },
+        common: { threshold: 0.6, score: 5 },
+        veryCommon: { threshold: 1.0, score: 3 }
+    },
+    phonetics: {
+        pleasing: {
+            patterns: ['ending_in_ا', 'ending_in_ة', 'contains_ين', 'contains_اء'],
+            score: 8
+        },
+        strong: {
+            patterns: ['contains_ع', 'contains_ق', 'contains_ح'],
+            score: 7
+        },
+        soft: {
+            patterns: ['contains_ي', 'contains_و', 'contains_ن'],
+            score: 6
+        }
+    },
+    spiritualWeight: {
+        prophetic: { score: 15, note: 'Name of a prophet' },
+        sahabi: { score: 12, note: 'Name of a companion' },
+        asmaUlHusna: { score: 20, note: 'Divine name match' },
+        quranic: { score: 10, note: 'Appears in Quran' }
+    }
+};
+
+const RECOMMENDATION_ALGORITHMS = {
+    nameGeneration: {
+        steps: [
+            'Analyze target criteria (value, element, purpose)',
+            'Filter name database by gender and region',
+            'Calculate compatibility scores for each candidate',
+            'Apply spiritual and cultural bonuses',
+            'Rank by combined score',
+            'Return top recommendations with reasoning'
+        ],
+        weights: {
+            targetValueMatch: 0.25,
+            elementMatch: 0.15,
+            partnerHouse: 0.20,
+            spiritualSignificance: 0.15,
+            regionalPreference: 0.10,
+            phoneticQuality: 0.15
+        }
+    },
+    compatibilityAnalysis: {
+        steps: [
+            'Calculate digit roots for both names',
+            'Determine partnership house',
+            'Analyze element compatibility',
+            'Check planetary influences',
+            'Evaluate spiritual connections',
+            'Generate comprehensive compatibility report'
+        ],
+        weights: {
+            partnerHouse: 0.35,
+            digitRootHarmony: 0.20,
+            elementMatch: 0.15,
+            planetaryAlignment: 0.15,
+            spiritualConnection: 0.15
+        }
+    },
+    businessOptimization: {
+        steps: [
+            'Analyze name value and range indicators',
+            'Evaluate element for industry suitability',
+            'Check planetary influence for timing',
+            'Assess growth potential indicators',
+            'Consider regional naming conventions',
+            'Generate business recommendations'
+        ],
+        weights: {
+            valueRange: 0.20,
+            elementIndustryMatch: 0.25,
+            planetaryTiming: 0.15,
+            growthPotential: 0.20,
+            marketResonance: 0.20
+        }
+    }
+};
+
+const INDUSTRY_ELEMENT_MATCHING = {
+    technology: {
+        bestElements: ['Air', 'Fire'],
+        bestPlanets: ['Mercury', 'Uranus'],
+        favorableDigitRoots: [1, 3, 5, 8],
+        notes: 'Innovation and communication elements favor tech ventures'
+    },
+    finance: {
+        bestElements: ['Earth', 'Water'],
+        bestPlanets: ['Jupiter', 'Saturn'],
+        favorableDigitRoots: [4, 8, 9],
+        notes: 'Stability and abundance elements suit financial services'
+    },
+    healthcare: {
+        bestElements: ['Water', 'Earth'],
+        bestPlanets: ['Moon', 'Jupiter'],
+        favorableDigitRoots: [2, 6, 7, 9],
+        notes: 'Healing and nurturing elements support healthcare'
+    },
+    education: {
+        bestElements: ['Air', 'Fire'],
+        bestPlanets: ['Mercury', 'Jupiter'],
+        favorableDigitRoots: [3, 5, 7, 9],
+        notes: 'Communication and wisdom elements enhance education'
+    },
+    retail: {
+        bestElements: ['Air', 'Fire'],
+        bestPlanets: ['Venus', 'Mercury'],
+        favorableDigitRoots: [2, 5, 6, 8],
+        notes: 'Beauty and trade elements favor retail businesses'
+    },
+    construction: {
+        bestElements: ['Earth', 'Fire'],
+        bestPlanets: ['Mars', 'Saturn'],
+        favorableDigitRoots: [4, 8],
+        notes: 'Building and strength elements support construction'
+    },
+    hospitality: {
+        bestElements: ['Water', 'Air'],
+        bestPlanets: ['Venus', 'Moon'],
+        favorableDigitRoots: [2, 6, 7],
+        notes: 'Nurturing and social elements suit hospitality'
+    },
+    agriculture: {
+        bestElements: ['Earth', 'Water'],
+        bestPlanets: ['Moon', 'Venus'],
+        favorableDigitRoots: [4, 6, 9],
+        notes: 'Growth and fertility elements enhance agriculture'
+    },
+    consulting: {
+        bestElements: ['Air', 'Fire'],
+        bestPlanets: ['Mercury', 'Jupiter'],
+        favorableDigitRoots: [1, 3, 7, 8],
+        notes: 'Wisdom and communication elements favor consulting'
+    },
+    manufacturing: {
+        bestElements: ['Earth', 'Fire'],
+        bestPlanets: ['Mars', 'Saturn'],
+        favorableDigitRoots: [4, 8],
+        notes: 'Production and stability elements support manufacturing'
+    }
+};
+
+const PHONETIC_PATTERNS = {
+    pleasingEndings: {
+        'ا': { score: 8, effect: 'Open and expansive', examples: ['عليا', 'سميا', 'هدى'] },
+        'ة': { score: 9, effect: 'Feminine and gentle', examples: ['فاطمة', 'خديجة', 'عائشة'] },
+        'ين': { score: 7, effect: 'Harmonious and melodic', examples: ['أمين', 'ياسين', 'عدين'] },
+        'ان': { score: 7, effect: 'Strong and complete', examples: ['عمران', 'سليمان', 'ريان'] },
+        'ى': { score: 8, effect: 'Soft and flowing', examples: ['منى', 'ليلى', 'سلمى'] }
+    },
+    strongSounds: {
+        'ع': { score: 9, effect: 'Deep and authoritative', examples: ['علي', 'عبدالله', 'عمر'] },
+        'ق': { score: 8, effect: 'Powerful and decisive', examples: ['عبدالقادر', 'طارق', 'فاروق'] },
+        'ح': { score: 7, effect: 'Spiritual and sincere', examples: ['أحمد', 'محمد', 'حسن'] },
+        'ص': { score: 7, effect: 'Purity and clarity', examples: ['يوسف', 'عاصم', 'صلاح'] },
+        'ض': { score: 8, effect: 'Strength and determination', examples: ['خالد', 'عاضد', 'فضل'] }
+    },
+    softSounds: {
+        'ي': { score: 7, effect: 'Gentle and refined', examples: ['علي', 'حسين', 'يوسف'] },
+        'و': { score: 6, effect: 'Flowing and warm', examples: ['داود', 'يوسف', 'عمر'] },
+        'ن': { score: 6, effect: 'Smooth and pleasant', examples: ['حسن', 'حسين', 'عمران'] },
+        'ل': { score: 6, effect: 'Light and elegant', examples: ['علي', 'لالا', 'عادل'] }
+    }
+};
+
+const TREND_PATTERNS = {
+    modernNaming: {
+        characteristics: [
+            'Shorter names preferred',
+            'Unique spellings',
+            'International compatibility',
+            'Meaning-focused selection'
+        ],
+        popularModernNames: [
+            'يانا', 'ليان', 'جنى', 'روقا', 'ميرا',
+            'أيان', 'ريان', 'جود', 'سديم', 'فارس'
+        ]
+    },
+    traditionalNaming: {
+        characteristics: [
+            'Family lineage honored',
+            'Religious significance prioritized',
+            'Longer compound names',
+            'Tribal connections maintained'
+        ],
+        popularTraditionalNames: [
+            'محمد', 'أحمد', 'عبدالله', 'عبدالرحمن',
+            'فاطمة', 'عائشة', 'خديجة', 'زينب'
+        ]
+    }
+};
+
+function calculateRecommendationScore(name, criteria) {
+    const Hisaab = require('./index.js');
+    const hisaab = new Hisaab(name);
+    
+    let totalScore = 0;
+    let maxScore = 100;
+    let breakdown = {};
+    
+    if (criteria.targetValue) {
+        const diff = Math.abs(hisaab.getValue() - criteria.targetValue);
+        const valueScore = Math.max(0, 25 - diff);
+        breakdown.targetValue = valueScore;
+        totalScore += valueScore;
+    }
+    
+    if (criteria.element) {
+        const astrology = hisaab.getArabicAstrology();
+        if (astrology.element.name === criteria.element) {
+            breakdown.element = 15;
+            totalScore += 15;
+        } else {
+            breakdown.element = 0;
+        }
+    }
+    
+    if (criteria.desiredDigitRoot) {
+        if (hisaab.getDigitRoot() === criteria.desiredDigitRoot) {
+            breakdown.digitRoot = 20;
+            totalScore += 20;
+        } else {
+            breakdown.digitRoot = 0;
+        }
+    }
+    
+    if (criteria.gender) {
+        breakdown.gender = 10;
+        totalScore += 10;
+    }
+    
+    if (criteria.purpose) {
+        const digitRoot = hisaab.getDigitRoot();
+        const purposeScore = AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[digitRoot][criteria.purpose] || 5;
+        breakdown.purpose = purposeScore;
+        totalScore += purposeScore;
+    }
+    
+    return {
+        name: name,
+        value: hisaab.getValue(),
+        digitRoot: hisaab.getDigitRoot(),
+        totalScore: totalScore,
+        maxScore: maxScore,
+        percentage: Math.round((totalScore / maxScore) * 100),
+        breakdown: breakdown
+    };
+}
+
+function getIndustryRecommendation(industry) {
+    return INDUSTRY_ELEMENT_MATCHING[industry.toLowerCase()] || null;
+}
+
+function getElementRecommendation(element) {
+    return AI_RECOMMENDATION_WEIGHTS.element.recommendations[element] || null;
+}
+
+function getDigitRootRecommendation(digitRoot) {
+    return {
+        weights: AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[digitRoot],
+        description: AI_RECOMMENDATION_WEIGHTS.digitRoot.descriptions[digitRoot]
+    };
+}
+
+module.exports = {
+    AI_RECOMMENDATION_WEIGHTS,
+    COMPATIBILITY_SCORING,
+    NAME_SCORING_FACTORS,
+    RECOMMENDATION_ALGORITHMS,
+    INDUSTRY_ELEMENT_MATCHING,
+    PHONETIC_PATTERNS,
+    TREND_PATTERNS,
+    calculateRecommendationScore,
+    getIndustryRecommendation,
+    getElementRecommendation,
+    getDigitRootRecommendation
+};
+    };
+    
+    modules['./name_database.js'] = function(module, exports, require) {
+/**
+ * Name Database Module - Comprehensive Arabic Names Collection
+ * قاعدة بيانات الأسماء - مجموعة شاملة من الأسماء العربية
+ */
+
+const ARABIC_NAME_DATABASE = {
+    male: [
+        { name: 'محمد', meaning: 'Praised, praiseworthy', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'أحمد', meaning: 'Most praised, commendable', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'علي', meaning: 'High, exalted, sublime', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'حسن', meaning: 'Good, beautiful, handsome', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'حسين', meaning: 'Handsome, good-looking', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'عمر', meaning: 'Life, age, flourishing', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'عثمان', meaning: 'Baby bustard', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'أبو بكر', meaning: 'Father of the young camel', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'خالد', meaning: 'Eternal, immortal', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'سعد', meaning: 'Happiness, good fortune', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'عبدالله', meaning: 'Servant of Allah', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'عبدالرحمن', meaning: 'Servant of the Most Gracious', origin: 'Arabic', quranic: false, prophetic: false },
+        { name: 'عبدالعزيز', meaning: 'Servant of the Mighty', origin: 'Arabic', quranic: false },
+        { name: 'عبدالكريم', meaning: 'Servant of the Generous', origin: 'Arabic', quranic: false },
+        { name: 'عبدالحميد', meaning: 'Servant of the Praiseworthy', origin: 'Arabic', quranic: false },
+        { name: 'يوسف', meaning: 'God increases', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'إبراهيم', meaning: 'Father of many nations', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'موسى', meaning: 'Drawn from water', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'عيسى', meaning: 'God saves', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'داود', meaning: 'Beloved', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'سليمان', meaning: 'Peace', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'يحيى', meaning: 'God is gracious', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'زكريا', meaning: 'God remembers', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'يونس', meaning: 'Dove', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'إسماعيل', meaning: 'God hears', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'إسحاق', meaning: 'He laughs', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'يعقوب', meaning: 'Supplanter', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'نوح', meaning: 'Rest, comfort', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'هود', meaning: 'He who turns to God', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'صالح', meaning: 'Righteous, virtuous', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'شعيب', meaning: 'Who treats well', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'لوط', meaning: 'Veil, covering', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'إلياس', meaning: 'God is my Lord', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'طه', meaning: 'Surah name, mystical letters', origin: 'Arabic', quranic: true },
+        { name: 'يس', meaning: 'Surah name, mystical letters', origin: 'Arabic', quranic: true },
+        { name: 'طارق', meaning: 'Morning star, night visitor', origin: 'Arabic', quranic: true },
+        { name: 'سعيد', meaning: 'Happy, fortunate', origin: 'Arabic', quranic: true },
+        { name: 'عماد', meaning: 'Pillar, support', origin: 'Arabic', quranic: false },
+        { name: 'فهد', meaning: 'Leopard, panther', origin: 'Arabic', quranic: false },
+        { name: 'سلطان', meaning: 'Authority, ruler', origin: 'Arabic', quranic: true },
+        { name: 'فيصل', meaning: 'Decisive, arbitrator', origin: 'Arabic', quranic: false },
+        { name: 'ماجد', meaning: 'Glorious, noble', origin: 'Arabic', quranic: false },
+        { name: 'نادر', meaning: 'Rare, precious', origin: 'Arabic', quranic: false },
+        { name: 'أمين', meaning: 'Trustworthy, faithful', origin: 'Arabic', quranic: true },
+        { name: 'باسم', meaning: 'Smiling', origin: 'Arabic', quranic: false },
+        { name: 'جمال', meaning: 'Beauty', origin: 'Arabic', quranic: false },
+        { name: 'رامي', meaning: 'Archer, thrower', origin: 'Arabic', quranic: false },
+        { name: 'زياد', meaning: 'Growth, increase', origin: 'Arabic', quranic: true },
+        { name: 'فارس', meaning: 'Knight, horseman', origin: 'Arabic', quranic: false },
+        { name: 'كريم', meaning: 'Generous, noble', origin: 'Arabic', quranic: true },
+        { name: 'لؤي', meaning: 'Shield', origin: 'Arabic', quranic: false },
+        { name: 'مازن', meaning: 'Clouds, rain-bearing', origin: 'Arabic', quranic: false },
+        { name: 'ناصر', meaning: 'Victorious, helper', origin: 'Arabic', quranic: true },
+        { name: 'هاني', meaning: 'Happy, pleased', origin: 'Arabic', quranic: false },
+        { name: 'وليد', meaning: 'Newborn', origin: 'Arabic', quranic: true },
+        { name: 'ياسر', meaning: 'Easy, wealthy', origin: 'Arabic', quranic: false },
+        { name: 'عادل', meaning: 'Just, fair', origin: 'Arabic', quranic: false },
+        { name: 'فؤاد', meaning: 'Heart', origin: 'Arabic', quranic: true },
+        { name: 'منير', meaning: 'Illuminating', origin: 'Arabic', quranic: false },
+        { name: 'عصام', meaning: 'Bond, safeguard', origin: 'Arabic', quranic: false },
+        { name: 'حاتم', meaning: 'Decisive, judge', origin: 'Arabic', quranic: false },
+        { name: 'عامر', meaning: 'Prosperous, full of life', origin: 'Arabic', quranic: true },
+        { name: 'سالم', meaning: 'Safe, sound', origin: 'Arabic', quranic: false },
+        { name: 'صالح', meaning: 'Righteous', origin: 'Arabic', quranic: true },
+        { name: 'أنس', meaning: 'Affection, love', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'براء', meaning: 'Innocent, free', origin: 'Arabic', quranic: false },
+        { name: 'حارث', meaning: 'Plower, cultivator', origin: 'Arabic', quranic: false },
+        { name: 'عباس', meaning: 'Lion', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'حمزة', meaning: 'Lion', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'بلال', meaning: 'Moisture', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'سلمان', meaning: 'Safe, sound', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'عمار', meaning: 'Long-lived', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'مصعب', meaning: 'One who spreads', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'طلحة', meaning: 'Kind of tree', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'زبير', meaning: 'Strong', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'سعد', meaning: 'Happiness', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'سعيد', meaning: 'Happy', origin: 'Arabic', quranic: true, sahabi: true },
+        { name: 'عثمان', meaning: 'Baby bustard', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'يزيد', meaning: 'He increases', origin: 'Arabic', quranic: false },
+        { name: 'معاذ', meaning: 'Protected', origin: 'Arabic', quranic: false, sahabi: true },
+        { name: 'معتز', meaning: 'Proud, mighty', origin: 'Arabic', quranic: false },
+        { name: 'مهدي', meaning: 'Guided one', origin: 'Arabic', quranic: true },
+        { name: 'مراد', meaning: 'Desired, wished', origin: 'Arabic', quranic: false },
+        { name: 'راشد', meaning: 'Rightly guided', origin: 'Arabic', quranic: true },
+        { name: 'رشيد', meaning: 'Wise, rightly guided', origin: 'Arabic', quranic: true },
+        { name: 'حميد', meaning: 'Praised', origin: 'Arabic', quranic: true },
+        { name: 'توفيق', meaning: 'Success, divine guidance', origin: 'Arabic', quranic: false },
+        { name: 'عزمي', meaning: 'Determined', origin: 'Arabic', quranic: false },
+        { name: 'فخري', meaning: 'Proud', origin: 'Arabic', quranic: false },
+        { name: 'بشير', meaning: 'Bringer of good news', origin: 'Arabic', quranic: true },
+        { name: 'نذير', meaning: 'Warner', origin: 'Arabic', quranic: true },
+        { name: 'عزيز', meaning: 'Mighty, beloved', origin: 'Arabic', quranic: true },
+        { name: 'جلال', meaning: 'Majesty', origin: 'Arabic', quranic: false },
+        { name: 'كمال', meaning: 'Perfection', origin: 'Arabic', quranic: false },
+        { name: 'نور', meaning: 'Light', origin: 'Arabic', quranic: true },
+        { name: 'ضياء', meaning: 'Light, illumination', origin: 'Arabic', quranic: true },
+        { name: 'سرور', meaning: 'Happiness, joy', origin: 'Arabic', quranic: false },
+        { name: 'جود', meaning: 'Generosity', origin: 'Arabic', quranic: false },
+        { name: 'سديم', meaning: 'Nebula', origin: 'Arabic', quranic: false },
+        { name: 'أيان', meaning: 'Gift of God', origin: 'Arabic', quranic: false },
+        { name: 'ريان', meaning: 'Gates of Paradise', origin: 'Arabic', quranic: false },
+        { name: 'جبريل', meaning: 'Archangel Gabriel', origin: 'Hebrew/Arabic', quranic: true },
+        { name: 'ميكائيل', meaning: 'Archangel Michael', origin: 'Hebrew/Arabic', quranic: true },
+        { name: 'عزرائيل', meaning: 'Angel of Death', origin: 'Hebrew/Arabic', quranic: false },
+        { name: 'إسرافيل', meaning: 'Archangel Israfil', origin: 'Arabic', quranic: false }
+    ],
+    female: [
+        { name: 'فاطمة', meaning: 'One who abstains, weaning', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'عائشة', meaning: 'Alive, living, prosperous', origin: 'Arabic', quranic: true, propheticFamily: true },
+        { name: 'خديجة', meaning: 'Premature child', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'زينب', meaning: 'Fragrant flower, ornamental tree', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'مريم', meaning: 'Beloved, wished-for child', origin: 'Hebrew/Arabic', quranic: true, prophetic: true },
+        { name: 'آمنة', meaning: 'Safe, secure', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'صفية', meaning: 'Pure, clear', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'رقية', meaning: 'Rise, ascent', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'أم كلثوم', meaning: 'Mother of Kulthum', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'حفصة', meaning: 'Young lioness', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'جويرية', meaning: 'Small rose', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'ميمونة', meaning: 'Blessed, favorable', origin: 'Arabic', quranic: true, propheticFamily: true },
+        { name: 'سودة', meaning: 'Black', origin: 'Arabic', quranic: false, propheticFamily: true },
+        { name: 'أسماء', meaning: 'Names, lofty', origin: 'Arabic', quranic: true, sahabia: true },
+        { name: 'نورا', meaning: 'Light', origin: 'Arabic', quranic: true },
+        { name: 'سارة', meaning: 'Princess, noblewoman', origin: 'Hebrew/Arabic', quranic: false, prophetic: true },
+        { name: 'هاجر', meaning: 'Flight, emigration', origin: 'Arabic', quranic: true, prophetic: true },
+        { name: 'لينا', meaning: 'Tender, soft', origin: 'Arabic', quranic: false },
+        { name: 'دانا', meaning: 'Pearl', origin: 'Persian/Arabic', quranic: false },
+        { name: 'ريم', meaning: 'White antelope, gazelle', origin: 'Arabic', quranic: false },
+        { name: 'منى', meaning: 'Wish, desire', origin: 'Arabic', quranic: true },
+        { name: 'هند', meaning: 'India, group of camels', origin: 'Arabic', quranic: false, sahabia: true },
+        { name: 'ليلى', meaning: 'Night, born at night', origin: 'Arabic', quranic: false },
+        { name: 'أميرة', meaning: 'Princess', origin: 'Arabic', quranic: false },
+        { name: 'جميلة', meaning: 'Beautiful', origin: 'Arabic', quranic: false },
+        { name: 'حنان', meaning: 'Compassion, affection', origin: 'Arabic', quranic: false },
+        { name: 'رانيا', meaning: 'Gazing, looking at', origin: 'Arabic', quranic: false },
+        { name: 'سلمى', meaning: 'Peaceful, safe', origin: 'Arabic', quranic: false },
+        { name: 'فرح', meaning: 'Joy, happiness', origin: 'Arabic', quranic: true },
+        { name: 'قمر', meaning: 'Moon', origin: 'Arabic', quranic: true },
+        { name: 'لمياء', meaning: 'Shining, radiant', origin: 'Arabic', quranic: false },
+        { name: 'ناديا', meaning: 'Tender, delicate', origin: 'Slavic/Arabic', quranic: false },
+        { name: 'هدى', meaning: 'Guidance', origin: 'Arabic', quranic: true },
+        { name: 'ياسمين', meaning: 'Jasmine flower', origin: 'Persian/Arabic', quranic: false },
+        { name: 'عبير', meaning: 'Fragrance, perfume', origin: 'Arabic', quranic: false },
+        { name: 'فداء', meaning: 'Sacrifice, redemption', origin: 'Arabic', quranic: false },
+        { name: 'منال', meaning: 'Achievement, attainment', origin: 'Arabic', quranic: false },
+        { name: 'نهى', meaning: 'Intelligence, wisdom', origin: 'Arabic', quranic: true },
+        { name: 'وفاء', meaning: 'Faithfulness, loyalty', origin: 'Arabic', quranic: false },
+        { name: 'سحر', meaning: 'Magic, charm', origin: 'Arabic', quranic: false },
+        { name: 'دلال', meaning: 'Pampering, fondling', origin: 'Arabic', quranic: false },
+        { name: 'غادة', meaning: 'Beautiful woman', origin: 'Arabic', quranic: false },
+        { name: 'رنا', meaning: 'Gaze, look', origin: 'Arabic', quranic: false },
+        { name: 'لمى', meaning: 'Dark lips', origin: 'Arabic', quranic: false },
+        { name: 'سمر', meaning: 'Conversation at night', origin: 'Arabic', quranic: false },
+        { name: 'ضحى', meaning: 'Forenoon', origin: 'Arabic', quranic: true },
+        { name: 'سماح', meaning: 'Forgiveness', origin: 'Arabic', quranic: false },
+        { name: 'إخلاص', meaning: 'Sincerity', origin: 'Arabic', quranic: true },
+        { name: 'آية', meaning: 'Sign, verse', origin: 'Arabic', quranic: true },
+        { name: 'براءة', meaning: 'Innocence', origin: 'Arabic', quranic: true },
+        { name: 'سكينة', meaning: 'Tranquility', origin: 'Arabic', quranic: true },
+        { name: 'ملاك', meaning: 'Angel', origin: 'Arabic', quranic: false },
+        { name: 'روضة', meaning: 'Garden', origin: 'Arabic', quranic: true },
+        { name: 'حنين', meaning: 'Longing, yearning', origin: 'Arabic', quranic: true },
+        { name: 'سناء', meaning: 'Brilliance, radiance', origin: 'Arabic', quranic: false },
+        { name: 'غيداء', meaning: 'Young, tender', origin: 'Arabic', quranic: false },
+        { name: 'نورهان', meaning: 'Light of grace', origin: 'Arabic', quranic: false },
+        { name: 'جنان', meaning: 'Paradise, gardens', origin: 'Arabic', quranic: true },
+        { name: 'حور', meaning: 'Heavenly maidens', origin: 'Arabic', quranic: true },
+        { name: 'عيناء', meaning: 'One with beautiful eyes', origin: 'Arabic', quranic: false },
+        { name: 'جنى', meaning: 'Fruits, harvest', origin: 'Arabic', quranic: true },
+        { name: 'روقا', meaning: 'Grace, elegance', origin: 'Arabic', quranic: false },
+        { name: 'ميرا', meaning: 'Provisions, provisions of journey', origin: 'Arabic', quranic: false },
+        { name: 'يانا', meaning: 'Gift from God', origin: 'Arabic', quranic: false },
+        { name: 'ليان', meaning: 'Softness, gentleness', origin: 'Arabic', quranic: false },
+        { name: 'جوريا', meaning: 'Rose', origin: 'Arabic', quranic: false },
+        { name: 'راما', meaning: 'Pleasing', origin: 'Arabic', quranic: false },
+        { name: 'دانية', meaning: 'Close, near', origin: 'Arabic', quranic: true },
+        { name: 'سجى', meaning: 'Quiet, calm', origin: 'Arabic', quranic: false },
+        { name: 'نغم', meaning: 'Melody, tune', origin: 'Arabic', quranic: false },
+        { name: 'هدى', meaning: 'Guidance', origin: 'Arabic', quranic: true },
+        { name: 'بسمة', meaning: 'Smile', origin: 'Arabic', quranic: false },
+        { name: 'تالا', meaning: 'Small palm tree', origin: 'Arabic', quranic: false },
+        { name: 'جودي', meaning: 'Name of hill', origin: 'Arabic', quranic: true },
+        { name: 'حلا', meaning: 'Sweetness', origin: 'Arabic', quranic: false },
+        { name: 'سدين', meaning: 'Musk', origin: 'Arabic', quranic: false },
+        { name: 'عالية', meaning: 'High, exalted', origin: 'Arabic', quranic: false },
+        { name: 'غالية', meaning: 'Precious, dear', origin: 'Arabic', quranic: false },
+        { name: 'فريال', meaning: 'Beautiful', origin: 'Persian/Arabic', quranic: false },
+        { name: 'كوثر', meaning: 'Abundance', origin: 'Arabic', quranic: true },
+        { name: 'لورا', meaning: 'Laurel tree', origin: 'Latin/Arabic', quranic: false },
+        { name: 'ميساء', meaning: 'Walking proudly', origin: 'Arabic', quranic: false },
+        { name: 'نادين', meaning: 'Moist, tender', origin: 'Arabic', quranic: false },
+        { name: 'هيفاء', meaning: 'Slender, beautiful', origin: 'Arabic', quranic: false },
+        { name: 'ورود', meaning: 'Roses', origin: 'Arabic', quranic: false }
+    ],
+    unisex: [
+        { name: 'نور', meaning: 'Light', origin: 'Arabic', quranic: true },
+        { name: 'أمل', meaning: 'Hope', origin: 'Arabic', quranic: false },
+        { name: 'سرى', meaning: 'Night journey', origin: 'Arabic', quranic: true },
+        { name: 'سمير', meaning: 'Companion in evening talk', origin: 'Arabic', quranic: false },
+        { name: 'عزة', meaning: 'Glory, power', origin: 'Arabic', quranic: true },
+        { name: 'وفاء', meaning: 'Faithfulness', origin: 'Arabic', quranic: false },
+        { name: 'هدى', meaning: 'Guidance', origin: 'Arabic', quranic: true },
+        { name: 'إيمان', meaning: 'Faith', origin: 'Arabic', quranic: true },
+        { name: 'حسن', meaning: 'Beauty, goodness', origin: 'Arabic', quranic: true },
+        { name: 'حسين', meaning: 'Handsome', origin: 'Arabic', quranic: false },
+        { name: 'جلاء', meaning: 'Clarity', origin: 'Arabic', quranic: false },
+        { name: 'سناء', meaning: 'Radiance', origin: 'Arabic', quranic: false }
+    ]
+};
+
+const NAME_VARIATIONS = {
+    'محمد': ['محمد', 'أحمد', 'محمود', 'محمد أحمد', 'أبو محمد'],
+    'علي': ['علي', 'علياء', 'علا'],
+    'فاطمة': ['فاطمة', 'فاطمه', 'فطوم'],
+    'عبدالله': ['عبدالله', 'عبد الله', 'عبدالإله'],
+    'عبدالرحمن': ['عبدالرحمن', 'عبد الرحمن', 'عبدالرحيم']
+};
+
+const NAME_PAIRS_COMPATIBLE = [
+    { name1: 'محمد', name2: 'فاطمة', house: 9, note: 'Prophetic family - blessed pair' },
+    { name1: 'أحمد', name2: 'خديجة', house: 7, note: 'Excellent compatibility' },
+    { name1: 'علي', name2: 'زينب', house: 5, note: 'Neutral - good for public service' },
+    { name1: 'حسن', name2: 'عائشة', house: 7, note: 'Very good - harmonious' },
+    { name1: 'عمر', name2: 'مريم', house: 4, note: 'Good - stable foundation' },
+    { name1: 'خالد', name2: 'نورا', house: 7, note: 'Excellent - blessed union' }
+];
+
+function searchNames(criteria) {
+    const { gender, startsWith, contains, meaning, quranic, prophetic, sahabi, maxResults = 50 } = criteria;
+    let results = [];
+    
+    const pools = gender ? [ARABIC_NAME_DATABASE[gender]] : [ARABIC_NAME_DATABASE.male, ARABIC_NAME_DATABASE.female, ARABIC_NAME_DATABASE.unisex];
+    
+    pools.forEach(pool => {
+        pool.forEach(entry => {
+            let matches = true;
+            
+            if (startsWith && !entry.name.startsWith(startsWith)) matches = false;
+            if (contains && !entry.name.includes(contains)) matches = false;
+            if (meaning && !entry.meaning.toLowerCase().includes(meaning.toLowerCase())) matches = false;
+            if (quranic !== undefined && entry.quranic !== quranic) matches = false;
+            if (prophetic !== undefined && entry.prophetic !== prophetic) matches = false;
+            if (sahabi !== undefined && entry.sahabi !== sahabi) matches = false;
+            
+            if (matches) {
+                results.push(entry);
+            }
+        });
+    });
+    
+    return results.slice(0, maxResults);
+}
+
+function getNameInfo(name) {
+    const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female, ...ARABIC_NAME_DATABASE.unisex];
+    return allNames.find(entry => entry.name === name) || null;
+}
+
+function getRandomNames(gender, count = 5) {
+    const pool = ARABIC_NAME_DATABASE[gender] || [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+    const shuffled = pool.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+function getNamesByOrigin(origin) {
+    const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female, ...ARABIC_NAME_DATABASE.unisex];
+    return allNames.filter(entry => entry.origin.toLowerCase().includes(origin.toLowerCase()));
+}
+
+function getQuranicNames() {
+    const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female, ...ARABIC_NAME_DATABASE.unisex];
+    return allNames.filter(entry => entry.quranic);
+}
+
+function getPropheticNames() {
+    const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female, ...ARABIC_NAME_DATABASE.unisex];
+    return allNames.filter(entry => entry.prophetic || entry.propheticFamily);
+}
+
+function getSahabaNames() {
+    const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female, ...ARABIC_NAME_DATABASE.unisex];
+    return allNames.filter(entry => entry.sahabi || entry.sahabia);
+}
+
+function getNameCount() {
+    return {
+        male: ARABIC_NAME_DATABASE.male.length,
+        female: ARABIC_NAME_DATABASE.female.length,
+        unisex: ARABIC_NAME_DATABASE.unisex.length,
+        total: ARABIC_NAME_DATABASE.male.length + ARABIC_NAME_DATABASE.female.length + ARABIC_NAME_DATABASE.unisex.length
+    };
+}
+
+module.exports = {
+    ARABIC_NAME_DATABASE,
+    NAME_VARIATIONS,
+    NAME_PAIRS_COMPATIBLE,
+    searchNames,
+    getNameInfo,
+    getRandomNames,
+    getNamesByOrigin,
+    getQuranicNames,
+    getPropheticNames,
+    getSahabaNames,
+    getNameCount
+};
+    };
+    
+    modules['./export_templates_data.js'] = function(module, exports, require) {
+/**
+ * Export Templates Data Module - Report Generation Templates
+ * قوالب التصدير - قوالب إنشاء التقارير
+ */
+
+const EXPORT_TEMPLATES = {
+    text: {
+        name: 'Text Report',
+        extension: '.txt',
+        mimeType: 'text/plain',
+        template: `
+═══════════════════════════════════════════════════════════════
+                    تقرير حساب الاسم
+                 HISAB NAME ANALYSIS REPORT
+═══════════════════════════════════════════════════════════════
+
+الاسم: {{name}}
+القيمة: {{value}}
+الجذر الرقمي: {{digitRoot}}
+
+───────────────────────────────────────────────────────────────
+                    التحليل الأساسي
+───────────────────────────────────────────────────────────────
+{{basicAnalysis}}
+
+───────────────────────────────────────────────────────────────
+                    علم الفلك العربي
+───────────────────────────────────────────────────────────────
+العنصر: {{element}}
+الكوكب: {{planet}}
+البرج: {{zodiac}}
+
+───────────────────────────────────────────────────────────────
+                    التحليل الإسلامي
+───────────────────────────────────────────────────────────────
+{{islamicAnalysis}}
+
+───────────────────────────────────────────────────────────────
+                    التوافق والمشاركة
+───────────────────────────────────────────────────────────────
+{{compatibility}}
+
+═══════════════════════════════════════════════════════════════
+                تم إنشاء هذا التقرير بواسطة حساب
+                Generated by Hisaab v{{version}}
+═══════════════════════════════════════════════════════════════
+`
+    },
+    json: {
+        name: 'JSON Export',
+        extension: '.json',
+        mimeType: 'application/json',
+        structure: {
+            metadata: {
+                version: '{{version}}',
+                generatedAt: '{{timestamp}}',
+                generator: 'Hisaab Arabic Numerology Library'
+            },
+            name: {
+                arabic: '{{name}}',
+                value: '{{value}}',
+                digitRoot: '{{digitRoot}}',
+                breakdown: '{{breakdown}}'
+            },
+            analysis: {
+                astrology: '{{astrology}}',
+                islamic: '{{islamic}}',
+                numerology: '{{numerology}}',
+                business: '{{business}}'
+            },
+            compatibility: '{{compatibility}}',
+            recommendations: '{{recommendations}}'
+        }
+    },
+    html: {
+        name: 'HTML Report',
+        extension: '.html',
+        mimeType: 'text/html',
+        template: `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير حساب - {{name}}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Amiri', 'Traditional Arabic', serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #1a472a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            color: #333;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #1a472a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #1a472a;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #c9a227;
+            font-size: 1.2em;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border-right: 4px solid #1a472a;
+        }
+        .section h2 {
+            color: #1a472a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .value-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a472a, #c9a227);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .value-box .value {
+            font-size: 4em;
+            font-weight: bold;
+            color: #fff;
+        }
+        .value-box .label {
+            font-size: 1.5em;
+            color: #fff;
+            margin-right: 15px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .info-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .info-item .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .info-item .value {
+            color: #1a472a;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .breakdown-table th, .breakdown-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .breakdown-table th {
+            background: #1a472a;
+            color: #fff;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #1a472a;
+            color: #666;
+        }
+        .print-only { display: none; }
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; }
+            .print-only { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{name}}</h1>
+            <div class="subtitle">تقرير حساب الاسم</div>
+        </div>
+        
+        <div class="value-box">
+            <span class="label">القيمة</span>
+            <span class="value">{{value}}</span>
+        </div>
+        
+        <div class="section">
+            <h2>📊 التحليل الأساسي</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">الجذر الرقمي</div>
+                    <div class="value">{{digitRoot}}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">العنصر</div>
+                    <div class="value">{{element}}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">الكوكب</div>
+                    <div class="value">{{planet}}</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">البرج</div>
+                    <div class="value">{{zodiac}}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📝 تفصيل الحروف</h2>
+            <table class="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>الحرف</th>
+                        <th>القيمة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{breakdownRows}}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>☪️ التحليل الإسلامي</h2>
+            <div>{{islamicAnalysis}}</div>
+        </div>
+        
+        <div class="section">
+            <h2>🔮 التوصيات</h2>
+            <div>{{recommendations}}</div>
+        </div>
+        
+        <div class="footer">
+            <p>تم إنشاء هذا التقرير بواسطة <strong>حساب</strong> - مكتبة حساب الأسماء العربية</p>
+            <p>الإصدار {{version}} | {{timestamp}}</p>
+        </div>
+    </div>
+</body>
+</html>`
+    },
+    markdown: {
+        name: 'Markdown Report',
+        extension: '.md',
+        mimeType: 'text/markdown',
+        template: `# تقرير حساب الاسم - {{name}}
+
+## 📊 المعلومات الأساسية
+
+| السمة | القيمة |
+|-------|--------|
+| **الاسم** | {{name}} |
+| **القيمة العددية** | {{value}} |
+| **الجذر الرقمي** | {{digitRoot}} |
+
+## 🔤 تفصيل الحروف
+
+| الحرف | القيمة |
+|-------|--------|
+{{breakdownTable}}
+
+## 🌙 علم الفلك العربي
+
+| السمة | القيمة |
+|-------|--------|
+| **العنصر** | {{element}} |
+| **الكوكب** | {{planet}} |
+| **البرج** | {{zodiac}} |
+
+## ☪️ التحليل الإسلامي
+
+{{islamicAnalysis}}
+
+## 💼 تحليل الأعمال
+
+{{businessAnalysis}}
+
+## 🔮 التوصيات
+
+{{recommendations}}
+
+---
+
+*تم إنشاء هذا التقرير بواسطة **حساب** v{{version}}*
+*تاريخ الإنشاء: {{timestamp}}*
+`
+    }
+};
+
+const REPORT_SECTIONS = {
+    basic: {
+        title: { arabic: 'المعلومات الأساسية', english: 'Basic Information' },
+        fields: ['name', 'value', 'digitRoot', 'classification']
+    },
+    astrology: {
+        title: { arabic: 'علم الفلك العربي', english: 'Arabic Astrology' },
+        fields: ['element', 'planet', 'zodiac', 'favorableDay']
+    },
+    islamic: {
+        title: { arabic: 'التحليل الإسلامي', english: 'Islamic Analysis' },
+        fields: ['asmaUlHusnaMatch', 'quranicConnection', 'islamicQualities', 'spiritualGuidance']
+    },
+    compatibility: {
+        title: { arabic: 'التوافق', english: 'Compatibility' },
+        fields: ['partnerHouse', 'compatibilityLevel', 'recommendations']
+    },
+    business: {
+        title: { arabic: 'تحليل الأعمال', english: 'Business Analysis' },
+        fields: ['overallRating', 'recommendedIndustries', 'timingGuidance', 'successIndicators']
+    },
+    numerology: {
+        title: { arabic: 'علم الأرقام', english: 'Numerology' },
+        fields: ['masterNumbers', 'karmicDebt', 'hiddenPotential', 'luckyNumbers']
+    }
+};
+
+const CLIPBOARD_FORMATS = {
+    short: {
+        template: '{{name}} = {{value}} (الجذر: {{digitRoot}}, العنصر: {{element}})',
+        maxLength: 100
+    },
+    medium: {
+        template: `{{name}} | القيمة: {{value}} | الجذر: {{digitRoot}}
+العنصر: {{element}} | الكوكب: {{planet}} | البرج: {{zodiac}}
+{{islamicQualities}}`,
+        maxLength: 500
+    },
+    detailed: {
+        template: `═══════════════════════════
+الاسم: {{name}}
+القيمة: {{value}}
+الجذر الرقمي: {{digitRoot}}
+═══════════════════════════
+العنصر: {{element}} ({{elementArabic}})
+الكوكب: {{planet}} ({{planetArabic}})
+البرج: {{zodiac}} ({{zodiacArabic}})
+═══════════════════════════
+{{islamicAnalysis}}
+═══════════════════════════`,
+        maxLength: 1000
+    }
+};
+
+const PDF_PRINT_SETTINGS = {
+    pageSettings: {
+        format: 'A4',
+        orientation: 'portrait',
+        margins: {
+            top: '20mm',
+            bottom: '20mm',
+            left: '15mm',
+            right: '15mm'
+        }
+    },
+    headerSettings: {
+        title: 'تقرير حساب',
+        showLogo: true,
+        showDate: true
+    },
+    footerSettings: {
+        showPageNumber: true,
+        showVersion: true,
+        copyrightText: '© Hisaab - Arabic Numerology Library'
+    }
+};
+
+function generateTextReport(data) {
+    const template = EXPORT_TEMPLATES.text.template;
+    return template
+        .replace(/\{\{name\}\}/g, data.name || '')
+        .replace(/\{\{value\}\}/g, data.value || '')
+        .replace(/\{\{digitRoot\}\}/g, data.digitRoot || '')
+        .replace(/\{\{element\}\}/g, data.element || '')
+        .replace(/\{\{planet\}\}/g, data.planet || '')
+        .replace(/\{\{zodiac\}\}/g, data.zodiac || '')
+        .replace(/\{\{basicAnalysis\}\}/g, data.basicAnalysis || '')
+        .replace(/\{\{islamicAnalysis\}\}/g, data.islamicAnalysis || '')
+        .replace(/\{\{compatibility\}\}/g, data.compatibility || '')
+        .replace(/\{\{version\}\}/g, data.version || '1.4.0');
+}
+
+function generateHTMLReport(data) {
+    let breakdownRows = '';
+    if (data.breakdown && Array.isArray(data.breakdown)) {
+        data.breakdown.forEach(item => {
+            breakdownRows += `<tr><td>${item.letter}</td><td>${item.value}</td></tr>`;
+        });
+    }
+    
+    return EXPORT_TEMPLATES.html.template
+        .replace(/\{\{name\}\}/g, data.name || '')
+        .replace(/\{\{value\}\}/g, data.value || '')
+        .replace(/\{\{digitRoot\}\}/g, data.digitRoot || '')
+        .replace(/\{\{element\}\}/g, data.element || '')
+        .replace(/\{\{planet\}\}/g, data.planet || '')
+        .replace(/\{\{zodiac\}\}/g, data.zodiac || '')
+        .replace(/\{\{breakdownRows\}\}/g, breakdownRows)
+        .replace(/\{\{islamicAnalysis\}\}/g, data.islamicAnalysis || '')
+        .replace(/\{\{recommendations\}\}/g, data.recommendations || '')
+        .replace(/\{\{version\}\}/g, data.version || '1.4.0')
+        .replace(/\{\{timestamp\}\}/g, new Date().toISOString());
+}
+
+function generateJSONExport(data) {
+    return JSON.stringify({
+        metadata: {
+            version: data.version || '1.4.0',
+            generatedAt: new Date().toISOString(),
+            generator: 'Hisaab Arabic Numerology Library'
+        },
+        name: {
+            arabic: data.name,
+            value: data.value,
+            digitRoot: data.digitRoot,
+            breakdown: data.breakdown
+        },
+        analysis: {
+            astrology: data.astrology,
+            islamic: data.islamic,
+            numerology: data.numerology,
+            business: data.business
+        },
+        compatibility: data.compatibility,
+        recommendations: data.recommendations
+    }, null, 2);
+}
+
+function generateMarkdownReport(data) {
+    let breakdownTable = '';
+    if (data.breakdown && Array.isArray(data.breakdown)) {
+        data.breakdown.forEach(item => {
+            breakdownTable += `| ${item.letter} | ${item.value} |\n`;
+        });
+    }
+    
+    return EXPORT_TEMPLATES.markdown.template
+        .replace(/\{\{name\}\}/g, data.name || '')
+        .replace(/\{\{value\}\}/g, data.value || '')
+        .replace(/\{\{digitRoot\}\}/g, data.digitRoot || '')
+        .replace(/\{\{element\}\}/g, data.element || '')
+        .replace(/\{\{planet\}\}/g, data.planet || '')
+        .replace(/\{\{zodiac\}\}/g, data.zodiac || '')
+        .replace(/\{\{breakdownTable\}\}/g, breakdownTable)
+        .replace(/\{\{islamicAnalysis\}\}/g, data.islamicAnalysis || '')
+        .replace(/\{\{businessAnalysis\}\}/g, data.businessAnalysis || '')
+        .replace(/\{\{recommendations\}\}/g, data.recommendations || '')
+        .replace(/\{\{version\}\}/g, data.version || '1.4.0')
+        .replace(/\{\{timestamp\}\}/g, new Date().toISOString());
+}
+
+function generateClipboardText(data, format = 'medium') {
+    const template = CLIPBOARD_FORMATS[format] || CLIPBOARD_FORMATS.medium;
+    return template.template
+        .replace(/\{\{name\}\}/g, data.name || '')
+        .replace(/\{\{value\}\}/g, data.value || '')
+        .replace(/\{\{digitRoot\}\}/g, data.digitRoot || '')
+        .replace(/\{\{element\}\}/g, data.element || '')
+        .replace(/\{\{elementArabic\}\}/g, data.elementArabic || '')
+        .replace(/\{\{planet\}\}/g, data.planet || '')
+        .replace(/\{\{planetArabic\}\}/g, data.planetArabic || '')
+        .replace(/\{\{zodiac\}\}/g, data.zodiac || '')
+        .replace(/\{\{zodiacArabic\}\}/g, data.zodiacArabic || '')
+        .replace(/\{\{islamicQualities\}\}/g, data.islamicQualities || '')
+        .replace(/\{\{islamicAnalysis\}\}/g, data.islamicAnalysis || '');
+}
+
+function getAvailableFormats() {
+    return Object.keys(EXPORT_TEMPLATES).map(key => ({
+        id: key,
+        name: EXPORT_TEMPLATES[key].name,
+        extension: EXPORT_TEMPLATES[key].extension,
+        mimeType: EXPORT_TEMPLATES[key].mimeType
+    }));
+}
+
+module.exports = {
+    EXPORT_TEMPLATES,
+    REPORT_SECTIONS,
+    CLIPBOARD_FORMATS,
+    PDF_PRINT_SETTINGS,
+    generateTextReport,
+    generateHTMLReport,
+    generateJSONExport,
+    generateMarkdownReport,
+    generateClipboardText,
+    getAvailableFormats
+};
+    };
+    
+    modules['./historical_names_data.js'] = function(module, exports, require) {
+/**
+ * Historical Names Data Module - Famous Personalities Database
+ * الأسماء التاريخية - قاعدة بيانات الشخصيات الشهيرة
+ */
+
+const HISTORICAL_FIGURES = {
+    prophets: [
+        {
+            name: 'محمد',
+            fullName: 'محمد بن عبدالله',
+            title: 'خاتم الأنبياء',
+            titleEnglish: 'Seal of the Prophets',
+            birth: 570,
+            death: 632,
+            birthPlace: 'مكة المكرمة',
+            significance: 'Last prophet of Islam, brought the Quran',
+            significanceArabic: 'آخر الأنبياء، جاء بالقرآن الكريم',
+            keyEvents: ['البعثة', 'الهجرة', 'فتح مكة', 'حجة الوداع']
+        },
+        {
+            name: 'إبراهيم',
+            title: 'أبو الأنبياء',
+            titleEnglish: 'Father of the Prophets',
+            era: '~2000 BCE',
+            significance: 'Built the Kaaba, father of Ishmael and Isaac',
+            significanceArabic: 'بنى الكعبة، أبو إسماعيل وإسحاق',
+            keyEvents: ['بناء الكعبة', 'الذبح العظيم']
+        },
+        {
+            name: 'موسى',
+            title: 'كليم الله',
+            titleEnglish: 'One who spoke with God',
+            era: '~1300 BCE',
+            significance: 'Received the Torah, led Israelites from Egypt',
+            significanceArabic: 'تلقى التوراة، قاد بني إسرائيل من مصر',
+            keyEvents: ['فرعون', 'البحر الأحمر', 'طور سيناء']
+        },
+        {
+            name: 'عيسى',
+            title: 'روح الله',
+            titleEnglish: 'Spirit of God',
+            birth: 0,
+            significance: 'Received the Gospel, performed miracles',
+            significanceArabic: 'تلقى الإنجيل، أجرى المعجزات',
+            keyEvents: ['الميلاد', 'المعجزات', 'الصعود']
+        },
+        {
+            name: 'داود',
+            title: 'خليفة الله',
+            titleEnglish: 'Vicegerent of God',
+            era: '~1000 BCE',
+            significance: 'Received the Psalms, king of Israel',
+            significanceArabic: 'تلقى الزبور، ملك بني إسرائيل',
+            keyEvents: ['جالوت', 'المملكة', 'الزبور']
+        },
+        {
+            name: 'سليمان',
+            title: 'نبي الله وملكه',
+            titleEnglish: 'Prophet and King',
+            era: '~970 BCE',
+            significance: 'Wisest prophet, ruled jinn and animals',
+            significanceArabic: 'أحكم الأنبياء، ملك الجن والحيوان',
+            keyEvents: ['العرش', 'سبأ', 'الهيكل']
+        },
+        {
+            name: 'يوسف',
+            title: 'صديق',
+            titleEnglish: 'The Truthful',
+            era: '~1700 BCE',
+            significance: 'Beautiful story in Quran, became vizier of Egypt',
+            significanceArabic: 'له أجمل قصة في القرآن، أصبح عزيز مصر',
+            keyEvents: ['البئر', 'السجن', 'عزيز مصر']
+        },
+        {
+            name: 'نوح',
+            title: 'نبي الله الأول',
+            titleEnglish: 'First Prophet',
+            era: '~3000 BCE',
+            significance: 'Built the Ark, preached for 950 years',
+            significanceArabic: 'بنى السفينة، دعا 950 سنة',
+            keyEvents: ['السفينة', 'الطوفان']
+        }
+    ],
+    sahaba: [
+        {
+            name: 'أبو بكر',
+            fullName: 'أبو بكر الصديق',
+            title: 'الصديق',
+            titleEnglish: 'The Truthful',
+            birth: 573,
+            death: 634,
+            significance: 'First caliph, closest companion of Prophet',
+            significanceArabic: 'أول الخلفاء، أقرب صحابة النبي',
+            role: 'أول الخلفاء الراشدين',
+            keyEvents: ['الإسلام الأول', 'الهجرة', 'حروب الردة']
+        },
+        {
+            name: 'عمر',
+            fullName: 'عمر بن الخطاب',
+            title: 'الفاروق',
+            titleEnglish: 'The Distinguisher',
+            birth: 584,
+            death: 644,
+            significance: 'Second caliph, expanded Islamic empire',
+            significanceArabic: 'ثاني الخلفاء، وسّع الدولة الإسلامية',
+            role: 'ثاني الخلفاء الراشدين',
+            keyEvents: ['الإسلام', 'القدس', 'توسع الدولة']
+        },
+        {
+            name: 'عثمان',
+            fullName: 'عثمان بن عفان',
+            title: 'ذو النورين',
+            titleEnglish: 'Possessor of Two Lights',
+            birth: 576,
+            death: 656,
+            significance: 'Third caliph, compiled the Quran',
+            significanceArabic: 'ثالث الخلفاء، جمع القرآن',
+            role: 'ثالث الخلفاء الراشدين',
+            keyEvents: ['جمع القرآن', 'توسع الدولة']
+        },
+        {
+            name: 'علي',
+            fullName: 'علي بن أبي طالب',
+            title: 'أمير المؤمنين',
+            titleEnglish: 'Commander of the Faithful',
+            birth: 600,
+            death: 661,
+            significance: 'Fourth caliph, cousin and son-in-law of Prophet',
+            significanceArabic: 'رابع الخلفاء، ابن عم النبي وزوج ابنته',
+            role: 'رابع الخلفاء الراشدين',
+            keyEvents: ['الإسلام', 'الخلافة', 'الجمل', 'صفين']
+        },
+        {
+            name: 'خالد',
+            fullName: 'خالد بن الوليد',
+            title: 'سيف الله',
+            titleEnglish: 'Sword of God',
+            death: 642,
+            significance: 'Greatest military commander in Islamic history',
+            significanceArabic: 'أعظم قائد عسكري في التاريخ الإسلامي',
+            role: 'قائد عسكري',
+            keyEvents: ['أحد', 'اليرموك', 'فتح الشام']
+        },
+        {
+            name: 'حمزة',
+            fullName: 'حمزة بن عبدالمطلب',
+            title: 'سيد الشهداء',
+            titleEnglish: 'Master of Martyrs',
+            death: 625,
+            significance: 'Uncle of Prophet, martyred at Uhud',
+            significanceArabic: 'عم النبي، استشهد في أحد',
+            role: 'عم النبي ﷺ',
+            keyEvents: ['الإسلام', 'بدر', 'أحد']
+        },
+        {
+            name: 'بلال',
+            fullName: 'بلال بن رباح',
+            title: 'أول مؤذن',
+            titleEnglish: 'First Muezzin',
+            significance: 'First muezzin in Islam, known for beautiful voice',
+            significanceArabic: 'أول مؤذن في الإسلام، معروف بصوته الجميل',
+            role: 'مؤذن النبي ﷺ',
+            keyEvents: ['التعذيب', 'الهجرة', 'الأذان']
+        },
+        {
+            name: 'سلمان',
+            fullName: 'سلمان الفارسي',
+            title: 'سلمان الخير',
+            titleEnglish: 'Salman the Good',
+            death: 656,
+            significance: 'Persian companion, suggested trench strategy',
+            significanceArabic: 'صحابي فارسي، اقترح حفر الخندق',
+            role: 'صحابي جليل',
+            keyEvents: ['البحث عن النبي', 'الخندق', 'مدائن']
+        }
+    ],
+    scholars: [
+        {
+            name: 'البخاري',
+            fullName: 'محمد بن إسماعيل البخاري',
+            title: 'أمير المؤمنين في الحديث',
+            titleEnglish: 'Commander of the Faithful in Hadith',
+            birth: 810,
+            death: 870,
+            birthPlace: 'بخارى',
+            significance: 'Compiled Sahih al-Bukhari, most authentic hadith collection',
+            significanceArabic: 'جمع صحيح البخاري، أصح كتب الحديث',
+            works: ['صحيح البخاري', 'الأدب المفرد', 'التاريخ الكبير']
+        },
+        {
+            name: 'مسلم',
+            fullName: 'مسلم بن الحجاج النيسابوري',
+            title: 'إمام المحدثين',
+            titleEnglish: 'Imam of Hadith Scholars',
+            birth: 821,
+            death: 875,
+            significance: 'Compiled Sahih Muslim, second most authentic hadith collection',
+            significanceArabic: 'جمع صحيح مسلم، ثاني أصح كتب الحديث',
+            works: ['صحيح مسلم']
+        },
+        {
+            name: 'الغزالي',
+            fullName: 'أبو حامد الغزالي',
+            title: 'حجة الإسلام',
+            titleEnglish: 'Proof of Islam',
+            birth: 1058,
+            death: 1111,
+            significance: 'Reviver of Islamic spirituality and philosophy',
+            significanceArabic: 'مجدد التصوف والفلسفة الإسلامية',
+            works: ['إحياء علوم الدين', 'تهافت الفلاسفة', 'المنقذ من الضلال']
+        },
+        {
+            name: 'ابن سينا',
+            fullName: 'أبو علي الحسين بن سينا',
+            title: 'الشيخ الرئيس',
+            titleEnglish: 'The Master Sheikh',
+            birth: 980,
+            death: 1037,
+            significance: 'Father of early modern medicine, polymath',
+            significanceArabic: 'أبو الطب الحديث، عالم موسوعي',
+            works: ['القانون في الطب', 'الشفاء', 'الإشارات والتنبيهات']
+        },
+        {
+            name: 'ابن رشد',
+            fullName: 'أبو الوليد ابن رشد',
+            title: 'الشارح الأكبر',
+            titleEnglish: 'The Great Commentator',
+            birth: 1126,
+            death: 1198,
+            significance: 'Philosopher and jurist, bridge between Islamic and Western thought',
+            significanceArabic: 'فيلسوف وفقيه، جسر بين الفكر الإسلامي والغربي',
+            works: ['تهافت التهافت', 'بداية المجتهد']
+        },
+        {
+            name: 'ابن تيمية',
+            fullName: 'تقي الدين ابن تيمية',
+            title: 'شيخ الإسلام',
+            titleEnglish: 'Sheikh of Islam',
+            birth: 1263,
+            death: 1328,
+            significance: 'Reformer, influential theologian and jurist',
+            significanceArabic: 'مجدد، عالم ومفكر مؤثر',
+            works: ['مجموع الفتاوى', 'درء تعارض العقل والنقل']
+        }
+    ],
+    rulers: [
+        {
+            name: 'صلاح الدين',
+            fullName: 'صلاح الدين الأيوبي',
+            title: 'السلطان الناصر',
+            titleEnglish: 'The Victorious Sultan',
+            birth: 1137,
+            death: 1193,
+            significance: 'Liberated Jerusalem from Crusaders',
+            significanceArabic: 'حرر القدس من الصليبيين',
+            keyEvents: ['حطين', 'تحرير القدس', 'الصليبيين']
+        },
+        {
+            name: 'نور الدين',
+            fullName: 'نور الدين محمود زنكي',
+            title: 'المجاهد',
+            titleEnglish: 'The Striver',
+            birth: 1118,
+            death: 1174,
+            significance: 'United Muslims against Crusaders',
+            significanceArabic: 'وحد المسلمين ضد الصليبيين',
+            keyEvents: ['توحيد الشام', 'الإعداد لتحرير القدس']
+        },
+        {
+            name: 'المأمون',
+            fullName: 'محمد المأمون العباسي',
+            title: 'أمير المؤمنين',
+            titleEnglish: 'Commander of the Faithful',
+            birth: 786,
+            death: 833,
+            significance: 'Golden age of Islamic science and translation',
+            significanceArabic: 'العصر الذهبي للعلم والترجمة',
+            keyEvents: ['بيت الحكمة', 'المأمونية']
+        },
+        {
+            name: 'عبدالرحمن',
+            fullName: 'عبدالرحمن الداخل',
+            title: 'صقر قريش',
+            titleEnglish: 'The Falcon of Quraysh',
+            birth: 731,
+            death: 788,
+            significance: 'Founded Umayyad dynasty in Andalusia',
+            significanceArabic: 'أسس الدولة الأموية في الأندلس',
+            keyEvents: ['الهروب', 'الأندلس', 'قرطبة']
+        },
+        {
+            name: 'محمد الفاتح',
+            fullName: 'محمد الثاني',
+            title: 'الفاتح',
+            titleEnglish: 'The Conqueror',
+            birth: 1432,
+            death: 1481,
+            significance: 'Conquered Constantinople, fulfilled prophecy',
+            significanceArabic: 'فتح القسطنطينية، حقق البشارة',
+            keyEvents: ['فتح القسطنطينية', '1453']
+        }
+    ],
+    poets: [
+        {
+            name: 'المتنبي',
+            fullName: 'أبو الطيب المتنبي',
+            title: 'أمير الشعراء',
+            titleEnglish: 'Prince of Poets',
+            birth: 915,
+            death: 965,
+            significance: 'Greatest Arabic poet of all time',
+            significanceArabic: 'أعظم شاعر عربي في التاريخ',
+            famousVerses: ['إذا رأيت نيوب الليث بارزة', 'الخيل والليل والبيداء تعرفني']
+        },
+        {
+            name: 'أبو نؤاس',
+            fullName: 'أبو نؤاس الحسن بن هاني',
+            title: 'شاعر الخمر',
+            titleEnglish: 'Poet of Wine',
+            birth: 756,
+            death: 814,
+            significance: 'Master of wine poetry and humor',
+            significanceArabic: 'سيد شعر الخمر والفكاهة',
+            famousVerses: ['دعني أصف لك ما عاينت', 'ما قلت طيقاء ولا كذبت']
+        },
+        {
+            name: 'المعري',
+            fullName: 'أبو العلاء المعري',
+            title: 'رهين المحبسين',
+            titleEnglish: 'Prisoner of Two Confinements',
+            birth: 973,
+            death: 1057,
+            significance: 'Philosopher poet, blind visionary',
+            significanceArabic: 'شاعر فيلسوف، رؤيوي أعمى',
+            works: ['رسالة الغفران', 'لزوم ما لا يلزم']
+        },
+        {
+            name: 'أحمد شوقي',
+            fullName: 'أحمد شوقي',
+            title: 'أمير الشعراء',
+            titleEnglish: 'Prince of Poets',
+            birth: 1868,
+            death: 1932,
+            significance: 'Modern Arab poetic renaissance leader',
+            significanceArabic: 'رائد النهضة الشعرية العربية الحديثة',
+            works: ['علي بك الكبير', 'مجنون ليلى', 'مصرع كليوباترا']
+        }
+    ],
+    mystics: [
+        {
+            name: 'الجنيد',
+            fullName: 'الجنيد البغدادي',
+            title: 'سيد الطائفة',
+            titleEnglish: 'Master of the Sufis',
+            birth: 830,
+            death: 910,
+            significance: 'Father of sober Sufism',
+            significanceArabic: 'أبوالتصوف المتزن',
+            teachings: ['الفناء', 'الصحو', 'التوحيد']
+        },
+        {
+            name: 'الرفاعي',
+            fullName: 'أحمد الرفاعي',
+            title: 'القطب الأكبر',
+            titleEnglish: 'The Greatest Pole',
+            birth: 1118,
+            death: 1182,
+            significance: 'Founder of Rifai Sufi order',
+            significanceArabic: 'مؤسس الطريقة الرفاعية',
+            teachings: ['المحبة', 'الخدمة', 'الذكر']
+        },
+        {
+            name: 'الجيلاني',
+            fullName: 'عبدالقادر الجيلاني',
+            title: 'محبوب السنة',
+            titleEnglish: 'Beloved of the Sunnah',
+            birth: 1077,
+            death: 1166,
+            significance: 'Founder of Qadiri Sufi order',
+            significanceArabic: 'مؤسس الطريقة القادرية',
+            teachings: ['التوحيد', 'الزهد', 'الخدمة']
+        },
+        {
+            name: 'ابن عربي',
+            fullName: 'محيي الدين ابن عربي',
+            title: 'الشيخ الأكبر',
+            titleEnglish: 'The Greatest Sheikh',
+            birth: 1165,
+            death: 1240,
+            significance: 'Greatest metaphysical philosopher of Sufism',
+            significanceArabic: 'أعظم فيلسوف ميتافيزيقي في التصوف',
+            works: ['الفتوحات المكية', 'فصوص الحكم']
+        }
+    ]
+};
+
+const NAME_HISTORICAL_EVENTS = {
+    'محمد': [
+        { year: 610, event: 'بدء الوحي', eventArabic: 'بدء الوحي في غار حراء' },
+        { year: 622, event: 'الهجرة', eventArabic: 'الهجرة إلى المدينة المنورة' },
+        { year: 630, event: 'فتح مكة', eventArabic: 'فتح مكة المكرمة' }
+    ],
+    'أحمد': [
+        { year: 610, event: 'اسم النبي', eventArabic: 'أحد أسماء النبي محمد ﷺ' }
+    ],
+    'عمر': [
+        { year: 634, event: 'الخلافة', eventArabic: 'تولى الخلافة الراشدة' },
+        { year: 637, event: 'فتح القدس', eventArabic: 'فتح بيت المقدس' }
+    ],
+    'خالد': [
+        { year: 636, event: 'اليرموك', eventArabic: 'معركة اليرموك' }
+    ],
+    'صلاح الدين': [
+        { year: 1187, event: 'حطين', eventArabic: 'معركة حطين' },
+        { year: 1187, event: 'تحرير القدس', eventArabic: 'تحرير بيت المقدس' }
+    ]
+};
+
+function findHistoricalFigures(name) {
+    const results = [];
+    
+    Object.keys(HISTORICAL_FIGURES).forEach(category => {
+        HISTORICAL_FIGURES[category].forEach(figure => {
+            const matchesName = figure.name === name;
+            const matchesFullName = figure.fullName && figure.fullName.includes(name);
+            
+            if (matchesName || matchesFullName) {
+                results.push({
+                    ...figure,
+                    category: category
+                });
+            }
+        });
+    });
+    
+    return results;
+}
+
+function getFiguresByCategory(category) {
+    return HISTORICAL_FIGURES[category] || [];
+}
+
+function getHistoricalEvents(name) {
+    return NAME_HISTORICAL_EVENTS[name] || [];
+}
+
+function getAllCategories() {
+    return Object.keys(HISTORICAL_FIGURES);
+}
+
+module.exports = {
+    HISTORICAL_FIGURES,
+    NAME_HISTORICAL_EVENTS,
+    findHistoricalFigures,
+    getFiguresByCategory,
+    getHistoricalEvents,
+    getAllCategories
+};
+    };
+    
+    modules['./sahaba_names_data.js'] = function(module, exports, require) {
+/**
+ * Sahaba Names Data Module - Companions of the Prophet ﷺ
+ * أسماء الصحابة - رضوان الله عليهم
+ */
+
+const SAHABA_DATABASE = {
+    asharaMubashara: [
+        {
+            name: 'أبو بكر',
+            fullName: 'أبو بكر الصديق عبدالله بن عثمان',
+            kunya: 'أبو بكر',
+            title: 'الصديق',
+            titleMeaning: 'The one who confirms truth',
+            birth: 573,
+            death: 634,
+            deathPlace: 'المدينة المنورة',
+            burialPlace: 'بجانب النبي ﷺ',
+            islamYear: 'أول من أسلم من الرجال',
+            lineage: 'تيم قريش',
+            virtues: [
+                'أول من أسلم من الرجال الأحرار',
+                'صاحب النبي ﷺ في الغار',
+                'أول الخلفاء الراشدين',
+                'أمر النبي ﷺ بالصلاة خلفه'
+            ],
+            hadithsAbout: [
+                'لو وزن إيمان أبي بكر بإيمان الناس لرجح',
+                'أبو بكر في الجنة، عمر في الجنة، عثمان في الجنة، علي في الجنة'
+            ],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'عمر',
+            fullName: 'عمر بن الخطاب بن نفيل',
+            kunya: 'أبو حفص',
+            title: 'الفاروق',
+            titleMeaning: 'The one who distinguishes truth from falsehood',
+            birth: 584,
+            death: 644,
+            deathPlace: 'المدينة المنورة',
+            burialPlace: 'بجانب النبي ﷺ وأبي بكر',
+            islamYear: '5 قبل الهجرة',
+            lineage: 'عدي قريش',
+            virtues: [
+                'أعز الله به الإسلام',
+                'ثاني الخلفاء الراشدين',
+                'فتح في عهده بلاد الشام ومصر والعراق وفارس',
+                'أول من سمي بأمير المؤمنين'
+            ],
+            hadithsAbout: [
+                'لو كان بعدي نبي لكان عمر',
+                'إن الله يضع الحق على لسان عمر وقلبه'
+            ],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'عثمان',
+            fullName: 'عثمان بن عفان بن أبي العاص',
+            kunya: 'أبو عبدالله',
+            title: 'ذو النورين',
+            titleMeaning: 'Possessor of two lights - married two daughters of the Prophet',
+            birth: 576,
+            death: 656,
+            deathPlace: 'المدينة المنورة',
+            burialPlace: 'البقيع',
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'أمية قريش',
+            virtues: [
+                'جمع القرآن في مصحف واحد',
+                'جهز جيش العسرة',
+                'ثالث الخلفاء الراشدين',
+                'تزوج ابنتي النبي ﷺ'
+            ],
+            hadithsAbout: [
+                'ألا أستحي ممن تستحي منه الملائكة',
+                'لكل نبي رفيق في الجنة ورفيقي عثمان'
+            ],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'علي',
+            fullName: 'علي بن أبي طالب بن عبدالمطلب',
+            kunya: 'أبو الحسن',
+            title: 'أمير المؤمنين',
+            titleMeaning: 'Commander of the Faithful',
+            birth: 600,
+            death: 661,
+            deathPlace: 'الكوفة',
+            burialPlace: 'النجف',
+            islamYear: 'أول من أسلم من الصبيان',
+            lineage: 'هاشم قريش',
+            virtues: [
+                'ابن عم النبي ﷺ',
+                'زوج فاطمة الزهراء',
+                'باب مدينة العلم',
+                'رابع الخلفاء الراشدين'
+            ],
+            hadithsAbout: [
+                'أنت مني بمنزلة هارون من موسى',
+                'علي مع الحق والحق مع علي'
+            ],
+            value: 110,
+            digitRoot: 2
+        },
+        {
+            name: 'طلحة',
+            fullName: 'طلحة بن عبيدالله التيمي',
+            kunya: 'أبو محمد',
+            title: 'طلحة الخير',
+            titleMeaning: 'Talha the Good',
+            death: 656,
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'تيم قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'نزل فيه آية: {من المؤمنين رجال صدقوا}',
+                'وقى النبي ﷺ يوم أحد'
+            ],
+            hadithsAbout: ['من سره أن ينظر إلى شهيد يمشي على وجه الأرض فلينظر إلى طلحة']
+        },
+        {
+            name: 'زبير',
+            fullName: 'الزبير بن العوام الأسدي',
+            kunya: 'أبو عبدالله',
+            title: 'حواري الرسول',
+            titleMeaning: 'Disciple of the Messenger',
+            death: 656,
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'أسد قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'ابن عمة النبي ﷺ',
+                'سيف من سيوف الله'
+            ],
+            hadithsAbout: ['إن لكل نبي حواريا وحواري الزبير']
+        },
+        {
+            name: 'سعد',
+            fullName: 'سعد بن أبي وقاص الزهري',
+            kunya: 'أبو إسحاق',
+            title: 'الفاتح',
+            titleMeaning: 'The Conqueror',
+            death: 674,
+            burialPlace: 'المدينة المنورة',
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'زهرة قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'فاتح العراق وفارس',
+                'أول من رمى في سبيل الله'
+            ],
+            hadithsAbout: ['ارمِ سعد فداك أبي وأمي']
+        },
+        {
+            name: 'سعيد',
+            fullName: 'سعيد بن زيد بن عمرو',
+            kunya: 'أبو الأعور',
+            title: 'السعيد',
+            titleMeaning: 'The Happy One',
+            death: 670,
+            burialPlace: 'المدينة المنورة',
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'عدي قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'ابن أخي عمر بن الخطاب',
+                'شهد المشاهد كلها'
+            ],
+            hadithsAbout: ['مات عمر وسعيد بن زيد في الدنيا لم يبق أحد يشك في فضله']
+        },
+        {
+            name: 'عبدالرحمن',
+            fullName: 'عبدالرحمن بن عوف الزهري',
+            kunya: 'أبو محمد',
+            title: 'التاجر الأمين',
+            titleMeaning: 'The Trustworthy Merchant',
+            death: 652,
+            burialPlace: 'البقيع',
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'زهرة قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'كثير الصدقة والإنفاق',
+                'صاحب المباضعة في التجارة'
+            ],
+            hadithsAbout: ['عبدالرحمن بن عوف سيد من سادات أهل الجنة']
+        },
+        {
+            name: 'أبو عبيدة',
+            fullName: 'أبو عبيدة عامر بن عبدالله الجراح',
+            kunya: 'أبو عبيدة',
+            title: 'أمين الأمة',
+            titleMeaning: 'Trustee of the Ummah',
+            death: 639,
+            deathPlace: 'عمواس',
+            islamYear: 'من أوائل المسلمين',
+            lineage: 'فهر قريش',
+            virtues: [
+                'من العشرة المبشرين بالجنة',
+                'فتح الشام',
+                'نزع الحلقتين من وجه النبي ﷺ يوم أحد'
+            ],
+            hadithsAbout: ['إن لكل أمة أمينا وأمين هذه الأمة أبو عبيدة بن الجراح']
+        }
+    ],
+    prominentSahaba: [
+        {
+            name: 'حمزة',
+            fullName: 'حمزة بن عبدالمطلب',
+            kunya: 'أبو عمارة',
+            title: 'سيد الشهداء',
+            titleMeaning: 'Master of Martyrs',
+            death: 625,
+            deathPlace: 'أحد',
+            burialPlace: 'أحد',
+            lineage: 'هاشم قريش',
+            relation: 'عم النبي ﷺ',
+            virtues: ['أعظم الشهداء', 'أسد الله وأسد رسوله'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'خالد',
+            fullName: 'خالد بن الوليد المخزومي',
+            kunya: 'أبو سليمان',
+            title: 'سيف الله',
+            titleMeaning: 'Sword of God',
+            death: 642,
+            burialPlace: 'حمص',
+            lineage: 'مخزوم قريش',
+            virtues: ['أعظم قائد عسكري', 'لم يهزم في معركة', 'سيف الله المسلول'],
+            value: 635,
+            digitRoot: 5
+        },
+        {
+            name: 'بلال',
+            fullName: 'بلال بن رباح الحبشي',
+            kunya: 'أبو عبدالله',
+            title: 'أول مؤذن',
+            titleMeaning: 'First Muezzin',
+            death: 640,
+            lineage: 'حبشي',
+            virtues: ['أول مؤذن في الإسلام', 'صبر على التعذيب', 'رفيق النبي ﷺ'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'سلمان',
+            fullName: 'سلمان الفارسي',
+            kunya: 'أبو عبدالله',
+            title: 'سلمان الخير',
+            titleMeaning: 'Salman the Good',
+            death: 656,
+            lineage: 'فارسي',
+            virtues: ['صاحب فكرة الخندق', 'من أهل البيت', 'باحث عن الحق'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'عبدالله بن مسعود',
+            fullName: 'عبدالله بن مسعود الهذلي',
+            kunya: 'أبو عبدالرحمن',
+            title: 'أمير التابعين',
+            titleMeaning: 'Leader of the Followers',
+            death: 653,
+            lineage: 'هذيل',
+            virtues: ['أعلم بالقرآن', 'أول من جهر بالقرآن', 'قرأ على النبي ﷺ'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'أبي بن كعب',
+            fullName: 'أبي بن كعب بن قيس',
+            kunya: 'أبو المنذر',
+            title: 'سيد القراء',
+            titleMeaning: 'Master of Reciters',
+            death: 640,
+            lineage: 'نجار - أنصار',
+            virtues: ['أحد كتاب الوحي', 'أعلم الناس بالقرآن', 'أمره النبي بالقراءة عليه'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'معاذ بن جبل',
+            fullName: 'معاذ بن جبل الأنصاري',
+            kunya: 'أبو عبدالرحمن',
+            title: 'أعلم الأمة بالحلال والحرام',
+            titleMeaning: 'Most knowledgeable about lawful and unlawful',
+            death: 640,
+            lineage: 'أنصار - خزرج',
+            virtues: ['أرسله النبي قاضيا إلى اليمن', 'عالم الأمة'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'مصعب',
+            fullName: 'مصعب بن عمير العبدرلي',
+            kunya: 'أبو عبدالله',
+            title: 'أول سفير في الإسلام',
+            titleMeaning: 'First ambassador in Islam',
+            death: 625,
+            deathPlace: 'أحد',
+            lineage: 'عبد الدار قريش',
+            virtues: ['أول سفير للإسلام', 'حامل الراية يوم أحد', 'استشهد في سبيل الله'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'عمار',
+            fullName: 'عمار بن ياسر',
+            kunya: 'أبو اليقظان',
+            title: 'السابقون الأولون',
+            titleMeaning: 'Among the foremost',
+            death: 657,
+            lineage: 'عنز',
+            virtues: ['من المعذبين في الله', 'بنى أول مسجد', 'بشره النبي بالجنة'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'أنس',
+            fullName: 'أنس بن مالك الأنصاري',
+            kunya: 'أبو حمزة',
+            title: 'خادم النبي',
+            titleMeaning: 'Servant of the Prophet',
+            birth: 612,
+            death: 709,
+            lineage: 'أنصار - نجار',
+            virtues: ['خدم النبي ﷺ عشر سنين', 'أكثر راوية للحديث', 'مات آخر الصحابة في البصرة'],
+            value: null,
+            digitRoot: null
+        }
+    ],
+    sahabiyat: [
+        {
+            name: 'خديجة',
+            fullName: 'خديجة بنت خويلد',
+            title: 'أم المؤمنين',
+            titleMeaning: 'Mother of the Believers',
+            death: 619,
+            burialPlace: 'مكة المكرمة',
+            relation: 'أولى زوجات النبي ﷺ',
+            virtues: [
+                'أول من أسلم',
+                'أم المؤمنين الأولى',
+                'سندت النبي ﷺ في بداية الدعوة'
+            ],
+            hadithsAbout: ['أعطيت خديجة بيتا في الجنة من قصب لا صخب فيه ولا نصب']
+        },
+        {
+            name: 'عائشة',
+            fullName: 'عائشة بنت أبي بكر',
+            kunya: 'أم المؤمنين',
+            title: 'أم المؤمنين',
+            titleMeaning: 'Mother of the Believers',
+            birth: 614,
+            death: 678,
+            burialPlace: 'البقيع',
+            relation: 'ابنة أبي بكر الصديق، زوجة النبي ﷺ',
+            virtues: [
+                'أحب الناس إلى النبي ﷺ',
+                'أعلم نساء المسلمين',
+                'راوية للحديث'
+            ],
+            hadithsAbout: ['فضل عائشة على النساء كفضل الثريد على سائر الطعام']
+        },
+        {
+            name: 'فاطمة',
+            fullName: 'فاطمة بنت محمد',
+            kunya: 'أم الحسن',
+            title: 'سيدة نساء الجنة',
+            titleMeaning: 'Leader of the women of Paradise',
+            birth: 605,
+            death: 632,
+            burialPlace: 'البقيع',
+            relation: 'ابنة النبي ﷺ، زوجة علي',
+            virtues: [
+                'سيدة نساء أهل الجنة',
+                'ابنة النبي ﷺ',
+                'أم الحسن والحسين'
+            ],
+            hadithsAbout: ['فاطمة سيدة نساء أهل الجنة']
+        },
+        {
+            name: 'حفصة',
+            fullName: 'حفصة بنت عمر',
+            title: 'أم المؤمنين',
+            titleMeaning: 'Mother of the Believers',
+            death: 665,
+            burialPlace: 'البقيع',
+            relation: 'ابنة عمر بن الخطاب، زوجة النبي ﷺ',
+            virtues: ['حفظت المصحف الأول', 'أم المؤمنين'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'أسماء',
+            fullName: 'أسماء بنت أبي بكر',
+            kunya: 'ذات النطاقين',
+            title: 'ذات النطاقين',
+            titleMeaning: 'One with two belts',
+            death: 692,
+            relation: 'ابنة أبي بكر الصديق، أخت عائشة',
+            virtues: [
+                'شقت نطاقها لإطعام النبي ﷺ وأبيها',
+                'ابنة الصديق',
+                'أم عبدالله بن الزبير'
+            ],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'زينب',
+            fullName: 'زينب بنت علي',
+            title: 'سيدة الشام',
+            titleMeaning: 'Lady of Sham',
+            virtues: ['ابنة علي وفاطمة', 'حفيدة النبي ﷺ', 'هاجرت إلى الشام'],
+            value: null,
+            digitRoot: null
+        },
+        {
+            name: 'نسيبة',
+            fullName: 'نسيبة بنت كعب المازنية',
+            kunya: 'أم عمارة',
+            title: 'المجاهدة',
+            titleMeaning: 'The Fighter',
+            death: 634,
+            virtues: [
+                'قاتلت دفاعا عن النبي ﷺ يوم أحد',
+                'شهدت بيعة العقبة',
+                'جرحت اثني عشر جراحة'
+            ],
+            value: null,
+            digitRoot: null
+        }
+    ]
+};
+
+const SAHABA_BY_LINEAGE = {
+    quraysh: {
+        hashim: ['علي', 'جعفر', 'عقيل', 'حمزة'],
+        umayah: ['عثمان', 'خالد بن سعيد'],
+        taim: ['أبو بكر', 'طلحة'],
+        adiy: ['عمر', 'سعيد بن زيد'],
+        zuhra: ['سعد', 'عبدالرحمن بن عوف'],
+        makzum: ['خالد بن الوليد'],
+        asad: ['الزبير'],
+        fahr: ['أبو عبيدة']
+    },
+    ansar: {
+        aws: ['سعد بن معاذ', 'أسيد بن حضير'],
+        khazraj: ['معاذ بن جبل', 'أبي بن كعب', 'أنس بن مالك']
+    },
+    others: ['بلال', 'سلمان', 'صهيب', 'عمار', 'عبدالله بن مسعود']
+};
+
+const SAHABA_VIRTUES_INDEX = {
+    firstMuslims: ['أبو بكر', 'خديجة', 'علي', 'زبير', 'طلحة', 'سعد', 'سعيد', 'عبدالرحمن', 'أبو عبيدة'],
+    promisedParadise: ['أبو بكر', 'عمر', 'عثمان', 'علي', 'طلحة', 'زبير', 'سعد', 'سعيد', 'عبدالرحمن', 'أبو عبيدة'],
+    badrParticipants: ['أبو بكر', 'عمر', 'علي', 'طلحة', 'زبير', 'سعد', 'عبدالرحمن', 'أبو عبيدة', 'بلال', 'حمزة'],
+    uhudMartyrs: ['حمزة', 'مصعب', 'أنس بن مالك الأنصاري'],
+    conquerors: ['خالد', 'سعد', 'أبو عبيدة', 'عمرو بن العاص']
+};
+
+function getSahabaByName(name) {
+    const allSahaba = [
+        ...SAHABA_DATABASE.asharaMubashara,
+        ...SAHABA_DATABASE.prominentSahaba,
+        ...SAHABA_DATABASE.sahabiyat
+    ];
+    
+    return allSahaba.find(s => s.name === name || s.fullName.includes(name)) || null;
+}
+
+function getSahabaByTitle(title) {
+    const allSahaba = [
+        ...SAHABA_DATABASE.asharaMubashara,
+        ...SAHABA_DATABASE.prominentSahaba,
+        ...SAHABA_DATABASE.sahabiyat
+    ];
+    
+    return allSahaba.filter(s => s.title && s.title.includes(title));
+}
+
+function getAsharaMubashara() {
+    return SAHABA_DATABASE.asharaMubashara;
+}
+
+function getProminentSahaba() {
+    return SAHABA_DATABASE.prominentSahaba;
+}
+
+function getSahabiyat() {
+    return SAHABA_DATABASE.sahabiyat;
+}
+
+function isSahabaName(name) {
+    const allSahaba = [
+        ...SAHABA_DATABASE.asharaMubashara,
+        ...SAHABA_DATABASE.prominentSahaba,
+        ...SAHABA_DATABASE.sahabiyat
+    ];
+    return allSahaba.some(s => s.name === name);
+}
+
+function getSahabaCount() {
+    return {
+        asharaMubashara: SAHABA_DATABASE.asharaMubashara.length,
+        prominentSahaba: SAHABA_DATABASE.prominentSahaba.length,
+        sahabiyat: SAHABA_DATABASE.sahabiyat.length,
+        total: SAHABA_DATABASE.asharaMubashara.length + 
+               SAHABA_DATABASE.prominentSahaba.length + 
+               SAHABA_DATABASE.sahabiyat.length
+    };
+}
+
+module.exports = {
+    SAHABA_DATABASE,
+    SAHABA_BY_LINEAGE,
+    SAHABA_VIRTUES_INDEX,
+    getSahabaByName,
+    getSahabaByTitle,
+    getAsharaMubashara,
+    getProminentSahaba,
+    getSahabiyat,
+    isSahabaName,
+    getSahabaCount
+};
+    };
+    
+    modules['./hijri_calendar_data.js'] = function(module, exports, require) {
+/**
+ * Hijri Calendar Data Module - Islamic Calendar System
+ * التقويم الهجري - نظام التقويم الإسلامي
+ */
+
+const HIJRI_MONTHS = [
+    {
+        number: 1,
+        arabic: 'محرم',
+        name: 'Muharram',
+        meaning: 'Forbidden',
+        meaningArabic: 'محرم - شهر حرام لا تحل فيه الحرب',
+        days: 29,
+        significance: [
+            'أحد الأشهر الحرم',
+            'يوم عاشوراء (10 محرم)',
+            'بداية السنة الهجرية'
+        ],
+        blessedDays: [1, 10],
+        recommended: ['صيام عاشوراء', 'الصدقة', 'الدعاء'],
+        historicalEvents: [
+            { year: 61, event: 'مقتل الحسين رضي الله عنه', day: 10 }
+        ]
+    },
+    {
+        number: 2,
+        arabic: 'صفر',
+        name: 'Safar',
+        meaning: 'Empty/Whistling wind',
+        meaningArabic: 'صفر - خلو أو صفير الرياح',
+        days: 29,
+        significance: [
+            'شهر هجرة النبي ﷺ إلى المدينة',
+            'لا علاقة له بالتشاؤم'
+        ],
+        blessedDays: [],
+        recommended: ['الصيام', 'التعوذ من السوء'],
+        historicalEvents: [
+            { year: 1, event: 'بدء الهجرة' }
+        ]
+    },
+    {
+        number: 3,
+        arabic: 'ربيع الأول',
+        name: 'Rabi al-Awwal',
+        meaning: 'First spring',
+        meaningArabic: 'الربيع الأول',
+        days: 30,
+        significance: [
+            'مولد النبي ﷺ',
+            'وفاة النبي ﷺ'
+        ],
+        blessedDays: [12],
+        recommended: ['الاحتفال بالمولد', 'قراءة السيرة', 'الصلاة على النبي'],
+        historicalEvents: [
+            { year: 570, event: 'مولد النبي ﷺ', day: 12 },
+            { year: 11, event: 'وفاة النبي ﷺ', day: 12 }
+        ]
+    },
+    {
+        number: 4,
+        arabic: 'ربيع الثاني',
+        name: 'Rabi al-Thani',
+        meaning: 'Second spring',
+        meaningArabic: 'الربيع الثاني',
+        days: 29,
+        significance: [
+            'شهر مبارك للتجارة والسفر'
+        ],
+        blessedDays: [],
+        recommended: ['الصيام', 'الذكر'],
+        historicalEvents: []
+    },
+    {
+        number: 5,
+        arabic: 'جمادى الأولى',
+        name: 'Jumada al-Awwal',
+        meaning: 'First frozen',
+        meaningArabic: 'جمادى الأولى - وقت تجمد الماء',
+        days: 30,
+        significance: ['شهر شتوي'],
+        blessedDays: [],
+        recommended: ['الصيام', 'الاستغفار'],
+        historicalEvents: []
+    },
+    {
+        number: 6,
+        arabic: 'جمادى الثانية',
+        name: 'Jumada al-Thani',
+        meaning: 'Second frozen',
+        meaningArabic: 'جمادى الثانية',
+        days: 29,
+        significance: ['شهر شتوي'],
+        blessedDays: [],
+        recommended: ['الصيام', 'الذكر'],
+        historicalEvents: []
+    },
+    {
+        number: 7,
+        arabic: 'رجب',
+        name: 'Rajab',
+        meaning: 'Respect/Honor',
+        meaningArabic: 'رجب - شهر حرام معظم',
+        days: 30,
+        significance: [
+            'أحد الأشهر الحرم',
+            'شهر الإسراء والمعراج (27 رجب)',
+            'شهر التحضير لرمضان'
+        ],
+        blessedDays: [1, 15, 27],
+        recommended: ['الصيام', 'الصلاة', 'الدعاء', 'الاستغفار'],
+        historicalEvents: [
+            { year: 621, event: 'الإسراء والمعراج', day: 27 }
+        ]
+    },
+    {
+        number: 8,
+        arabic: 'شعبان',
+        name: 'Shaaban',
+        meaning: 'Branch/Dissipate',
+        meaningArabic: 'شعبان - تشعب فيه القبائل للماء',
+        days: 29,
+        significance: [
+            'شهر التحضير لرمضان',
+            'ليلة البراءة (15 شعبان)',
+            'أكثر الشهور صياما للنبي ﷺ بعد رمضان'
+        ],
+        blessedDays: [15],
+        recommended: ['الصيام', 'القيام', 'الاستغفار', 'التحضير لرمضان'],
+        historicalEvents: [
+            { year: 2, event: 'تحويل القبلة', day: 15 }
+        ]
+    },
+    {
+        number: 9,
+        arabic: 'رمضان',
+        name: 'Ramadan',
+        meaning: 'Heat/Aridness',
+        meaningArabic: 'رمضان - من الرمضاء الحر',
+        days: 30,
+        significance: [
+            'شهر الصيام',
+            'شهر نزول القرآن',
+            'ليلة القدر',
+            'أفضل شهور السنة'
+        ],
+        blessedDays: [1, 21, 23, 25, 27, 29],
+        recommended: [
+            'الصيام',
+            'القيام',
+            'تلاوة القرآن',
+            'الصدقة',
+            'الاعتكاف',
+            'الدعاء'
+        ],
+        historicalEvents: [
+            { year: 610, event: 'نزول القرآن', day: 17 },
+            { year: 2, event: 'غزوة بدر الكبرى', day: 17 },
+            { year: 8, event: 'فتح مكة', day: 20 }
+        ]
+    },
+    {
+        number: 10,
+        arabic: 'شوال',
+        name: 'Shawwal',
+        meaning: 'Raised tail',
+        meaningArabic: 'شوال - من شولت الناقة ذنبها',
+        days: 29,
+        significance: [
+            'عيد الفطر (1 شوال)',
+            'أيام التشريق الستة',
+            'شهر الصيام التطوعي'
+        ],
+        blessedDays: [1, 2, 3, 4, 5, 6],
+        recommended: ['صيام ست من شوال', 'التعجيل بالفطر', 'الصدقة'],
+        historicalEvents: [
+            { year: 2, event: 'غزوة أحد', day: 15 }
+        ]
+    },
+    {
+        number: 11,
+        arabic: 'ذو القعدة',
+        name: 'Dhul Qadah',
+        meaning: 'Truce/Sitting',
+        meaningArabic: 'ذو القعدة - شهر القعود عن الحرب',
+        days: 30,
+        significance: [
+            'أحد الأشهر الحرم',
+            'شهر الحج'
+        ],
+        blessedDays: [],
+        recommended: ['الصيام', 'التحضير للحج'],
+        historicalEvents: []
+    },
+    {
+        number: 12,
+        arabic: 'ذو الحجة',
+        name: 'Dhul Hijjah',
+        meaning: 'Pilgrimage',
+        meaningArabic: 'ذو الحجة - شهر الحج',
+        days: 29,
+        significance: [
+            'أحد الأشهر الحرم',
+            'شهر الحج',
+            'عيد الأضحى (10 ذو الحجة)',
+            'أفضل أيام السنة (العشر الأوائل)'
+        ],
+        blessedDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+        recommended: [
+            'الحج',
+            'الأضحية',
+            'التكبير',
+            'الصيام خاصة يوم عرفة',
+            'الأعمال الصالحة في العشر'
+        ],
+        historicalEvents: [
+            { year: 10, event: 'حجة الوداع', day: 9 }
+        ]
+    }
+];
+
+const BLESSED_DAYS = {
+    weekly: {
+        friday: {
+            arabic: 'الجمعة',
+            significance: 'أفضل أيام الأسبوع',
+            hadith: 'خير يوم طلعت فيه الشمس يوم الجمعة',
+            recommended: ['الغسل', 'التبكير للصلاة', 'قراءة الكهف', 'الصلاة على النبي']
+        },
+        monday: {
+            arabic: 'الاثنين',
+            significance: 'يوم مولد النبي ويوم وفاته',
+            recommended: ['الصيام', 'الصلاة على النبي']
+        },
+        thursday: {
+            arabic: 'الخميس',
+            significance: 'كان النبي يصومه',
+            recommended: ['الصيام', 'الصدقة']
+        }
+    },
+    yearly: {
+        ashura: {
+            arabic: 'عاشوراء',
+            month: 'محرم',
+            day: 10,
+            significance: 'نجاة موسى من فرعون',
+            recommended: ['صيام يوم عاشوراء والتاسع', 'الصدقة', 'إطعام الأهل'],
+            hadith: 'صيام يوم عاشوراء يكفر سنة ماضية'
+        },
+        mawlid: {
+            arabic: 'المولد النبوي',
+            month: 'ربيع الأول',
+            day: 12,
+            significance: 'مولد النبي ﷺ',
+            recommended: ['قراءة السيرة', 'الصلاة على النبي', 'الاحتفال']
+        },
+        israMiraj: {
+            arabic: 'الإسراء والمعراج',
+            month: 'رجب',
+            day: 27,
+            significance: 'رحلة النبي من مكة إلى القدس ثم السماء',
+            recommended: ['القيام', 'الصيام', 'الدعاء']
+        },
+        laylatulBaraa: {
+            arabic: 'ليلة البراءة',
+            month: 'شعبان',
+            day: 15,
+            significance: 'ليلة المغفرة والبراءة من النار',
+            recommended: ['القيام', 'الصيام', 'الاستغفار', 'الدعاء']
+        },
+        laylatulQadr: {
+            arabic: 'ليلة القدر',
+            month: 'رمضان',
+            night: 'إحدى الليالي الوترية العشر الأواخر',
+            significance: 'خير من ألف شهر، نزول القرآن',
+            recommended: ['القيام', 'الدعاء', 'الاعتكاف', 'العبادة'],
+            hadith: 'من قام ليلة القدر إيمانا واحتسابا غفر له ما تقدم من ذنبه'
+        },
+        arafah: {
+            arabic: 'يوم عرفة',
+            month: 'ذو الحجة',
+            day: 9,
+            significance: 'أفضل يوم في السنة، يوم الحج الأكبر',
+            recommended: ['الصيام لغير الحاج', 'الدعاء', 'التكبير'],
+            hadith: 'صيام يوم عرفة يكفر سنتين ماضية ومستقبلة'
+        },
+        eidFitr: {
+            arabic: 'عيد الفطر',
+            month: 'شوال',
+            day: 1,
+            significance: 'عيد المسلمين بعد رمضان',
+            recommended: ['صلاة العيد', 'الزكاة', 'التهنئة', 'الأكل قبل الصلاة']
+        },
+        eidAdha: {
+            arabic: 'عيد الأضحى',
+            month: 'ذو الحجة',
+            day: 10,
+            significance: 'عيد الحج والأضحية',
+            recommended: ['صلاة العيد', 'الأضحية', 'التكبير', 'التشريق']
+        }
+    }
+};
+
+const ISLAMIC_EVENTS = [
+    { name: 'الهجرة', year: 1, month: 1, significance: 'بداية التقويم الهجري' },
+    { name: 'غزوة بدر', year: 2, month: 9, day: 17, significance: 'أول غزوة كبرى' },
+    { name: 'غزوة أحد', year: 3, month: 10, day: 15, significance: 'معركة أحد' },
+    { name: 'صلح الحديبية', year: 6, month: 11, significance: 'معاهدة سلام' },
+    { name: 'فتح مكة', year: 8, month: 9, day: 20, significance: 'فتح مكة المكرمة' },
+    { name: 'غزوة تبوك', year: 9, month: 7, significance: 'آخر غزوة للنبي ﷺ' },
+    { name: 'حجة الوداع', year: 10, month: 12, day: 9, significance: 'آخر حج للنبي ﷺ' },
+    { name: 'وفاة النبي', year: 11, month: 3, day: 12, significance: 'انتقال النبي ﷺ للرفيق الأعلى' },
+    { name: 'فتح الشام', year: 14, significance: 'فتح بلاد الشام' },
+    { name: 'فتح مصر', year: 20, significance: 'فتح مصر' },
+    { name: 'فتح القسطنطينية', year: 857, significance: 'تحقق البشارة النبوية' }
+];
+
+const HIJRI_CONVERSION_CONSTANTS = {
+    julianDayOffset: 1948440,
+    yearOffset: -1,
+    monthOffset: -1,
+    daysPerMonth: [29, 30],
+    daysPerYear: 354.3666666666667,
+    lunarCycle: 29.53058868,
+    epoch: 1948439.5
+};
+
+function gregorianToHijri(year, month, day) {
+    const jd = gregorianToJulianDay(year, month, day);
+    return julianDayToHijri(jd);
+}
+
+function hijriToGregorian(year, month, day) {
+    const jd = hijriToJulianDay(year, month, day);
+    return julianDayToGregorian(jd);
+}
+
+function gregorianToJulianDay(year, month, day) {
+    if (month <= 2) {
+        year -= 1;
+        month += 12;
+    }
+    const a = Math.floor(year / 100);
+    const b = 2 - a + Math.floor(a / 4);
+    return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + b - 1524.5;
+}
+
+function julianDayToGregorian(jd) {
+    const z = Math.floor(jd + 0.5);
+    const a = Math.floor((z - 1867216.25) / 36524.25);
+    const b = z + 1 + a - Math.floor(a / 4);
+    const c = b + 1524;
+    const d = Math.floor((c - 122.1) / 365.25);
+    const e = Math.floor(365.25 * d);
+    const f = Math.floor((c - e) / 30.6001);
+    
+    const day = Math.floor(c - e + Math.floor(30.6001 * f));
+    const month = Math.floor(f - 1);
+    const year = Math.floor(d - 4716);
+    
+    if (month > 12) {
+        return { year: year + 1, month: month - 12, day };
+    }
+    return { year, month, day };
+}
+
+function hijriToJulianDay(year, month, day) {
+    const adjustment = Math.floor((11 * year + 3) / 30);
+    return day + Math.floor(29.5 * (month - 1)) + (year - 1) * 354 + adjustment + 1948439.5;
+}
+
+function julianDayToHijri(jd) {
+    const l = Math.floor(jd - 1948439.5) + 10632;
+    const n = Math.floor((l - 1) / 10631);
+    const l2 = l - 10631 * n + 354;
+    const j = Math.floor((10985 - l2) / 5316) * Math.floor((50 * l2) / 17719) + Math.floor(l2 / 5670) * Math.floor((43 * l2) / 15238);
+    const l3 = l2 - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+    const month = Math.floor((24 * l3) / 709);
+    const day = l3 - Math.floor((709 * month) / 24);
+    const year = 30 * n + j - 30;
+    
+    return { year, month, day };
+}
+
+function getCurrentHijriDate() {
+    const now = new Date();
+    return gregorianToHijri(now.getFullYear(), now.getMonth() + 1, now.getDate());
+}
+
+function getHijriMonthInfo(monthNumber) {
+    return HIJRI_MONTHS.find(m => m.number === monthNumber) || null;
+}
+
+function getMonthByName(name) {
+    return HIJRI_MONTHS.find(m => 
+        m.arabic === name || 
+        m.name.toLowerCase() === name.toLowerCase()
+    ) || null;
+}
+
+function getBlessedDaysInMonth(monthNumber) {
+    const month = getHijriMonthInfo(monthNumber);
+    return month ? month.blessedDays : [];
+}
+
+function isBlessedDay(month, day) {
+    const monthInfo = getHijriMonthInfo(month);
+    if (!monthInfo) return false;
+    return monthInfo.blessedDays.includes(day);
+}
+
+function getHolyMonths() {
+    return [1, 7, 11, 12];
+}
+
+function isHolyMonth(monthNumber) {
+    return getHolyMonths().includes(monthNumber);
+}
+
+function getRamadanInfo() {
+    return getHijriMonthInfo(9);
+}
+
+function getHajjMonths() {
+    return [11, 12];
+}
+
+function getIslamicYearSignificance(year) {
+    const events = ISLAMIC_EVENTS.filter(e => e.year === year);
+    return events.length > 0 ? events : null;
+}
+
+function getDaysInHijriMonth(month, year) {
+    const monthInfo = getHijriMonthInfo(month);
+    if (!monthInfo) return 30;
+    
+    const isLeapYear = ((11 * year + 14) % 30) < 11;
+    const baseDays = monthInfo.days;
+    
+    if (month === 12 && isLeapYear) {
+        return baseDays + 1;
+    }
+    return baseDays;
+}
+
+function getUpcomingBlessedDay() {
+    const currentHijri = getCurrentHijriDate();
+    
+    for (let m = currentHijri.month; m <= 12; m++) {
+        const month = getHijriMonthInfo(m);
+        const blessedDays = month.blessedDays.filter(d => 
+            (m === currentHijri.month && d > currentHijri.day) || m > currentHijri.month
+        );
+        if (blessedDays.length > 0) {
+            return {
+                month: m,
+                day: blessedDays[0],
+                monthName: month.arabic,
+                significance: month.significance
+            };
+        }
+    }
+    return null;
+}
+
+module.exports = {
+    HIJRI_MONTHS,
+    BLESSED_DAYS,
+    ISLAMIC_EVENTS,
+    HIJRI_CONVERSION_CONSTANTS,
+    gregorianToHijri,
+    hijriToGregorian,
+    getCurrentHijriDate,
+    getHijriMonthInfo,
+    getMonthByName,
+    getBlessedDaysInMonth,
+    isBlessedDay,
+    getHolyMonths,
+    isHolyMonth,
+    getRamadanInfo,
+    getHajjMonths,
+    getIslamicYearSignificance,
+    getDaysInHijriMonth,
+    getUpcomingBlessedDay
+};
+    };
+    
     // Register main library
     modules['./index.js'] = function(module, exports, require) {
 /**
@@ -1661,6 +4884,13 @@ const { LUNAR_MANSIONS } = require('./lunar_mansions_data.js');
 const { PRAYER_TIME_CORRELATIONS, EXTENDED_QURANIC_CONNECTIONS, PROPHETIC_NAMES, CULTURAL_CONTEXTS } = require('./enhanced_islamic_data.js');
 const { BUSINESS_SUCCESS_INDICATORS, INDUSTRY_ANALYSIS, BUSINESS_TIMING, BUSINESS_PARTNERSHIP_HOUSES } = require('./business_analysis_data.js');
 const { LIFE_PATH_PATTERNS, PERSONAL_YEAR_CYCLES, KARMIC_NUMBERS, MASTER_NUMBERS } = require('./advanced_numerology_data.js');
+const { REGIONAL_PATTERNS, GEOGRAPHIC_CORRELATIONS, CULTURAL_CONTEXTS: REGIONAL_CULTURAL_CONTEXTS, getRegionByName } = require('./regional_patterns_data.js');
+const { AI_RECOMMENDATION_WEIGHTS, COMPATIBILITY_SCORING, NAME_SCORING_FACTORS, RECOMMENDATION_ALGORITHMS, INDUSTRY_ELEMENT_MATCHING, PHONETIC_PATTERNS, calculateRecommendationScore, getIndustryRecommendation, getElementRecommendation, getDigitRootRecommendation } = require('./ai_patterns_data.js');
+const { ARABIC_NAME_DATABASE, NAME_VARIATIONS, NAME_PAIRS_COMPATIBLE, searchNames, getNameInfo, getRandomNames, getNamesByOrigin, getQuranicNames, getPropheticNames, getSahabaNames, getNameCount } = require('./name_database.js');
+const { EXPORT_TEMPLATES, REPORT_SECTIONS, CLIPBOARD_FORMATS, generateTextReport, generateHTMLReport, generateJSONExport, generateMarkdownReport, generateClipboardText, getAvailableFormats } = require('./export_templates_data.js');
+const { HISTORICAL_FIGURES, NAME_HISTORICAL_EVENTS, findHistoricalFigures, getFiguresByCategory, getHistoricalEvents } = require('./historical_names_data.js');
+const { SAHABA_DATABASE, SAHABA_BY_LINEAGE, SAHABA_VIRTUES_INDEX, getSahabaByName, getSahabaByTitle, getAsharaMubashara, getProminentSahaba, getSahabiyat, isSahabaName, getSahabaCount } = require('./sahaba_names_data.js');
+const { HIJRI_MONTHS, BLESSED_DAYS, ISLAMIC_EVENTS, gregorianToHijri, hijriToGregorian, getCurrentHijriDate, getHijriMonthInfo, getMonthByName, getBlessedDaysInMonth, isBlessedDay, getHolyMonths, isHolyMonth, getRamadanInfo, getHajjMonths, getIslamicYearSignificance, getDaysInHijriMonth, getUpcomingBlessedDay } = require('./hijri_calendar_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -3960,11 +7190,730 @@ class Hisaab {
     static getFamilyHarmonyLevel(memberAnalyses, parentCompatibility) {
         const score = this.calculateFamilyHarmonyScore(memberAnalyses, parentCompatibility);
         
-        if (score >= 80) return 'Excellent Harmony';
+if (score >= 80) return 'Excellent Harmony';
         if (score >= 65) return 'Very Good Harmony';
         if (score >= 50) return 'Good Harmony';
         if (score >= 35) return 'Fair Harmony';
         return 'Challenging Harmony';
+    }
+
+    // ============================================
+    // v1.4.0 - Geographic & Regional Analysis
+    // ============================================
+
+    /**
+     * Get regional pattern analysis for this name
+     * @param {string} region - Region name (gulf, levantine, northAfrican, iraqi, yemeni, sudanese)
+     * @returns {Object} Regional pattern analysis
+     */
+    getRegionalPattern(region) {
+        const regionData = getRegionByName(region);
+        if (!regionData) {
+            return { error: 'Region not found', availableRegions: ['gulf', 'levantine', 'northAfrican', 'iraqi', 'yemeni', 'sudanese'] };
+        }
+
+        const digitRoot = this.getDigitRoot();
+        const favoredRoots = regionData.numerologicalPreferences.favoredDigitRoots;
+        const avoidedRoots = regionData.numerologicalPreferences.avoidedDigitRoots;
+
+        const isFavored = favoredRoots.includes(digitRoot);
+        const isAvoided = avoidedRoots.includes(digitRoot);
+
+        const nameInfo = getNameInfo(this.name);
+
+        return {
+            region: {
+                name: regionData.name,
+                arabic: regionData.arabic,
+                countries: regionData.countries
+            },
+            name: this.name,
+            value: this.value,
+            digitRoot: digitRoot,
+            regionalCompatibility: {
+                isFavored: isFavored,
+                isAvoided: isAvoided,
+                score: isFavored ? 90 : (isAvoided ? 30 : 60)
+            },
+            culturalNotes: regionData.culturalNotes,
+            namingPatterns: regionData.namingPatterns,
+            regionalPreferences: regionData.numerologicalPreferences,
+            commonNamesInRegion: nameInfo ? regionData.commonNames[nameInfo.gender || 'male'].filter(n => n.name === this.name) : []
+        };
+    }
+
+    /**
+     * Get geographic influence analysis
+     * @returns {Object} Geographic influence data
+     */
+    getGeographicInfluence() {
+        const element = this.getArabicAstrology().element.name;
+        const geoCorrelations = GEOGRAPHIC_CORRELATIONS.elements;
+
+        let matchedGeo = null;
+        for (const [geoType, data] of Object.entries(geoCorrelations)) {
+            if (data.favoredElements.includes(element)) {
+                matchedGeo = { type: geoType, ...data };
+                break;
+            }
+        }
+
+        const planetInfluence = GEOGRAPHIC_CORRELATIONS.planetary.byRegion;
+
+        return {
+            element: element,
+            geographicMatch: matchedGeo,
+            planetaryByRegion: planetInfluence
+        };
+    }
+
+    /**
+     * Compare name variants across regions
+     * @returns {Object} Regional variants comparison
+     */
+    compareRegionalVariants() {
+        const regions = ['gulf', 'levantine', 'northAfrican', 'iraqi', 'yemeni', 'sudanese'];
+        const comparisons = regions.map(region => {
+            const pattern = this.getRegionalPattern(region);
+            return {
+                region: region,
+                regionArabic: pattern.region?.arabic || region,
+                compatibility: pattern.regionalCompatibility?.score || 0,
+                isFavored: pattern.regionalCompatibility?.isFavored || false
+            };
+        });
+
+        return {
+            name: this.name,
+            value: this.value,
+            comparisons: comparisons,
+            bestRegion: comparisons.reduce((a, b) => a.compatibility > b.compatibility ? a : b)
+        };
+    }
+
+    /**
+     * Get cultural significance in specific country
+     * @param {string} country - Country name
+     * @returns {Object} Cultural significance data
+     */
+    getCulturalSignificance(country) {
+        const nameInfo = getNameInfo(this.name);
+        const historical = findHistoricalFigures(this.name);
+        const sahabi = getSahabaByName(this.name);
+
+        return {
+            name: this.name,
+            country: country,
+            nameInfo: nameInfo,
+            historicalFigures: historical,
+            isSahabi: sahabi !== null,
+            sahabiInfo: sahabi,
+            culturalContext: REGIONAL_CULTURAL_CONTEXTS
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - AI-Powered Features
+    // ============================================
+
+    /**
+     * Get smart name recommendations based on criteria
+     * @param {Object} criteria - Recommendation criteria
+     * @returns {Object} Smart recommendations
+     */
+    static getSmartRecommendations(criteria = {}) {
+        const {
+            gender = null,
+            desiredDigitRoot = null,
+            purpose = null,
+            region = null,
+            industry = null,
+            maxResults = 20
+        } = criteria;
+
+        let namePool = [];
+        if (gender) {
+            namePool = ARABIC_NAME_DATABASE[gender] || [];
+        } else {
+            namePool = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+        }
+
+        const recommendations = namePool.map(entry => {
+            try {
+                const hisaab = new Hisaab(entry.name);
+                let score = 0;
+                let reasons = [];
+
+                if (desiredDigitRoot !== null) {
+                    if (hisaab.getDigitRoot() === desiredDigitRoot) {
+                        score += 40;
+                        reasons.push(`Perfect digit root match: ${desiredDigitRoot}`);
+                    }
+                }
+
+                if (purpose) {
+                    const digitRoot = hisaab.getDigitRoot();
+                    const purposeScore = AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[digitRoot]?.[purpose] || 0;
+                    if (purposeScore > 0) {
+                        score += purposeScore;
+                        reasons.push(`Good for ${purpose}: score ${purposeScore}`);
+                    }
+                }
+
+                if (industry) {
+                    const industryMatch = getIndustryRecommendation(industry);
+                    if (industryMatch) {
+                        const element = hisaab.getArabicAstrology().element.name;
+                        if (industryMatch.bestElements.includes(element)) {
+                            score += 25;
+                            reasons.push(`Element ${element} matches industry ${industry}`);
+                        }
+                    }
+                }
+
+                if (entry.quranic) {
+                    score += 10;
+                    reasons.push('Quranic name');
+                }
+                if (entry.prophetic) {
+                    score += 15;
+                    reasons.push('Prophetic name');
+                }
+                if (entry.sahabi) {
+                    score += 12;
+                    reasons.push('Sahaba name');
+                }
+
+                return {
+                    name: entry.name,
+                    meaning: entry.meaning,
+                    value: hisaab.getValue(),
+                    digitRoot: hisaab.getDigitRoot(),
+                    element: hisaab.getArabicAstrology().element.name,
+                    score: score,
+                    reasons: reasons,
+                    attributes: {
+                        quranic: entry.quranic || false,
+                        prophetic: entry.prophetic || false,
+                        sahabi: entry.sahabi || false
+                    }
+                };
+            } catch (e) {
+                return null;
+            }
+        }).filter(r => r !== null && r.score > 0);
+
+        recommendations.sort((a, b) => b.score - a.score);
+
+        return {
+            criteria: criteria,
+            totalConsidered: namePool.length,
+            recommendations: recommendations.slice(0, maxResults)
+        };
+    }
+
+    /**
+     * Generate compatible names for a partner
+     * @param {string} partnerName - Partner name to match
+     * @param {Object} options - Options for generation
+     * @returns {Object} Compatible name suggestions
+     */
+    static generateCompatibleNames(partnerName, options = {}) {
+        const { gender = null, targetHouse = 7, maxResults = 15 } = options;
+
+        const partner = new Hisaab(partnerName);
+        const partnerRoot = partner.getDigitRoot();
+
+        const targetRoots = [];
+        for (let root = 1; root <= 9; root++) {
+            const sum = partnerRoot + root + 7;
+            const house = new Hisaab('محمد').calculateDigitRoot(sum);
+            if (house === targetHouse) {
+                targetRoots.push(root);
+            }
+        }
+
+        let namePool = gender ? (ARABIC_NAME_DATABASE[gender] || []) : [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+
+        const suggestions = namePool
+            .map(entry => {
+                try {
+                    const h = new Hisaab(entry.name);
+                    if (targetRoots.includes(h.getDigitRoot())) {
+                        const comp = Hisaab.compareArabic(partnerName, entry.name);
+                        return {
+                            name: entry.name,
+                            meaning: entry.meaning,
+                            value: h.getValue(),
+                            digitRoot: h.getDigitRoot(),
+                            partnerHouse: comp.partnerHouse,
+                            compatibility: comp.interpretation.quality
+                        };
+                    }
+                    return null;
+                } catch (e) {
+                    return null;
+                }
+            })
+            .filter(s => s !== null)
+            .slice(0, maxResults);
+
+        return {
+            partnerName: partnerName,
+            partnerDigitRoot: partnerRoot,
+            targetHouse: targetHouse,
+            targetDigitRoots: targetRoots,
+            suggestions: suggestions
+        };
+    }
+
+    /**
+     * Get AI-optimized business name suggestions
+     * @param {string} industry - Industry type
+     * @returns {Object} Business name recommendations
+     */
+    static optimizeBusinessNames(industry, maxResults = 10) {
+        const industryMatch = getIndustryRecommendation(industry);
+        if (!industryMatch) {
+            return { error: 'Industry not found', availableIndustries: Object.keys(INDUSTRY_ELEMENT_MATCHING) };
+        }
+
+        const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+        const suggestions = allNames
+            .map(entry => {
+                try {
+                    const h = new Hisaab(entry.name);
+                    const element = h.getArabicAstrology().element.name;
+                    const digitRoot = h.getDigitRoot();
+
+                    let score = 0;
+                    if (industryMatch.bestElements.includes(element)) score += 30;
+                    if (industryMatch.favorableDigitRoots.includes(digitRoot)) score += 20;
+                    if (entry.quranic) score += 5;
+                    if (h.value > 500) score += 10;
+
+                    return {
+                        name: entry.name,
+                        value: h.getValue(),
+                        digitRoot: digitRoot,
+                        element: element,
+                        industryScore: score,
+                        industryMatch: industryMatch
+                    };
+                } catch (e) {
+                    return null;
+                }
+            })
+            .filter(s => s !== null && s.industryScore > 0)
+            .sort((a, b) => b.industryScore - a.industryScore)
+            .slice(0, maxResults);
+
+        return {
+            industry: industry,
+            industryRequirements: industryMatch,
+            suggestions: suggestions
+        };
+    }
+
+    /**
+     * Analyze naming trends
+     * @returns {Object} Trend analysis
+     */
+    static analyzeNamingTrends() {
+        const maleNames = ARABIC_NAME_DATABASE.male;
+        const femaleNames = ARABIC_NAME_DATABASE.female;
+
+        const maleValues = maleNames.map(n => {
+            try { return new Hisaab(n.name).getValue(); } catch { return 0; }
+        });
+        const femaleValues = femaleNames.map(n => {
+            try { return new Hisaab(n.name).getValue(); } catch { return 0; }
+        });
+
+        const avgMale = maleValues.reduce((a, b) => a + b, 0) / maleValues.length;
+        const avgFemale = femaleValues.reduce((a, b) => a + b, 0) / femaleValues.length;
+
+        const quranicCount = [...maleNames, ...femaleNames].filter(n => n.quranic).length;
+        const propheticCount = [...maleNames, ...femaleNames].filter(n => n.prophetic).length;
+        const sahabiCount = [...maleNames, ...femaleNames].filter(n => n.sahabi || n.sahabia).length;
+
+        return {
+            databaseStats: getNameCount(),
+            averageValues: { male: Math.round(avgMale), female: Math.round(avgFemale) },
+            spiritualNames: {
+                quranic: quranicCount,
+                prophetic: propheticCount,
+                sahabi: sahabiCount
+            },
+            trends: {
+                modern: 'Shorter names with international appeal',
+                traditional: 'Classic prophetic and sahabi names remain popular'
+            }
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Export & Reporting
+    // ============================================
+
+    /**
+     * Export analysis in specified format
+     * @param {string} format - Export format (text, json, html, markdown)
+     * @returns {string} Formatted report
+     */
+    exportAnalysis(format = 'json') {
+        const data = {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            breakdown: this.getBreakdown(),
+            element: this.getArabicAstrology().element.name,
+            planet: this.getArabicAstrology().planet.name,
+            zodiac: this.getArabicAstrology().zodiac.name,
+            astrology: this.getArabicAstrology(),
+            islamic: this.getIslamicAnalysis(),
+            numerology: this.getNumerology(),
+            business: this.getBusinessAnalysis(),
+            recommendations: this.getLuckyNumbers(),
+            version: '1.4.0'
+        };
+
+        switch (format.toLowerCase()) {
+            case 'text':
+                return generateTextReport(data);
+            case 'html':
+                return generateHTMLReport(data);
+            case 'markdown':
+            case 'md':
+                return generateMarkdownReport(data);
+            case 'json':
+            default:
+                return generateJSONExport(data);
+        }
+    }
+
+    /**
+     * Generate shareable report
+     * @returns {Object} Shareable report object
+     */
+    generateShareableReport() {
+        return {
+            metadata: {
+                generatedAt: new Date().toISOString(),
+                version: '1.4.0',
+                generator: 'Hisaab Arabic Numerology Library'
+            },
+            summary: {
+                name: this.name,
+                value: this.value,
+                digitRoot: this.getDigitRoot()
+            },
+            astrology: this.getArabicAstrology(),
+            islamic: this.getIslamicAnalysis(),
+            business: this.getBusinessAnalysis(),
+            compatibility: this.compareWith ? this.compareWith : null
+        };
+    }
+
+    /**
+     * Get clipboard text for sharing
+     * @param {string} format - Format (short, medium, detailed)
+     * @returns {string} Clipboard-ready text
+     */
+    getClipboardText(format = 'medium') {
+        const data = {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            element: this.getArabicAstrology().element.name,
+            elementArabic: this.getArabicAstrology().element.arabic,
+            planet: this.getArabicAstrology().planet.name,
+            planetArabic: this.getArabicAstrology().planet.arabic,
+            zodiac: this.getArabicAstrology().zodiac.name,
+            zodiacArabic: this.getArabicAstrology().zodiac.arabic,
+            islamicQualities: this.getIslamicQualities().join(', '),
+            islamicAnalysis: ''
+        };
+        return generateClipboardText(data, format);
+    }
+
+    // ============================================
+    // v1.4.0 - Historical & Educational
+    // ============================================
+
+    /**
+     * Get historical context for the name
+     * @returns {Object} Historical context
+     */
+    getHistoricalContext() {
+        const figures = findHistoricalFigures(this.name);
+        const events = getHistoricalEvents(this.name);
+        const sahabi = getSahabaByName(this.name);
+        const nameInfo = getNameInfo(this.name);
+
+        return {
+            name: this.name,
+            nameInfo: nameInfo,
+            historicalFigures: figures,
+            sahabiInfo: sahabi,
+            historicalEvents: events,
+            significance: figures.length > 0 ? figures[0].significance : (sahabi ? sahabi.title : null)
+        };
+    }
+
+    /**
+     * Find famous personalities with this name
+     * @returns {Object} Famous personalities
+     */
+    findFamousPersonalities() {
+        const figures = findHistoricalFigures(this.name);
+        const categories = {};
+
+        figures.forEach(f => {
+            if (!categories[f.category]) categories[f.category] = [];
+            categories[f.category].push(f);
+        });
+
+        return {
+            name: this.name,
+            categories: categories,
+            totalFigures: figures.length
+        };
+    }
+
+    /**
+     * Get prophetic connection
+     * @returns {Object} Prophetic connection data
+     */
+    getPropheticConnection() {
+        const nameInfo = getNameInfo(this.name);
+        const propheticNames = getPropheticNames();
+        const isProphetic = propheticNames.some(n => n.name === this.name);
+
+        return {
+            name: this.name,
+            isPropheticName: isProphetic,
+            nameInfo: nameInfo,
+            propheticNames: isProphetic ? nameInfo : null
+        };
+    }
+
+    /**
+     * Get Sahaba (Companion) info for the name
+     * @returns {Object} Sahaba information
+     */
+    getSahabaInfo() {
+        const sahabi = getSahabaByName(this.name);
+        const isSahaba = isSahabaName(this.name);
+
+        return {
+            name: this.name,
+            isSahaba: isSahaba,
+            sahabiInfo: sahabi,
+            asharaMubashara: sahabi && SAHABA_DATABASE.asharaMubashara.some(s => s.name === this.name)
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Hijri Calendar Integration
+    // ============================================
+
+    /**
+     * Get Hijri date for a given Gregorian date
+     * @param {number} year - Gregorian year
+     * @param {number} month - Gregorian month (1-12)
+     * @param {number} day - Gregorian day
+     * @returns {Object} Hijri date
+     */
+    static toHijri(year, month, day) {
+        return gregorianToHijri(year, month, day);
+    }
+
+    /**
+     * Get Gregorian date for a given Hijri date
+     * @param {number} year - Hijri year
+     * @param {number} month - Hijri month (1-12)
+     * @param {number} day - Hijri day
+     * @returns {Object} Gregorian date
+     */
+    static toGregorian(year, month, day) {
+        return hijriToGregorian(year, month, day);
+    }
+
+    /**
+     * Get current Hijri date
+     * @returns {Object} Current Hijri date
+     */
+    static getCurrentHijri() {
+        const hijri = getCurrentHijriDate();
+        const monthInfo = getHijriMonthInfo(hijri.month);
+        return {
+            ...hijri,
+            monthName: monthInfo?.arabic,
+            monthNameEnglish: monthInfo?.name,
+            isHolyMonth: isHolyMonth(hijri.month)
+        };
+    }
+
+    /**
+     * Get blessed dates for a Hijri year
+     * @param {number} year - Hijri year
+     * @returns {Object} Blessed dates in the year
+     */
+    static getBlessedDates(year) {
+        const blessedDates = [];
+
+        HIJRI_MONTHS.forEach(month => {
+            month.blessedDays.forEach(day => {
+                blessedDates.push({
+                    hijriDate: { year, month: month.number, day },
+                    monthName: month.arabic,
+                    significance: month.significance
+                });
+            });
+        });
+
+        const yearlyEvents = BLESSED_DAYS.yearly;
+
+        return {
+            year: year,
+            blessedDates: blessedDates,
+            yearlyEvents: yearlyEvents
+        };
+    }
+
+    /**
+     * Get monthly recommendations for Hijri month
+     * @param {number} month - Hijri month number
+     * @returns {Object} Monthly recommendations
+     */
+    static getMonthlyRecommendations(month) {
+        const monthInfo = getHijriMonthInfo(month);
+        if (!monthInfo) return { error: 'Invalid month number' };
+
+        return {
+            month: month,
+            arabic: monthInfo.arabic,
+            english: monthInfo.name,
+            significance: monthInfo.significance,
+            blessedDays: monthInfo.blessedDays,
+            recommended: monthInfo.recommended,
+            historicalEvents: monthInfo.historicalEvents
+        };
+    }
+
+    /**
+     * Get timing recommendations based on name's planetary influence
+     * @returns {Object} Timing recommendations
+     */
+    getTimingRecommendations() {
+        const astrology = this.getArabicAstrology();
+        const planet = astrology.planet.name;
+        const digitRoot = this.getDigitRoot();
+
+        const todayHijri = getCurrentHijriDate();
+        const monthInfo = getHijriMonthInfo(todayHijri.month);
+
+        return {
+            name: this.name,
+            planet: planet,
+            favorableDay: astrology.planet.favorableDay,
+            hijriDate: todayHijri,
+            currentMonth: monthInfo?.arabic,
+            monthRecommendations: monthInfo?.recommended || [],
+            digitRootTiming: getDigitRootRecommendation(digitRoot)
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Group & Family Analysis
+    // ============================================
+
+    /**
+     * Analyze family tree numerology
+     * @param {Array} members - Family member names
+     * @returns {Object} Family tree analysis
+     */
+    static analyzeFamilyTree(members) {
+        const analyses = members.map(name => {
+            try {
+                const h = new Hisaab(name);
+                return {
+                    name: name,
+                    value: h.getValue(),
+                    digitRoot: h.getDigitRoot(),
+                    element: h.getArabicAstrology().element.name,
+                    planet: h.getArabicAstrology().planet.name
+                };
+            } catch (e) {
+                return { name: name, error: 'Invalid name' };
+            }
+        });
+
+        const validAnalyses = analyses.filter(a => !a.error);
+
+        const elementCounts = {};
+        validAnalyses.forEach(a => {
+            elementCounts[a.element] = (elementCounts[a.element] || 0) + 1;
+        });
+
+        const rootCounts = {};
+        validAnalyses.forEach(a => {
+            rootCounts[a.digitRoot] = (rootCounts[a.digitRoot] || 0) + 1;
+        });
+
+        return {
+            members: analyses,
+            totalMembers: members.length,
+            validMembers: validAnalyses.length,
+            elementDistribution: elementCounts,
+            digitRootDistribution: rootCounts,
+            dominantElement: Object.entries(elementCounts).sort((a, b) => b[1] - a[1])[0]?.[0],
+            dominantRoot: Object.entries(rootCounts).sort((a, b) => b[1] - a[1])[0]?.[0]
+        };
+    }
+
+    /**
+     * Get group compatibility score
+     * @param {Array} names - Array of names
+     * @returns {Object} Group compatibility analysis
+     */
+    static getGroupCompatibility(names) {
+        if (names.length < 2) {
+            return { error: 'At least 2 names required' };
+        }
+
+        const pairs = [];
+        for (let i = 0; i < names.length; i++) {
+            for (let j = i + 1; j < names.length; j++) {
+                const comp = Hisaab.compareArabic(names[i], names[j]);
+                pairs.push({
+                    name1: names[i],
+                    name2: names[j],
+                    house: comp.partnerHouse,
+                    quality: comp.interpretation.quality
+                });
+            }
+        }
+
+        const houseCounts = {};
+        pairs.forEach(p => {
+            houseCounts[p.house] = (houseCounts[p.house] || 0) + 1;
+        });
+
+        const avgScore = pairs.reduce((sum, p) => {
+            const score = p.house === 7 ? 100 : (p.house === 4 || p.house === 2 ? 70 : (p.house === 6 || p.house === 9 ? 10 : 50));
+            return sum + score;
+        }, 0) / pairs.length;
+
+        return {
+            names: names,
+            totalPairs: pairs.length,
+            pairs: pairs,
+            houseDistribution: houseCounts,
+            averageScore: Math.round(avgScore),
+            harmonyLevel: avgScore >= 70 ? 'Excellent' : (avgScore >= 50 ? 'Good' : 'Challenging')
+        };
     }
 }
 
@@ -3975,8 +7924,9 @@ module.exports = Hisaab;
     try {
         const Hisaab = require('./index.js');
         window.Hisaab = Hisaab;
-        console.log('✅ Hisaab class loaded successfully');
+        console.log('✅ Hisaab v1.4.0 loaded successfully');
         console.log('🎉 Ready to use: new Hisaab("اسم عربي")');
+        console.log('📋 New features: getRegionalPattern(), getSmartRecommendations(), getCurrentHijri()');
         
         // Provide a load function for compatibility
         window.loadHisaabLibrary = function() {

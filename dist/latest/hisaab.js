@@ -13,6 +13,13 @@ const { LUNAR_MANSIONS } = require('./lunar_mansions_data.js');
 const { PRAYER_TIME_CORRELATIONS, EXTENDED_QURANIC_CONNECTIONS, PROPHETIC_NAMES, CULTURAL_CONTEXTS } = require('./enhanced_islamic_data.js');
 const { BUSINESS_SUCCESS_INDICATORS, INDUSTRY_ANALYSIS, BUSINESS_TIMING, BUSINESS_PARTNERSHIP_HOUSES } = require('./business_analysis_data.js');
 const { LIFE_PATH_PATTERNS, PERSONAL_YEAR_CYCLES, KARMIC_NUMBERS, MASTER_NUMBERS } = require('./advanced_numerology_data.js');
+const { REGIONAL_PATTERNS, GEOGRAPHIC_CORRELATIONS, CULTURAL_CONTEXTS: REGIONAL_CULTURAL_CONTEXTS, getRegionByName } = require('./regional_patterns_data.js');
+const { AI_RECOMMENDATION_WEIGHTS, COMPATIBILITY_SCORING, NAME_SCORING_FACTORS, RECOMMENDATION_ALGORITHMS, INDUSTRY_ELEMENT_MATCHING, PHONETIC_PATTERNS, calculateRecommendationScore, getIndustryRecommendation, getElementRecommendation, getDigitRootRecommendation } = require('./ai_patterns_data.js');
+const { ARABIC_NAME_DATABASE, NAME_VARIATIONS, NAME_PAIRS_COMPATIBLE, searchNames, getNameInfo, getRandomNames, getNamesByOrigin, getQuranicNames, getPropheticNames, getSahabaNames, getNameCount } = require('./name_database.js');
+const { EXPORT_TEMPLATES, REPORT_SECTIONS, CLIPBOARD_FORMATS, generateTextReport, generateHTMLReport, generateJSONExport, generateMarkdownReport, generateClipboardText, getAvailableFormats } = require('./export_templates_data.js');
+const { HISTORICAL_FIGURES, NAME_HISTORICAL_EVENTS, findHistoricalFigures, getFiguresByCategory, getHistoricalEvents } = require('./historical_names_data.js');
+const { SAHABA_DATABASE, SAHABA_BY_LINEAGE, SAHABA_VIRTUES_INDEX, getSahabaByName, getSahabaByTitle, getAsharaMubashara, getProminentSahaba, getSahabiyat, isSahabaName, getSahabaCount } = require('./sahaba_names_data.js');
+const { HIJRI_MONTHS, BLESSED_DAYS, ISLAMIC_EVENTS, gregorianToHijri, hijriToGregorian, getCurrentHijriDate, getHijriMonthInfo, getMonthByName, getBlessedDaysInMonth, isBlessedDay, getHolyMonths, isHolyMonth, getRamadanInfo, getHajjMonths, getIslamicYearSignificance, getDaysInHijriMonth, getUpcomingBlessedDay } = require('./hijri_calendar_data.js');
 
 class Hisaab {
     constructor(arabicName) {
@@ -2312,11 +2319,730 @@ class Hisaab {
     static getFamilyHarmonyLevel(memberAnalyses, parentCompatibility) {
         const score = this.calculateFamilyHarmonyScore(memberAnalyses, parentCompatibility);
         
-        if (score >= 80) return 'Excellent Harmony';
+if (score >= 80) return 'Excellent Harmony';
         if (score >= 65) return 'Very Good Harmony';
         if (score >= 50) return 'Good Harmony';
         if (score >= 35) return 'Fair Harmony';
         return 'Challenging Harmony';
+    }
+
+    // ============================================
+    // v1.4.0 - Geographic & Regional Analysis
+    // ============================================
+
+    /**
+     * Get regional pattern analysis for this name
+     * @param {string} region - Region name (gulf, levantine, northAfrican, iraqi, yemeni, sudanese)
+     * @returns {Object} Regional pattern analysis
+     */
+    getRegionalPattern(region) {
+        const regionData = getRegionByName(region);
+        if (!regionData) {
+            return { error: 'Region not found', availableRegions: ['gulf', 'levantine', 'northAfrican', 'iraqi', 'yemeni', 'sudanese'] };
+        }
+
+        const digitRoot = this.getDigitRoot();
+        const favoredRoots = regionData.numerologicalPreferences.favoredDigitRoots;
+        const avoidedRoots = regionData.numerologicalPreferences.avoidedDigitRoots;
+
+        const isFavored = favoredRoots.includes(digitRoot);
+        const isAvoided = avoidedRoots.includes(digitRoot);
+
+        const nameInfo = getNameInfo(this.name);
+
+        return {
+            region: {
+                name: regionData.name,
+                arabic: regionData.arabic,
+                countries: regionData.countries
+            },
+            name: this.name,
+            value: this.value,
+            digitRoot: digitRoot,
+            regionalCompatibility: {
+                isFavored: isFavored,
+                isAvoided: isAvoided,
+                score: isFavored ? 90 : (isAvoided ? 30 : 60)
+            },
+            culturalNotes: regionData.culturalNotes,
+            namingPatterns: regionData.namingPatterns,
+            regionalPreferences: regionData.numerologicalPreferences,
+            commonNamesInRegion: nameInfo ? regionData.commonNames[nameInfo.gender || 'male'].filter(n => n.name === this.name) : []
+        };
+    }
+
+    /**
+     * Get geographic influence analysis
+     * @returns {Object} Geographic influence data
+     */
+    getGeographicInfluence() {
+        const element = this.getArabicAstrology().element.name;
+        const geoCorrelations = GEOGRAPHIC_CORRELATIONS.elements;
+
+        let matchedGeo = null;
+        for (const [geoType, data] of Object.entries(geoCorrelations)) {
+            if (data.favoredElements.includes(element)) {
+                matchedGeo = { type: geoType, ...data };
+                break;
+            }
+        }
+
+        const planetInfluence = GEOGRAPHIC_CORRELATIONS.planetary.byRegion;
+
+        return {
+            element: element,
+            geographicMatch: matchedGeo,
+            planetaryByRegion: planetInfluence
+        };
+    }
+
+    /**
+     * Compare name variants across regions
+     * @returns {Object} Regional variants comparison
+     */
+    compareRegionalVariants() {
+        const regions = ['gulf', 'levantine', 'northAfrican', 'iraqi', 'yemeni', 'sudanese'];
+        const comparisons = regions.map(region => {
+            const pattern = this.getRegionalPattern(region);
+            return {
+                region: region,
+                regionArabic: pattern.region?.arabic || region,
+                compatibility: pattern.regionalCompatibility?.score || 0,
+                isFavored: pattern.regionalCompatibility?.isFavored || false
+            };
+        });
+
+        return {
+            name: this.name,
+            value: this.value,
+            comparisons: comparisons,
+            bestRegion: comparisons.reduce((a, b) => a.compatibility > b.compatibility ? a : b)
+        };
+    }
+
+    /**
+     * Get cultural significance in specific country
+     * @param {string} country - Country name
+     * @returns {Object} Cultural significance data
+     */
+    getCulturalSignificance(country) {
+        const nameInfo = getNameInfo(this.name);
+        const historical = findHistoricalFigures(this.name);
+        const sahabi = getSahabaByName(this.name);
+
+        return {
+            name: this.name,
+            country: country,
+            nameInfo: nameInfo,
+            historicalFigures: historical,
+            isSahabi: sahabi !== null,
+            sahabiInfo: sahabi,
+            culturalContext: REGIONAL_CULTURAL_CONTEXTS
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - AI-Powered Features
+    // ============================================
+
+    /**
+     * Get smart name recommendations based on criteria
+     * @param {Object} criteria - Recommendation criteria
+     * @returns {Object} Smart recommendations
+     */
+    static getSmartRecommendations(criteria = {}) {
+        const {
+            gender = null,
+            desiredDigitRoot = null,
+            purpose = null,
+            region = null,
+            industry = null,
+            maxResults = 20
+        } = criteria;
+
+        let namePool = [];
+        if (gender) {
+            namePool = ARABIC_NAME_DATABASE[gender] || [];
+        } else {
+            namePool = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+        }
+
+        const recommendations = namePool.map(entry => {
+            try {
+                const hisaab = new Hisaab(entry.name);
+                let score = 0;
+                let reasons = [];
+
+                if (desiredDigitRoot !== null) {
+                    if (hisaab.getDigitRoot() === desiredDigitRoot) {
+                        score += 40;
+                        reasons.push(`Perfect digit root match: ${desiredDigitRoot}`);
+                    }
+                }
+
+                if (purpose) {
+                    const digitRoot = hisaab.getDigitRoot();
+                    const purposeScore = AI_RECOMMENDATION_WEIGHTS.digitRoot.weights[digitRoot]?.[purpose] || 0;
+                    if (purposeScore > 0) {
+                        score += purposeScore;
+                        reasons.push(`Good for ${purpose}: score ${purposeScore}`);
+                    }
+                }
+
+                if (industry) {
+                    const industryMatch = getIndustryRecommendation(industry);
+                    if (industryMatch) {
+                        const element = hisaab.getArabicAstrology().element.name;
+                        if (industryMatch.bestElements.includes(element)) {
+                            score += 25;
+                            reasons.push(`Element ${element} matches industry ${industry}`);
+                        }
+                    }
+                }
+
+                if (entry.quranic) {
+                    score += 10;
+                    reasons.push('Quranic name');
+                }
+                if (entry.prophetic) {
+                    score += 15;
+                    reasons.push('Prophetic name');
+                }
+                if (entry.sahabi) {
+                    score += 12;
+                    reasons.push('Sahaba name');
+                }
+
+                return {
+                    name: entry.name,
+                    meaning: entry.meaning,
+                    value: hisaab.getValue(),
+                    digitRoot: hisaab.getDigitRoot(),
+                    element: hisaab.getArabicAstrology().element.name,
+                    score: score,
+                    reasons: reasons,
+                    attributes: {
+                        quranic: entry.quranic || false,
+                        prophetic: entry.prophetic || false,
+                        sahabi: entry.sahabi || false
+                    }
+                };
+            } catch (e) {
+                return null;
+            }
+        }).filter(r => r !== null && r.score > 0);
+
+        recommendations.sort((a, b) => b.score - a.score);
+
+        return {
+            criteria: criteria,
+            totalConsidered: namePool.length,
+            recommendations: recommendations.slice(0, maxResults)
+        };
+    }
+
+    /**
+     * Generate compatible names for a partner
+     * @param {string} partnerName - Partner name to match
+     * @param {Object} options - Options for generation
+     * @returns {Object} Compatible name suggestions
+     */
+    static generateCompatibleNames(partnerName, options = {}) {
+        const { gender = null, targetHouse = 7, maxResults = 15 } = options;
+
+        const partner = new Hisaab(partnerName);
+        const partnerRoot = partner.getDigitRoot();
+
+        const targetRoots = [];
+        for (let root = 1; root <= 9; root++) {
+            const sum = partnerRoot + root + 7;
+            const house = new Hisaab('محمد').calculateDigitRoot(sum);
+            if (house === targetHouse) {
+                targetRoots.push(root);
+            }
+        }
+
+        let namePool = gender ? (ARABIC_NAME_DATABASE[gender] || []) : [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+
+        const suggestions = namePool
+            .map(entry => {
+                try {
+                    const h = new Hisaab(entry.name);
+                    if (targetRoots.includes(h.getDigitRoot())) {
+                        const comp = Hisaab.compareArabic(partnerName, entry.name);
+                        return {
+                            name: entry.name,
+                            meaning: entry.meaning,
+                            value: h.getValue(),
+                            digitRoot: h.getDigitRoot(),
+                            partnerHouse: comp.partnerHouse,
+                            compatibility: comp.interpretation.quality
+                        };
+                    }
+                    return null;
+                } catch (e) {
+                    return null;
+                }
+            })
+            .filter(s => s !== null)
+            .slice(0, maxResults);
+
+        return {
+            partnerName: partnerName,
+            partnerDigitRoot: partnerRoot,
+            targetHouse: targetHouse,
+            targetDigitRoots: targetRoots,
+            suggestions: suggestions
+        };
+    }
+
+    /**
+     * Get AI-optimized business name suggestions
+     * @param {string} industry - Industry type
+     * @returns {Object} Business name recommendations
+     */
+    static optimizeBusinessNames(industry, maxResults = 10) {
+        const industryMatch = getIndustryRecommendation(industry);
+        if (!industryMatch) {
+            return { error: 'Industry not found', availableIndustries: Object.keys(INDUSTRY_ELEMENT_MATCHING) };
+        }
+
+        const allNames = [...ARABIC_NAME_DATABASE.male, ...ARABIC_NAME_DATABASE.female];
+        const suggestions = allNames
+            .map(entry => {
+                try {
+                    const h = new Hisaab(entry.name);
+                    const element = h.getArabicAstrology().element.name;
+                    const digitRoot = h.getDigitRoot();
+
+                    let score = 0;
+                    if (industryMatch.bestElements.includes(element)) score += 30;
+                    if (industryMatch.favorableDigitRoots.includes(digitRoot)) score += 20;
+                    if (entry.quranic) score += 5;
+                    if (h.value > 500) score += 10;
+
+                    return {
+                        name: entry.name,
+                        value: h.getValue(),
+                        digitRoot: digitRoot,
+                        element: element,
+                        industryScore: score,
+                        industryMatch: industryMatch
+                    };
+                } catch (e) {
+                    return null;
+                }
+            })
+            .filter(s => s !== null && s.industryScore > 0)
+            .sort((a, b) => b.industryScore - a.industryScore)
+            .slice(0, maxResults);
+
+        return {
+            industry: industry,
+            industryRequirements: industryMatch,
+            suggestions: suggestions
+        };
+    }
+
+    /**
+     * Analyze naming trends
+     * @returns {Object} Trend analysis
+     */
+    static analyzeNamingTrends() {
+        const maleNames = ARABIC_NAME_DATABASE.male;
+        const femaleNames = ARABIC_NAME_DATABASE.female;
+
+        const maleValues = maleNames.map(n => {
+            try { return new Hisaab(n.name).getValue(); } catch { return 0; }
+        });
+        const femaleValues = femaleNames.map(n => {
+            try { return new Hisaab(n.name).getValue(); } catch { return 0; }
+        });
+
+        const avgMale = maleValues.reduce((a, b) => a + b, 0) / maleValues.length;
+        const avgFemale = femaleValues.reduce((a, b) => a + b, 0) / femaleValues.length;
+
+        const quranicCount = [...maleNames, ...femaleNames].filter(n => n.quranic).length;
+        const propheticCount = [...maleNames, ...femaleNames].filter(n => n.prophetic).length;
+        const sahabiCount = [...maleNames, ...femaleNames].filter(n => n.sahabi || n.sahabia).length;
+
+        return {
+            databaseStats: getNameCount(),
+            averageValues: { male: Math.round(avgMale), female: Math.round(avgFemale) },
+            spiritualNames: {
+                quranic: quranicCount,
+                prophetic: propheticCount,
+                sahabi: sahabiCount
+            },
+            trends: {
+                modern: 'Shorter names with international appeal',
+                traditional: 'Classic prophetic and sahabi names remain popular'
+            }
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Export & Reporting
+    // ============================================
+
+    /**
+     * Export analysis in specified format
+     * @param {string} format - Export format (text, json, html, markdown)
+     * @returns {string} Formatted report
+     */
+    exportAnalysis(format = 'json') {
+        const data = {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            breakdown: this.getBreakdown(),
+            element: this.getArabicAstrology().element.name,
+            planet: this.getArabicAstrology().planet.name,
+            zodiac: this.getArabicAstrology().zodiac.name,
+            astrology: this.getArabicAstrology(),
+            islamic: this.getIslamicAnalysis(),
+            numerology: this.getNumerology(),
+            business: this.getBusinessAnalysis(),
+            recommendations: this.getLuckyNumbers(),
+            version: '1.4.0'
+        };
+
+        switch (format.toLowerCase()) {
+            case 'text':
+                return generateTextReport(data);
+            case 'html':
+                return generateHTMLReport(data);
+            case 'markdown':
+            case 'md':
+                return generateMarkdownReport(data);
+            case 'json':
+            default:
+                return generateJSONExport(data);
+        }
+    }
+
+    /**
+     * Generate shareable report
+     * @returns {Object} Shareable report object
+     */
+    generateShareableReport() {
+        return {
+            metadata: {
+                generatedAt: new Date().toISOString(),
+                version: '1.4.0',
+                generator: 'Hisaab Arabic Numerology Library'
+            },
+            summary: {
+                name: this.name,
+                value: this.value,
+                digitRoot: this.getDigitRoot()
+            },
+            astrology: this.getArabicAstrology(),
+            islamic: this.getIslamicAnalysis(),
+            business: this.getBusinessAnalysis(),
+            compatibility: this.compareWith ? this.compareWith : null
+        };
+    }
+
+    /**
+     * Get clipboard text for sharing
+     * @param {string} format - Format (short, medium, detailed)
+     * @returns {string} Clipboard-ready text
+     */
+    getClipboardText(format = 'medium') {
+        const data = {
+            name: this.name,
+            value: this.value,
+            digitRoot: this.getDigitRoot(),
+            element: this.getArabicAstrology().element.name,
+            elementArabic: this.getArabicAstrology().element.arabic,
+            planet: this.getArabicAstrology().planet.name,
+            planetArabic: this.getArabicAstrology().planet.arabic,
+            zodiac: this.getArabicAstrology().zodiac.name,
+            zodiacArabic: this.getArabicAstrology().zodiac.arabic,
+            islamicQualities: this.getIslamicQualities().join(', '),
+            islamicAnalysis: ''
+        };
+        return generateClipboardText(data, format);
+    }
+
+    // ============================================
+    // v1.4.0 - Historical & Educational
+    // ============================================
+
+    /**
+     * Get historical context for the name
+     * @returns {Object} Historical context
+     */
+    getHistoricalContext() {
+        const figures = findHistoricalFigures(this.name);
+        const events = getHistoricalEvents(this.name);
+        const sahabi = getSahabaByName(this.name);
+        const nameInfo = getNameInfo(this.name);
+
+        return {
+            name: this.name,
+            nameInfo: nameInfo,
+            historicalFigures: figures,
+            sahabiInfo: sahabi,
+            historicalEvents: events,
+            significance: figures.length > 0 ? figures[0].significance : (sahabi ? sahabi.title : null)
+        };
+    }
+
+    /**
+     * Find famous personalities with this name
+     * @returns {Object} Famous personalities
+     */
+    findFamousPersonalities() {
+        const figures = findHistoricalFigures(this.name);
+        const categories = {};
+
+        figures.forEach(f => {
+            if (!categories[f.category]) categories[f.category] = [];
+            categories[f.category].push(f);
+        });
+
+        return {
+            name: this.name,
+            categories: categories,
+            totalFigures: figures.length
+        };
+    }
+
+    /**
+     * Get prophetic connection
+     * @returns {Object} Prophetic connection data
+     */
+    getPropheticConnection() {
+        const nameInfo = getNameInfo(this.name);
+        const propheticNames = getPropheticNames();
+        const isProphetic = propheticNames.some(n => n.name === this.name);
+
+        return {
+            name: this.name,
+            isPropheticName: isProphetic,
+            nameInfo: nameInfo,
+            propheticNames: isProphetic ? nameInfo : null
+        };
+    }
+
+    /**
+     * Get Sahaba (Companion) info for the name
+     * @returns {Object} Sahaba information
+     */
+    getSahabaInfo() {
+        const sahabi = getSahabaByName(this.name);
+        const isSahaba = isSahabaName(this.name);
+
+        return {
+            name: this.name,
+            isSahaba: isSahaba,
+            sahabiInfo: sahabi,
+            asharaMubashara: sahabi && SAHABA_DATABASE.asharaMubashara.some(s => s.name === this.name)
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Hijri Calendar Integration
+    // ============================================
+
+    /**
+     * Get Hijri date for a given Gregorian date
+     * @param {number} year - Gregorian year
+     * @param {number} month - Gregorian month (1-12)
+     * @param {number} day - Gregorian day
+     * @returns {Object} Hijri date
+     */
+    static toHijri(year, month, day) {
+        return gregorianToHijri(year, month, day);
+    }
+
+    /**
+     * Get Gregorian date for a given Hijri date
+     * @param {number} year - Hijri year
+     * @param {number} month - Hijri month (1-12)
+     * @param {number} day - Hijri day
+     * @returns {Object} Gregorian date
+     */
+    static toGregorian(year, month, day) {
+        return hijriToGregorian(year, month, day);
+    }
+
+    /**
+     * Get current Hijri date
+     * @returns {Object} Current Hijri date
+     */
+    static getCurrentHijri() {
+        const hijri = getCurrentHijriDate();
+        const monthInfo = getHijriMonthInfo(hijri.month);
+        return {
+            ...hijri,
+            monthName: monthInfo?.arabic,
+            monthNameEnglish: monthInfo?.name,
+            isHolyMonth: isHolyMonth(hijri.month)
+        };
+    }
+
+    /**
+     * Get blessed dates for a Hijri year
+     * @param {number} year - Hijri year
+     * @returns {Object} Blessed dates in the year
+     */
+    static getBlessedDates(year) {
+        const blessedDates = [];
+
+        HIJRI_MONTHS.forEach(month => {
+            month.blessedDays.forEach(day => {
+                blessedDates.push({
+                    hijriDate: { year, month: month.number, day },
+                    monthName: month.arabic,
+                    significance: month.significance
+                });
+            });
+        });
+
+        const yearlyEvents = BLESSED_DAYS.yearly;
+
+        return {
+            year: year,
+            blessedDates: blessedDates,
+            yearlyEvents: yearlyEvents
+        };
+    }
+
+    /**
+     * Get monthly recommendations for Hijri month
+     * @param {number} month - Hijri month number
+     * @returns {Object} Monthly recommendations
+     */
+    static getMonthlyRecommendations(month) {
+        const monthInfo = getHijriMonthInfo(month);
+        if (!monthInfo) return { error: 'Invalid month number' };
+
+        return {
+            month: month,
+            arabic: monthInfo.arabic,
+            english: monthInfo.name,
+            significance: monthInfo.significance,
+            blessedDays: monthInfo.blessedDays,
+            recommended: monthInfo.recommended,
+            historicalEvents: monthInfo.historicalEvents
+        };
+    }
+
+    /**
+     * Get timing recommendations based on name's planetary influence
+     * @returns {Object} Timing recommendations
+     */
+    getTimingRecommendations() {
+        const astrology = this.getArabicAstrology();
+        const planet = astrology.planet.name;
+        const digitRoot = this.getDigitRoot();
+
+        const todayHijri = getCurrentHijriDate();
+        const monthInfo = getHijriMonthInfo(todayHijri.month);
+
+        return {
+            name: this.name,
+            planet: planet,
+            favorableDay: astrology.planet.favorableDay,
+            hijriDate: todayHijri,
+            currentMonth: monthInfo?.arabic,
+            monthRecommendations: monthInfo?.recommended || [],
+            digitRootTiming: getDigitRootRecommendation(digitRoot)
+        };
+    }
+
+    // ============================================
+    // v1.4.0 - Group & Family Analysis
+    // ============================================
+
+    /**
+     * Analyze family tree numerology
+     * @param {Array} members - Family member names
+     * @returns {Object} Family tree analysis
+     */
+    static analyzeFamilyTree(members) {
+        const analyses = members.map(name => {
+            try {
+                const h = new Hisaab(name);
+                return {
+                    name: name,
+                    value: h.getValue(),
+                    digitRoot: h.getDigitRoot(),
+                    element: h.getArabicAstrology().element.name,
+                    planet: h.getArabicAstrology().planet.name
+                };
+            } catch (e) {
+                return { name: name, error: 'Invalid name' };
+            }
+        });
+
+        const validAnalyses = analyses.filter(a => !a.error);
+
+        const elementCounts = {};
+        validAnalyses.forEach(a => {
+            elementCounts[a.element] = (elementCounts[a.element] || 0) + 1;
+        });
+
+        const rootCounts = {};
+        validAnalyses.forEach(a => {
+            rootCounts[a.digitRoot] = (rootCounts[a.digitRoot] || 0) + 1;
+        });
+
+        return {
+            members: analyses,
+            totalMembers: members.length,
+            validMembers: validAnalyses.length,
+            elementDistribution: elementCounts,
+            digitRootDistribution: rootCounts,
+            dominantElement: Object.entries(elementCounts).sort((a, b) => b[1] - a[1])[0]?.[0],
+            dominantRoot: Object.entries(rootCounts).sort((a, b) => b[1] - a[1])[0]?.[0]
+        };
+    }
+
+    /**
+     * Get group compatibility score
+     * @param {Array} names - Array of names
+     * @returns {Object} Group compatibility analysis
+     */
+    static getGroupCompatibility(names) {
+        if (names.length < 2) {
+            return { error: 'At least 2 names required' };
+        }
+
+        const pairs = [];
+        for (let i = 0; i < names.length; i++) {
+            for (let j = i + 1; j < names.length; j++) {
+                const comp = Hisaab.compareArabic(names[i], names[j]);
+                pairs.push({
+                    name1: names[i],
+                    name2: names[j],
+                    house: comp.partnerHouse,
+                    quality: comp.interpretation.quality
+                });
+            }
+        }
+
+        const houseCounts = {};
+        pairs.forEach(p => {
+            houseCounts[p.house] = (houseCounts[p.house] || 0) + 1;
+        });
+
+        const avgScore = pairs.reduce((sum, p) => {
+            const score = p.house === 7 ? 100 : (p.house === 4 || p.house === 2 ? 70 : (p.house === 6 || p.house === 9 ? 10 : 50));
+            return sum + score;
+        }, 0) / pairs.length;
+
+        return {
+            names: names,
+            totalPairs: pairs.length,
+            pairs: pairs,
+            houseDistribution: houseCounts,
+            averageScore: Math.round(avgScore),
+            harmonyLevel: avgScore >= 70 ? 'Excellent' : (avgScore >= 50 ? 'Good' : 'Challenging')
+        };
     }
 }
 

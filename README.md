@@ -2,7 +2,7 @@
 
 > Complete JavaScript library for Arabic name analysis using traditional Abjad calculation, Islamic wisdom, and authentic Arabic astrology.
 
-[![Version](https://img.shields.io/badge/version-1.3.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
+[![Version](https://img.shields.io/badge/version-1.4.0-green.svg)](https://github.com/Ahmadbaba46/hisaab)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Islamic](https://img.shields.io/badge/Islamic-☪️-gold.svg)](#islamic-features)
 
@@ -33,20 +33,32 @@
 - 🏛️ **Cultural Context** - Historical and regional significance
 - 📜 **Enhanced Analysis** - More detailed interpretations
 
-### v1.3.0 - Advanced Features (Current)
+### v1.3.0 - Advanced Features
 - 💼 **Business Name Analysis** - Company success indicators & industry recommendations
 - 📅 **Date Integration** - Birth date compatibility & life path analysis
 - 🔮 **Advanced Numerology** - Master numbers (11, 22, 33, 44), karmic debt (13, 14, 16, 19)
 - 🕌 **Enhanced Prayer Guidance** - Prayer time correlations & personalized dhikr plans
 - ⭐ **Complete Astrology** - Elements, planetary influences, zodiac signs
 
+### v1.4.0 - Geographic & AI Features (Current)
+- 🌍 **Geographic Analysis** - 6 regional patterns (Gulf, Levantine, North African, Iraqi, Yemeni, Sudanese)
+- 🤖 **AI Recommendations** - Smart name suggestions based on criteria
+- 💼 **Industry Optimization** - Business names optimized for 10 industries
+- 📄 **Multi-Format Export** - JSON, HTML, Text, Markdown reports
+- 📚 **Historical Database** - Prophets, Sahaba, Scholars, Rulers, Poets
+- 🌙 **Hijri Calendar** - Full conversion, blessed dates, monthly recommendations
+- 👨‍👩‍👧‍👦 **Group Analysis** - Family tree and group compatibility
+
 ### Web Interface
 - 🌐 **Modular Web App** - Clean, maintainable architecture
-- 📑 **Organized Tabs** - Filter results by category (All, v1.3.0, Islamic, Astrology, Export)
+- 📑 **Organized Tabs** - Filter results by category (All, v1.4.0, Islamic, Astrology, Export)
 - 🎬 **Smooth Animations** - Scroll reveal, fade-in, hover effects
 - 💾 **Export Options** - Text, JSON, HTML, Print/PDF, Clipboard
 - 📱 **Responsive Design** - Works on all devices
 - 🎨 **Beautiful UI** - Islamic-themed with gradient accents
+- 🌍 **Regional Analysis** - Geographic patterns in web interface
+- 🤖 **AI Suggestions** - Smart recommendations tab
+- 🌙 **Hijri Display** - Current Islamic date and blessed days
 
 ## 🚀 Quick Start
 
@@ -205,6 +217,31 @@ console.log(advanced.hiddenPotential.dominantNumber); // 2
 const prayer = muhammad.getPrayerTimeCorrelations();
 console.log(prayer.favorablePrayer); // "Fajr"
 console.log(prayer.dhikrPlan.morning); // "لا إله إلا الله (100 times)"
+
+// Example 8: Geographic Analysis (v1.4.0)
+const regional = muhammad.getRegionalPattern('gulf');
+console.log(regional.regionalCompatibility.score); // 60
+
+// Example 9: AI Recommendations (v1.4.0)
+const suggestions = Hisaab.getSmartRecommendations({ 
+    desiredDigitRoot: 7, 
+    purpose: 'business',
+    maxResults: 5
+});
+console.log(suggestions.recommendations[0].name); // "إبراهيم"
+
+// Example 10: Hijri Calendar (v1.4.0)
+const hijri = Hisaab.getCurrentHijri();
+console.log(hijri.monthName); // "شعبان"
+console.log(Hisaab.toHijri(2025, 1, 1)); // { year: 1446, month: 6, day: 1 }
+
+// Example 11: Historical Context (v1.4.0)
+const history = muhammad.getHistoricalContext();
+console.log(history.sahabiInfo); // Sahaba information if name matches
+
+// Example 12: Export Analysis (v1.4.0)
+const report = muhammad.exportAnalysis('html'); // HTML report
+const json = muhammad.exportAnalysis('json');   // JSON export
 
 // Example 4: Advanced features
 const report = muhammad.getCompleteReport();
