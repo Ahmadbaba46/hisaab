@@ -46,22 +46,22 @@
             <p class="hero-subtitle">
                 Calculate the numerical value of Arabic names using traditional Abjad system
             </p>
-            <div class="hero-features">
+<div class="hero-features">
                 <div class="feature">
-                    <span class="feature-icon">💼</span>
-                    <span>Business Analysis</span>
+                    <span class="feature-icon">🌍</span>
+                    <span>Regional Analysis</span>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">📅</span>
-                    <span>Date Integration</span>
+                    <span class="feature-icon">🤖</span>
+                    <span>AI Recommendations</span>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">🔮</span>
-                    <span>Advanced Numerology</span>
+                    <span class="feature-icon">🌙</span>
+                    <span>Hijri Calendar</span>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">🕌</span>
-                    <span>Islamic Features</span>
+                    <span class="feature-icon">📚</span>
+                    <span>Historical Database</span>
                 </div>
             </div>
         </div>
@@ -117,8 +117,125 @@
                 </div>
             </div>
 
-            <!-- Results Container -->
+<!-- Results Container -->
             <div id="results" style="display: none; margin-top: 40px;"></div>
+        </div>
+    </section>
+
+    <!-- Hijri Calendar Widget -->
+    <section id="hijri-calendar" class="hijri-section">
+        <div class="container">
+            <div class="hijri-card">
+                <h2>
+                    <span class="arabic">التقويم الهجري</span>
+                    <span class="english">Hijri Calendar</span>
+                </h2>
+                <div id="hijriDisplay" class="hijri-display">
+                    <div class="hijri-date">
+                        <span class="hijri-day" id="hijriDay">--</span>
+                        <span class="hijri-month" id="hijriMonth">--</span>
+                        <span class="hijri-year" id="hijriYear">--</span>
+                    </div>
+                    <div class="hijri-status" id="hijriStatus"></div>
+                </div>
+                <div class="hijri-blessed" id="hijriBlessed"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Recommendations Section -->
+    <section id="ai-recommendations" class="ai-section">
+        <div class="container">
+            <div class="ai-card">
+                <h2>
+                    <span class="arabic">توصيات ذكية</span>
+                    <span class="english">AI Recommendations</span>
+                </h2>
+                
+                <div class="ai-options">
+                    <div class="ai-option-group">
+                        <label>Purpose:</label>
+                        <select id="aiPurpose">
+                            <option value="">Any</option>
+                            <option value="business">Business</option>
+                            <option value="leadership">Leadership</option>
+                            <option value="spirituality">Spirituality</option>
+                            <option value="partnership">Partnership</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ai-option-group">
+                        <label>Desired Digit Root:</label>
+                        <select id="aiDigitRoot">
+                            <option value="">Any</option>
+                            <option value="1">1 - Leadership</option>
+                            <option value="2">2 - Partnership</option>
+                            <option value="3">3 - Creativity</option>
+                            <option value="4">4 - Stability</option>
+                            <option value="5">5 - Freedom</option>
+                            <option value="6">6 - Responsibility</option>
+                            <option value="7">7 - Spirituality</option>
+                            <option value="8">8 - Power</option>
+                            <option value="9">9 - Completion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ai-option-group">
+                        <label>Industry:</label>
+                        <select id="aiIndustry">
+                            <option value="">Any</option>
+                            <option value="technology">Technology</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                            <option value="retail">Retail</option>
+                            <option value="construction">Construction</option>
+                            <option value="hospitality">Hospitality</option>
+                            <option value="consulting">Consulting</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="aiRecommendBtn" class="calculate-btn">
+                    <span class="arabic">احصل على توصيات</span>
+                    <span class="english">Get Recommendations</span>
+                </button>
+                
+                <div id="aiResults" style="display: none; margin-top: 20px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Analysis Section -->
+    <section id="regional-analysis" class="regional-section">
+        <div class="container">
+            <div class="regional-card">
+                <h2>
+                    <span class="arabic">التحليل الإقليمي</span>
+                    <span class="english">Regional Analysis</span>
+                </h2>
+                
+                <div class="regional-options">
+                    <div class="regional-option-group">
+                        <label>Select Region:</label>
+                        <select id="regionalSelect">
+                            <option value="gulf">الخليج - Gulf</option>
+                            <option value="levantine">الشام - Levantine</option>
+                            <option value="northAfrican">المغرب العربي - North African</option>
+                            <option value="iraqi">العراق - Iraqi</option>
+                            <option value="yemeni">اليمن - Yemeni</option>
+                            <option value="sudanese">السودان - Sudanese</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="regionalBtn" class="calculate-btn">
+                    <span class="arabic">تحليل إقليمي</span>
+                    <span class="english">Analyze Region</span>
+                </button>
+                
+                <div id="regionalResults" style="display: none; margin-top: 20px;"></div>
+            </div>
         </div>
     </section>
 
@@ -127,10 +244,34 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="arabic">الميزات</span>
-                <span class="english">Features v1.3.0</span>
+                <span class="english">Features v1.4.0</span>
             </h2>
             
-            <div class="features-grid">
+<div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Regional Analysis</h3>
+                    <p>6 regional patterns: Gulf, Levantine, North African, Iraqi, Yemeni, Sudanese</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Recommendations</h3>
+                    <p>Smart name suggestions based on criteria and industry optimization</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Hijri Calendar</h3>
+                    <p>Full Islamic calendar with blessed dates and monthly recommendations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Historical Database</h3>
+                    <p>Prophets, Sahaba, Scholars, Rulers, Poets, and Mystics information</p>
+                </div>
+
                 <div class="feature-card">
                     <div class="feature-icon">💼</div>
                     <h3>Business Analysis</h3>
@@ -174,15 +315,9 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Asma ul Husna</h3>
-                    <p>Divine name matching with 99 Names of Allah</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📖</div>
-                    <h3>Quranic Connections</h3>
-                    <p>Verse connections and spiritual significance</p>
+                    <div class="feature-icon">📄</div>
+                    <h3>Export Reports</h3>
+                    <p>Multi-format export: JSON, HTML, Text, Markdown</p>
                 </div>
             </div>
         </div>
@@ -213,7 +348,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Hisaab v1.3.0 - Preserving Arabic Numerology Traditions</p>
+            <p>Hisaab v1.4.0 - Geographic, AI, Export, Historical & Hijri Features</p>
             <p>
                 <a href="https://github.com/Ahmadbaba46/hisaab" target="_blank">GitHub</a> |
                 <a href="https://github.com/Ahmadbaba46/hisaab/blob/main/README.md" target="_blank">Documentation</a>
@@ -221,7 +356,7 @@
         </div>
     </footer>
 
-    <!-- Load Scripts in Order -->
+<!-- Load Scripts in Order -->
     <!-- 1. Complete Hisaab Library Bundle -->
     <script src="js/hisaab-complete.js"></script>
     
@@ -231,7 +366,10 @@
     <script src="js/results-renderer.js"></script>
     <script src="js/ui-enhancements.js"></script>
     
-    <!-- 3. Initialize app -->
+    <!-- 3. v1.4.0 Features -->
+    <script src="js/hisaab-v14.js"></script>
+    
+    <!-- 4. Initialize app -->
     <script src="js/app-init.js"></script>
 
     <style>
