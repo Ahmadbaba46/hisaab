@@ -3,21 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حساب - Hisaab | Arabic Name Calculator</title>
+    <title>Hisaab | Arabic Name Calculator v2.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Indicator -->
-    <div id="app-loading" style="display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-        <div style="text-align: center;">
-            <div style="font-size: 48px; margin-bottom: 20px;">🌙</div>
-            <h2>Loading Hisaab...</h2>
-            <p>جاري التحميل...</p>
-            <div class="loader"></div>
-        </div>
-    </div>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -25,13 +15,16 @@
                 <div class="logo-icon">🌙</div>
                 <div class="logo-text">
                     <h1>حساب</h1>
-                    <span>Hisaab</span>
+                    <span>Hisaab v2.0</span>
                 </div>
             </div>
             <nav class="nav">
                 <a href="#calculator" class="nav-link">Calculator</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#about" class="nav-link">About</a>
+                <a href="#asma-ul-husna" class="nav-link">99 Names</a>
+                <a href="#sahaba" class="nav-link">Sahaba</a>
+                <a href="#hijri" class="nav-link">Hijri Calendar</a>
+                <a href="#ai" class="nav-link">AI</a>
+                <a href="#regional" class="nav-link">Regional</a>
             </nav>
         </div>
     </header>
@@ -43,115 +36,127 @@
                 <span class="arabic">حساب الجُمَّل</span>
                 <span class="english">Arabic Abjad Calculator</span>
             </h1>
-            <p class="hero-subtitle">
-                Calculate the numerical value of Arabic names using traditional Abjad system
-            </p>
-<div class="hero-features">
-                <div class="feature">
-                    <span class="feature-icon">🌍</span>
-                    <span>Regional Analysis</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">🤖</span>
-                    <span>AI Recommendations</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">🌙</span>
-                    <span>Hijri Calendar</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">📚</span>
-                    <span>Historical Database</span>
-                </div>
+            <p class="hero-subtitle">Complete Islamic Numerology System with AI-powered Analysis</p>
+            <div class="hero-features">
+                <div class="feature"><span class="feature-icon">📊</span><span>99 Names of Allah</span></div>
+                <div class="feature"><span class="feature-icon">👥</span><span>Sahaba Database</span></div>
+                <div class="feature"><span class="feature-icon">🌙</span><span>Hijri Calendar</span></div>
+                <div class="feature"><span class="feature-icon">🤖</span><span>AI Recommendations</span></div>
+                <div class="feature"><span class="feature-icon">🌍</span><span>Regional Analysis</span></div>
+                <div class="feature"><span class="feature-icon">💼</span><span>Business Analysis</span></div>
+                <div class="feature"><span class="feature-icon">📤</span><span>Export Reports</span></div>
+                <div class="feature"><span class="feature-icon">🔮</span><span>28 Lunar Mansions</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Calculator Section -->
+    <!-- Main Calculator -->
     <section id="calculator" class="calculator-section">
         <div class="container">
             <div class="calculator-card">
-                <h2>
-                    <span class="arabic">احسب اسمك</span>
-                    <span class="english">Calculate Your Name</span>
-                </h2>
-                
+                <h2><span class="arabic">احسب اسمك</span><span class="english">Calculate Your Name</span></h2>
                 <div class="input-group">
-                    <label for="arabicName">
-                        <span class="arabic">الاسم بالعربية</span>
-                        <span class="english">Arabic Name</span>
-                    </label>
-                    <input 
-                        type="text" 
-                        id="arabicName" 
-                        placeholder="محمد، أحمد، فاطمة..." 
-                        class="name-input"
-                        dir="rtl"
-                    >
+                    <label for="arabicName"><span class="arabic">الاسم بالعربية</span><span class="english">Arabic Name</span></label>
+                    <input type="text" id="arabicName" placeholder="محمد، أحمد، فاطمة..." class="name-input" dir="rtl">
                 </div>
-
                 <div id="errorMessage" class="error-message" style="display: none;"></div>
-
-                <button id="calculateBtn" class="calculate-btn">
-                    <span class="arabic">احسب</span>
-                    <span class="english">Calculate</span>
-                </button>
+                <button id="calculateBtn" class="calculate-btn"><span class="arabic">احسب</span><span class="english">Calculate</span></button>
 
                 <!-- Partner Compatibility -->
                 <div class="input-group" style="margin-top: 20px;">
-                    <label for="partnerName">
-                        <span class="arabic">اسم الشريك (اختياري)</span>
-                        <span class="english">Partner Name (optional)</span>
-                    </label>
-                    <input 
-                        type="text" 
-                        id="partnerName" 
-                        placeholder="فاطمة، عائشة، علي..." 
-                        class="name-input"
-                        dir="rtl"
-                    >
-                    <button id="compatibilityBtn" class="calculate-btn" style="margin-top: 10px;">
-                        <span class="arabic">حساب الشريك</span>
-                        <span class="english">Check Compatibility</span>
-                    </button>
+                    <label for="partnerName"><span class="arabic">اسم الشريك (اختياري)</span><span class="english">Partner Name (optional)</span></label>
+                    <input type="text" id="partnerName" placeholder="فاطمة، عائشة، علي..." class="name-input" dir="rtl">
+                    <button id="compatibilityBtn" class="calculate-btn" style="margin-top: 10px;"><span class="arabic">حساب الشريك</span><span class="english">Check Compatibility</span></button>
                 </div>
             </div>
-
-<!-- Results Container -->
             <div id="results" style="display: none; margin-top: 40px;"></div>
         </div>
     </section>
 
-    <!-- Hijri Calendar Widget -->
-    <section id="hijri-calendar" class="hijri-section">
+    <!-- Asma Ul Husna Section -->
+    <section id="asma-ul-husna" class="asma-section">
         <div class="container">
-            <div class="hijri-card">
-                <h2>
-                    <span class="arabic">التقويم الهجري</span>
-                    <span class="english">Hijri Calendar</span>
-                </h2>
-                <div id="hijriDisplay" class="hijri-display">
-                    <div class="hijri-date">
-                        <span class="hijri-day" id="hijriDay">--</span>
-                        <span class="hijri-month" id="hijriMonth">--</span>
-                        <span class="hijri-year" id="hijriYear">--</span>
+            <h2 class="section-title"><span class="arabic">أسماء الله الحسنى</span><span class="english">99 Names of Allah</span></h2>
+            <div class="asma-controls">
+                <input type="text" id="asmaSearch" placeholder="ابحث بالاسم..." class="name-input" dir="rtl" style="max-width: 300px;">
+                <select id="asmaFilter">
+                    <option value="all">All Names</option>
+                    <option value="royalty">Names of Royalty & Authority</option>
+                    <option value="mercy">Names of Mercy & Compassion</option>
+                    <option value="knowledge">Names of Knowledge & Wisdom</option>
+                    <option value="power">Names of Power & Strength</option>
+                </select>
+            </div>
+            <div id="asmaGrid" class="asma-grid"></div>
+        </div>
+    </section>
+
+    <!-- Sahaba Database Section -->
+    <section id="sahaba" class="sahaba-section">
+        <div class="container">
+            <h2 class="section-title"><span class="arabic">أسماء الصحابة</span><span class="english">Sahaba Database</span></h2>
+            <div class="sahaba-tabs">
+                <button class="tab-btn active" data-tab="ashara">العشرة المبشرين بالجنة</button>
+                <button class="tab-btn" data-tab="prominent">أصحاب بارزون</button>
+                <button class="tab-btn" data-tab="sahabiyat">الصحابيات</button>
+            </div>
+            <div id="sahabaResults" class="sahaba-grid"></div>
+        </div>
+    </section>
+
+    <!-- Hijri Calendar Section -->
+    <section id="hijri" class="hijri-section">
+        <div class="container">
+            <h2 class="section-title"><span class="arabic">التقويم الهجري</span><span class="english">Hijri Calendar</span></h2>
+            <div class="hijri-display">
+                <div class="current-hijri">
+                    <div class="hijri-date-large">
+                        <span id="currentHijriDay">--</span>
+                        <span id="currentHijriMonth">--</span>
+                        <span id="currentHijriYear">--</span>
                     </div>
-                    <div class="hijri-status" id="hijriStatus"></div>
+                    <div class="hijri-gregorian" id="currentGregorian"></div>
                 </div>
-                <div class="hijri-blessed" id="hijriBlessed"></div>
+                <div class="hijri-converter">
+                    <h3>تحويل التاريخ / Convert Date</h3>
+                    <div class="converter-inputs">
+                        <input type="number" id="convDay" placeholder="اليوم" min="1" max="30">
+                        <select id="convMonth">
+                            <option value="1">محرم</option>
+                            <option value="2">صفر</option>
+                            <option value="3">ربيع الأول</option>
+                            <option value="4">ربيع الثاني</option>
+                            <option value="5">جمادى الأولى</option>
+                            <option value="6">جمادى الثانية</option>
+                            <option value="7">رجب</option>
+                            <option value="8">شعبان</option>
+                            <option value="9">رمضان</option>
+                            <option value="10">شوال</option>
+                            <option value="11">ذو القعدة</option>
+                            <option value="12">ذو الحجة</option>
+                        </select>
+                        <input type="number" id="convYear" placeholder="السنة" min="1">
+                        <button id="convertBtn" class="calculate-btn">تحويل</button>
+                    </div>
+                    <div id="conversionResult"></div>
+                </div>
+            </div>
+            <div class="hijri-months">
+                <h3>أشهر هجرية / Hijri Months</h3>
+                <div id="monthsGrid" class="months-grid"></div>
+            </div>
+            <div class="blessed-days">
+                <h3>الأيام المباركة / Blessed Days</h3>
+                <div id="blessedDaysList" class="blessed-list"></div>
             </div>
         </div>
     </section>
 
     <!-- AI Recommendations Section -->
-    <section id="ai-recommendations" class="ai-section">
+    <section id="ai" class="ai-section">
         <div class="container">
+            <h2 class="section-title"><span class="arabic">توصيات ذكية</span><span class="english">AI Recommendations</span></h2>
             <div class="ai-card">
-                <h2>
-                    <span class="arabic">توصيات ذكية</span>
-                    <span class="english">AI Recommendations</span>
-                </h2>
-                
                 <div class="ai-options">
                     <div class="ai-option-group">
                         <label>Purpose:</label>
@@ -163,9 +168,8 @@
                             <option value="partnership">Partnership</option>
                         </select>
                     </div>
-                    
                     <div class="ai-option-group">
-                        <label>Desired Digit Root:</label>
+                        <label>Digit Root:</label>
                         <select id="aiDigitRoot">
                             <option value="">Any</option>
                             <option value="1">1 - Leadership</option>
@@ -179,7 +183,6 @@
                             <option value="9">9 - Completion</option>
                         </select>
                     </div>
-                    
                     <div class="ai-option-group">
                         <label>Industry:</label>
                         <select id="aiIndustry">
@@ -190,134 +193,81 @@
                             <option value="education">Education</option>
                             <option value="retail">Retail</option>
                             <option value="construction">Construction</option>
-                            <option value="hospitality">Hospitality</option>
-                            <option value="consulting">Consulting</option>
+                        </select>
+                    </div>
+                    <div class="ai-option-group">
+                        <label>Element:</label>
+                        <select id="aiElement">
+                            <option value="">Any</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Water">Water</option>
+                            <option value="Air">Air</option>
+                            <option value="Earth">Earth</option>
                         </select>
                     </div>
                 </div>
-                
-                <button id="aiRecommendBtn" class="calculate-btn">
-                    <span class="arabic">احصل على توصيات</span>
-                    <span class="english">Get Recommendations</span>
-                </button>
-                
+                <button id="aiRecommendBtn" class="calculate-btn"><span class="arabic">احصل على توصيات</span><span class="english">Get Recommendations</span></button>
                 <div id="aiResults" style="display: none; margin-top: 20px;"></div>
             </div>
         </div>
     </section>
 
     <!-- Regional Analysis Section -->
-    <section id="regional-analysis" class="regional-section">
+    <section id="regional" class="regional-section">
         <div class="container">
+            <h2 class="section-title"><span class="arabic">التحليل الإقليمي</span><span class="english">Regional Analysis</span></h2>
             <div class="regional-card">
-                <h2>
-                    <span class="arabic">التحليل الإقليمي</span>
-                    <span class="english">Regional Analysis</span>
-                </h2>
-                
-                <div class="regional-options">
-                    <div class="regional-option-group">
-                        <label>Select Region:</label>
-                        <select id="regionalSelect">
-                            <option value="gulf">الخليج - Gulf</option>
-                            <option value="levantine">الشام - Levantine</option>
-                            <option value="northAfrican">المغرب العربي - North African</option>
-                            <option value="iraqi">العراق - Iraqi</option>
-                            <option value="yemeni">اليمن - Yemeni</option>
-                            <option value="sudanese">السودان - Sudanese</option>
-                        </select>
-                    </div>
+                <div class="input-group">
+                    <label for="regionalName">Enter Arabic Name:</label>
+                    <input type="text" id="regionalName" placeholder="أدخل اسم عربي..." class="name-input" dir="rtl">
                 </div>
-                
-                <button id="regionalBtn" class="calculate-btn">
-                    <span class="arabic">تحليل إقليمي</span>
-                    <span class="english">Analyze Region</span>
-                </button>
-                
+                <div class="regional-options">
+                    <select id="regionalSelect">
+                        <option value="gulf">الخليج - Gulf</option>
+                        <option value="levantine">الشام - Levantine</option>
+                        <option value="northAfrican">المغرب العربي - North African</option>
+                        <option value="iraqi">العراق - Iraqi</option>
+                        <option value="yemeni">اليمن - Yemeni</option>
+                        <option value="sudanese">السودان - Sudanese</option>
+                    </select>
+                </div>
+                <button id="regionalBtn" class="calculate-btn"><span class="arabic">تحليل إقليمي</span><span class="english">Analyze</span></button>
                 <div id="regionalResults" style="display: none; margin-top: 20px;"></div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features-section">
+    <!-- Name Database Search -->
+    <section id="names" class="names-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="arabic">الميزات</span>
-                <span class="english">Features v1.4.0</span>
-            </h2>
-            
-<div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Regional Analysis</h3>
-                    <p>6 regional patterns: Gulf, Levantine, North African, Iraqi, Yemeni, Sudanese</p>
+            <h2 class="section-title"><span class="arabic">قاعدة بيانات الأسماء</span><span class="english">Name Database</span></h2>
+            <div class="names-card">
+                <div class="input-group">
+                    <input type="text" id="nameSearch" placeholder="ابحث عن اسم..." class="name-input" dir="rtl">
+                    <select id="nameOrigin">
+                        <option value="">All Origins</option>
+                        <option value="quranic">Quranic</option>
+                        <option value="prophetic">Prophetic</option>
+                        <option value="sahaba">Sahaba</option>
+                    </select>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Recommendations</h3>
-                    <p>Smart name suggestions based on criteria and industry optimization</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>Hijri Calendar</h3>
-                    <p>Full Islamic calendar with blessed dates and monthly recommendations</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Historical Database</h3>
-                    <p>Prophets, Sahaba, Scholars, Rulers, Poets, and Mystics information</p>
-                </div>
+                <button id="searchNamesBtn" class="calculate-btn">Search</button>
+                <div id="namesResults" style="display: none; margin-top: 20px;"></div>
+            </div>
+        </div>
+    </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Business Analysis</h3>
-                    <p>Company name analysis with success indicators and industry recommendations</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h3>Date Integration</h3>
-                    <p>Birth date compatibility and life path analysis</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔮</div>
-                    <h3>Advanced Numerology</h3>
-                    <p>Master numbers, karmic debt, and hidden potential</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🕌</div>
-                    <h3>Islamic Features</h3>
-                    <p>Prayer correlations and personalized dhikr recommendations</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>Lunar Mansions</h3>
-                    <p>28 Lunar mansions (منازل القمر) correlation</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">💕</div>
-                    <h3>Compatibility</h3>
-                    <p>Marriage compatibility analysis (حساب الشريك)</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Arabic Astrology</h3>
-                    <p>Elements, planetary influences, and zodiac signs</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>Export Reports</h3>
-                    <p>Multi-format export: JSON, HTML, Text, Markdown</p>
+    <!-- Export Section -->
+    <section id="export" class="export-section">
+        <div class="container">
+            <h2 class="section-title"><span class="arabic">تصدير التقارير</span><span class="english">Export Reports</span></h2>
+            <div class="export-panel">
+                <div class="export-buttons">
+                    <button class="export-btn" onclick="exportAs('json')">📄 JSON</button>
+                    <button class="export-btn" onclick="exportAs('html')">🌐 HTML</button>
+                    <button class="export-btn" onclick="exportAs('text')">📝 Text</button>
+                    <button class="export-btn" onclick="exportAs('markdown')">📋 Markdown</button>
+                    <button class="export-btn" onclick="exportAs('clipboard')">📋 Copy to Clipboard</button>
                 </div>
             </div>
         </div>
@@ -326,21 +276,19 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="arabic">عن حساب الجُمَّل</span>
-                <span class="english">About Abjad</span>
-            </h2>
-            
+            <h2 class="section-title"><span class="arabic">عن حساب الجُمَّل</span><span class="english">About Hisaab</span></h2>
             <div class="about-content">
-                <p>
-                    Abjad (أبجد) is a traditional Arabic numerology system where each letter 
-                    of the Arabic alphabet corresponds to a numerical value. This ancient system 
-                    has been used for centuries in Islamic scholarship, poetry, and spiritual practices.
-                </p>
-                <p>
-                    Our calculator preserves this cultural heritage while providing modern analysis 
-                    tools including business insights, compatibility checks, and spiritual guidance.
-                </p>
+                <p>Hisaab is a comprehensive Arabic numerology system based on the ancient Abjad system. It provides detailed analysis including:</p>
+                <ul>
+                    <li>99 Names of Allah analysis</li>
+                    <li>Sahaba database with historical information</li>
+                    <li>Hijri calendar integration</li>
+                    <li>28 Lunar mansions (منازل القمر)</li>
+                    <li>Business name analysis</li>
+                    <li>AI-powered recommendations</li>
+                    <li>Regional naming patterns</li>
+                    <li>Export in multiple formats</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -348,313 +296,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Hisaab v1.4.0 - Geographic, AI, Export, Historical & Hijri Features</p>
-            <p>
-                <a href="https://github.com/Ahmadbaba46/hisaab" target="_blank">GitHub</a> |
-                <a href="https://github.com/Ahmadbaba46/hisaab/blob/main/README.md" target="_blank">Documentation</a>
-            </p>
+            <p>Hisaab v2.0 - Complete Islamic Numerology System</p>
+            <p><a href="https://github.com/Ahmadbaba46/hisaab" target="_blank">GitHub</a></p>
         </div>
     </footer>
 
-<!-- Load Scripts in Order -->
-    <!-- 1. Complete Hisaab Library Bundle -->
     <script src="js/hisaab-complete.js"></script>
-    
-    <!-- 2. Application modules -->
-    <script src="js/calculator.js"></script>
-    <script src="js/ui-controller.js"></script>
-    <script src="js/results-renderer.js"></script>
-    <script src="js/ui-enhancements.js"></script>
-    
-    <!-- 3. v1.4.0 Features -->
-    <script src="js/hisaab-v14.js"></script>
-    
-    <!-- 4. Initialize app -->
-    <script src="js/app-init.js"></script>
-
-    <style>
-        /* Loading spinner */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Features grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-        }
-
-        .feature-card .feature-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        /* About section */
-        .about-section {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Result cards */
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .result-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid #667eea;
-        }
-
-        .result-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-
-        .result-value {
-            font-size: 48px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 20px 0;
-        }
-
-        .breakdown-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .breakdown-item {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .breakdown-letter {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .breakdown-value {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in forwards;
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-
-        /* Tabs Styling */
-        .results-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
-
-        .tab-btn {
-            padding: 12px 24px;
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px 8px 0 0;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 16px;
-            font-weight: 500;
-            color: #666;
-        }
-
-        .tab-btn:hover {
-            background: #f3f4f6;
-            border-color: #667eea;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
-        }
-
-        .tab-content {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        /* Export Panel */
-        .export-panel {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0ea5e9 !important;
-        }
-
-        .export-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .export-btn {
-            padding: 15px 20px;
-            background: white;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 16px;
-            font-weight: 500;
-            color: #0369a1;
-        }
-
-        .export-btn:hover {
-            background: #0ea5e9;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-        }
-
-        /* Scroll Reveal Animation */
-        .feature-card, .result-card {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .feature-card.revealed, .result-card.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Smooth transitions */
-        * {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading animation enhancement */
-        .loader {
-            animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Button hover effects */
-        .calculate-btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .calculate-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .calculate-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Card hover effects */
-        .result-card {
-            transition: all 0.3s;
-        }
-
-        .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-    </style>
+    <script src="app-complete.js"></script>
 </body>
 </html>
